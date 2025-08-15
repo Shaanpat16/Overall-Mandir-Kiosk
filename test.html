@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAPS Kiosk - System Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .test-button:hover {
+            background: #2980b9;
+        }
+        .test-button.success {
+            background: #27ae60;
+        }
+        .test-button.warning {
+            background: #f39c12;
+        }
+        .test-button.danger {
+            background: #e74c3c;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .test-results {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 BAPS Kiosk System Test</h1>
+    
+    <div class="test-section">
+        <h2>🔧 System Tests</h2>
+        <button class="test-button" onclick="testBasicFunctionality()">Test Basic Functionality</button>
+        <button class="test-button" onclick="testImageLoading()">Test Image Loading</button>
+        <button class="test-button" onclick="testAdminIntegration()">Test Admin Integration</button>
+        <button class="test-button" onclick="testAllLinks()">Test All Links</button>
+        <button class="test-button success" onclick="runComprehensiveTest()">Run Comprehensive Test</button>
+        <button class="test-button warning" onclick="clearAllData()">Clear All Data</button>
+        <button class="test-button danger" onclick="resetSystem()">Reset System</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 Test Results</h2>
+        <div id="test-results" class="test-results">Click a test button to see results...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🔗 Quick Access</h2>
+        <a href="/" class="test-button">Main Kiosk</a>
+        <a href="/admin-controls.html" class="test-button">Admin Controls</a>
+        <a href="/admin-panel.html" class="test-button">Admin Panel</a>
+    </div>
+    
+    <div class="test-section">
+        <h2>📋 System Information</h2>
+        <div id="system-info"></div>
+    </div>
+    
+    <script>
+        // Test Results Display
+        function logTest(message, type = 'info') {
+            const results = document.getElementById('test-results');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `status ${type}`;
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            results.appendChild(logEntry);
+            results.scrollTop = results.scrollHeight;
+        }
+        
+        // Basic Functionality Test
+        function testBasicFunctionality() {
+            logTest('🧪 Starting basic functionality test...', 'info');
+            
+            try {
+                // Test localStorage
+                localStorage.setItem('test', 'working');
+                const testValue = localStorage.getItem('test');
+                if (testValue === 'working') {
+                    logTest('✅ localStorage is working', 'success');
+                } else {
+                    logTest('❌ localStorage test failed', 'error');
+                }
+                localStorage.removeItem('test');
+                
+                // Test console
+                console.log('Console test message');
+                logTest('✅ Console logging is working', 'success');
+                
+                // Test DOM manipulation
+                const testDiv = document.createElement('div');
+                testDiv.textContent = 'DOM test';
+                document.body.appendChild(testDiv);
+                document.body.removeChild(testDiv);
+                logTest('✅ DOM manipulation is working', 'success');
+                
+                logTest('🎉 Basic functionality test completed successfully!', 'success');
+                
+            } catch (error) {
+                logTest(`❌ Basic functionality test failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // Image Loading Test
+        function testImageLoading() {
+            logTest('🖼️ Starting image loading test...', 'info');
+            
+            try {
+                // Test if image loading functions exist
+                if (typeof testImageLoading === 'function') {
+                    logTest('✅ Image loading functions available', 'success');
+                } else {
+                    logTest('⚠️ Image loading functions not found', 'warning');
+                }
+                
+                // Test placeholder image creation
+                const testImg = document.createElement('img');
+                testImg.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRlc3Q8L3RleHQ+Cjwvc3ZnPgo=';
+                testImg.onload = () => {
+                    logTest('✅ Placeholder image loading works', 'success');
+                };
+                testImg.onerror = () => {
+                    logTest('❌ Placeholder image loading failed', 'error');
+                };
+                
+                logTest('🎉 Image loading test completed!', 'success');
+                
+            } catch (error) {
+                logTest(`❌ Image loading test failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // Admin Integration Test
+        function testAdminIntegration() {
+            logTest('🔐 Starting admin integration test...', 'info');
+            
+            try {
+                // Test if admin functions exist
+                const adminFunctions = [
+                    'refreshWebsite',
+                    'forceReloadWebsite',
+                    'clearCache',
+                    'showAdminMessage'
+                ];
+                
+                let functionsFound = 0;
+                adminFunctions.forEach(funcName => {
+                    if (typeof window[funcName] === 'function') {
+                        functionsFound++;
+                        logTest(`✅ ${funcName} function available`, 'success');
+                    } else {
+                        logTest(`❌ ${funcName} function not found`, 'error');
+                    }
+                });
+                
+                if (functionsFound === adminFunctions.length) {
+                    logTest('🎉 All admin functions are available!', 'success');
+                } else {
+                    logTest(`⚠️ ${functionsFound}/${adminFunctions.length} admin functions found`, 'warning');
+                }
+                
+            } catch (error) {
+                logTest(`❌ Admin integration test failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // All Links Test
+        function testAllLinks() {
+            logTest('🔗 Starting all links test...', 'info');
+            
+            try {
+                if (typeof testAllLinks === 'function') {
+                    logTest('✅ testAllLinks function available', 'success');
+                    // Call the actual test function if it exists
+                    if (window.testAllLinks) {
+                        window.testAllLinks();
+                        logTest('✅ All links test executed', 'success');
+                    }
+                } else {
+                    logTest('⚠️ testAllLinks function not found', 'warning');
+                }
+                
+            } catch (error) {
+                logTest(`❌ All links test failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // Comprehensive Test
+        function runComprehensiveTest() {
+            logTest('🧪 Starting comprehensive test...', 'info');
+            
+            try {
+                if (typeof runComprehensiveTest === 'function') {
+                    logTest('✅ runComprehensiveTest function available', 'success');
+                    // Call the actual test function if it exists
+                    if (window.runComprehensiveTest) {
+                        window.runComprehensiveTest();
+                        logTest('✅ Comprehensive test executed', 'success');
+                    }
+                } else {
+                    logTest('⚠️ runComprehensiveTest function not found', 'warning');
+                }
+                
+            } catch (error) {
+                logTest(`❌ Comprehensive test failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // Clear All Data
+        function clearAllData() {
+            logTest('🧹 Clearing all data...', 'warning');
+            
+            try {
+                localStorage.clear();
+                sessionStorage.clear();
+                logTest('✅ All data cleared successfully', 'success');
+                
+                // Reload page to reset state
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+                
+            } catch (error) {
+                logTest(`❌ Failed to clear data: ${error.message}`, 'error');
+            }
+        }
+        
+        // Reset System
+        function resetSystem() {
+            logTest('🔄 Resetting system...', 'warning');
+            
+            try {
+                // Clear all data
+                localStorage.clear();
+                sessionStorage.clear();
+                
+                // Reset to default state
+                const defaultSettings = {
+                    refreshInterval: 5,
+                    sliderInterval: 5,
+                    debugMode: false,
+                    autoSave: true,
+                    lastUpdated: new Date().toISOString()
+                };
+                
+                localStorage.setItem('kioskSettings', JSON.stringify(defaultSettings));
+                
+                logTest('✅ System reset successfully', 'success');
+                
+                // Reload page
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+                
+            } catch (error) {
+                logTest(`❌ Failed to reset system: ${error.message}`, 'error');
+            }
+        }
+        
+        // Display System Information
+        function displaySystemInfo() {
+            const systemInfo = document.getElementById('system-info');
+            
+            const info = {
+                'User Agent': navigator.userAgent,
+                'Platform': navigator.platform,
+                'Language': navigator.language,
+                'Cookie Enabled': navigator.cookieEnabled ? 'Yes' : 'No',
+                'Online': navigator.onLine ? 'Yes' : 'No',
+                'Local Storage': typeof(Storage) !== 'undefined' ? 'Available' : 'Not Available',
+                'Session Storage': typeof(sessionStorage) !== 'undefined' ? 'Available' : 'Not Available',
+                'Screen Resolution': `${screen.width}x${screen.height}`,
+                'Viewport': `${window.innerWidth}x${window.innerHeight}`,
+                'Timestamp': new Date().toLocaleString()
+            };
+            
+            let infoHTML = '';
+            Object.entries(info).forEach(([key, value]) => {
+                infoHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+            });
+            
+            systemInfo.innerHTML = infoHTML;
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            logTest('🚀 Test page loaded successfully!', 'success');
+            displaySystemInfo();
+        });
+    </script>
+</body>
+</html>

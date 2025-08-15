@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Controls - BAPS Mandir Kiosk</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-controls-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .admin-controls-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .admin-controls-header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .admin-controls-header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .admin-controls-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .admin-controls-body {
+            padding: 30px;
+        }
+        
+        .admin-section {
+            margin-bottom: 40px;
+        }
+        
+        .admin-section h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .admin-section h2 i {
+            color: #3498db;
+        }
+        
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .admin-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .admin-card:hover {
+            border-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+        }
+        
+        .admin-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .admin-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .admin-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .admin-card-description {
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .admin-card-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .admin-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex: 1;
+        }
+        
+        .admin-btn.primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .admin-btn.primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .admin-btn.secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .admin-btn.secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        
+        .admin-btn.danger {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .admin-btn.danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .admin-btn.success {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .admin-btn.success:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+        
+        .admin-btn.warning {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .admin-btn.warning:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+        
+        .system-status {
+            background: #e8f4fd;
+            border: 2px solid #bee5eb;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .status-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .status-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .status-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .back-to-kiosk {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        
+        .back-to-kiosk:hover {
+            background: rgba(44, 62, 80, 1);
+            transform: scale(1.05);
+        }
+        
+        .back-to-kiosk i {
+            margin-right: 8px;
+        }
+        
+        /* PIN Authentication Overlay Styles */
+        .pin-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .pin-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .pin-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .pin-header i {
+            font-size: 48px;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .pin-header h2 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .pin-header p {
+            color: #6c757d;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .pin-input-container {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .pin-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 10px;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        .pin-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+            outline: none;
+        }
+
+        .pin-dots {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .pin-dot {
+            width: 10px;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .pin-buttons {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .pin-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex: 1;
+        }
+
+        .pin-btn.primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .pin-btn.primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .pin-btn.secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .pin-btn.secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+
+        .pin-btn.cancel {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .pin-btn.cancel:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .pin-attempts {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        
+        /* PIN Error Animation */
+        @keyframes pinErrorSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .admin-controls-page {
+                padding: 15px;
+            }
+            
+            .admin-controls-header {
+                padding: 20px;
+            }
+            
+            .admin-controls-header h1 {
+                font-size: 24px;
+            }
+            
+            .admin-controls-body {
+                padding: 20px;
+            }
+            
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-to-kiosk {
+                top: 15px;
+                left: 15px;
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+            
+            /* PIN overlay mobile styles */
+            .pin-container {
+                padding: 25px 20px;
+                margin: 20px;
+            }
+            
+            .pin-header h2 {
+                font-size: 24px;
+            }
+            
+            .pin-header p {
+                font-size: 14px;
+            }
+            
+            .pin-input {
+                font-size: 18px;
+                padding: 10px 12px;
+            }
+            
+            .pin-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .pin-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Admin Keypad Styles */
+        .admin-keypad {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .admin-keypad.hidden {
+            display: none;
+        }
+
+        .keypad-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .keypad-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .keypad-header h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .keypad-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #666;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .keypad-close:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .keypad-display {
+            margin-bottom: 25px;
+        }
+
+        .keypad-display input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+        }
+
+        .keypad-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .keypad-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: background 0.3s;
+        }
+
+        .keypad-dot.active {
+            background: #3498db;
+        }
+
+        .keypad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .keypad-key {
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: white;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 60px;
+        }
+
+        .keypad-key:hover {
+            border-color: #3498db;
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        .keypad-key.clear {
+            background: #e74c3c;
+            color: white;
+            border-color: #e74c3c;
+        }
+
+        .keypad-key.clear:hover {
+            background: #c0392b;
+        }
+
+        .keypad-key.submit {
+            background: #27ae60;
+            color: white;
+            border-color: #27ae60;
+        }
+
+        .keypad-key.submit:hover {
+            background: #229954;
+        }
+
+        .keypad-info {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .keypad-info i {
+            margin-right: 8px;
+            color: #3498db;
+        }
+
+        /* Keypad mobile styles */
+        @media (max-width: 768px) {
+            .keypad-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .keypad-grid {
+                gap: 10px;
+            }
+            
+            .keypad-key {
+                padding: 15px;
+                min-height: 50px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-to-kiosk" onclick="window.location.href='/'">
+        <i class="fas fa-arrow-left"></i>
+        Back to Kiosk
+    </button>
+    
+    <!-- PIN Authentication Overlay -->
+    <div id="pin-overlay" class="pin-overlay">
+        <div class="pin-container">
+            <div class="pin-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>Admin Access Required</h2>
+                <p>Enter PIN to access admin controls</p>
+            </div>
+            <div class="pin-input-container">
+                <input type="password" id="pin-input" placeholder="Enter PIN" maxlength="4" autocomplete="off">
+                <div class="pin-dots">
+                    <span class="pin-dot"></span>
+                    <span class="pin-dot"></span>
+                    <span class="pin-dot"></span>
+                    <span class="pin-dot"></span>
+                </div>
+            </div>
+            <div class="pin-buttons">
+                <button class="pin-btn" onclick="submitPin()">Submit</button>
+                <button class="pin-btn cancel" onclick="goBackToKiosk()">Cancel</button>
+            </div>
+            <div class="pin-attempts">
+                <span id="attempts-display">Attempts: 0/3</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9-Digit Admin Keypad -->
+    <div id="admin-keypad" class="admin-keypad hidden">
+        <div class="keypad-container">
+            <div class="keypad-header">
+                <h3><i class="fas fa-keyboard"></i> Admin Keypad</h3>
+                <button class="keypad-close" onclick="hideAdminKeypad()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="keypad-display">
+                <input type="text" id="keypad-input" placeholder="Enter 9-digit code" readonly>
+                <div class="keypad-dots">
+                    <span class="keypad-dot"></span>
+                    <span class="keypad-dot"></span>
+                    <span class="keypad-dot"></span>
+                    <span class="keypad-dot"></span>
+                    <span class="keypad-dot"></span>
+                    <span class="keypad-dot"></span>
+                    <span class="keypad-dot"></span>
+                    <span class="keypad-dot"></span>
+                    <span class="keypad-dot"></span>
+                </div>
+            </div>
+            <div class="keypad-grid">
+                <button class="keypad-key" data-key="1">1</button>
+                <button class="keypad-key" data-key="2">2</button>
+                <button class="keypad-key" data-key="3">3</button>
+                <button class="keypad-key" data-key="4">4</button>
+                <button class="keypad-key" data-key="5">5</button>
+                <button class="keypad-key" data-key="6">6</button>
+                <button class="keypad-key" data-key="7">7</button>
+                <button class="keypad-key" data-key="8">8</button>
+                <button class="keypad-key" data-key="9">9</button>
+                <button class="keypad-key" data-key="0">0</button>
+                <button class="keypad-key clear" onclick="clearKeypadInput()">Clear</button>
+                <button class="keypad-key submit" onclick="submitKeypadCode()">Submit</button>
+            </div>
+            <div class="keypad-info">
+                <p><i class="fas fa-info-circle"></i> Enter the 9-digit admin code to access advanced controls</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="admin-controls-page">
+        <div class="admin-controls-container">
+            <div class="admin-controls-header">
+                <h1><i class="fas fa-shield-alt"></i> Admin Controls</h1>
+                <p>Manage and monitor your BAPS Mandir Kiosk system</p>
+            </div>
+            
+            <div class="admin-controls-body">
+                <!-- System Status -->
+                <div class="system-status">
+                    <h2><i class="fas fa-chart-line"></i> System Status</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <div class="status-value" id="last-refresh-time">Never</div>
+                            <div class="status-label">Last Refresh</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-value" id="images-loaded-count">0</div>
+                            <div class="status-label">Images Loaded</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-value" id="cache-status">Unknown</div>
+                            <div class="status-label">Cache Status</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-value" id="system-health">Good</div>
+                            <div class="status-label">System Health</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Controls -->
+                <div class="admin-section">
+                    <h2><i class="fas fa-bolt"></i> Quick Controls</h2>
+                    <div class="admin-grid">
+                        <div class="admin-card" onclick="refreshWebsite()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #3498db;">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <h3 class="admin-card-title">Refresh Website</h3>
+                            </div>
+                            <p class="admin-card-description">Reload dynamic content and refresh the website without clearing cache.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn primary">Refresh Now</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" onclick="forceReloadWebsite()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #e67e22;">
+                                    <i class="fas fa-redo"></i>
+                                </div>
+                                <h3 class="admin-card-title">Force Reload</h3>
+                            </div>
+                            <p class="admin-card-description">Clear all cache and force a complete page reload for troubleshooting.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn warning">Force Reload</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" onclick="clearCache()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #95a5a6;">
+                                    <i class="fas fa-broom"></i>
+                                </div>
+                                <h3 class="admin-card-title">Clear Cache</h3>
+                            </div>
+                            <p class="admin-card-description">Clear all stored data, localStorage, and browser cache.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn secondary">Clear Cache</button>
+                            </div>
+                        </div>
+
+                        <div class="admin-card" onclick="showAdminKeypad()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #9b59b6;">
+                                    <i class="fas fa-keyboard"></i>
+                                </div>
+                                <h3 class="admin-card-title">Admin Keypad</h3>
+                            </div>
+                            <p class="admin-card-description">Access advanced admin features with 9-digit security code.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn primary">Open Keypad</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" onclick="runComprehensiveTest()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #9b59b6;">
+                                    <i class="fas fa-vial"></i>
+                                </div>
+                                <h3 class="admin-card-title">Run Tests</h3>
+                            </div>
+                            <p class="admin-card-description">Execute comprehensive system tests to verify all functionality.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn success">Run Tests</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Management -->
+                <div class="admin-section">
+                    <h2><i class="fas fa-images"></i> Image Management</h2>
+                    <div class="admin-grid">
+                        <div class="admin-card" onclick="refreshImages()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #f39c12;">
+                                    <i class="fas fa-images"></i>
+                                </div>
+                                <h3 class="admin-card-title">Refresh Images</h3>
+                            </div>
+                            <p class="admin-card-description">Reload all images from the admin panel and update the display.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn warning">Refresh Images</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" onclick="checkCurrentImageState()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #1abc9c;">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <h3 class="admin-card-title">Check Images</h3>
+                            </div>
+                            <p class="admin-card-description">Check the current status and properties of all loaded images.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn success">Check Images</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" onclick="testImageLoading()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #e74c3c;">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <h3 class="admin-card-title">Test Images</h3>
+                            </div>
+                            <p class="admin-card-description">Test image loading functionality and verify admin panel integration.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn danger">Test Images</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Admin Tools -->
+                <div class="admin-section">
+                    <h2><i class="fas fa-tools"></i> Admin Tools</h2>
+                    <div class="admin-grid">
+                        <div class="admin-card" onclick="openAdminPanel()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #2c3e50;">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <h3 class="admin-card-title">Admin Panel</h3>
+                            </div>
+                            <p class="admin-card-description">Open the full admin panel for managing content, images, and settings.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn primary">Open Panel</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" onclick="openDebugPage()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #34495e;">
+                                    <i class="fas fa-bug"></i>
+                                </div>
+                                <h3 class="admin-card-title">Debug Tools</h3>
+                            </div>
+                            <p class="admin-card-description">Access debugging tools and diagnostic information for troubleshooting.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn secondary">Open Debug</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" onclick="showSystemInfo()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #16a085;">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <h3 class="admin-card-title">System Info</h3>
+                            </div>
+                            <p class="admin-card-description">View detailed system information, logs, and performance metrics.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn success">View Info</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" onclick="exportSystemData()">
+                            <div class="admin-card-header">
+                                <div class="admin-card-icon" style="background: #8e44ad;">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <h3 class="admin-card-title">Export Data</h3>
+                            </div>
+                            <p class="admin-card-description">Export system data, logs, and configuration for backup purposes.</p>
+                            <div class="admin-card-actions">
+                                <button class="admin-btn warning">Export Data</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="admin-controls.js"></script>
+</body>
+</html>

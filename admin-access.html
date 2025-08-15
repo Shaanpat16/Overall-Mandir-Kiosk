@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Access - Edison Mandir Kiosk</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4A5568 0%, #2D3748 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+            text-align: center;
+        }
+        .admin-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        p {
+            margin-bottom: 30px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        .admin-btn {
+            background: linear-gradient(135deg, #F6AD55, #ED8936);
+            color: #2D3748;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 20px;
+            margin-top: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-weight: 600;
+        }
+        .admin-btn:hover {
+            transform: scale(1.05);
+        }
+        .password-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .password-info h3 {
+            margin-bottom: 10px;
+            color: #F6AD55;
+        }
+        .password-info p {
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>🔐 Admin Access</h1>
+        <p>Welcome to the Edison Mandir Kiosk Admin Panel</p>
+        
+        <a href="admin.html" class="admin-btn">
+            <i class="fas fa-cog"></i>
+            Access Admin Panel
+        </a>
+        
+        <div class="password-info">
+            <h3>🔑 Login Credentials</h3>
+            <p><strong>Password:</strong> EDISONKIOSK123!</p>
+        </div>
+    </div>
+</body>
+</html>

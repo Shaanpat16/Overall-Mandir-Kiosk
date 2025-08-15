@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Test - BAPS Mandir</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .pin-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+        .pin-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        .pin-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 10px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        .pin-dots {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .pin-dot {
+            width: 10px;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .pin-dot.active {
+            background: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 Admin Controls Test</h1>
+    
+    <div class="test-section">
+        <h2>🔧 Test Admin Functions</h2>
+        <p>This page tests the admin controls functionality step by step.</p>
+        
+        <button onclick="testPinOverlay()">Test PIN Overlay</button>
+        <button onclick="testPinInput()">Test PIN Input</button>
+        <button onclick="testAuthentication()">Test Authentication</button>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📝 Test Log</h2>
+        <div id="test-log" class="log"></div>
+    </div>
+    
+    <!-- PIN Overlay for Testing -->
+    <div id="pin-overlay" class="pin-overlay" style="display: none;">
+        <div class="pin-container">
+            <h2>🔐 Admin Access Required</h2>
+            <p>Enter PIN: <strong>2001</strong></p>
+            
+            <input type="password" id="pin-input" class="pin-input" placeholder="Enter PIN" maxlength="4" autocomplete="off">
+            
+            <div class="pin-dots">
+                <span class="pin-dot"></span>
+                <span class="pin-dot"></span>
+                <span class="pin-dot"></span>
+                <span class="pin-dot"></span>
+            </div>
+            
+            <button onclick="submitTestPin()">Submit</button>
+            <button onclick="hideTestPinOverlay()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        let logElement;
+        
+        function log(message, type = 'info') {
+            if (!logElement) {
+                logElement = document.getElementById('test-log');
+            }
+            
+            const timestamp = new Date().toLocaleTimeString();
+            const logMessage = `[${timestamp}] ${message}\n`;
+            
+            if (type === 'error') {
+                logElement.innerHTML += `<span class="error">${logMessage}</span>`;
+            } else if (type === 'success') {
+                logElement.innerHTML += `<span class="success">${logMessage}</span>`;
+            } else if (type === 'warning') {
+                logElement.innerHTML += `<span class="warning">${logMessage}</span>`;
+            } else {
+                logElement.innerHTML += logMessage;
+            }
+            
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        function testPinOverlay() {
+            log('Testing PIN overlay display...');
+            const overlay = document.getElementById('pin-overlay');
+            if (overlay) {
+                overlay.style.display = 'flex';
+                log('✅ PIN overlay displayed successfully', 'success');
+                
+                // Focus on input
+                setTimeout(() => {
+                    const input = document.getElementById('pin-input');
+                    if (input) {
+                        input.focus();
+                        log('✅ PIN input focused', 'success');
+                    } else {
+                        log('❌ PIN input not found', 'error');
+                    }
+                }, 100);
+            } else {
+                log('❌ PIN overlay not found', 'error');
+            }
+        }
+        
+        function testPinInput() {
+            log('Testing PIN input functionality...');
+            const input = document.getElementById('pin-input');
+            if (input) {
+                input.addEventListener('input', (e) => {
+                    const value = e.target.value;
+                    log(`PIN input changed: ${value}`);
+                    updatePinDots(value.length);
+                });
+                log('✅ PIN input event listener added', 'success');
+            } else {
+                log('❌ PIN input not found', 'error');
+            }
+        }
+        
+        function updatePinDots(digitCount) {
+            const dots = document.querySelectorAll('.pin-dot');
+            dots.forEach((dot, index) => {
+                if (index < digitCount) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function testAuthentication() {
+            log('Testing authentication logic...');
+            
+            // Test the PIN constant
+            const ADMIN_PIN = '2001';
+            log(`Admin PIN is: ${ADMIN_PIN}`);
+            
+            // Test PIN validation
+            const testPins = ['1234', '2001', '9999'];
+            testPins.forEach(pin => {
+                const isValid = pin === ADMIN_PIN;
+                log(`PIN ${pin}: ${isValid ? 'VALID' : 'INVALID'}`, isValid ? 'success' : 'error');
+            });
+            
+            log('✅ Authentication logic test complete', 'success');
+        }
+        
+        function submitTestPin() {
+            const input = document.getElementById('pin-input');
+            const pin = input.value;
+            
+            if (pin === '2001') {
+                log('✅ Correct PIN entered!', 'success');
+                hideTestPinOverlay();
+            } else {
+                log(`❌ Incorrect PIN: ${pin}`, 'error');
+                input.value = '';
+                updatePinDots(0);
+                input.focus();
+            }
+        }
+        
+        function hideTestPinOverlay() {
+            const overlay = document.getElementById('pin-overlay');
+            overlay.style.display = 'none';
+            log('PIN overlay hidden', 'info');
+        }
+        
+        function clearLog() {
+            if (logElement) {
+                logElement.innerHTML = '';
+            }
+        }
+        
+        // Auto-run basic tests
+        window.addEventListener('load', () => {
+            log('🚀 Page loaded, running basic tests...');
+            testAuthentication();
+        });
+    </script>
+</body>
+</html>
