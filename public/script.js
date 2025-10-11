@@ -1,3 +1,25 @@
+// Load temple background from admin settings
+function loadTempleBackground() {
+    try {
+        const kioskData = localStorage.getItem('kioskData');
+        if (kioskData) {
+            const data = JSON.parse(kioskData);
+            const backgroundUrl = data.settings?.templeBackground || 'temple-background.jpg';
+            
+            // Apply background to body
+            document.body.style.background = `#f5f5f5 url('${backgroundUrl}') center center / cover no-repeat`;
+            console.log('🏛️ Temple background loaded:', backgroundUrl);
+        } else {
+            // Default background
+            document.body.style.background = `#f5f5f5 url('temple-background.jpg') center center / cover no-repeat`;
+        }
+    } catch (error) {
+        console.error('❌ Error loading temple background:', error);
+        // Fallback to default
+        document.body.style.background = `#f5f5f5 url('temple-background.jpg') center center / cover no-repeat`;
+    }
+}
+
 // DOM Elements - These will be null until DOM is loaded
 let currentTimeElement = null;
 let hamburgerMenu = null;
@@ -1826,7 +1848,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 DOM loaded, initializing kiosk...');
     
     try {
-        console.log('🔧 Step 0: Initializing DOM elements...');
+        console.log('🔧 Step 0: Loading temple background...');
+        loadTempleBackground();
+        
+        console.log('🔧 Step 1: Initializing DOM elements...');
         initializeDOMElements();
         
         console.log('🔧 Step 1: Initializing language...');

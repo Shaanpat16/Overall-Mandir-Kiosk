@@ -53,7 +53,8 @@ p, span, div, li, a {
     width: 1080px;
     height: 1920px;
     margin: 0 auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
@@ -157,25 +158,46 @@ p, span, div, li, a {
 .slide {
     opacity: 0;
     transition: opacity 0.5s ease;
-    background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(222, 184, 135, 0.1) 100%);
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.slide-content {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    z-index: 2 !important;
+    background: linear-gradient(135deg, var(--primary-beige) 0%, var(--accent-light) 100%) !important;
+    padding: 30px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
 .slide-content h2 {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(45deg, var(--warm-beige), var(--soft-beige));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 42px !important;
+    font-weight: 700 !important;
+    margin-bottom: 10px !important;
+    color: #000000 !important;
+    text-shadow: none !important;
 }
 
 .slide-content p {
-    font-size: 24px;
-    opacity: 0.9;
-    color: var(--accent-light);
-    font-weight: 500;
+    font-size: 24px !important;
+    color: #000000 !important;
+    font-weight: 500 !important;
 }
 
 /* Info Cards Enhancements */
@@ -1723,10 +1745,11 @@ p, span, div, li, a {
     left: 0;
     width: 100%;
     height: 100%;
-        opacity: 0;
+    opacity: 0;
     transition: opacity 0.5s ease;
-    background: linear-gradient(135deg, rgba(222, 184, 135, 0.1) 0%, rgba(222, 184, 135, 0.1) 100%);
-    }
+    border-radius: 15px;
+    overflow: hidden;
+}
 
 .slide.active {
         opacity: 1;
@@ -2021,14 +2044,18 @@ p, span, div, li, a {
     }
     
     .slide-content {
-        padding: 20px;
+        padding: 20px !important;
+        color: #000000 !important;
+        background: linear-gradient(135deg, var(--primary-beige) 0%, var(--accent-light) 100%) !important;
     }
     
     .slide-content h2 {
-        font-size: 32px;
+        font-size: 32px !important;
+        color: #000000 !important;
     }
     
     .slide-content p {
-        font-size: 20px;
+        font-size: 20px !important;
+        color: #000000 !important;
     }
 }

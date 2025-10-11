@@ -237,6 +237,32 @@ body {
     margin-bottom: 20px;
 }
 
+/* Background Preview Styles */
+.background-preview {
+    margin: 15px 0;
+    padding: 15px;
+    border: 2px dashed #E2E8F0;
+    border-radius: 8px;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.background-preview img {
+    display: block;
+    margin: 0 auto 10px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.background-preview p {
+    margin: 0;
+    color: #4A5568;
+    font-size: 14px;
+}
+
+.image-upload-area {
+    margin: 10px 0;
+}
+
 /* File Input Styles */
 .file-input {
     width: 100%;

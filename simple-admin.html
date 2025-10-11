@@ -735,7 +735,7 @@
                     {
                         url: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=1080&h=600&fit=crop',
                         title: 'BAPS Mandir Exterior',
-                        description: 'Beautiful architecture of our temple'
+                        description: 'Beautiful architecture of our Mandir'
                     },
                     {
                         url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1080&h=600&fit=crop',
@@ -967,7 +967,17 @@
             }
         }
 
-        function processImageUpload() {
+        // Helper function to convert file to base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function processImageUpload() {
             const heroImages = document.getElementById('hero-images').files;
             const galleryImages = document.getElementById('gallery-images').files;
             const murtiImage = document.getElementById('murti-image').files;
@@ -977,39 +987,69 @@
                 return;
             }
 
-            const formData = new FormData();
-            if (heroImages.length > 0) {
-                for (let i = 0; i < heroImages.length; i++) {
-                    formData.append('heroImages', heroImages[i]);
-                }
-            }
-            if (galleryImages.length > 0) {
-                for (let i = 0; i < galleryImages.length; i++) {
-                    formData.append('galleryImages', galleryImages[i]);
-                }
-            }
-            if (murtiImage.length > 0) {
-                formData.append('murtiImage', murtiImage[0]);
-            }
 
-            fetch('upload_images.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+            // Handle image uploads locally (no server needed)
+            try {
+                const imageData = {};
+                
+                // Process hero images
+                if (heroImages.length > 0) {
+                    imageData.heroSlider = [];
+                    for (let i = 0; i < heroImages.length; i++) {
+                        const file = heroImages[i];
+                        const base64 = await fileToBase64(file);
+                        imageData.heroSlider.push({
+                            url: base64,
+                            name: file.name,
+                            size: file.size,
+                            type: file.type
+                        });
+                    }
+                }
+                
+                // Process gallery images
+                if (galleryImages.length > 0) {
+                    imageData.generalImages = [];
+                    for (let i = 0; i < galleryImages.length; i++) {
+                        const file = galleryImages[i];
+                        const base64 = await fileToBase64(file);
+                        imageData.generalImages.push({
+                            url: base64,
+                            name: file.name,
+                            size: file.size,
+                            type: file.type
+                        });
+                    }
+                }
+                
+                // Process murti image
+                if (murtiImage.length > 0) {
+                    const file = murtiImage[0];
+                    const base64 = await fileToBase64(file);
+                    imageData.murtiDarshan = [{
+                        url: base64,
+                        name: file.name,
+                        size: file.size,
+                        type: file.type
+                    }];
+                }
+                
+                // Save to localStorage
+                if (Object.keys(imageData).length > 0) {
+                    const existingImages = JSON.parse(localStorage.getItem('kioskImages') || '{}');
+                    const mergedImages = { ...existingImages, ...imageData };
+                    localStorage.setItem('kioskImages', JSON.stringify(mergedImages));
+                    
                     showMessage('Images uploaded successfully!', 'success');
                     hideImageUpload();
                     refreshContent(); // Refresh content to show new images
                 } else {
-                    showMessage(`Upload failed: ${data.message}`, 'error');
+                    showMessage('No images selected for upload.', 'error');
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error uploading images:', error);
                 showMessage('Error uploading images. Please try again.', 'error');
-            });
+            }
         }
 
         function viewCurrentImages() {

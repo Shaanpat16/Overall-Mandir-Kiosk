@@ -3,134 +3,489 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAPS Kiosk - System Test</title>
+    <title>🧪 BAPS Kiosk - Enhanced Test Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        
         .test-section {
             background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
         }
+        
+        .test-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .test-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
         .test-button {
-            background: #3498db;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 16px 28px;
+            border-radius: 12px;
             cursor: pointer;
-            margin: 5px;
-            font-size: 14px;
+            margin: 10px 10px 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 160px;
+            justify-content: center;
         }
+        
         .test-button:hover {
-            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
         }
+        
+        .test-button:active {
+            transform: translateY(0);
+        }
+        
         .test-button.success {
-            background: #27ae60;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
         }
+        
         .test-button.warning {
-            background: #f39c12;
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
         }
+        
         .test-button.danger {
-            background: #e74c3c;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
+        
+        .test-button.info {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+        
         .status {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            font-weight: bold;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.3s ease;
         }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
         .status.success {
-            background: #d4edda;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
             color: #155724;
-            border: 1px solid #c3e6cb;
+            border-left: 4px solid #27ae60;
         }
+        
         .status.error {
-            background: #f8d7da;
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
             color: #721c24;
-            border: 1px solid #f5c6cb;
+            border-left: 4px solid #e74c3c;
         }
+        
         .status.info {
-            background: #d1ecf1;
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
             color: #0c5460;
-            border: 1px solid #bee5eb;
+            border-left: 4px solid #3498db;
         }
+        
+        .status.warning {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            color: #856404;
+            border-left: 4px solid #f39c12;
+        }
+        
         .test-results {
             background: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 10px 0;
-            font-family: monospace;
-            font-size: 12px;
-            max-height: 200px;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            max-height: 400px;
             overflow-y: auto;
+            border: 1px solid #e9ecef;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e1e8ed;
+        }
+        
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .quick-link {
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 30px;
+            border: 2px solid #667eea;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quick-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .test-running {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <h1>🧪 BAPS Kiosk System Test</h1>
-    
-    <div class="test-section">
-        <h2>🔧 System Tests</h2>
-        <button class="test-button" onclick="testBasicFunctionality()">Test Basic Functionality</button>
-        <button class="test-button" onclick="testImageLoading()">Test Image Loading</button>
-        <button class="test-button" onclick="testAdminIntegration()">Test Admin Integration</button>
-        <button class="test-button" onclick="testAllLinks()">Test All Links</button>
-        <button class="test-button success" onclick="runComprehensiveTest()">Run Comprehensive Test</button>
-        <button class="test-button warning" onclick="clearAllData()">Clear All Data</button>
-        <button class="test-button danger" onclick="resetSystem()">Reset System</button>
-    </div>
-    
-    <div class="test-section">
-        <h2>📊 Test Results</h2>
-        <div id="test-results" class="test-results">Click a test button to see results...</div>
-    </div>
-    
-    <div class="test-section">
-        <h2>🔗 Quick Access</h2>
-        <a href="/" class="test-button">Main Kiosk</a>
-        <a href="/admin-controls.html" class="test-button">Admin Controls</a>
-        <a href="/admin-panel.html" class="test-button">Admin Panel</a>
-    </div>
-    
-    <div class="test-section">
-        <h2>📋 System Information</h2>
-        <div id="system-info"></div>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-flask"></i> BAPS Kiosk Test Suite</h1>
+            <p>Comprehensive testing and diagnostics for the BAPS Mandir Digital Kiosk</p>
+        </div>
+        
+        <div class="test-grid">
+            <!-- Test Statistics -->
+            <div class="test-section">
+                <h2><i class="fas fa-chart-bar"></i> Test Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-tests">0</div>
+                        <div class="stat-label">Total Tests</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="passed-tests">0</div>
+                        <div class="stat-label">Passed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="failed-tests">0</div>
+                        <div class="stat-label">Failed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="success-rate">0%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-bar"></div>
+                </div>
+            </div>
+            
+            <!-- Core System Tests -->
+            <div class="test-section">
+                <h2><i class="fas fa-cogs"></i> Core System Tests</h2>
+                <button class="test-button" onclick="testBasicFunctionality()">
+                    <i class="fas fa-check-circle"></i> Basic Functionality
+                </button>
+                <button class="test-button" onclick="testImageLoading()">
+                    <i class="fas fa-images"></i> Image Loading
+                </button>
+                <button class="test-button" onclick="testAdminIntegration()">
+                    <i class="fas fa-shield-alt"></i> Admin Integration
+                </button>
+                <button class="test-button" onclick="testAllLinks()">
+                    <i class="fas fa-link"></i> Link Validation
+                </button>
+            </div>
+            
+            <!-- Advanced Tests -->
+            <div class="test-section">
+                <h2><i class="fas fa-rocket"></i> Advanced Tests</h2>
+                <button class="test-button info" onclick="testPerformance()">
+                    <i class="fas fa-tachometer-alt"></i> Performance Test
+                </button>
+                <button class="test-button info" onclick="testResponsiveness()">
+                    <i class="fas fa-mobile-alt"></i> Responsiveness
+                </button>
+                <button class="test-button info" onclick="testAccessibility()">
+                    <i class="fas fa-universal-access"></i> Accessibility
+                </button>
+                <button class="test-button info" onclick="testSecurity()">
+                    <i class="fas fa-lock"></i> Security Check
+                </button>
+            </div>
+            
+            <!-- Comprehensive Testing -->
+            <div class="test-section">
+                <h2><i class="fas fa-vial"></i> Comprehensive Testing</h2>
+                <button class="test-button success" onclick="runComprehensiveTest()">
+                    <i class="fas fa-play"></i> Run All Tests
+                </button>
+                <button class="test-button warning" onclick="runStressTest()">
+                    <i class="fas fa-fire"></i> Stress Test
+                </button>
+                <button class="test-button warning" onclick="clearAllData()">
+                    <i class="fas fa-trash"></i> Clear All Data
+                </button>
+                <button class="test-button danger" onclick="resetSystem()">
+                    <i class="fas fa-redo"></i> Reset System
+                </button>
+            </div>
+            
+            <!-- Test Results -->
+            <div class="test-section" style="grid-column: 1 / -1;">
+                <h2><i class="fas fa-clipboard-list"></i> Test Results</h2>
+                <div id="test-results" class="test-results">Ready to run tests... Click any test button to begin.</div>
+            </div>
+            
+            <!-- Quick Access -->
+            <div class="test-section">
+                <h2><i class="fas fa-external-link-alt"></i> Quick Access</h2>
+                <div class="quick-links">
+                    <a href="/" class="quick-link">
+                        <i class="fas fa-home"></i> Main Kiosk
+                    </a>
+                    <a href="/admin-controls.html" class="quick-link">
+                        <i class="fas fa-cog"></i> Admin Controls
+                    </a>
+                    <a href="/admin-panel.html" class="quick-link">
+                        <i class="fas fa-tachometer-alt"></i> Admin Panel
+                    </a>
+                    <a href="/admin-test.html" class="quick-link">
+                        <i class="fas fa-user-shield"></i> Admin Test
+                    </a>
+                </div>
+            </div>
+            
+            <!-- System Information -->
+            <div class="test-section">
+                <h2><i class="fas fa-info-circle"></i> System Information</h2>
+                <div id="system-info"></div>
+            </div>
+        </div>
     </div>
     
     <script>
+        // Test Statistics
+        let testStats = {
+            total: 0,
+            passed: 0,
+            failed: 0,
+            running: false
+        };
+        
         // Test Results Display
         function logTest(message, type = 'info') {
             const results = document.getElementById('test-results');
             const timestamp = new Date().toLocaleTimeString();
             const logEntry = document.createElement('div');
-            logEntry.className = `status ${type}`;
-            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            logEntry.className = `status ${type} fade-in`;
+            
+            const icon = getStatusIcon(type);
+            logEntry.innerHTML = `<i class="${icon}"></i> [${timestamp}] ${message}`;
+            
             results.appendChild(logEntry);
             results.scrollTop = results.scrollHeight;
+            
+            // Update statistics
+            if (type === 'success') testStats.passed++;
+            if (type === 'error') testStats.failed++;
+            testStats.total++;
+            updateStats();
         }
         
-        // Basic Functionality Test
-        function testBasicFunctionality() {
-            logTest('🧪 Starting basic functionality test...', 'info');
+        function getStatusIcon(type) {
+            const icons = {
+                'success': 'fas fa-check-circle',
+                'error': 'fas fa-times-circle',
+                'warning': 'fas fa-exclamation-triangle',
+                'info': 'fas fa-info-circle'
+            };
+            return icons[type] || 'fas fa-info-circle';
+        }
+        
+        function updateStats() {
+            document.getElementById('total-tests').textContent = testStats.total;
+            document.getElementById('passed-tests').textContent = testStats.passed;
+            document.getElementById('failed-tests').textContent = testStats.failed;
+            
+            const successRate = testStats.total > 0 ? Math.round((testStats.passed / testStats.total) * 100) : 0;
+            document.getElementById('success-rate').textContent = successRate + '%';
+            
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = successRate + '%';
+        }
+        
+        function setTestRunning(running) {
+            testStats.running = running;
+            const buttons = document.querySelectorAll('.test-button');
+            buttons.forEach(btn => {
+                if (running) {
+                    btn.classList.add('test-running');
+                    btn.disabled = true;
+                } else {
+                    btn.classList.remove('test-running');
+                    btn.disabled = false;
+                }
+            });
+        }
+        
+        // Enhanced Basic Functionality Test
+        async function testBasicFunctionality() {
+            setTestRunning(true);
+            logTest('🧪 Starting enhanced basic functionality test...', 'info');
             
             try {
                 // Test localStorage
                 localStorage.setItem('test', 'working');
                 const testValue = localStorage.getItem('test');
                 if (testValue === 'working') {
-                    logTest('✅ localStorage is working', 'success');
+                    logTest('✅ localStorage read/write operations working', 'success');
                 } else {
                     logTest('❌ localStorage test failed', 'error');
                 }
                 localStorage.removeItem('test');
+                
+                // Test sessionStorage
+                sessionStorage.setItem('test', 'session');
+                const sessionValue = sessionStorage.getItem('test');
+                if (sessionValue === 'session') {
+                    logTest('✅ sessionStorage operations working', 'success');
+                } else {
+                    logTest('❌ sessionStorage test failed', 'error');
+                }
+                sessionStorage.removeItem('test');
                 
                 // Test console
                 console.log('Console test message');
@@ -139,14 +494,47 @@
                 // Test DOM manipulation
                 const testDiv = document.createElement('div');
                 testDiv.textContent = 'DOM test';
+                testDiv.className = 'test-element';
                 document.body.appendChild(testDiv);
+                const foundDiv = document.querySelector('.test-element');
+                if (foundDiv) {
+                    logTest('✅ DOM creation and querying working', 'success');
+                } else {
+                    logTest('❌ DOM querying failed', 'error');
+                }
                 document.body.removeChild(testDiv);
-                logTest('✅ DOM manipulation is working', 'success');
                 
-                logTest('🎉 Basic functionality test completed successfully!', 'success');
+                // Test event handling
+                let eventHandled = false;
+                const testBtn = document.createElement('button');
+                testBtn.addEventListener('click', () => { eventHandled = true; });
+                testBtn.click();
+                if (eventHandled) {
+                    logTest('✅ Event handling working', 'success');
+                } else {
+                    logTest('❌ Event handling failed', 'error');
+                }
+                
+                // Test JSON operations
+                const testObj = { test: 'value', number: 123 };
+                const jsonString = JSON.stringify(testObj);
+                const parsedObj = JSON.parse(jsonString);
+                if (parsedObj.test === 'value' && parsedObj.number === 123) {
+                    logTest('✅ JSON serialization/deserialization working', 'success');
+                } else {
+                    logTest('❌ JSON operations failed', 'error');
+                }
+                
+                // Test async operations
+                await new Promise(resolve => setTimeout(resolve, 100));
+                logTest('✅ Async operations working', 'success');
+                
+                logTest('🎉 Enhanced basic functionality test completed successfully!', 'success');
                 
             } catch (error) {
                 logTest(`❌ Basic functionality test failed: ${error.message}`, 'error');
+            } finally {
+                setTestRunning(false);
             }
         }
         

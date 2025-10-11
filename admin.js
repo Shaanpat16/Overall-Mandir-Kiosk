@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupFormHandlers();
         loadWebsiteImages(); // Load website images
         setupDragAndDrop(); // Setup drag and drop functionality
+        loadTempleBackground(); // Load current temple background
         
         // Test website images functionality
         testWebsiteImagesFunctionality();
@@ -266,6 +267,36 @@ function setupFormHandlers() {
             hideGalleryForm();
         });
     }
+    
+    // Temple background form handlers
+    const saveTempleBgBtn = document.getElementById('save-temple-background');
+    const resetTempleBgBtn = document.getElementById('reset-temple-background');
+    const templeBgUpload = document.getElementById('temple-bg-upload');
+    const templeBgUrl = document.getElementById('temple-bg-url');
+    
+    if (saveTempleBgBtn) {
+        saveTempleBgBtn.addEventListener('click', () => {
+            saveTempleBackground();
+        });
+    }
+    
+    if (resetTempleBgBtn) {
+        resetTempleBgBtn.addEventListener('click', () => {
+            resetTempleBackground();
+        });
+    }
+    
+    if (templeBgUpload) {
+        templeBgUpload.addEventListener('change', (e) => {
+            handleTempleBackgroundPreview(e);
+        });
+    }
+    
+    if (templeBgUrl) {
+        templeBgUrl.addEventListener('input', (e) => {
+            handleTempleBackgroundUrlPreview(e);
+        });
+    }
 }
 
 // Form display functions
@@ -387,92 +418,113 @@ async function handleImageUpload(fileInput, urlInput) {
 
 // Save functions for new items
 async function saveNewsItem() {
-    const title = document.getElementById('news-title').value.trim();
-    const content = document.getElementById('news-content').value.trim();
-    const imageUpload = document.getElementById('news-image-upload');
-    const imageUrl = document.getElementById('news-image-url');
-    const date = document.getElementById('news-date').value;
+    try {
+        const title = document.getElementById('news-title').value.trim();
+        const content = document.getElementById('news-content').value.trim();
+        const imageUpload = document.getElementById('news-image-upload');
+        const imageUrl = document.getElementById('news-image-url');
+        const date = document.getElementById('news-date').value;
+        
+        if (!title || !content) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        console.log('📝 Saving news item:', { title, content, hasFile: !!imageUpload?.files[0], hasUrl: !!imageUrl?.value });
     
-    if (!title || !content) {
-        alert('Please fill in all required fields');
-        return;
+        const image = await handleImageUpload(imageUpload, imageUrl);
+        
+        const newNews = {
+            id: Date.now(),
+            title: title,
+            content: content,
+            image: image,
+            date: date
+        };
+        
+        kioskData.news.unshift(newNews);
+        saveData();
+        loadNews();
+        hideNewsForm();
+        showSaveMessage();
+    } catch (error) {
+        console.error('❌ Error saving news item:', error);
+        alert(`Error saving news item: ${error.message}`);
     }
-    
-    const image = await handleImageUpload(imageUpload, imageUrl);
-    
-    const newNews = {
-        id: Date.now(),
-        title: title,
-        content: content,
-        image: image,
-        date: date
-    };
-    
-    kioskData.news.unshift(newNews);
-    saveData();
-    loadNews();
-    hideNewsForm();
-    showSaveMessage();
 }
 
 async function saveActivityItem() {
-    const title = document.getElementById('activity-title').value.trim();
-    const description = document.getElementById('activity-description').value.trim();
-    const imageUpload = document.getElementById('activity-image-upload');
-    const imageUrl = document.getElementById('activity-image-url');
-    const date = document.getElementById('activity-date').value;
-    const time = document.getElementById('activity-time').value;
+    try {
+        const title = document.getElementById('activity-title').value.trim();
+        const description = document.getElementById('activity-description').value.trim();
+        const imageUpload = document.getElementById('activity-image-upload');
+        const imageUrl = document.getElementById('activity-image-url');
+        const date = document.getElementById('activity-date').value;
+        const time = document.getElementById('activity-time').value;
+        
+        if (!title || !description) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        console.log('📝 Saving activity item:', { title, description, hasFile: !!imageUpload?.files[0], hasUrl: !!imageUrl?.value });
     
-    if (!title || !description) {
-        alert('Please fill in all required fields');
-        return;
+        const image = await handleImageUpload(imageUpload, imageUrl);
+        
+        const newActivity = {
+            id: Date.now(),
+            name: title,
+            description: description,
+            image: image,
+            date: date,
+            time: time
+        };
+        
+        kioskData.activities.unshift(newActivity);
+        saveData();
+        loadActivities();
+        hideActivitiesForm();
+        showSaveMessage();
+    } catch (error) {
+        console.error('❌ Error saving activity item:', error);
+        alert(`Error saving activity item: ${error.message}`);
     }
-    
-    const image = await handleImageUpload(imageUpload, imageUrl);
-    
-    const newActivity = {
-        id: Date.now(),
-        name: title,
-        description: description,
-        image: image,
-        date: date,
-        time: time
-    };
-    
-    kioskData.activities.unshift(newActivity);
-    saveData();
-    loadActivities();
-    hideActivitiesForm();
-    showSaveMessage();
 }
 
 async function saveGalleryItem() {
-    const title = document.getElementById('gallery-photo-title').value.trim();
-    const description = document.getElementById('gallery-photo-description').value.trim();
-    const imageUpload = document.getElementById('gallery-image-upload');
-    const imageUrl = document.getElementById('gallery-image-url');
-    const category = document.getElementById('gallery-photo-category').value;
-    
-    if (!title) {
-        alert('Please fill in the title field');
-        return;
+    try {
+        const title = document.getElementById('gallery-photo-title').value.trim();
+        const description = document.getElementById('gallery-photo-description').value.trim();
+        const imageUpload = document.getElementById('gallery-image-upload');
+        const imageUrl = document.getElementById('gallery-image-url');
+        const category = document.getElementById('gallery-photo-category').value;
+        
+        if (!title) {
+            alert('Please fill in the title field');
+            return;
+        }
+        
+        console.log('📝 Saving gallery item:', { title, description, hasFile: !!imageUpload?.files[0], hasUrl: !!imageUrl?.value });
+        
+        const image = await handleImageUpload(imageUpload, imageUrl);
+        
+        const newGalleryItem = {
+            id: Date.now(),
+            title: title,
+            description: description,
+            image: image,
+            category: category
+        };
+        
+        kioskData.gallery.unshift(newGalleryItem);
+        saveData();
+        loadGallery();
+        hideGalleryForm();
+        showSaveMessage();
+    } catch (error) {
+        console.error('❌ Error saving gallery item:', error);
+        alert(`Error saving gallery item: ${error.message}`);
     }
-    
-    const image = await handleImageUpload(imageUpload, imageUrl);
-    
-    const newGalleryItem = {
-        id: Date.now(),
-        title: title,
-        description: description,
-        image: image,
-        category: category
-    };
-    
-    kioskData.gallery.unshift(newGalleryItem);
-    saveData();
-    loadGallery();
-    hideGalleryForm();
-    showSaveMessage();
 }
 
 // Save data to localStorage
@@ -1187,6 +1239,7 @@ function loadWebsiteImages() {
     
     loadHeroSliderImages();
     loadMurtiDarshanImage();
+    loadQRCodeImage();
     loadGeneralImages();
     showImageStats(); // Show image statistics
 }
@@ -1473,6 +1526,162 @@ async function saveMurtiImage() {
     }
 }
 
+// QR Code Functions
+async function saveQRCode() {
+    console.log('🚀 saveQRCode function called');
+    
+    const fileInput = document.getElementById('qr-code-upload');
+    const urlInput = document.getElementById('qr-code-url');
+    const saveBtn = document.querySelector('button[onclick="saveQRCode()"]');
+    
+    console.log('🔍 Elements found:', {
+        fileInput: !!fileInput,
+        urlInput: !!urlInput,
+        saveBtn: !!saveBtn
+    });
+    
+    try {
+        // Show loading state
+        if (saveBtn) {
+            showLoading(saveBtn);
+        } else {
+            console.warn('⚠️ Save button not found');
+        }
+        
+        let imageUrl = '';
+        
+        if (fileInput && fileInput.files && fileInput.files[0]) {
+            console.log('📁 Processing uploaded QR code file...');
+            imageUrl = await handleImageUploadWithCompression(fileInput, null);
+        } else if (urlInput && urlInput.value.trim()) {
+            console.log('🔗 Processing QR code URL input...');
+            imageUrl = urlInput.value.trim();
+        }
+        
+        if (imageUrl) {
+            console.log('📱 Saving QR code image...');
+            
+            // Validate and optimize before saving
+            const optimizedImage = await validateAndOptimizeImage(imageUrl);
+            
+            // Store QR code in kioskData
+            if (!kioskData.websiteImages) {
+                kioskData.websiteImages = {};
+            }
+            kioskData.websiteImages.qrCode = optimizedImage;
+            
+            // Update the main kiosk website (this also saves to localStorage)
+            updateMainKioskImages();
+            
+            // Show success message
+            showImageSaveMessage(optimizedImage, 'QR Code');
+            
+            // Clear form
+            if (fileInput) fileInput.value = '';
+            if (urlInput) urlInput.value = '';
+            
+            // Reload the preview
+            loadQRCodeImage();
+            showImageStats(); // Update statistics
+            
+            console.log('✅ QR code saved successfully');
+        } else {
+            console.log('⚠️ No image file or URL provided');
+            alert('Please provide a QR code image file or URL');
+        }
+    } catch (error) {
+        console.error('❌ Error saving QR code:', error);
+        console.error('Error details:', error.message, error.stack);
+        alert(error.message || 'Error saving QR code. Please try again.');
+    } finally {
+        // Hide loading state
+        if (saveBtn) {
+            hideLoading(saveBtn);
+        }
+        console.log('🏁 saveQRCode function completed');
+    }
+}
+
+function loadQRCodeImage() {
+    const previewContainer = document.getElementById('qr-code-preview');
+    
+    if (!previewContainer) {
+        console.warn('⚠️ QR code preview container not found');
+        console.log('🔍 Available elements with "qr" in ID:', document.querySelectorAll('[id*="qr"]'));
+        return;
+    }
+    
+    console.log('✅ QR code preview container found:', previewContainer);
+    
+    // Get QR code from kioskData
+    const qrCodeUrl = kioskData.websiteImages?.qrCode;
+    
+    if (qrCodeUrl) {
+        previewContainer.innerHTML = `
+            <div class="image-preview">
+                <h4>Current QR Code</h4>
+                <div class="preview-image">
+                    <img src="${qrCodeUrl}" alt="Telegram QR Code" style="max-width: 200px; max-height: 200px; border: 2px solid #ddd; border-radius: 8px;">
+                </div>
+                <p class="preview-info">QR Code is active on the main kiosk</p>
+            </div>
+        `;
+    } else {
+        previewContainer.innerHTML = `
+            <div class="image-preview">
+                <h4>No QR Code Set</h4>
+                <div class="preview-placeholder">
+                    <i class="fas fa-qrcode" style="font-size: 3rem; color: #ccc; margin: 20px;"></i>
+                    <p>Upload a QR code image to display on the main kiosk</p>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Test function for QR code debugging
+function testQRCodeFunction() {
+    console.log('🧪 Testing QR code functionality...');
+    
+    // Test 1: Check if elements exist
+    const fileInput = document.getElementById('qr-code-upload');
+    const urlInput = document.getElementById('qr-code-url');
+    const saveBtn = document.querySelector('button[onclick="saveQRCode()"]');
+    const previewContainer = document.getElementById('qr-code-preview');
+    
+    console.log('🔍 Element check:', {
+        fileInput: !!fileInput,
+        urlInput: !!urlInput,
+        saveBtn: !!saveBtn,
+        previewContainer: !!previewContainer
+    });
+    
+    // Test 2: Check if functions exist
+    console.log('🔍 Function check:', {
+        saveQRCode: typeof saveQRCode,
+        loadQRCodeImage: typeof loadQRCodeImage,
+        showLoading: typeof showLoading,
+        hideLoading: typeof hideLoading
+    });
+    
+    // Test 3: Check kioskData
+    console.log('🔍 kioskData check:', {
+        kioskData: !!kioskData,
+        websiteImages: !!kioskData.websiteImages,
+        qrCode: kioskData.websiteImages?.qrCode
+    });
+    
+    // Test 4: Try to load QR code image
+    try {
+        loadQRCodeImage();
+        console.log('✅ loadQRCodeImage function executed successfully');
+    } catch (error) {
+        console.error('❌ Error in loadQRCodeImage:', error);
+    }
+    
+    alert('Check the browser console for test results!');
+}
+
 function editHeroSliderImage(index) {
     const image = kioskData.websiteImages.heroSlider[index];
     if (!image) return;
@@ -1658,9 +1867,24 @@ function hideLoading(element) {
 
 // Setup drag and drop functionality
 function setupDragAndDrop() {
-    const dragDropArea = document.getElementById('murti-drag-drop');
-    if (!dragDropArea) return;
+    // Murti Darshan drag and drop
+    const murtiDragDropArea = document.getElementById('murti-drag-drop');
+    if (murtiDragDropArea) {
+        setupDragDropForArea(murtiDragDropArea, 'murti-image-upload');
+    }
 
+    // QR Code drag and drop
+    const qrDragDropArea = document.getElementById('qr-code-drag-drop');
+    if (qrDragDropArea) {
+        console.log('✅ QR code drag-drop area found, setting up...');
+        setupDragDropForArea(qrDragDropArea, 'qr-code-upload');
+    } else {
+        console.warn('⚠️ QR code drag-drop area not found');
+        console.log('🔍 Available elements with "qr" in ID:', document.querySelectorAll('[id*="qr"]'));
+    }
+}
+
+function setupDragDropForArea(dragDropArea, fileInputId) {
     dragDropArea.addEventListener('dragover', (e) => {
         e.preventDefault();
         dragDropArea.classList.add('dragover');
@@ -1677,7 +1901,7 @@ function setupDragAndDrop() {
         
         const files = e.dataTransfer.files;
         if (files.length > 0 && files[0].type.startsWith('image/')) {
-            const fileInput = document.getElementById('murti-image-upload');
+            const fileInput = document.getElementById(fileInputId);
             fileInput.files = files;
             // Trigger change event
             const event = new Event('change', { bubbles: true });
@@ -1687,7 +1911,7 @@ function setupDragAndDrop() {
 
     // Click to browse functionality
     dragDropArea.addEventListener('click', () => {
-        const fileInput = document.getElementById('murti-image-upload');
+        const fileInput = document.getElementById(fileInputId);
         fileInput.click();
     });
 }
@@ -2009,6 +2233,7 @@ function updateMainKioskImages() {
             kioskData.websiteImages = {
                 heroSlider: [],
                 murtiDarshan: '',
+                qrCode: '',
                 generalImages: []
             };
         }
@@ -2398,6 +2623,154 @@ document.addEventListener('keydown', (e) => {
 // Add admin keyboard functions to window for easy access
 window.showAdminVirtualKeyboard = showAdminVirtualKeyboard;
 window.hideAdminVirtualKeyboard = hideAdminVirtualKeyboard;
+
+// Temple Background Management Functions
+async function saveTempleBackground() {
+    try {
+        const fileInput = document.getElementById('temple-bg-upload');
+        const urlInput = document.getElementById('temple-bg-url');
+        
+        let backgroundUrl = '';
+        
+        if (fileInput && fileInput.files && fileInput.files[0]) {
+            // Handle file upload
+            const file = fileInput.files[0];
+            validateFile(file);
+            
+            backgroundUrl = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+            
+            console.log('📸 Temple background uploaded from file');
+        } else if (urlInput && urlInput.value.trim()) {
+            // Handle URL input
+            const url = urlInput.value.trim();
+            await validateImageUrl(url);
+            backgroundUrl = url;
+            
+            console.log('🔗 Temple background set from URL');
+        } else {
+            alert('Please upload a file or enter an image URL');
+            return;
+        }
+        
+        // Save to localStorage
+        const currentData = JSON.parse(localStorage.getItem('kioskData') || '{}');
+        if (!currentData.settings) currentData.settings = {};
+        currentData.settings.templeBackground = backgroundUrl;
+        currentData.lastUpdated = Date.now();
+        
+        localStorage.setItem('kioskData', JSON.stringify(currentData));
+        
+        // Update the current preview
+        updateCurrentBackgroundPreview(backgroundUrl);
+        
+        // Clear form
+        if (fileInput) fileInput.value = '';
+        if (urlInput) urlInput.value = '';
+        document.getElementById('new-background-preview').style.display = 'none';
+        
+        alert('Temple background saved successfully! The kiosk will show the new background.');
+        
+    } catch (error) {
+        console.error('❌ Error saving temple background:', error);
+        alert(`Error saving temple background: ${error.message}`);
+    }
+}
+
+function resetTempleBackground() {
+    try {
+        // Remove custom background from localStorage
+        const currentData = JSON.parse(localStorage.getItem('kioskData') || '{}');
+        if (currentData.settings && currentData.settings.templeBackground) {
+            delete currentData.settings.templeBackground;
+            currentData.lastUpdated = Date.now();
+            localStorage.setItem('kioskData', JSON.stringify(currentData));
+        }
+        
+        // Reset to default
+        updateCurrentBackgroundPreview('temple-background.jpg');
+        
+        // Clear form
+        const fileInput = document.getElementById('temple-bg-upload');
+        const urlInput = document.getElementById('temple-bg-url');
+        if (fileInput) fileInput.value = '';
+        if (urlInput) urlInput.value = '';
+        document.getElementById('new-background-preview').style.display = 'none';
+        
+        alert('Temple background reset to default!');
+        
+    } catch (error) {
+        console.error('❌ Error resetting temple background:', error);
+        alert(`Error resetting temple background: ${error.message}`);
+    }
+}
+
+function handleTempleBackgroundPreview(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const preview = document.getElementById('new-background-preview');
+            const img = document.getElementById('new-bg-image');
+            const info = document.getElementById('new-bg-info');
+            
+            img.src = e.target.result;
+            info.textContent = `File: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+            preview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function handleTempleBackgroundUrlPreview(event) {
+    const url = event.target.value.trim();
+    if (url) {
+        const preview = document.getElementById('new-background-preview');
+        const img = document.getElementById('new-bg-image');
+        const info = document.getElementById('new-bg-info');
+        
+        img.onload = () => {
+            info.textContent = `URL: ${url}`;
+            preview.style.display = 'block';
+        };
+        img.onerror = () => {
+            info.textContent = 'Invalid image URL';
+            preview.style.display = 'block';
+        };
+        img.src = url;
+    } else {
+        document.getElementById('new-background-preview').style.display = 'none';
+    }
+}
+
+function updateCurrentBackgroundPreview(backgroundUrl) {
+    const currentImg = document.getElementById('current-bg-image');
+    const currentInfo = document.getElementById('current-bg-info');
+    
+    currentImg.src = backgroundUrl;
+    if (backgroundUrl === 'temple-background.jpg') {
+        currentInfo.textContent = 'Default temple background';
+    } else if (backgroundUrl.startsWith('data:')) {
+        currentInfo.textContent = 'Custom uploaded background';
+    } else {
+        currentInfo.textContent = 'Custom URL background';
+    }
+}
+
+// Load current temple background on admin panel load
+function loadTempleBackground() {
+    try {
+        const currentData = JSON.parse(localStorage.getItem('kioskData') || '{}');
+        const backgroundUrl = currentData.settings?.templeBackground || 'temple-background.jpg';
+        updateCurrentBackgroundPreview(backgroundUrl);
+    } catch (error) {
+        console.error('❌ Error loading temple background:', error);
+    }
+}
 window.initializeAdminVirtualKeyboard = initializeAdminVirtualKeyboard;
 
 // Simple localStorage test function

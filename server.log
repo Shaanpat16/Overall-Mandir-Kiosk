@@ -1,0 +1,158 @@
+10.25.21.188 - - [11/Oct/2025 15:04:30] "GET / HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:04:30] "GET /styles.css?v=11 HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:04:30] "GET /config.js HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:04:30] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:04:30] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:04:30] "GET /script.js?v=9 HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:04:31] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:04:31] "GET /favicon.ico HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:05:02] "GET /simple-admin.html HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:17:07] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:17:07] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:17:07] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:17:19] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:17:19] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:17:20] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:17:20] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:17:26] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:17:26] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:21:17] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:21:17] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:21:17] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:21:19] "GET /simple-admin.html HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:21:22] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:21:22] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:21:22] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:21:35] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:21:35] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:21:39] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:21:39] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:21:41] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:21:41] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:21:41] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:21:56] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:21:56] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:21:58] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:21:58] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:21:58] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:22:30] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:22:30] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:22:30] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:23:06] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:23:06] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:23:06] "GET /qr-code.png HTTP/1.1" 404 -
+127.0.0.1 - - [11/Oct/2025 15:23:39] "GET /admin.html HTTP/1.1" 200 -
+127.0.0.1 - - [11/Oct/2025 15:24:58] "GET /debug-admin.html HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:26:51] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:26:51] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:26:51] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:26:56] "GET /simple-admin.html HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:27:09] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:27:09] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:27:56] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:27:56] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:27:57] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:27:57] "POST /upload_images.php HTTP/1.1" 501 -
+127.0.0.1 - - [11/Oct/2025 15:30:08] "GET /simple-admin.html HTTP/1.1" 200 -
+127.0.0.1 - - [11/Oct/2025 15:30:08] "GET /config.js HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:30:19] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:30:19] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:30:19] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:30:21] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:30:21] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:30:21] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:30:38] code 501, message Unsupported method ('POST')
+10.25.21.188 - - [11/Oct/2025 15:30:38] "POST /upload_images.php HTTP/1.1" 501 -
+10.25.21.188 - - [11/Oct/2025 15:30:41] "GET /simple-admin.html HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:30:59] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:30:59] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.45.60 - - [11/Oct/2025 15:31:18] "GET / HTTP/1.1" 200 -
+10.25.45.60 - - [11/Oct/2025 15:31:18] "GET /styles.css?v=11 HTTP/1.1" 200 -
+10.25.45.60 - - [11/Oct/2025 15:31:18] "GET /config.js HTTP/1.1" 200 -
+10.25.45.60 - - [11/Oct/2025 15:31:18] code 404, message File not found
+10.25.45.60 - - [11/Oct/2025 15:31:18] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.45.60 - - [11/Oct/2025 15:31:18] "GET /script.js?v=9 HTTP/1.1" 200 -
+10.25.45.60 - - [11/Oct/2025 15:31:19] code 404, message File not found
+10.25.45.60 - - [11/Oct/2025 15:31:19] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [11/Oct/2025 15:36:05] "GET /admin.html HTTP/1.1" 200 -
+127.0.0.1 - - [11/Oct/2025 15:36:05] "GET /admin-styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [11/Oct/2025 15:36:05] code 404, message File not found
+127.0.0.1 - - [11/Oct/2025 15:36:05] "GET /temple-background.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [11/Oct/2025 15:36:05] "GET /admin.js HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:36:51] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:36:51] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:36:51] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.45.60 - - [11/Oct/2025 15:37:04] code 404, message File not found
+10.25.45.60 - - [11/Oct/2025 15:37:04] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.45.60 - - [11/Oct/2025 15:37:06] "GET / HTTP/1.1" 304 -
+10.25.45.60 - - [11/Oct/2025 15:37:06] code 404, message File not found
+10.25.45.60 - - [11/Oct/2025 15:37:06] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.45.60 - - [11/Oct/2025 15:37:09] "GET / HTTP/1.1" 304 -
+10.25.45.60 - - [11/Oct/2025 15:37:09] code 404, message File not found
+10.25.45.60 - - [11/Oct/2025 15:37:09] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.45.60 - - [11/Oct/2025 15:37:10] "GET / HTTP/1.1" 304 -
+10.25.45.60 - - [11/Oct/2025 15:37:10] code 404, message File not found
+10.25.45.60 - - [11/Oct/2025 15:37:10] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.45.60 - - [11/Oct/2025 15:37:11] "GET / HTTP/1.1" 304 -
+10.25.45.60 - - [11/Oct/2025 15:37:11] code 404, message File not found
+10.25.45.60 - - [11/Oct/2025 15:37:11] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:37:13] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:37:13] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:39:52] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:39:52] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:39:52] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:40:08] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:40:08] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:40:44] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:40:44] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:40:44] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:46:43] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:46:43] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:46:43] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:46:56] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:46:56] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:46:56] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:51:11] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:51:11] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:51:11] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:52:53] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:52:53] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:52:53] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:53:02] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:53:02] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:53:02] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:53:03] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:53:03] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:53:03] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:53:04] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:53:04] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:53:04] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:53:05] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:53:05] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:53:05] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:54:41] "GET / HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:54:41] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:54:41] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:54:41] "GET /styles.css?v=11 HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:54:41] "GET /script.js?v=9 HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:54:41] "GET /config.js HTTP/1.1" 200 -
+10.25.21.188 - - [11/Oct/2025 15:54:42] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:54:42] "GET /favicon.ico HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:54:43] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:54:43] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:54:43] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:54:43] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:54:43] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:54:43] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:54:45] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:54:45] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:54:45] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:54:45] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:54:45] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:54:45] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:54:46] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:54:46] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:54:46] "GET /qr-code.png HTTP/1.1" 404 -
+10.25.21.188 - - [11/Oct/2025 15:54:47] "GET / HTTP/1.1" 304 -
+10.25.21.188 - - [11/Oct/2025 15:54:47] code 404, message File not found
+10.25.21.188 - - [11/Oct/2025 15:54:47] "GET /qr-code.png HTTP/1.1" 404 -
