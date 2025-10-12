@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>BAPS Mandir Kiosk - Server Status</title>
     <style>
         body {
@@ -68,3 +69,494 @@
     </div>
 </body>
 </html>
+=======
+    <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
+    <link rel="stylesheet" href="styles.css?v=11">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <div class="kiosk-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="baps-logo">BAPS</div>
+                    <div class="mandir-title">
+                        <h1>BAPS Shri Swaminarayan Mandir</h1>
+                        <p>Edison, NJ, USA</p>
+                        <span class="sanstha">BAPS Swaminarayan Sanstha</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="language-switcher" id="language-switcher" style="display: none;">
+                        <div class="current-language">
+                            <span>EN</span>
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="language-dropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">
+                                <span>🇺🇸</span> English
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('gu')">
+                                <span>🇮🇳</span> ગુજરાતી
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('hi')">
+                                <span>🇮🇳</span> हिंदी
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Number Pad -->
+                    <div class="admin-number-pad">
+                        <button class="admin-pad-btn" onclick="showAdminPad()">
+                            <i class="fas fa-key"></i>
+                            <span>Admin</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Aarti Reminder Button -->
+                    <div class="aarti-reminder-btn">
+                        <button class="aarti-btn" onclick="showAartiInfo()">
+                            <i class="fas fa-bell"></i>
+                            <span>Aarti Times</span>
+                        </button>
+                    </div>
+                    
+                    <!-- AI Assistant Button -->
+                    <div class="ai-assistant-btn">
+                        <button class="ai-btn" onclick="toggleAI()">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Assistant</span>
+                        </button>
+                    </div>
+                    
+
+                    
+                    <div id="weather-info">
+                        <i class="fas fa-cloud-sun"></i>
+                        <span>Loading weather...</span>
+                    </div>
+                    <div class="current-time" id="current-time"></div>
+                    <div class="hamburger-menu" id="hamburger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Menu (Hidden by default) -->
+        <nav class="navigation-menu" id="navigation-menu">
+            <div class="nav-content">
+                <div class="nav-section">
+                    <h3>Quick Navigation</h3>
+                    <ul>
+                        <li><a href="#timings">Darshan Timings</a></li>
+                        <li><a href="#news">Latest News</a></li>
+                        <li><a href="#ai-assistant">AI Assistant</a></li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 2500 Woodbridge Avenue, Edison, NJ 08817</p>
+                    <p><i class="fas fa-phone"></i> (732) 572 1234</p>
+                    <p><i class="fas fa-envelope"></i> info.edison@usa.baps.org</p>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section with Image Slider -->
+        <section class="hero-section">
+            <div class="hero-slider" id="hero-slider">
+                <div class="slide active">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4MCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxMDgwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwODAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1NDAiIHk9IjMwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QkFQUyBNYW5kaXIgRXh0ZXJpb3I8L3RleHQ+Cjwvc3ZnPgo=" alt="BAPS Mandir Exterior">
+                    <div class="slide-content">
+                        <h2>Welcome to BAPS Shri Swaminarayan Mandir</h2>
+                        <p>Experience divine peace and spiritual tranquility</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4MCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxMDgwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwODAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1NDAiIHk9IjMwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWFuZGlyIEludGVyaW9yPC90ZXh0Pgo8L3N2Zz4K" alt="Mandir Interior">
+                    <div class="slide-content">
+                        <h2>Darshan</h2>
+                        <p>Daily from 7:00 AM to 11:00 AM and 4:00 PM to 8:00 PM</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4MCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxMDgwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwODAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1NDAiIHk9IjMwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QWFydGkgQ2VyZW1vbnk8L3RleHQ+Cjwvc3ZnPgo=" alt="Aarti Ceremony">
+                    <div class="slide-content">
+                        <h2>Daily Aarti Ceremonies</h2>
+                        <p>Morning: 7:00 AM | Evening: 6:30 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev" id="prev-slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="next-slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="slider-dots" id="slider-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Two Column Layout -->
+            <div class="content-grid">
+                <!-- Left Column - Static Information -->
+                <div class="left-column">
+                    <!-- Mandir Address -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Mandir Address</h3>
+                        <div class="address-content">
+                            <p class="mandir-name">BAPS Shri Swaminarayan Mandir</p>
+                            <p>2500 Woodbridge Avenue</p>
+                            <p>Edison, NJ 08817 USA</p>
+                            <p><i class="fas fa-phone"></i> Tel: (732) 572 1234</p>
+                            <p><i class="fas fa-envelope"></i> E-mail: info.edison@usa.baps.org</p>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Darshan Timing -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-clock"></i> Darshan Timing</h3>
+                        <div class="timing-list">
+                            <div class="timing-item">
+                                <span class="timing-title">Sacred Shrines Darshan</span>
+                                <span class="timing-hours">7:00 am - 11:00 am</span>
+                                <span class="timing-hours">4:00 pm - 8:00 pm</span>
+                            </div>
+                            <div class="timing-item">
+                                <span class="timing-title">Aarti</span>
+                                <span class="timing-hours">7:00 am & 6:30 pm daily</span>
+                            </div>
+                            <div class="timing-item">
+                                <span class="timing-title">Nilkanth Varni Abhishek</span>
+                                <span class="timing-subtitle">Monday to Friday</span>
+                                <span class="timing-hours">7:00 am - 11:00 am, 4:00 pm - 6:00 pm</span>
+                                <span class="timing-subtitle">Saturday, Sunday</span>
+                                <span class="timing-hours">7:00 am - 11:00 am, 7:00 pm - 8:00 pm</span>
+                            </div>
+                            <div class="timing-item">
+                                <span class="timing-title">Mandir campus</span>
+                                <span class="timing-hours">7:00 am - 8:00 pm daily</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Right Column - Dynamic Content -->
+                <div class="right-column">
+                    <!-- Latest News -->
+                    <div class="news-section">
+                        <h3><i class="fas fa-newspaper"></i> Latest News</h3>
+                        <div class="news-list" id="news-list">
+                            <div class="news-item">
+                                <div class="news-image">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="News">
+                                </div>
+                                <div class="news-content">
+                                    <h4>Kishore-Kishori Adhiveshan & Summer Shibir 2025</h4>
+                                    <span class="news-date">Edison, 24 Jul 2025</span>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <div class="news-image">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="News">
+                                </div>
+                                <div class="news-content">
+                                    <h4>Shri Swaminarayan Jayanti - Women's Celebration</h4>
+                                    <span class="news-date">Edison, 5 Apr 2025</span>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <div class="news-image">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="News">
+                                </div>
+                                <div class="news-content">
+                                    <h4>Shri Swaminarayan Jayanti & Ram Navmi Celebration 2025</h4>
+                                    <span class="news-date">Edison, 5 Apr 2025</span>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <div class="news-image">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="News">
+                                </div>
+                                <div class="news-content">
+                                    <h4>BAPS Campus Fellowship Diwali Celebration 2024</h4>
+                                    <span class="news-date">Edison, 4 Nov 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="view-more-btn">View More News</button>
+                    </div>
+
+                    <!-- QR Code for Telegram Channel -->
+                    <div class="info-card qr-card">
+                        <h3><i class="fab fa-telegram"></i> Real-Time Updates</h3>
+                        <div class="qr-content">
+                            <div class="qr-code">
+                                <img src="qr-code.png" alt="Edison Mandir Telegram Channel QR Code" class="qr-image">
+                            </div>
+                            <div class="qr-info">
+                                <h4>Edison Mandir Telegram Channel</h4>
+                                <p>Scan for real-time updates, announcements, and live information</p>
+                                <div class="telegram-features">
+                                    <span><i class="fas fa-bell"></i> Live Updates</span>
+                                    <span><i class="fas fa-calendar"></i> Event Reminders</span>
+                                    <span><i class="fas fa-clock"></i> Schedule Changes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Assistant Modal -->
+            <div id="ai-assistant-modal" class="ai-modal hidden">
+                <div class="ai-modal-content">
+                    <div class="ai-modal-header">
+                        <h3>
+                            <i class="fas fa-robot"></i>
+                            AI Assistant
+                        </h3>
+                        <p>Your spiritual guide and information companion</p>
+                        <button class="ai-modal-close" onclick="hideAI()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="ai-modal-body">
+                        <div class="ai-welcome-message">
+                            <div class="welcome-icon">
+                                <i class="fas fa-om"></i>
+                            </div>
+                            <h4>Welcome to BAPS Mandir!</h4>
+                            <p>I'm here to help you with information about our Mandir and spiritual guidance. Ask me anything!</p>
+                        </div>
+                        
+                        <div class="ai-suggestions">
+                            <h4>Quick Questions</h4>
+                            <div class="suggestion-chips">
+                                <div class="suggestion-chip" onclick="askAI('What are the Mandir timings?')">Mandir Timings</div>
+                                <div class="suggestion-chip" onclick="askAI('What is the significance of aarti?')">Aarti Significance</div>
+                                <div class="suggestion-chip" onclick="askAI('How can I participate in Mandir activities?')">Mandir Activities</div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-chat" id="ai-chat">
+                            <!-- AI messages will be added here dynamically -->
+                        </div>
+                        
+                        <div class="ai-input-container">
+                            <div class="input-wrapper">
+                                <input type="text" id="ai-input" readonly placeholder="Ask me about the Mandir or spiritual guidance...">
+                                <button class="send-btn" onclick="handleAISend()">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span>Send</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-content">
+                    <h3><i class="fas fa-om footer-icon"></i> BAPS Shri Swaminarayan Mandir</h3>
+                    <p>Experience divine peace and spiritual enlightenment</p>
+                    <div class="footer-links">
+                        <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                        <a href="#"><i class="fas fa-phone"></i> Contact</a>
+                        <a href="#"><i class="fas fa-map-marker-alt"></i> Location</a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Admin Number Pad Modal -->
+    <div id="admin-pad-modal" class="admin-pad-modal">
+        <div class="admin-pad-content">
+            <div class="admin-pad-header">
+                <h3><i class="fas fa-shield-alt"></i> Admin Access</h3>
+                <button class="admin-pad-close" onclick="hideAdminPad()">&times;</button>
+            </div>
+            
+            <div class="admin-pad-body">
+                <div class="pin-display">
+                    <div class="pin-dots">
+                        <span class="pin-dot" id="pin-dot-1"></span>
+                        <span class="pin-dot" id="pin-dot-2"></span>
+                        <span class="pin-dot" id="pin-dot-3"></span>
+                        <span class="pin-dot" id="pin-dot-4"></span>
+                    </div>
+                    <div class="pin-status" id="pin-status">Enter 4-digit admin code</div>
+                </div>
+                
+                <div class="number-pad">
+                    <div class="pad-row">
+                        <button class="pad-key" onclick="addToPin('1')">1</button>
+                        <button class="pad-key" onclick="addToPin('2')">2</button>
+                        <button class="pad-key" onclick="addToPin('3')">3</button>
+                    </div>
+                    <div class="pad-row">
+                        <button class="pad-key" onclick="addToPin('4')">4</button>
+                        <button class="pad-key" onclick="addToPin('5')">5</button>
+                        <button class="pad-key" onclick="addToPin('6')">6</button>
+                    </div>
+                    <div class="pad-row">
+                        <button class="pad-key" onclick="addToPin('7')">7</button>
+                        <button class="pad-key" onclick="addToPin('8')">8</button>
+                        <button class="pad-key" onclick="addToPin('9')">9</button>
+                    </div>
+                    <div class="pad-row">
+                        <button class="pad-key clear-btn" onclick="clearPin()">Clear</button>
+                        <button class="pad-key" onclick="addToPin('0')">0</button>
+                        <button class="pad-key enter-btn" onclick="submitPin()">Enter</button>
+                    </div>
+                </div>
+                
+                <div class="admin-actions" id="admin-actions" style="display: none;">
+                    <h4>Admin Functions</h4>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="openAdminPanel()">
+                            <i class="fas fa-cog"></i>
+                            <span>Admin Panel</span>
+                        </button>
+                        <button class="action-btn" onclick="refreshKiosk()">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Refresh Kiosk</span>
+                        </button>
+                        <button class="action-btn" onclick="clearCache()">
+                            <i class="fas fa-trash"></i>
+                            <span>Clear Cache</span>
+                        </button>
+                        <button class="action-btn" onclick="showSystemInfo()">
+                            <i class="fas fa-info-circle"></i>
+                            <span>System Info</span>
+                        </button>
+                        <button class="action-btn" onclick="toggleAartiReminder()" id="aarti-toggle-btn">
+                            <i class="fas fa-bell"></i>
+                            <span id="aarti-toggle-text">Disable Aarti</span>
+                        </button>
+                        <button class="action-btn" onclick="testAartiReminder()">
+                            <i class="fas fa-play"></i>
+                            <span>Test Aarti</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aarti Reminder Notification -->
+    <div id="aarti-reminder" class="aarti-reminder hidden">
+        <div class="aarti-reminder-content">
+            <div class="aarti-reminder-header">
+                <i class="fas fa-bell"></i>
+                <span class="aarti-time" id="aarti-time">Aarti Reminder</span>
+                <button class="aarti-close" onclick="hideAartiReminder()">&times;</button>
+            </div>
+            <div class="aarti-reminder-body">
+                <h4 id="aarti-title">Morning Aarti</h4>
+                <p id="aarti-message">It's time for the daily morning aarti. Join us in this sacred ceremony.</p>
+                <div class="aarti-actions">
+                    <button class="aarti-action-btn" onclick="showAartiInfo()">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Aarti Info</span>
+                    </button>
+                    <button class="aarti-action-btn" onclick="setAartiReminder()">
+                        <i class="fas fa-bell"></i>
+                        <span>Remind Later</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aarti Info Popup Modal -->
+    <div id="aarti-info-modal" class="aarti-info-modal hidden">
+        <div class="aarti-info-content">
+            <div class="aarti-info-header">
+                <h3><i class="fas fa-om"></i> Daily Aarti Schedule</h3>
+                <button class="aarti-info-close" onclick="hideAartiInfo()">&times;</button>
+            </div>
+            <div class="aarti-info-body">
+                <div class="aarti-schedule">
+                    <div class="aarti-time-slot">
+                        <div class="time-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="time-details">
+                            <h4>Morning Aarti</h4>
+                            <div class="time">7:00 AM</div>
+                            <div class="description">Mangala Aarti (Morning Prayer)</div>
+                            <div class="details">
+                                <span>• Darshan opens for devotees</span>
+                                <span>• Sacred beginning of the day</span>
+                                <span>• Purification of atmosphere</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="aarti-time-slot">
+                        <div class="time-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <div class="time-details">
+                            <h4>Evening Aarti</h4>
+                            <div class="time">6:30 PM</div>
+                            <div class="description">Sandhya Aarti (Evening Prayer)</div>
+                            <div class="details">
+                                <span>• Evening darshan time</span>
+                                <span>• Peaceful conclusion of the day</span>
+                                <span>• Spiritual energy renewal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="aarti-significance">
+                    <h4><i class="fas fa-lightbulb"></i> Significance of Aarti</h4>
+                    <div class="significance-grid">
+                        <div class="significance-item">
+                            <i class="fas fa-fire"></i>
+                            <span>Purifies atmosphere</span>
+                        </div>
+                        <div class="significance-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Offers light to divine</span>
+                        </div>
+                        <div class="significance-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Creates positive energy</span>
+                        </div>
+                        <div class="significance-item">
+                            <i class="fas fa-dove"></i>
+                            <span>Brings spiritual peace</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="aarti-note">
+                    <p><i class="fas fa-hands"></i> <strong>All devotees are welcome to participate in this sacred ritual!</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=9"></script>
+</body>
+</html>
+>>>>>>> 4d65946c76acfffa3b01bd10e752b07d02c9d11d
