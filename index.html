@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAPS Mandir Kiosk - Server Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e6d7b8 0%, #f5e6d3 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 { color: #8b4513; margin-bottom: 20px; }
+        .status { background: #4CAF50; color: white; padding: 10px 20px; border-radius: 25px; margin: 20px 0; }
+        .links { margin: 30px 0; }
+        .links a { 
+            display: inline-block; 
+            background: #8b4513; 
+            color: white; 
+            padding: 15px 30px; 
+            text-decoration: none; 
+            border-radius: 25px; 
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        .links a:hover { background: #6d3410; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏛️ BAPS Mandir Kiosk Server</h1>
+        <div class="status">✅ Server Running Successfully!</div>
+        
+        <p>Your kiosk server is active and ready for development.</p>
+        
+        <div class="links">
+            <a href="public/">📁 Go to Public Folder</a>
+            <a href="public/index.html">🎨 View Kiosk</a>
+        </div>
+        
+        <div style="background: #f0f0f0; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: left;">
+            <h3>📁 Folder Structure:</h3>
+            <ul>
+                <li><strong>public/</strong> - Main kiosk files</li>
+                <li><strong>public/css/</strong> - Stylesheets</li>
+                <li><strong>public/images/</strong> - Images and media</li>
+                <li><strong>public/index.html</strong> - Main kiosk page</li>
+            </ul>
+        </div>
+        
+        <p style="color: #666; margin-top: 20px;">
+            🌐 Access: <code>http://localhost:8008/public/</code><br>
+            📱 Network: <code>http://[your-ip]:8008/public/</code>
+        </p>
+    </div>
+</body>
+</html>

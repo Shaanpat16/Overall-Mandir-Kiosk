@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e6d7b8 0%, #f5e6d3 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+        
+        h1 {
+            color: #8b4513;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        
+        .status {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .info {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏛️ BAPS Shri Swaminarayan Mandir</h1>
+        <div class="status">✅ Server Running Successfully!</div>
+        
+        <p>Welcome to the Digital Kiosk Server</p>
+        
+        <div class="info">
+            <h3>📡 Server Information:</h3>
+            <p><strong>Status:</strong> Active and accessible on WiFi network</p>
+            <p><strong>Port:</strong> 8008</p>
+            <p><strong>Access:</strong> Available on all devices connected to your WiFi</p>
+        </div>
+        
+        <div class="info">
+            <h3>🔧 How to Use:</h3>
+            <p>• Run <code>./start-server.sh</code> to start the server</p>
+            <p>• Run <code>./stop-server.sh</code> to stop the server</p>
+            <p>• Access from any device on your WiFi network</p>
+        </div>
+        
+        <p style="margin-top: 30px; color: #666;">
+            Server is ready for your kiosk development! 🚀
+        </p>
+    </div>
+</body>
+</html>
