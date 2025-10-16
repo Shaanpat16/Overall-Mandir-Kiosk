@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
-<<<<<<< HEAD
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header Navigation -->
-    <header class="header">
+        <header class="header">
         <nav class="nav-container">
             <div class="logo">
-                <h1>BAPS Shri Swaminarayan Mandir</h1>
+                        <h1>BAPS Shri Swaminarayan Mandir</h1>
                 <p>Edison, New Jersey</p>
             </div>
             <div class="nav-links">
@@ -22,9 +21,11 @@
                 <a href="#events" class="nav-link">Events</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
                 <a href="#about" class="nav-link">About</a>
+                <button class="nav-link ai-btn" onclick="openAIAssistant()">💬 Ask Me</button>
             </div>
             <div class="weather-time">
-                <div class="time" id="current-time">Loading...</div>
+                <div class="greeting" id="time-greeting">Welcome</div>
+                <div class="time" id="current-time"></div>
             </div>
         </nav>
     </header>
@@ -54,9 +55,9 @@
             </div>
             
             <div class="timings-grid">
-                <div class="timing-card featured">
+                <div class="timing-card featured floating">
                     <div class="timing-icon"></div>
-                    <h3>Sacred Shrines Darshan</h3>
+                    <h3>Murti Darshan</h3>
                     <div class="timing-schedule">
                         <div class="time-slot">
                             <span class="time">7:00 AM - 11:00 AM</span>
@@ -69,7 +70,7 @@
                     </div>
                 </div>
                 
-                <div class="timing-card">
+                <div class="timing-card floating-delayed-1">
                     <div class="timing-icon"></div>
                     <h3>Aarti Times</h3>
                     <div class="timing-schedule">
@@ -82,9 +83,9 @@
                             <span class="label">Evening Aarti</span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="timing-card">
+                    </div>
+                    
+                <div class="timing-card floating-delayed-2">
                     <div class="timing-icon"></div>
                     <h3>Nilkanth Varni Abhishek</h3>
                     <div class="timing-schedule">
@@ -99,18 +100,18 @@
                         <div class="time-slot">
                             <span class="time">7:00 PM - 8:00 PM</span>
                             <span class="label">Weekends</span>
-                        </div>
                     </div>
-                </div>
-                
-                <div class="timing-card">
+                    </div>
+                    </div>
+                    
+                <div class="timing-card floating-delayed-3">
                     <div class="timing-icon"></div>
                     <h3>Mandir Campus</h3>
                     <div class="timing-schedule">
                         <div class="time-slot">
                             <span class="time">7:00 AM - 8:00 PM</span>
                             <span class="label">Daily Hours</span>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -170,7 +171,7 @@
             <div class="section-header">
                 <h2>Mandir Gallery</h2>
                 <p>Explore the beauty and architecture of our sacred mandir</p>
-            </div>
+                        </div>
             
             <div class="gallery-grid">
                 <div class="gallery-item">
@@ -179,47 +180,43 @@
                         <h3>Mandir Exterior</h3>
                         <p>Beautiful temple architecture</p>
                     </div>
-                </div>
-                
+                            </div>
+
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <span>Temple Interior</span>
-                    </div>
+                    <img src="images/gallery/03_edison_diwali2024.jpg" alt="Diwali 2024 Celebration" class="gallery-image">
                     <div class="gallery-overlay">
-                        <h3>Sacred Interior</h3>
-                        <p>Divine sanctuary space</p>
+                        <h3>Diwali 2024</h3>
+                        <p>Festival of Lights celebration</p>
+                        </div>
                     </div>
-                </div>
-                
+
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <span>Aarti Ceremony</span>
-                    </div>
+                    <img src="images/gallery/05_edison_mahantswamiJJ_2025.jpg" alt="Mahant Swami JJ 2025" class="gallery-image">
                     <div class="gallery-overlay">
-                        <h3>Evening Aarti</h3>
-                        <p>Spiritual ceremony</p>
+                        <h3>Mahant Swami JJ 2025</h3>
+                        <p>Spiritual guidance and blessings</p>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
                         <span>Festival Celebration</span>
-                    </div>
+                                </div>
                     <div class="gallery-overlay">
                         <h3>Festival Joy</h3>
                         <p>Community celebrations</p>
-                    </div>
-                </div>
+                                </div>
+                            </div>
                 
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
                         <span>Devotees Gathering</span>
-                    </div>
+                                </div>
                     <div class="gallery-overlay">
                         <h3>Community Spirit</h3>
                         <p>Devotees in prayer</p>
-                    </div>
-                </div>
+                                </div>
+                            </div>
                 
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
@@ -244,16 +241,10 @@
                 <div class="about-grid">
                     <div class="about-card">
                         <div class="about-icon"></div>
-                        <h3>Sacred Architecture</h3>
-                        <p>Our mandir features traditional Indian architecture with intricate carvings and spiritual significance.</p>
-                    </div>
-                    
-                    <div class="about-card">
-                        <div class="about-icon"></div>
                         <h3>Community Spirit</h3>
                         <p>Join our vibrant community of devotees from diverse backgrounds united in spiritual practice.</p>
-                    </div>
-                    
+            </div>
+
                     <div class="about-card">
                         <div class="about-icon"></div>
                         <h3>Spiritual Learning</h3>
@@ -289,282 +280,20 @@
                             <div>
                                 <strong>Email</strong>
                                 <p>info@bapsedison.org</p>
-=======
-    <link rel="stylesheet" href="styles.css?v=14">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="config.js"></script>
-</head>
-<body>
-    <div class="kiosk-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="logo-section">
-                    <div class="baps-logo">BAPS</div>
-                    <div class="mandir-title">
-                        <h1>BAPS Shri Swaminarayan Mandir</h1>
-                        <p>Edison, NJ, USA</p>
-                        <span class="sanstha">BAPS Swaminarayan Sanstha</span>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div class="language-switcher" id="language-switcher" style="display: none;">
-                        <div class="current-language">
-                            <span>EN</span>
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="language-dropdown">
-                            <div class="language-option" onclick="changeLanguage('en')">
-                                <span>🇺🇸</span> English
-                            </div>
-                            <div class="language-option" onclick="changeLanguage('gu')">
-                                <span>🇮🇳</span> ગુજરાતી
-                            </div>
-                            <div class="language-option" onclick="changeLanguage('hi')">
-                                <span>🇮🇳</span> हिंदी
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Admin Number Pad -->
-                    <div class="admin-number-pad">
-                        <button class="admin-pad-btn" onclick="showAdminPad()">
-                            <i class="fas fa-key"></i>
-                            <span>Admin</span>
-                        </button>
-                    </div>
-                    
-                    <!-- Aarti Reminder Button -->
-                    <div class="aarti-reminder-btn">
-                        <button class="aarti-btn" onclick="showAartiInfo()">
-                            <i class="fas fa-bell"></i>
-                            <span>Aarti Times</span>
-                        </button>
-                    </div>
-                    
-                    <!-- AI Assistant Button -->
-                    <div class="ai-assistant-btn">
-                        <button class="ai-btn" onclick="toggleAI()">
-                            <i class="fas fa-robot"></i>
-                            <span>AI Assistant</span>
-                        </button>
-                    </div>
-                    
-
-                    
-                    <div id="weather-info">
-                        <i class="fas fa-cloud-sun"></i>
-                        <span>Loading weather...</span>
-                    </div>
-                    <div class="current-time" id="current-time"></div>
-                    <div class="hamburger-menu" id="hamburger-menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Navigation Menu (Hidden by default) -->
-        <nav class="navigation-menu" id="navigation-menu">
-            <div class="nav-content">
-                <div class="nav-section">
-                    <h3>Quick Navigation</h3>
-                    <ul>
-                        <li><a href="#timings">Darshan Timings</a></li>
-                        <li><a href="#news">Latest News</a></li>
-                        <li><a href="#ai-assistant">AI Assistant</a></li>
-                    </ul>
-                </div>
-                <div class="nav-section">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 2500 Woodbridge Avenue, Edison, NJ 08817</p>
-                    <p><i class="fas fa-phone"></i> (732) 572 1234</p>
-                    <p><i class="fas fa-envelope"></i> info.edison@usa.baps.org</p>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Hero Section with Image Slider -->
-        <section class="hero-section">
-            <div class="hero-slider" id="hero-slider">
-                <div class="slide active">
-                    <img src="https://www.baps.org/Data/Sites/1/Media/ModuleRotatorImages/DJI_0347_Edited.jpg" alt="BAPS Shri Swaminarayan Mandir">
-                    <div class="slide-content">
-                        <h2>Welcome to BAPS Shri Swaminarayan Mandir</h2>
-                        <p>Experience divine peace and spiritual tranquility</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4MCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxMDgwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwODAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1NDAiIHk9IjMwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWFuZGlyIEludGVyaW9yPC90ZXh0Pgo8L3N2Zz4K" alt="Mandir Interior">
-                    <div class="slide-content">
-                        <h2>Sacred Shrines Darshan</h2>
-                        <p>Daily from 7:00 AM to 11:00 AM and 4:00 PM to 8:00 PM</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4MCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxMDgwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwODAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1NDAiIHk9IjMwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QWFydGkgQ2VyZW1vbnk8L3RleHQ+Cjwvc3ZnPgo=" alt="Aarti Ceremony">
-                    <div class="slide-content">
-                        <h2>Daily Aarti Ceremonies</h2>
-                        <p>Morning: 7:00 AM | Evening: 6:30 PM</p>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-controls">
-                <button class="slider-btn prev" id="prev-slide"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn next" id="next-slide"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div class="slider-dots" id="slider-dots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
-            </div>
-        </section>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Two Column Layout -->
-            <div class="content-grid">
-                <!-- Left Column - Static Information -->
-                <div class="left-column">
-                    <!-- Mandir Address -->
-                    <div class="info-card">
-                        <h3><i class="fas fa-map-marker-alt"></i> Mandir Address</h3>
-                        <div class="address-content">
-                            <p class="mandir-name">BAPS Shri Swaminarayan Mandir</p>
-                            <p>2500 Woodbridge Avenue</p>
-                            <p>Edison, NJ 08817 USA</p>
-                            <p><i class="fas fa-phone"></i> Tel: (732) 572 1234</p>
-                            <p><i class="fas fa-envelope"></i> E-mail: info.edison@usa.baps.org</p>
-                        </div>
-                    </div>
-
-
-                    <!-- Mahant Swami Location -->
-                    <div class="info-card mahant-location-card">
-                        <h3><i class="fas fa-user-tie"></i> Where is Mahant Swami Now?</h3>
-                        <div class="mahant-location-content">
-                            <div class="mahant-avatar">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <div class="mahant-info">
-                                <p class="mahant-name">Mahant Swami Maharaj</p>
-                                <p class="mahant-location" id="mahant-location">Currently at: <span id="mahant-current-location">BAPS Shri Swaminarayan Mandir, Edison, NJ</span></p>
-                                <p class="mahant-status" id="mahant-status">Status: <span id="mahant-current-status">Available for Darshan</span></p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Darshan Timing -->
-                    <div class="info-card">
-                        <h3><i class="fas fa-clock"></i> Darshan Timing</h3>
-                        <div class="timing-list">
-                            <div class="timing-item">
-                                <span class="timing-title">Sacred Shrines Darshan</span>
-                                <span class="timing-hours">7:00 am - 11:00 am</span>
-                                <span class="timing-hours">4:00 pm - 8:00 pm</span>
-                            </div>
-                            <div class="timing-item">
-                                <span class="timing-title">Aarti</span>
-                                <span class="timing-hours">7:00 am & 6:30 pm daily</span>
-                            </div>
-                            <div class="timing-item">
-                                <span class="timing-title">Nilkanth Varni Abhishek</span>
-                                <span class="timing-subtitle">Monday to Friday</span>
-                                <span class="timing-hours">7:00 am - 11:00 am, 4:00 pm - 6:00 pm</span>
-                                <span class="timing-subtitle">Saturday, Sunday</span>
-                                <span class="timing-hours">7:00 am - 11:00 am, 7:00 pm - 8:00 pm</span>
-                            </div>
-                            <div class="timing-item">
-                                <span class="timing-title">Mandir campus</span>
-                                <span class="timing-hours">7:00 am - 8:00 pm daily</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <!-- Right Column - Dynamic Content -->
-                <div class="right-column">
-                    <!-- Latest News -->
-                    <div class="news-section">
-                        <h3><i class="fas fa-newspaper"></i> Latest News</h3>
-                        <div class="news-list" id="news-list">
-                            <div class="news-item">
-                                <div class="news-image">
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="News">
-                                </div>
-                                <div class="news-content">
-                                    <h4>Kishore-Kishori Adhiveshan & Summer Shibir 2025</h4>
-                                    <span class="news-date">Edison, 24 Jul 2025</span>
-                                </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="news-image">
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="News">
-                                </div>
-                                <div class="news-content">
-                                    <h4>Shri Swaminarayan Jayanti - Women's Celebration</h4>
-                                    <span class="news-date">Edison, 5 Apr 2025</span>
-                                </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="news-image">
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="News">
-                                </div>
-                                <div class="news-content">
-                                    <h4>Shri Swaminarayan Jayanti & Ram Navmi Celebration 2025</h4>
-                                    <span class="news-date">Edison, 5 Apr 2025</span>
-                                </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="news-image">
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNjY3ZWVBISIvPgo8dGV4dCB4PSI1MCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="News">
-                                </div>
-                                <div class="news-content">
-                                    <h4>BAPS Campus Fellowship Diwali Celebration 2024</h4>
-                                    <span class="news-date">Edison, 4 Nov 2024</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="view-more-btn">View More News</button>
-                    </div>
-
-                    <!-- QR Code for Telegram Channel -->
-                    <div class="info-card qr-card">
-                        <h3><i class="fab fa-telegram"></i> Real-Time Updates</h3>
-                        <div class="qr-content">
-                            <div class="qr-code">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iODAiIHk9IjIwIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjIwIiB5PSI4MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iNDAiIHk9IjQwIiB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjY1IiB5PSI0MCIgd2lkdGg9IjE1IiBoZWlnaHQ9IjE1IiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSI0MCIgeT0iNjUiIHdpZHRoPSIxNSIgaGVpZ2h0PSIxNSIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iNjUiIHk9IjY1IiB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIGZpbGw9ImJsYWNrIi8+Cjx0ZXh0IHg9IjYwIiB5PSIxMTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5URUxFZ3JhbTwvdGV4dD4KPC9zdmc+" alt="Telegram QR Code" class="qr-image">
-                            </div>
-                            <div class="qr-info">
-                                <h4>Edison Mandir Telegram Channel</h4>
-                                <p>Scan for real-time updates, announcements, and live information</p>
-                                <div class="telegram-features">
-                                    <span><i class="fas fa-bell"></i> Live Updates</span>
-                                    <span><i class="fas fa-calendar"></i> Event Reminders</span>
-                                    <span><i class="fas fa-clock"></i> Schedule Changes</span>
-                                </div>
->>>>>>> 4d65946c76acfffa3b01bd10e752b07d02c9d11d
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-content">
             <div class="footer-section">
                 <h3>BAPS Shri Swaminarayan Mandir</h3>
-                <p>Experience divine peace and spiritual enlightenment</p>
+                    <p>Experience divine peace and spiritual enlightenment</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -573,7 +302,7 @@
                     <li><a href="#events">Events</a></li>
                     <li><a href="#about">About Us</a></li>
                 </ul>
-            </div>
+                    </div>
             <div class="footer-section">
                 <h4>Follow Us</h4>
                 <div class="social-links">
@@ -584,246 +313,374 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 BAPS Shri Swaminarayan Mandir, Edison. All rights reserved.</p>
-        </div>
+            <p>&copy; 2025 BAPS Shri Swaminarayan Mandir, Edison. All rights reserved.</p>
+            <button class="admin-trigger-btn" onclick="openAdminDashboard()">⚙️</button>
+    </div>
     </footer>
-</body>
-</html>
-=======
 
-            <!-- AI Assistant Modal -->
-            <div id="ai-assistant-modal" class="ai-modal hidden">
-                <div class="ai-modal-content">
-                    <div class="ai-header">
-                        <h2><i class="fas fa-robot"></i> AI Assistant</h2>
-                        <button class="ai-close" onclick="hideAI()">×</button>
-                    </div>
-                    
-                    <div class="ai-chat-area">
-                        <div class="ai-welcome">
-                            <h3>Welcome to BAPS Mandir!</h3>
-                            <p>I'm here to help you with information about our Mandir, events, and spiritual guidance. Ask me anything!</p>
-                        </div>
-                        
-                        <div class="ai-messages" id="ai-messages">
-                            <!-- AI messages will be added here dynamically -->
-                        </div>
-                        
-                        <div class="ai-quick-questions">
-                            <h4>Quick Questions</h4>
-                            <div class="ai-question-chips">
-                                <div class="ai-question-chip" onclick="askAI('What are the Mandir timings?')">🕐 Mandir Timings</div>
-                                <div class="ai-question-chip" onclick="askAI('When is the next aarti?')">🕯️ Aarti Schedule</div>
-                                <div class="ai-question-chip" onclick="askAI('What events are coming up?')">📅 Upcoming Events</div>
-                                <div class="ai-question-chip" onclick="askAI('How can I participate in ceremonies?')">🙏 Participation</div>
-                                <div class="ai-question-chip" onclick="askAI('Where is the mandir located?')">📍 Location</div>
-                                <div class="ai-question-chip" onclick="askAI('What programs are available?')">🎵 Programs</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="ai-input-area">
-                        <input type="text" id="ai-input" class="ai-input-field" placeholder="Type your question here..." readonly>
-                        <button class="ai-send-btn" onclick="askAI(document.getElementById('ai-input').value)">
-                            <i class="fas fa-paper-plane"></i>
-                            Send
-                        </button>
-                    </div>
+    <!-- AI Assistant Popup -->
+    <div id="ai-assistant" class="ai-assistant">
+        <div class="ai-assistant-content">
+            <div class="ai-header">
+                <h3>💬 Mandir Assistant</h3>
+                <button class="close-ai-btn" onclick="closeAIAssistant()">&times;</button>
+            </div>
+            <div class="ai-chat-container" id="ai-chat-container">
+                <div class="ai-message bot-message">
+                    <p>Jai Swaminarayan! 🙏</p>
+                    <p>How can I help you today?</p>
+                </div>
+                <div class="quick-questions">
+                    <button class="quick-q-btn" onclick="askQuestion('timings')">🕐 Darshan Timings</button>
+                    <button class="quick-q-btn" onclick="askQuestion('aarti')">🕯️ Aarti Times</button>
+                    <button class="quick-q-btn" onclick="askQuestion('events')">📅 Upcoming Events</button>
+                    <button class="quick-q-btn" onclick="askQuestion('location')">📍 Location</button>
                 </div>
             </div>
-
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="footer-content">
-                    <h3><i class="fas fa-pray footer-icon"></i> BAPS Shri Swaminarayan Mandir</h3>
-                    <p>Experience divine peace and spiritual enlightenment</p>
-                    <div class="footer-links">
-                        <a href="#"><i class="fas fa-info-circle"></i> About</a>
-                        <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
-                        <a href="#"><i class="fas fa-phone"></i> Contact</a>
-                        <a href="#"><i class="fas fa-map-marker-alt"></i> Location</a>
-                    </div>
-                </div>
-            </footer>
-        </main>
+            <div class="ai-input-area">
+                <input type="text" id="ai-input" placeholder="Ask a question..." class="ai-input">
+                <button class="ai-send-btn" onclick="sendAIMessage()">Send</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Admin Number Pad Modal -->
-    <div id="admin-pad-modal" class="admin-pad-modal">
-        <div class="admin-pad-content">
-            <div class="admin-pad-header">
-                <h3><i class="fas fa-shield-alt"></i> Admin Access</h3>
-                <button class="admin-pad-close" onclick="hideAdminPad()">&times;</button>
+    <!-- Admin Dashboard Popup -->
+    <div id="admin-dashboard" class="admin-dashboard">
+        <div class="admin-dashboard-content">
+            <!-- Login Screen -->
+            <div id="admin-login-screen" class="admin-screen">
+                <div class="admin-header">
+                    <h3>Admin Dashboard</h3>
+                    <button class="close-admin-btn" onclick="closeAdminDashboard()">&times;</button>
             </div>
+                <div class="admin-body">
+                    <p class="admin-instruction">Enter 4-digit passcode</p>
+                    <div class="passcode-display" id="passcode-display">
+                        <span class="passcode-dot"></span>
+                        <span class="passcode-dot"></span>
+                        <span class="passcode-dot"></span>
+                        <span class="passcode-dot"></span>
+                    </div>
+                    <p class="admin-error" id="admin-error"></p>
+                    
+                    <!-- Number Pad -->
+                    <div class="number-pad">
+                        <button class="num-btn" onclick="addDigit('1')">1</button>
+                        <button class="num-btn" onclick="addDigit('2')">2</button>
+                        <button class="num-btn" onclick="addDigit('3')">3</button>
+                        <button class="num-btn" onclick="addDigit('4')">4</button>
+                        <button class="num-btn" onclick="addDigit('5')">5</button>
+                        <button class="num-btn" onclick="addDigit('6')">6</button>
+                        <button class="num-btn" onclick="addDigit('7')">7</button>
+                        <button class="num-btn" onclick="addDigit('8')">8</button>
+                        <button class="num-btn" onclick="addDigit('9')">9</button>
+                        <button class="num-btn clear-btn" onclick="clearPasscode()">✕</button>
+                        <button class="num-btn" onclick="addDigit('0')">0</button>
+                        <button class="num-btn enter-btn" onclick="checkPasscode()">✓</button>
+                        </div>
+                    </div>
+                </div>
+                
+            <!-- Dashboard Screen -->
+            <div id="admin-dashboard-screen" class="admin-screen" style="display: none;">
+                <div class="admin-header">
+                    <h3>Kiosk Controls</h3>
+                    <button class="close-admin-btn" onclick="closeAdminDashboard()">&times;</button>
+                        </div>
+                <div class="admin-body">
+                    <div class="admin-controls-grid">
+                        <button class="control-btn refresh-control" onclick="refreshKiosk()">
+                            <span class="control-icon">🔄</span>
+                            <span class="control-text">Refresh Kiosk</span>
+                        </button>
+                        <button class="control-btn clear-control" onclick="clearCache()">
+                            <span class="control-icon">🗑️</span>
+                            <span class="control-text">Clear Cache</span>
+                        </button>
+                        <button class="control-btn fullscreen-control" onclick="toggleFullscreen()">
+                            <span class="control-icon">⛶</span>
+                            <span class="control-text">Fullscreen</span>
+                        </button>
+                        <button class="control-btn logout-control" onclick="adminDashboardLogout()">
+                            <span class="control-icon">🚪</span>
+                            <span class="control-text">Logout</span>
+                        </button>
+                        </div>
+                    <div class="admin-info-panel">
+                        <p><strong>Last Action:</strong> <span id="last-action">None</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Time-based greeting
+        function updateGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            const greetingElement = document.getElementById('time-greeting');
             
-            <div class="admin-pad-body">
-                <div class="pin-display">
-                    <div class="pin-dots">
-                        <span class="pin-dot" id="pin-dot-1"></span>
-                        <span class="pin-dot" id="pin-dot-2"></span>
-                        <span class="pin-dot" id="pin-dot-3"></span>
-                        <span class="pin-dot" id="pin-dot-4"></span>
-                    </div>
-                    <div class="pin-status" id="pin-status">Enter 4-digit admin code</div>
-                </div>
-                
-                <div class="number-pad">
-                    <div class="pad-row">
-                        <button class="pad-key" onclick="addToPin('1')">1</button>
-                        <button class="pad-key" onclick="addToPin('2')">2</button>
-                        <button class="pad-key" onclick="addToPin('3')">3</button>
-                    </div>
-                    <div class="pad-row">
-                        <button class="pad-key" onclick="addToPin('4')">4</button>
-                        <button class="pad-key" onclick="addToPin('5')">5</button>
-                        <button class="pad-key" onclick="addToPin('6')">6</button>
-                    </div>
-                    <div class="pad-row">
-                        <button class="pad-key" onclick="addToPin('7')">7</button>
-                        <button class="pad-key" onclick="addToPin('8')">8</button>
-                        <button class="pad-key" onclick="addToPin('9')">9</button>
-                    </div>
-                    <div class="pad-row">
-                        <button class="pad-key clear-btn" onclick="clearPin()">Clear</button>
-                        <button class="pad-key" onclick="addToPin('0')">0</button>
-                        <button class="pad-key enter-btn" onclick="submitPin()">Enter</button>
-                    </div>
-                </div>
-                
-                <div class="admin-actions" id="admin-actions" style="display: none;">
-                    <h4>Admin Functions</h4>
-                    <div class="action-buttons">
-                        <button class="action-btn" onclick="openAdminPanel()">
-                            <i class="fas fa-cog"></i>
-                            <span>Admin Panel</span>
-                        </button>
-                        <button class="action-btn" onclick="refreshKiosk()">
-                            <i class="fas fa-sync-alt"></i>
-                            <span>Refresh Kiosk</span>
-                        </button>
-                        <button class="action-btn" onclick="clearCache()">
-                            <i class="fas fa-trash"></i>
-                            <span>Clear Cache</span>
-                        </button>
-                        <button class="action-btn" onclick="showSystemInfo()">
-                            <i class="fas fa-info-circle"></i>
-                            <span>System Info</span>
-                        </button>
-                        <button class="action-btn" onclick="toggleAartiReminder()" id="aarti-toggle-btn">
-                            <i class="fas fa-bell"></i>
-                            <span id="aarti-toggle-text">Disable Aarti</span>
-                        </button>
-                        <button class="action-btn" onclick="testAartiReminder()">
-                            <i class="fas fa-play"></i>
-                            <span>Test Aarti</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            let greeting;
+            if (hour >= 5 && hour < 12) {
+                greeting = "Good Morning";
+            } else if (hour >= 12 && hour < 17) {
+                greeting = "Good Afternoon";
+            } else if (hour >= 17 && hour < 21) {
+                greeting = "Good Evening";
+            } else {
+                greeting = "Good Night";
+            }
+            
+            greetingElement.textContent = greeting;
+        }
 
-    <!-- Aarti Reminder Notification -->
-    <div id="aarti-reminder" class="aarti-reminder hidden">
-        <div class="aarti-reminder-content">
-            <div class="aarti-reminder-header">
-                <i class="fas fa-bell"></i>
-                <span class="aarti-time" id="aarti-time">Aarti Reminder</span>
-                <button class="aarti-close" onclick="hideAartiReminder()">&times;</button>
-            </div>
-            <div class="aarti-reminder-body">
-                <h4 id="aarti-title">Morning Aarti</h4>
-                <p id="aarti-message">It's time for the daily morning aarti. Join us in this sacred ceremony.</p>
-                <div class="aarti-actions">
-                    <button class="aarti-action-btn" onclick="showAartiInfo()">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Aarti Info</span>
-                    </button>
-                    <button class="aarti-action-btn" onclick="setAartiReminder()">
-                        <i class="fas fa-bell"></i>
-                        <span>Remind Later</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+        // Update time display
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            document.getElementById('current-time').textContent = timeString;
+        }
 
-    <!-- Aarti Info Popup Modal -->
-    <div id="aarti-info-modal" class="aarti-info-modal hidden">
-        <div class="aarti-info-content">
-            <div class="aarti-info-header">
-                <h3><i class="fas fa-om"></i> Daily Aarti Schedule</h3>
-                <button class="aarti-info-close" onclick="hideAartiInfo()">&times;</button>
-            </div>
-            <div class="aarti-info-body">
-                <div class="aarti-schedule">
-                    <div class="aarti-time-slot">
-                        <div class="time-icon">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <div class="time-details">
-                            <h4>Morning Aarti</h4>
-                            <div class="time">7:00 AM</div>
-                            <div class="description">Mangala Aarti (Morning Prayer)</div>
-                            <div class="details">
-                                <span>• Darshan opens for devotees</span>
-                                <span>• Sacred beginning of the day</span>
-                                <span>• Purification of atmosphere</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="aarti-time-slot">
-                        <div class="time-icon">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                        <div class="time-details">
-                            <h4>Evening Aarti</h4>
-                            <div class="time">6:30 PM</div>
-                            <div class="description">Sandhya Aarti (Evening Prayer)</div>
-                            <div class="details">
-                                <span>• Evening darshan time</span>
-                                <span>• Peaceful conclusion of the day</span>
-                                <span>• Spiritual energy renewal</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="aarti-significance">
-                    <h4><i class="fas fa-lightbulb"></i> Significance of Aarti</h4>
-                    <div class="significance-grid">
-                        <div class="significance-item">
-                            <i class="fas fa-fire"></i>
-                            <span>Purifies atmosphere</span>
-                        </div>
-                        <div class="significance-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Offers light to divine</span>
-                        </div>
-                        <div class="significance-item">
-                            <i class="fas fa-heart"></i>
-                            <span>Creates positive energy</span>
-                        </div>
-                        <div class="significance-item">
-                            <i class="fas fa-dove"></i>
-                            <span>Brings spiritual peace</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="aarti-note">
-                    <p><i class="fas fa-hands"></i> <strong>All devotees are welcome to participate in this sacred ritual!</strong></p>
-                </div>
-            </div>
-        </div>
-    </div>
+        // Update greeting and time immediately
+        updateGreeting();
+        updateTime();
 
-    <script src="script.js?v=12"></script>
+        // Update time every second
+        setInterval(updateTime, 1000);
+        
+        // Update greeting every minute (in case it crosses a time boundary)
+        setInterval(updateGreeting, 60000);
+
+        // AI Assistant Functions
+        const aiResponses = {
+            timings: "Our Murti Darshan is open daily from 7:00 AM - 11:00 AM and 4:00 PM - 8:00 PM. The Mandir Campus is open from 7:00 AM - 8:00 PM daily.",
+            aarti: "We have two daily Aarti ceremonies: Morning Aarti at 7:00 AM and Evening Aarti at 6:30 PM. All are welcome to join!",
+            events: "We have several upcoming events including the Kishore-Kishori Adhiveshan & Summer Shibir 2025 on July 24th, and Shri Swaminarayan Jayanti celebration on April 5th. Check our Events section for more details!",
+            location: "BAPS Shri Swaminarayan Mandir is located in Edison, New Jersey. You can reach us at (732) 572-1234 or email info@bapsedison.org",
+            abhishek: "Nilkanth Varni Abhishek is available on weekdays from 7:00 AM - 11:00 AM and 4:00 PM - 6:00 PM. On weekends, it's available from 7:00 PM - 8:00 PM.",
+            default: "I can help you with information about Darshan Timings, Aarti Times, Events, and Location. Please select a topic or ask me a question!"
+        };
+
+        function openAIAssistant() {
+            document.getElementById('ai-assistant').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAIAssistant() {
+            document.getElementById('ai-assistant').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function askQuestion(topic) {
+            const container = document.getElementById('ai-chat-container');
+            const quickQuestions = container.querySelector('.quick-questions');
+            if (quickQuestions) quickQuestions.remove();
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-message user-message';
+            userMsg.innerHTML = `<p>${getQuestionText(topic)}</p>`;
+            container.appendChild(userMsg);
+            
+            // Add bot response after delay
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'ai-message bot-message';
+                botMsg.innerHTML = `<p>${aiResponses[topic] || aiResponses.default}</p>`;
+                container.appendChild(botMsg);
+                container.scrollTop = container.scrollHeight;
+            }, 500);
+        }
+
+        function getQuestionText(topic) {
+            const questions = {
+                timings: "What are the darshan timings?",
+                aarti: "When is Aarti?",
+                events: "What events are coming up?",
+                location: "Where is the temple located?",
+                abhishek: "Tell me about Nilkanth Varni Abhishek"
+            };
+            return questions[topic] || topic;
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('ai-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const container = document.getElementById('ai-chat-container');
+            const quickQuestions = container.querySelector('.quick-questions');
+            if (quickQuestions) quickQuestions.remove();
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-message user-message';
+            userMsg.innerHTML = `<p>${message}</p>`;
+            container.appendChild(userMsg);
+            
+            input.value = '';
+            
+            // Determine response based on keywords
+            let response = aiResponses.default;
+            const lowerMsg = message.toLowerCase();
+            
+            if (lowerMsg.includes('timing') || lowerMsg.includes('darshan') || lowerMsg.includes('time') || lowerMsg.includes('open') || lowerMsg.includes('hour')) {
+                response = aiResponses.timings;
+            } else if (lowerMsg.includes('aarti') || lowerMsg.includes('ceremony')) {
+                response = aiResponses.aarti;
+            } else if (lowerMsg.includes('event') || lowerMsg.includes('festival') || lowerMsg.includes('celebration')) {
+                response = aiResponses.events;
+            } else if (lowerMsg.includes('location') || lowerMsg.includes('address') || lowerMsg.includes('where') || lowerMsg.includes('contact') || lowerMsg.includes('phone')) {
+                response = aiResponses.location;
+            } else if (lowerMsg.includes('abhishek') || lowerMsg.includes('nilkanth')) {
+                response = aiResponses.abhishek;
+            }
+            
+            // Add bot response after delay
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'ai-message bot-message';
+                botMsg.innerHTML = `<p>${response}</p>`;
+                container.appendChild(botMsg);
+                container.scrollTop = container.scrollHeight;
+            }, 500);
+        }
+
+        // Admin Dashboard Functions
+        const ADMIN_PASSCODE = '2001';
+        let currentPasscode = '';
+
+        function openAdminDashboard() {
+            document.getElementById('admin-dashboard').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAdminDashboard() {
+            document.getElementById('admin-dashboard').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            resetAdminDashboard();
+        }
+
+        function resetAdminDashboard() {
+            currentPasscode = '';
+            updatePasscodeDisplay();
+            document.getElementById('admin-error').textContent = '';
+            document.getElementById('admin-login-screen').style.display = 'block';
+            document.getElementById('admin-dashboard-screen').style.display = 'none';
+        }
+
+        function addDigit(digit) {
+            if (currentPasscode.length < 4) {
+                currentPasscode += digit;
+                updatePasscodeDisplay();
+                
+                // Auto-check when 4 digits entered
+                if (currentPasscode.length === 4) {
+                    setTimeout(checkPasscode, 200);
+                }
+            }
+        }
+
+        function clearPasscode() {
+            currentPasscode = '';
+            updatePasscodeDisplay();
+            document.getElementById('admin-error').textContent = '';
+        }
+
+        function updatePasscodeDisplay() {
+            const dots = document.querySelectorAll('.passcode-dot');
+            dots.forEach((dot, index) => {
+                if (index < currentPasscode.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            });
+        }
+
+        function checkPasscode() {
+            if (currentPasscode === ADMIN_PASSCODE) {
+                document.getElementById('admin-login-screen').style.display = 'none';
+                document.getElementById('admin-dashboard-screen').style.display = 'block';
+                currentPasscode = '';
+                updatePasscodeDisplay();
+                document.getElementById('admin-error').textContent = '';
+            } else {
+                document.getElementById('admin-error').textContent = 'Incorrect passcode';
+                setTimeout(() => {
+                    clearPasscode();
+                }, 1000);
+            }
+        }
+
+        function refreshKiosk() {
+            const now = new Date();
+            document.getElementById('last-action').textContent = 'Refreshed at ' + now.toLocaleTimeString();
+            setTimeout(() => {
+                location.reload();
+            }, 500);
+        }
+
+        function clearCache() {
+            localStorage.clear();
+            sessionStorage.clear();
+            document.getElementById('last-action').textContent = 'Cache cleared at ' + new Date().toLocaleTimeString();
+            alert('Cache cleared successfully!');
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                document.getElementById('last-action').textContent = 'Fullscreen enabled';
+            } else {
+                document.exitFullscreen();
+                document.getElementById('last-action').textContent = 'Fullscreen disabled';
+            }
+        }
+
+        function adminDashboardLogout() {
+            resetAdminDashboard();
+        }
+
+        // Fade-in on Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.section, .timing-card, .event-card, .gallery-item, .about-card');
+            fadeElements.forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
+            });
+            
+            // Add Enter key support for AI assistant
+            const aiInput = document.getElementById('ai-input');
+            if (aiInput) {
+                aiInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        sendAIMessage();
+                    }
+                });
+            }
+        });
+
+    </script>
 </body>
 </html>
-
-
-
-
->>>>>>> 4d65946c76acfffa3b01bd10e752b07d02c9d11d
