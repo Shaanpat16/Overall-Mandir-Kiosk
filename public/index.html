@@ -23,10 +23,6 @@
                 <a href="#about" class="nav-link">About</a>
                 <button class="nav-link ai-btn" onclick="openAIAssistant()">💬 Ask Me</button>
             </div>
-            <div class="weather-time">
-                <div class="greeting" id="time-greeting">Welcome</div>
-                <div class="time" id="current-time"></div>
-            </div>
         </nav>
     </header>
 
@@ -415,47 +411,6 @@
     </div>
 
     <script>
-        // Time-based greeting
-        function updateGreeting() {
-            const now = new Date();
-            const hour = now.getHours();
-            const greetingElement = document.getElementById('time-greeting');
-            
-            let greeting;
-            if (hour >= 5 && hour < 12) {
-                greeting = "Good Morning";
-            } else if (hour >= 12 && hour < 17) {
-                greeting = "Good Afternoon";
-            } else if (hour >= 17 && hour < 21) {
-                greeting = "Good Evening";
-            } else {
-                greeting = "Good Night";
-            }
-            
-            greetingElement.textContent = greeting;
-        }
-
-        // Update time display
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', { 
-                hour: 'numeric', 
-                minute: '2-digit',
-                hour12: true 
-            });
-            document.getElementById('current-time').textContent = timeString;
-        }
-
-        // Update greeting and time immediately
-        updateGreeting();
-        updateTime();
-
-        // Update time every second
-        setInterval(updateTime, 1000);
-        
-        // Update greeting every minute (in case it crosses a time boundary)
-        setInterval(updateGreeting, 60000);
-
         // AI Assistant Functions
         const aiResponses = {
             timings: "Our Murti Darshan is open daily from 7:00 AM - 11:00 AM and 4:00 PM - 8:00 PM. The Mandir Campus is open from 7:00 AM - 8:00 PM daily.",
@@ -474,6 +429,41 @@
         function closeAIAssistant() {
             document.getElementById('ai-assistant').style.display = 'none';
             document.body.style.overflow = 'auto';
+            resetAIChat();
+        }
+
+        function resetAIChat() {
+            const container = document.getElementById('ai-chat-container');
+            container.innerHTML = `
+                <div class="ai-message bot-message">
+                    <p>Jai Swaminarayan! 🙏</p>
+                    <p>How can I help you today?</p>
+                </div>
+                <div class="quick-questions">
+                    <button class="quick-q-btn" onclick="askQuestion('timings')">🕐 Darshan Timings</button>
+                    <button class="quick-q-btn" onclick="askQuestion('aarti')">🕯️ Aarti Times</button>
+                    <button class="quick-q-btn" onclick="askQuestion('events')">📅 Upcoming Events</button>
+                    <button class="quick-q-btn" onclick="askQuestion('location')">📍 Location</button>
+                </div>
+            `;
+            document.getElementById('ai-input').value = '';
+        }
+
+        function addQuickQuestions() {
+            const container = document.getElementById('ai-chat-container');
+            const existingQuestions = container.querySelector('.quick-questions');
+            if (existingQuestions) existingQuestions.remove();
+            
+            const quickQuestions = document.createElement('div');
+            quickQuestions.className = 'quick-questions';
+            quickQuestions.innerHTML = `
+                <button class="quick-q-btn" onclick="askQuestion('timings')">🕐 Darshan Timings</button>
+                <button class="quick-q-btn" onclick="askQuestion('aarti')">🕯️ Aarti Times</button>
+                <button class="quick-q-btn" onclick="askQuestion('events')">📅 Upcoming Events</button>
+                <button class="quick-q-btn" onclick="askQuestion('location')">📍 Location</button>
+            `;
+            container.appendChild(quickQuestions);
+            container.scrollTop = container.scrollHeight;
         }
 
         function askQuestion(topic) {
@@ -494,6 +484,11 @@
                 botMsg.innerHTML = `<p>${aiResponses[topic] || aiResponses.default}</p>`;
                 container.appendChild(botMsg);
                 container.scrollTop = container.scrollHeight;
+                
+                // Add quick questions back after response
+                setTimeout(() => {
+                    addQuickQuestions();
+                }, 300);
             }, 500);
         }
 
@@ -549,6 +544,11 @@
                 botMsg.innerHTML = `<p>${response}</p>`;
                 container.appendChild(botMsg);
                 container.scrollTop = container.scrollHeight;
+                
+                // Add quick questions back after response
+                setTimeout(() => {
+                    addQuickQuestions();
+                }, 300);
             }, 500);
         }
 

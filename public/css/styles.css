@@ -19,7 +19,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 225px;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -144,7 +144,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: 30px;
 }
@@ -183,31 +183,6 @@ body {
     color: var(--text-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px var(--shadow);
-}
-
-.weather-time {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-}
-
-.greeting {
-    font-weight: 500;
-    color: var(--text-dark);
-    font-size: 0.9em;
-    opacity: 0.8;
-}
-
-.time {
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 1.1em;
-}
-
-.weather {
-    color: #666;
-    font-size: 0.9em;
 }
 
 /* Hero Section */

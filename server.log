@@ -1,0 +1,67 @@
+127.0.0.1 - - [17/Oct/2025 08:13:20] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:13:20] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:20] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:20] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:20] "GET /styles.css?v=11 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:20] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:20] "GET /config.js HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:20] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:20] "GET /qr-code.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:20] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:20] "GET /script.js?v=9 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:21] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:13:21] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:21] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:21] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:21] "GET /styles.css?v=11 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:21] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:21] "GET /config.js HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:21] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:21] "GET /qr-code.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:21] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:21] "GET /script.js?v=9 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:22] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:22] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:22] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:13:22] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:22] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:25] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:25] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:25] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:25] "GET /styles.css?v=11 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:25] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:25] "GET /config.js HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:25] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:25] "GET /qr-code.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:25] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:25] "GET /script.js?v=9 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:31] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:13:31] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:31] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:31] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:31] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:31] "GET /styles.css?v=11 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:31] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:31] "GET /config.js HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:31] "GET /qr-code.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:31] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:31] "GET /script.js?v=9 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:53] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:13:53] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:53] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:53] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:53] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:53] "GET /config.js HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:53] "GET /qr-code.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:53] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:53] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:13:53] "GET /script.js?v=9 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:13:53] "GET /styles.css?v=11 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:14:11] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2025 08:14:11] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:14:11] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:14:11] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:16:36] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2025 08:16:36] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:16:36] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:16:36] "GET /public/css/styles.css HTTP/1.1" 304 -
