@@ -2,6 +2,12 @@
 
 Please add photos for each of the following events to this folder:
 
+## Banner Image:
+**events-banner.jpg** - Main banner image displayed above the 3 category boxes
+  - **Recommended Size**: 1200x400 pixels (wide banner)
+  - **Aspect Ratio**: 3:1 (landscape)
+  - This could be a collage of multiple events or a single impactful event photo
+
 ## Sacred Rituals:
 1. **mahapuja.jpg** - Maha Puja ceremony photos
 2. **chopdapujan.jpg** - Chopda Pujan ceremony photos  

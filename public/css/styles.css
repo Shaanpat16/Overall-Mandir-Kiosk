@@ -566,6 +566,27 @@ body {
     padding: 60px 20px;
 }
 
+.events-banner-image {
+    max-width: 1200px;
+    margin: 30px auto;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 40px var(--shadow-dark);
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.events-banner-image:hover .banner-image {
+    transform: scale(1.02);
+}
+
 .events-categories-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

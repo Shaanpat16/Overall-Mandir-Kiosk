@@ -190,3 +190,25 @@
 127.0.0.1 - - [18/Oct/2025 14:59:13] code 404, message File not found
 127.0.0.1 - - [18/Oct/2025 14:59:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
 127.0.0.1 - - [18/Oct/2025 14:59:13] "GET /public/css/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/css/styles.css?v=1.2 HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/gurus/vv30-029.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/events/chopdapujan.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/events/mahapuja.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/events/annakut.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/gurus/Mahant_Swami_Maharaj.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/events/diwali.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/events/womensconference.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/events/blooddrive.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/events/fooddrive.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 16:22:22] "GET /public/images/events/walkathon.jpg HTTP/1.1" 404 -
