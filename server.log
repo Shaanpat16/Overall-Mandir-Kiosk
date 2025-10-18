@@ -65,3 +65,128 @@
 127.0.0.1 - - [17/Oct/2025 08:16:36] code 404, message File not found
 127.0.0.1 - - [17/Oct/2025 08:16:36] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
 127.0.0.1 - - [17/Oct/2025 08:16:36] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:29:30] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2025 08:29:30] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:29:30] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [17/Oct/2025 08:29:30] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:29:41] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [17/Oct/2025 08:29:41] code 404, message File not found
+127.0.0.1 - - [17/Oct/2025 08:29:41] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 13:59:45] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 13:59:45] "GET /public/css/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 13:59:45] "GET /public/images/temple-images/DJI_0347_Edited%20(2).png HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 13:59:45] "GET /public/images/gallery/mandir-exterior.png HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 13:59:46] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 13:59:46] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 13:59:46] "GET /public/images/gallery/03_edison_diwali2024.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 13:59:46] "GET /public/images/gallery/05_edison_mahantswamiJJ_2025.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 13:59:46] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 13:59:46] "GET /public/images/gurus/mahant-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 13:59:48] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 13:59:48] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 13:59:48] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:01:53] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:01:53] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:01:53] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:01:53] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:01:53] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:01:53] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:01:53] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:01:53] "GET /public/images/gurus/mahant-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:19] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:02:19] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:19] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:19] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:19] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:02:19] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:19] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:19] "GET /public/images/gurus/mahant-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:19] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:19] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:27] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:02:27] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:27] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:27] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:27] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:27] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:27] "GET /public/images/gurus/mahant-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:27] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:27] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:27] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:27] "GET /public/images/gurus/mahant-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:52] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:02:52] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:52] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:52] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:52] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:52] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:02:52] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:52] "GET /public/images/gurus/mahant-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:02:52] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:02:52] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:16:20] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:16:20] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:16:20] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:16:20] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:16:20] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:16:20] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:16:20] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:16:20] "GET /public/images/gurus/mahant-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:16:20] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:16:20] "GET /public/images/gurus/pramukh-swami-maharaj.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:17:50] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:17:50] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:17:50] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:17:50] "GET /public/images/gurus/vv30-029.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:17:50] "GET /public/images/gurus/Mahant_Swami_Maharaj.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:33:19] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:33:19] "GET /public/css/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:33:19] "GET /public/images/gurus/vv30-029.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:33:19] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:33:19] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:33:19] "GET /public/images/gurus/Mahant_Swami_Maharaj.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:39:17] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:39:17] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:39:17] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:39:17] "GET /public/images/gurus/vv30-029.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:39:17] "GET /public/css/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:39:17] "GET /public/images/gurus/Mahant_Swami_Maharaj.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:41:30] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:41:30] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:41:30] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:41:30] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:42:33] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:42:33] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:42:33] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:42:33] "GET /public/css/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:43:27] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:43:27] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:43:27] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:43:27] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:43:27] "GET /public/images/gurus/vv30-029.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:43:27] "GET /public/images/gurus/Mahant_Swami_Maharaj.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:44:33] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:44:33] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:44:33] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:44:33] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:45:03] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:45:03] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:45:03] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:45:03] "GET /public/css/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:55:51] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:55:51] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:55:51] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:55:51] "GET /public/css/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:55:51] "GET /public/images/gurus/vv30-029.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:55:52] "GET /public/images/gurus/Mahant_Swami_Maharaj.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:57:12] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:57:12] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:57:12] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:57:12] "GET /public/css/styles.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:57:21] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 14:57:21] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:57:21] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:59:13] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 14:59:13] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 14:59:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 14:59:13] "GET /public/css/styles.css HTTP/1.1" 200 -

@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
-    <link rel="stylesheet" href="css/styles.css?v=1.1">
+    <link rel="stylesheet" href="css/styles.css?v=1.2">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -87,50 +87,59 @@
         </section>
 
         <!-- Events Section -->
-        <section id="events" class="section">
+        <section id="events" class="section events-section">
             <div class="section-header">
-                <h2>Upcoming Events</h2>
-                <p>Join us for spiritual celebrations and community events</p>
+                <h2>Past Events</h2>
+                <p>Explore our sacred rituals, festivals, and charitable initiatives</p>
             </div>
             
-            <div class="events-grid">
-                <div class="event-card featured-event">
-                    <div class="event-date">
-                        <span class="day">24</span>
-                        <span class="month">Jul</span>
+            <div class="events-categories-grid">
+                <div class="event-category-card">
+                    <h3>Sacred Rituals</h3>
+                    <p class="category-subtitle">Click to see more</p>
+                    <button class="expand-btn" onclick="toggleCategory('rituals')">▼</button>
+                    <div id="category-rituals" class="category-content">
+                        <div class="category-item" onclick="openEventPopup('mahapuja')">
+                            <h4>Maha Puja</h4>
+                        </div>
+                        <div class="category-item" onclick="openEventPopup('chopdapujan')">
+                            <h4>Chopda Pujan</h4>
+                        </div>
+                        <div class="category-item" onclick="openEventPopup('annakut')">
+                            <h4>Annakut</h4>
+                        </div>
                     </div>
-                    <div class="event-content">
-                        <h3>Kishore-Kishori Adhiveshan & Summer Shibir 2025</h3>
-                        <p class="event-location">Edison, New Jersey</p>
-                        <p class="event-description">Annual youth spiritual retreat and cultural celebration</p>
-                    </div>
-                    <div class="event-status">Upcoming</div>
                 </div>
                 
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="day">05</span>
-                        <span class="month">Apr</span>
+                <div class="event-category-card">
+                    <h3>Festivals</h3>
+                    <p class="category-subtitle">Click to see more</p>
+                    <button class="expand-btn" onclick="toggleCategory('festivals')">▼</button>
+                    <div id="category-festivals" class="category-content">
+                        <div class="category-item" onclick="openEventPopup('diwali')">
+                            <h4>Diwali</h4>
+                        </div>
+                        <div class="category-item" onclick="openEventPopup('womensconference')">
+                            <h4>Women's Conference</h4>
+                        </div>
                     </div>
-                    <div class="event-content">
-                        <h3>Shri Swaminarayan Jayanti - Women's Celebration</h3>
-                        <p class="event-location">Edison, New Jersey</p>
-                        <p class="event-description">Special celebration honoring Lord Swaminarayan</p>
-                    </div>
-                    <div class="event-status">Planned</div>
                 </div>
                 
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="day">15</span>
-                        <span class="month">Dec</span>
+                <div class="event-category-card">
+                    <h3>BAPS Charities</h3>
+                    <p class="category-subtitle">Click to see more</p>
+                    <button class="expand-btn" onclick="toggleCategory('charities')">▼</button>
+                    <div id="category-charities" class="category-content">
+                        <div class="category-item" onclick="openEventPopup('blooddrive')">
+                            <h4>Blood Drive</h4>
+                        </div>
+                        <div class="category-item" onclick="openEventPopup('walkathon')">
+                            <h4>Walkathon</h4>
+                        </div>
+                        <div class="category-item" onclick="openEventPopup('fooddrive')">
+                            <h4>Food Drive</h4>
+                        </div>
                     </div>
-                    <div class="event-content">
-                        <h3>Bhajan Sandhya</h3>
-                        <p class="event-location">Main Hall</p>
-                        <p class="event-description">Evening devotional singing session</p>
-                    </div>
-                    <div class="event-status">Regular</div>
                 </div>
             </div>
         </section>
@@ -319,6 +328,196 @@
             <button class="admin-trigger-btn" onclick="openAdminDashboard()">Admin</button>
     </div>
     </footer>
+
+    <!-- Event Popups -->
+    <div id="event-popup-mahapuja" class="event-popup">
+        <div class="event-popup-content">
+            <button class="close-event-btn" onclick="closeEventPopup('mahapuja')">&times;</button>
+            <div class="event-popup-header">
+                <h2>Maha Puja</h2>
+            </div>
+            <div class="event-popup-body">
+                <div class="event-popup-images">
+                    <img src="images/events/mahapuja.jpg" alt="Maha Puja" class="event-popup-image">
+                </div>
+                <p><strong>Grand Worship Ceremony</strong></p>
+                <p>Maha Puja is an elaborate worship ceremony performed with great devotion and traditional Vedic rituals. This sacred ceremony includes offerings of flowers, fruits, and prayers to the deities.</p>
+                <p><strong>Highlights:</strong></p>
+                <ul>
+                    <li>Traditional Vedic chanting and mantras</li>
+                    <li>Sacred offerings and abhishek</li>
+                    <li>Community participation and blessings</li>
+                    <li>Prasad distribution to all devotees</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-popup-chopdapujan" class="event-popup">
+        <div class="event-popup-content">
+            <button class="close-event-btn" onclick="closeEventPopup('chopdapujan')">&times;</button>
+            <div class="event-popup-header">
+                <h2>Chopda Pujan</h2>
+            </div>
+            <div class="event-popup-body">
+                <div class="event-popup-images">
+                    <img src="images/events/chopdapujan.jpg" alt="Chopda Pujan" class="event-popup-image">
+                </div>
+                <p><strong>Hindu New Year Business Blessing</strong></p>
+                <p>Chopda Pujan is a special ceremony performed during Diwali to worship account books and business records, seeking blessings for prosperity and success in the coming year.</p>
+                <p><strong>Significance:</strong></p>
+                <ul>
+                    <li>Marks beginning of Hindu financial year</li>
+                    <li>Blessings for business prosperity</li>
+                    <li>Worship of Goddess Lakshmi and Lord Ganesha</li>
+                    <li>Community prayers for success and abundance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-popup-annakut" class="event-popup">
+        <div class="event-popup-content">
+            <button class="close-event-btn" onclick="closeEventPopup('annakut')">&times;</button>
+            <div class="event-popup-header">
+                <h2>Annakut</h2>
+            </div>
+            <div class="event-popup-body">
+                <div class="event-popup-images">
+                    <img src="images/events/annakut.jpg" alt="Annakut" class="event-popup-image">
+                </div>
+                <p><strong>Mountain of Food Offering</strong></p>
+                <p>Annakut, meaning "mountain of food," is a grand festival where hundreds of vegetarian dishes are prepared and offered to the deities. This festival celebrates the first day of the Hindu New Year.</p>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Over 500 varieties of vegetarian dishes prepared</li>
+                    <li>Beautiful artistic arrangement of food offerings</li>
+                    <li>Celebration of Hindu New Year (Bestu Varas)</li>
+                    <li>Community feast and prasad distribution</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-popup-diwali" class="event-popup">
+        <div class="event-popup-content">
+            <button class="close-event-btn" onclick="closeEventPopup('diwali')">&times;</button>
+            <div class="event-popup-header">
+                <h2>Diwali</h2>
+            </div>
+            <div class="event-popup-body">
+                <div class="event-popup-images">
+                    <img src="images/events/diwali.jpg" alt="Diwali Celebration" class="event-popup-image">
+                </div>
+                <p><strong>Festival of Lights</strong></p>
+                <p>Diwali is one of the most celebrated Hindu festivals, symbolizing the victory of light over darkness and good over evil. Our mandir hosts grand celebrations with lights, decorations, and cultural programs.</p>
+                <p><strong>Celebrations Include:</strong></p>
+                <ul>
+                    <li>Thousands of diyas and decorative lights</li>
+                    <li>Cultural performances and music programs</li>
+                    <li>Traditional rangoli and decorations</li>
+                    <li>Special aarti and prayers</li>
+                    <li>Community dinner and sweets distribution</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-popup-womensconference" class="event-popup">
+        <div class="event-popup-content">
+            <button class="close-event-btn" onclick="closeEventPopup('womensconference')">&times;</button>
+            <div class="event-popup-header">
+                <h2>Women's Conference</h2>
+            </div>
+            <div class="event-popup-body">
+                <div class="event-popup-images">
+                    <img src="images/events/womensconference.jpg" alt="Women's Conference" class="event-popup-image">
+                </div>
+                <p><strong>Empowerment and Spiritual Growth</strong></p>
+                <p>Our annual Women's Conference brings together women from all backgrounds for spiritual inspiration, personal development workshops, and community building.</p>
+                <p><strong>Conference Highlights:</strong></p>
+                <ul>
+                    <li>Inspirational keynote speakers</li>
+                    <li>Personal development workshops</li>
+                    <li>Spiritual discourses and discussions</li>
+                    <li>Cultural performances and activities</li>
+                    <li>Networking and community building</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-popup-blooddrive" class="event-popup">
+        <div class="event-popup-content">
+            <button class="close-event-btn" onclick="closeEventPopup('blooddrive')">&times;</button>
+            <div class="event-popup-header">
+                <h2>Blood Drive</h2>
+            </div>
+            <div class="event-popup-body">
+                <div class="event-popup-images">
+                    <img src="images/events/blooddrive.jpg" alt="Blood Drive" class="event-popup-image">
+                </div>
+                <p><strong>Saving Lives Through Service</strong></p>
+                <p>Our regular blood drives partner with local blood banks to help save lives in our community. Every donation can save up to three lives.</p>
+                <p><strong>Impact:</strong></p>
+                <ul>
+                    <li>Multiple blood drives held throughout the year</li>
+                    <li>Hundreds of pints of blood collected</li>
+                    <li>Partnership with local hospitals and blood banks</li>
+                    <li>Volunteer opportunities for all ages</li>
+                    <li>Direct impact on saving lives in our community</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-popup-walkathon" class="event-popup">
+        <div class="event-popup-content">
+            <button class="close-event-btn" onclick="closeEventPopup('walkathon')">&times;</button>
+            <div class="event-popup-header">
+                <h2>Walkathon</h2>
+            </div>
+            <div class="event-popup-body">
+                <div class="event-popup-images">
+                    <img src="images/events/walkathon.jpg" alt="Walkathon" class="event-popup-image">
+                </div>
+                <p><strong>Walking Together for a Cause</strong></p>
+                <p>Our annual charity walkathon brings the community together to promote health, wellness, and raise funds for important charitable causes.</p>
+                <p><strong>Event Features:</strong></p>
+                <ul>
+                    <li>Family-friendly 5K walk/run</li>
+                    <li>Funds raised for community causes</li>
+                    <li>Health and wellness activities</li>
+                    <li>Refreshments and entertainment</li>
+                    <li>Building community spirit and unity</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-popup-fooddrive" class="event-popup">
+        <div class="event-popup-content">
+            <button class="close-event-btn" onclick="closeEventPopup('fooddrive')">&times;</button>
+            <div class="event-popup-header">
+                <h2>Food Drive</h2>
+            </div>
+            <div class="event-popup-body">
+                <div class="event-popup-images">
+                    <img src="images/events/fooddrive.jpg" alt="Food Drive" class="event-popup-image">
+                </div>
+                <p><strong>Feeding Those in Need</strong></p>
+                <p>Our food drives collect non-perishable food items and organize distribution to local food banks and families in need, ensuring no one in our community goes hungry.</p>
+                <p><strong>Our Efforts:</strong></p>
+                <ul>
+                    <li>Regular food collection drives</li>
+                    <li>Distribution to local food banks</li>
+                    <li>Direct assistance to families in need</li>
+                    <li>Volunteer opportunities for packing and distribution</li>
+                    <li>Thousands of meals provided annually</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- Activity Popups -->
     <div id="activity-popup-balbalika" class="activity-popup">
@@ -769,6 +968,50 @@
                     addQuickQuestions();
                 }, 300);
             }, 500);
+        }
+
+        // Event Category Functions
+        function toggleCategory(categoryId) {
+            const category = document.getElementById('category-' + categoryId);
+            const allCategories = document.querySelectorAll('.category-content');
+            
+            // Close all other categories
+            allCategories.forEach(cat => {
+                if (cat.id !== 'category-' + categoryId) {
+                    cat.classList.remove('active');
+                }
+            });
+            
+            // Toggle current category
+            if (category) {
+                category.classList.toggle('active');
+            }
+            
+            // Reset idle timer
+            if (typeof resetIdleTimer === 'function') {
+                resetIdleTimer();
+            }
+        }
+
+        // Event Popup Functions
+        function openEventPopup(eventId) {
+            const popup = document.getElementById('event-popup-' + eventId);
+            if (popup) {
+                popup.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                // Reset idle timer when opening popup
+                if (typeof resetIdleTimer === 'function') {
+                    resetIdleTimer();
+                }
+            }
+        }
+
+        function closeEventPopup(eventId) {
+            const popup = document.getElementById('event-popup-' + eventId);
+            if (popup) {
+                popup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
         // Activity Popup Functions
