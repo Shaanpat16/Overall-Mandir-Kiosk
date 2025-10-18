@@ -8,19 +8,63 @@ Please add photos for each of the following events to this folder:
   - **Aspect Ratio**: 3:1 (landscape)
   - This could be a collage of multiple events or a single impactful event photo
 
-## Sacred Rituals:
-1. **mahapuja.jpg** - Maha Puja ceremony photos
-2. **chopdapujan.jpg** - Chopda Pujan ceremony photos  
-3. **annakut.jpg** - Annakut festival photos
+---
 
-## Festivals:
-4. **diwali.jpg** - Diwali celebration photos
-5. **womensconference.jpg** - Women's Conference photos
+## Sacred Rituals (3 images each):
 
-## BAPS Charities:
-6. **blooddrive.jpg** - Blood Drive event photos
-7. **walkathon.jpg** - Walkathon event photos
-8. **fooddrive.jpg** - Food Drive photos
+### Maha Puja:
+1. **mahapuja-1.jpg** - First Maha Puja photo
+2. **mahapuja-2.jpg** - Second Maha Puja photo
+3. **mahapuja-3.jpg** - Third Maha Puja photo
+
+### Chopda Pujan:
+4. **chopdapujan-1.jpg** - First Chopda Pujan photo
+5. **chopdapujan-2.jpg** - Second Chopda Pujan photo
+6. **chopdapujan-3.jpg** - Third Chopda Pujan photo
+
+### Annakut:
+7. **annakut-1.jpg** - First Annakut photo
+8. **annakut-2.jpg** - Second Annakut photo
+9. **annakut-3.jpg** - Third Annakut photo
+
+---
+
+## Festivals (3 images each):
+
+### Diwali:
+10. **diwali-1.jpg** - First Diwali photo
+11. **diwali-2.jpg** - Second Diwali photo
+12. **diwali-3.jpg** - Third Diwali photo
+
+### Women's Conference:
+13. **womensconference-1.jpg** - First Women's Conference photo
+14. **womensconference-2.jpg** - Second Women's Conference photo
+15. **womensconference-3.jpg** - Third Women's Conference photo
+
+---
+
+## BAPS Charities (3 images each):
+
+### Blood Drive:
+16. **blooddrive-1.jpg** - First Blood Drive photo
+17. **blooddrive-2.jpg** - Second Blood Drive photo
+18. **blooddrive-3.jpg** - Third Blood Drive photo
+
+### Walkathon:
+19. **walkathon-1.jpg** - First Walkathon photo
+20. **walkathon-2.jpg** - Second Walkathon photo
+21. **walkathon-3.jpg** - Third Walkathon photo
+
+### Food Drive:
+22. **fooddrive-1.jpg** - First Food Drive photo
+23. **fooddrive-2.jpg** - Second Food Drive photo
+24. **fooddrive-3.jpg** - Third Food Drive photo
+
+---
+
+## Total Images Needed: 25 images
+- 1 banner image
+- 24 event photos (8 events × 3 photos each)
 
 ## Image Specifications:
 - **Format**: JPG or PNG
