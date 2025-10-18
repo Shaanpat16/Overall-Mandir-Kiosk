@@ -17,11 +17,11 @@
             </div>
             <div class="nav-links">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#timings" class="nav-link">Timings</a>
+                <a href="#activities" class="nav-link">Activities</a>
                 <a href="#events" class="nav-link">Events</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
                 <a href="#about" class="nav-link">About</a>
-                <button class="nav-link ai-btn" onclick="openAIAssistant()">💬 Ask Me</button>
+                <button class="nav-link ai-btn" onclick="openAIAssistant()">Ask Me</button>
             </div>
         </nav>
     </header>
@@ -43,72 +43,42 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Darshan Timings Section -->
-        <section id="timings" class="section">
+        <!-- Activities Section -->
+        <section id="activities" class="section activities-section">
             <div class="section-header">
-                <h2>Darshan & Aarti Timings</h2>
-                <p>Plan your visit to our sacred mandir</p>
+                <h2>Our Activities</h2>
+                <p>Engage in spiritual and community activities for all ages</p>
             </div>
             
-            <div class="timings-grid">
-                <div class="timing-card featured floating">
-                    <div class="timing-icon"></div>
-                    <h3>Murti Darshan</h3>
-                    <div class="timing-schedule">
-                        <div class="time-slot">
-                            <span class="time">7:00 AM - 11:00 AM</span>
-                            <span class="label">Morning Darshan</span>
-                        </div>
-                        <div class="time-slot">
-                            <span class="time">4:00 PM - 8:00 PM</span>
-                            <span class="label">Evening Darshan</span>
-                        </div>
-                    </div>
+            <div class="activities-grid">
+                <div class="activity-card" onclick="openActivityPopup('balbalika')">
+                    <h3>Bal/Balika</h3>
+                    <p>Children's Activities</p>
                 </div>
                 
-                <div class="timing-card floating-delayed-1">
-                    <div class="timing-icon"></div>
-                    <h3>Aarti Times</h3>
-                    <div class="timing-schedule">
-                        <div class="time-slot">
-                            <span class="time">7:00 AM</span>
-                            <span class="label">Morning Aarti</span>
-                        </div>
-                        <div class="time-slot">
-                            <span class="time">6:30 PM</span>
-                            <span class="label">Evening Aarti</span>
-                        </div>
-                    </div>
-                    </div>
-                    
-                <div class="timing-card floating-delayed-2">
-                    <div class="timing-icon"></div>
-                    <h3>Nilkanth Varni Abhishek</h3>
-                    <div class="timing-schedule">
-                        <div class="time-slot">
-                            <span class="time">7:00 AM - 11:00 AM</span>
-                            <span class="label">Weekdays</span>
-                        </div>
-                        <div class="time-slot">
-                            <span class="time">4:00 PM - 6:00 PM</span>
-                            <span class="label">Weekdays</span>
-                        </div>
-                        <div class="time-slot">
-                            <span class="time">7:00 PM - 8:00 PM</span>
-                            <span class="label">Weekends</span>
-                    </div>
-                    </div>
-                    </div>
-                    
-                <div class="timing-card floating-delayed-3">
-                    <div class="timing-icon"></div>
-                    <h3>Mandir Campus</h3>
-                    <div class="timing-schedule">
-                        <div class="time-slot">
-                            <span class="time">7:00 AM - 8:00 PM</span>
-                            <span class="label">Daily Hours</span>
-                    </div>
-                    </div>
+                <div class="activity-card" onclick="openActivityPopup('kishorekishori')">
+                    <h3>Kishore/Kishori</h3>
+                    <p>Teen Programs</p>
+                </div>
+                
+                <div class="activity-card" onclick="openActivityPopup('yuvakyuvati')">
+                    <h3>Yuvak/Yuvati</h3>
+                    <p>Young Adult Activities</p>
+                </div>
+                
+                <div class="activity-card" onclick="openActivityPopup('betterliving')">
+                    <h3>Better Living</h3>
+                    <p>Personal Development</p>
+                </div>
+                
+                <div class="activity-card" onclick="openActivityPopup('international')">
+                    <h3>International Students</h3>
+                    <p>Student Community</p>
+                </div>
+                
+                <div class="activity-card" onclick="openActivityPopup('family')">
+                    <h3>Family Programs</h3>
+                    <p>Activities for Families</p>
                 </div>
             </div>
         </section>
@@ -253,33 +223,6 @@
                         <p>Engage in community service, charity work, and humanitarian activities.</p>
                     </div>
                 </div>
-                
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-grid">
-                        <div class="contact-item">
-                            <span class="contact-icon"></span>
-                            <div>
-                                <strong>Address</strong>
-                                <p>BAPS Shri Swaminarayan Mandir<br>Edison, New Jersey</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon"></span>
-                            <div>
-                                <strong>Phone</strong>
-                                <p>(732) 572-1234</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon"></span>
-                            <div>
-                                <strong>Email</strong>
-                                <p>info@bapsedison.org</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -293,7 +236,7 @@
             <div class="gurus-grid">
                 <div class="guru-card" onclick="openGuruPopup('pramukh')">
                     <div class="guru-image-wrapper">
-                        <img src="images/gurus/pramukh-swami-maharaj.jpg" alt="Pramukh Swami Maharaj" class="guru-image">
+                        <img src="images/gurus/vv30-029.jpg" alt="Pramukh Swami Maharaj" class="guru-image">
                     </div>
                     <h3>Pramukh Swami Maharaj</h3>
                     <p class="guru-years">1921 - 2016</p>
@@ -301,10 +244,44 @@
                 
                 <div class="guru-card" onclick="openGuruPopup('mahant')">
                     <div class="guru-image-wrapper">
-                        <img src="images/gurus/mahant-swami-maharaj.jpg" alt="Mahant Swami Maharaj" class="guru-image">
+                        <img src="images/gurus/Mahant_Swami_Maharaj.jpg" alt="Mahant Swami Maharaj" class="guru-image">
                     </div>
                     <h3>Mahant Swami Maharaj</h3>
                     <p class="guru-years">Current Spiritual Leader</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Information Section -->
+        <section id="contact" class="section contact-section">
+            <div class="section-header">
+                <h2>Contact Information</h2>
+                <p>Get in touch with us</p>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Address</strong>
+                            <p>BAPS Shri Swaminarayan Mandir<br>Edison, New Jersey</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Phone</strong>
+                            <p>(732) 572-1234</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info@bapsedison.org</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -336,16 +313,161 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 BAPS Shri Swaminarayan Mandir, Edison. All rights reserved.</p>
-            <button class="admin-trigger-btn" onclick="openAdminDashboard()">⚙️</button>
+            <button class="admin-trigger-btn" onclick="openAdminDashboard()">Admin</button>
     </div>
     </footer>
+
+    <!-- Activity Popups -->
+    <div id="activity-popup-balbalika" class="activity-popup">
+        <div class="activity-popup-content">
+            <button class="close-activity-btn" onclick="closeActivityPopup('balbalika')">&times;</button>
+            <div class="activity-popup-header">
+                <h2>Bal/Balika</h2>
+            </div>
+            <div class="activity-popup-body">
+                <p><strong>Ages: 5-11 years</strong></p>
+                <p>Our Bal/Balika sabha provides a nurturing environment for children to learn about Hindu culture, values, and traditions through engaging activities.</p>
+                
+                <p><strong>Activities Include:</strong></p>
+                <ul>
+                    <li>Weekly sabha sessions with stories and games</li>
+                    <li>Learning shlokas and bhajans</li>
+                    <li>Festival celebrations and cultural programs</li>
+                    <li>Character building through moral stories</li>
+                    <li>Arts & crafts projects</li>
+                </ul>
+                
+                <p><strong>When:</strong> Sundays, 10:00 AM - 12:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="activity-popup-kishorekishori" class="activity-popup">
+        <div class="activity-popup-content">
+            <button class="close-activity-btn" onclick="closeActivityPopup('kishorekishori')">&times;</button>
+            <div class="activity-popup-header">
+                <h2>Kishore/Kishori</h2>
+            </div>
+            <div class="activity-popup-body">
+                <p><strong>Ages: 12-18 years</strong></p>
+                <p>Our Kishore/Kishori sabha helps teenagers develop strong values, leadership skills, and spiritual awareness during their formative years.</p>
+                
+                <p><strong>Activities Include:</strong></p>
+                <ul>
+                    <li>Weekly sabha with discussions on contemporary topics</li>
+                    <li>Sports and recreational activities</li>
+                    <li>Community service projects</li>
+                    <li>Leadership development programs</li>
+                    <li>Annual summer shibirs and conventions</li>
+                </ul>
+                
+                <p><strong>When:</strong> Sundays, 10:00 AM - 12:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="activity-popup-yuvakyuvati" class="activity-popup">
+        <div class="activity-popup-content">
+            <button class="close-activity-btn" onclick="closeActivityPopup('yuvakyuvati')">&times;</button>
+            <div class="activity-popup-header">
+                <h2>Yuvak/Yuvati</h2>
+            </div>
+            <div class="activity-popup-body">
+                <p><strong>Ages: 18+ years</strong></p>
+                <p>Our Yuvak/Yuvati sabha provides young adults with spiritual guidance and opportunities for personal growth in a supportive community.</p>
+                
+                <p><strong>Activities Include:</strong></p>
+                <ul>
+                    <li>Weekly sabha with spiritual discourses</li>
+                    <li>Career guidance and mentorship</li>
+                    <li>Social service initiatives</li>
+                    <li>Regional and national conventions</li>
+                    <li>Study groups on Hindu scriptures</li>
+                </ul>
+                
+                <p><strong>When:</strong> Sundays, 10:00 AM - 12:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="activity-popup-betterliving" class="activity-popup">
+        <div class="activity-popup-content">
+            <button class="close-activity-btn" onclick="closeActivityPopup('betterliving')">&times;</button>
+            <div class="activity-popup-header">
+                <h2>Better Living</h2>
+            </div>
+            <div class="activity-popup-body">
+                <p><strong>Personal Development Program</strong></p>
+                <p>Better Living offers practical workshops and seminars on applying Hindu values to improve various aspects of daily life.</p>
+                
+                <p><strong>Topics Include:</strong></p>
+                <ul>
+                    <li>Stress management and work-life balance</li>
+                    <li>Building healthy relationships</li>
+                    <li>Parenting with Hindu values</li>
+                    <li>Financial planning and ethical living</li>
+                    <li>Health and wellness from a spiritual perspective</li>
+                </ul>
+                
+                <p><strong>When:</strong> Monthly workshops - Check calendar for dates</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="activity-popup-international" class="activity-popup">
+        <div class="activity-popup-content">
+            <button class="close-activity-btn" onclick="closeActivityPopup('international')">&times;</button>
+            <div class="activity-popup-header">
+                <h2>International Students</h2>
+            </div>
+            <div class="activity-popup-body">
+                <p><strong>Community for Students Away from Home</strong></p>
+                <p>Our International Students program provides a home away from home for students pursuing their education in the United States.</p>
+                
+                <p><strong>We Offer:</strong></p>
+                <ul>
+                    <li>Weekly gatherings and spiritual discussions</li>
+                    <li>Cultural celebrations during Indian festivals</li>
+                    <li>Study groups and academic support</li>
+                    <li>Networking opportunities with professionals</li>
+                    <li>Free prasad and meals on weekends</li>
+                </ul>
+                
+                <p><strong>When:</strong> Sundays and select weekdays - Contact us for schedule</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="activity-popup-family" class="activity-popup">
+        <div class="activity-popup-content">
+            <button class="close-activity-btn" onclick="closeActivityPopup('family')">&times;</button>
+            <div class="activity-popup-header">
+                <h2>Family Programs</h2>
+            </div>
+            <div class="activity-popup-body">
+                <p><strong>Activities for the Whole Family</strong></p>
+                <p>Our Family Programs bring families together to strengthen bonds through shared spiritual experiences and cultural activities.</p>
+                
+                <p><strong>Activities Include:</strong></p>
+                <ul>
+                    <li>Family sabhas with interactive sessions</li>
+                    <li>Festival celebrations for all ages</li>
+                    <li>Picnics and recreational outings</li>
+                    <li>Family volunteer service opportunities</li>
+                    <li>Parenting workshops and family counseling</li>
+                </ul>
+                
+                <p><strong>When:</strong> Various programs throughout the year</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Guru Popups -->
     <div id="guru-popup-pramukh" class="guru-popup">
         <div class="guru-popup-content">
             <button class="close-guru-btn" onclick="closeGuruPopup('pramukh')">&times;</button>
             <div class="guru-popup-header">
-                <img src="images/gurus/pramukh-swami-maharaj.jpg" alt="Pramukh Swami Maharaj" class="guru-popup-image">
+                <img src="images/gurus/vv30-029.jpg" alt="Pramukh Swami Maharaj" class="guru-popup-image">
                 <div class="guru-popup-title">
                     <h2>Pramukh Swami Maharaj</h2>
                     <p class="guru-popup-years">1921 - 2016</p>
@@ -374,7 +496,7 @@
         <div class="guru-popup-content">
             <button class="close-guru-btn" onclick="closeGuruPopup('mahant')">&times;</button>
             <div class="guru-popup-header">
-                <img src="images/gurus/mahant-swami-maharaj.jpg" alt="Mahant Swami Maharaj" class="guru-popup-image">
+                <img src="images/gurus/Mahant_Swami_Maharaj.jpg" alt="Mahant Swami Maharaj" class="guru-popup-image">
                 <div class="guru-popup-title">
                     <h2>Mahant Swami Maharaj</h2>
                     <p class="guru-popup-years">Current Spiritual Leader</p>
@@ -399,23 +521,32 @@
         </div>
     </div>
 
+    <!-- Screensaver Overlay -->
+    <div id="screensaver-overlay" class="screensaver-overlay">
+        <div class="screensaver-content">
+            <h1 class="screensaver-title">BAPS Shri Swaminarayan Mandir</h1>
+            <p class="screensaver-subtitle">Edison, New Jersey</p>
+            <div class="screensaver-prompt">Click anywhere to start</div>
+        </div>
+    </div>
+
     <!-- AI Assistant Popup -->
     <div id="ai-assistant" class="ai-assistant">
         <div class="ai-assistant-content">
             <div class="ai-header">
-                <h3>💬 Mandir Assistant</h3>
+                <h3>Mandir Assistant</h3>
                 <button class="close-ai-btn" onclick="closeAIAssistant()">&times;</button>
             </div>
             <div class="ai-chat-container" id="ai-chat-container">
                 <div class="ai-message bot-message">
-                    <p>Jai Swaminarayan! 🙏</p>
+                    <p>Jai Swaminarayan!</p>
                     <p>How can I help you today?</p>
                 </div>
                 <div class="quick-questions">
-                    <button class="quick-q-btn" onclick="askQuestion('timings')">🕐 Darshan Timings</button>
-                    <button class="quick-q-btn" onclick="askQuestion('aarti')">🕯️ Aarti Times</button>
-                    <button class="quick-q-btn" onclick="askQuestion('events')">📅 Upcoming Events</button>
-                    <button class="quick-q-btn" onclick="askQuestion('location')">📍 Location</button>
+                    <button class="quick-q-btn" onclick="askQuestion('timings')">Darshan Timings</button>
+                    <button class="quick-q-btn" onclick="askQuestion('aarti')">Aarti Times</button>
+                    <button class="quick-q-btn" onclick="askQuestion('events')">Upcoming Events</button>
+                    <button class="quick-q-btn" onclick="askQuestion('location')">Location</button>
                 </div>
             </div>
             <div class="ai-input-area">
@@ -521,14 +652,14 @@
             const container = document.getElementById('ai-chat-container');
             container.innerHTML = `
                 <div class="ai-message bot-message">
-                    <p>Jai Swaminarayan! 🙏</p>
+                    <p>Jai Swaminarayan!</p>
                     <p>How can I help you today?</p>
                 </div>
                 <div class="quick-questions">
-                    <button class="quick-q-btn" onclick="askQuestion('timings')">🕐 Darshan Timings</button>
-                    <button class="quick-q-btn" onclick="askQuestion('aarti')">🕯️ Aarti Times</button>
-                    <button class="quick-q-btn" onclick="askQuestion('events')">📅 Upcoming Events</button>
-                    <button class="quick-q-btn" onclick="askQuestion('location')">📍 Location</button>
+                    <button class="quick-q-btn" onclick="askQuestion('timings')">Darshan Timings</button>
+                    <button class="quick-q-btn" onclick="askQuestion('aarti')">Aarti Times</button>
+                    <button class="quick-q-btn" onclick="askQuestion('events')">Upcoming Events</button>
+                    <button class="quick-q-btn" onclick="askQuestion('location')">Location</button>
                 </div>
             `;
             document.getElementById('ai-input').value = '';
@@ -635,6 +766,17 @@
                     addQuickQuestions();
                 }, 300);
             }, 500);
+        }
+
+        // Activity Popup Functions
+        function openActivityPopup(activityId) {
+            document.getElementById('activity-popup-' + activityId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeActivityPopup(activityId) {
+            document.getElementById('activity-popup-' + activityId).style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
         // Guru Popup Functions
@@ -775,6 +917,53 @@
                     }
                 });
             }
+        });
+
+        // Screensaver / Idle Detection
+        let idleTimer;
+        const IDLE_TIME = 60000; // 1 minute in milliseconds
+        const screensaver = document.getElementById('screensaver-overlay');
+
+        function showScreensaver() {
+            screensaver.style.display = 'flex';
+            setTimeout(() => {
+                screensaver.classList.add('active');
+            }, 10);
+        }
+
+        function hideScreensaver() {
+            screensaver.classList.remove('active');
+            setTimeout(() => {
+                screensaver.style.display = 'none';
+            }, 300);
+        }
+
+        function resetIdleTimer() {
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(showScreensaver, IDLE_TIME);
+        }
+
+        // Hide screensaver on any interaction
+        screensaver.addEventListener('click', () => {
+            hideScreensaver();
+            resetIdleTimer();
+        });
+
+        // Track user activity
+        const activityEvents = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
+        
+        activityEvents.forEach(event => {
+            document.addEventListener(event, () => {
+                // Only reset timer if screensaver is not showing
+                if (!screensaver.classList.contains('active')) {
+                    resetIdleTimer();
+                }
+            }, true);
+        });
+
+        // Show screensaver on page load
+        window.addEventListener('load', () => {
+            showScreensaver();
         });
 
     </script>

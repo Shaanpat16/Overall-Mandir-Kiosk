@@ -314,6 +314,153 @@ body {
     color: #666;
 }
 
+/* Activities Section */
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.activity-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 230, 211, 0.95) 100%);
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px var(--shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.activity-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px var(--shadow-dark);
+    background: linear-gradient(135deg, var(--primary-beige) 0%, var(--warm-beige) 100%);
+}
+
+
+.activity-card h3 {
+    font-size: 1.5em;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.activity-card p {
+    color: #666;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* Activity Popup */
+.activity-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.activity-popup-content {
+    background: linear-gradient(135deg, var(--warm-beige) 0%, var(--accent-light) 100%);
+    border-radius: 20px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: popupSlideIn 0.3s ease;
+}
+
+.close-activity-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--text-dark);
+    color: var(--text-light);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.8em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.close-activity-btn:hover {
+    background: #6b3410;
+    transform: rotate(90deg);
+}
+
+.activity-popup-header {
+    background: linear-gradient(135deg, var(--primary-beige) 0%, var(--warm-beige) 100%);
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 3px solid var(--text-dark);
+}
+
+.activity-popup-header h2 {
+    font-size: 2.2em;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.activity-popup-body {
+    padding: 35px 40px;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.activity-popup-body p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.activity-popup-body strong {
+    font-size: 1.3em;
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.activity-popup-body ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+}
+
+.activity-popup-body ul li {
+    padding: 8px 0 8px 30px;
+    position: relative;
+    font-size: 1.05em;
+}
+
+.activity-popup-body ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-size: 1.5em;
+    color: var(--text-dark);
+}
+
 /* Timings Grid */
 .timings-grid {
     display: grid;
@@ -1254,6 +1401,11 @@ body {
         font-size: 2em;
     }
     
+    .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
     .timings-grid,
     .events-grid,
     .about-grid {
@@ -1276,6 +1428,23 @@ body {
     
     .section-header h2 {
         font-size: 1.6em;
+    }
+    
+    .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .activity-card {
+        padding: 30px 20px;
+    }
+    
+    .activity-popup-header {
+        padding: 25px;
+    }
+    
+    .activity-popup-body {
+        padding: 25px;
     }
     
     .timing-card,
@@ -1478,10 +1647,12 @@ body {
 }
 
 .guru-popup-body ul li:before {
-    content: "🙏";
+    content: "•";
     position: absolute;
     left: 0;
     top: 10px;
+    font-size: 1.5em;
+    color: var(--text-dark);
 }
 
 /* Responsive Design for Gurus */
@@ -1524,5 +1695,111 @@ body {
     .guru-image-wrapper {
         width: 180px;
         height: 180px;
+    }
+}
+
+/* Screensaver Overlay */
+.screensaver-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(230, 215, 184, 0.7) 0%, 
+        rgba(245, 230, 211, 0.7) 50%, 
+        rgba(250, 247, 242, 0.7) 100%);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+.screensaver-overlay.active {
+    opacity: 1;
+}
+
+.screensaver-content {
+    text-align: center;
+    padding: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.screensaver-title {
+    font-size: 4em;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.screensaver-subtitle {
+    font-size: 2em;
+    color: var(--text-dark);
+    margin-bottom: 60px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.screensaver-prompt {
+    font-size: 1.8em;
+    color: var(--text-dark);
+    padding: 20px 40px;
+    border: 3px solid var(--text-dark);
+    border-radius: 50px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.screensaver-prompt:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive Screensaver */
+@media (max-width: 768px) {
+    .screensaver-title {
+        font-size: 2.5em;
+    }
+    
+    .screensaver-subtitle {
+        font-size: 1.5em;
+        margin-bottom: 40px;
+    }
+    
+    .screensaver-prompt {
+        font-size: 1.4em;
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .screensaver-title {
+        font-size: 2em;
+    }
+    
+    .screensaver-subtitle {
+        font-size: 1.2em;
+    }
+    
+    .screensaver-prompt {
+        font-size: 1.2em;
+        padding: 12px 25px;
     }
 }
