@@ -282,6 +282,32 @@
                 </div>
             </div>
         </section>
+
+        <!-- Gurus Section -->
+        <section id="gurus" class="section gurus-section">
+            <div class="section-header">
+                <h2>Our Gurus</h2>
+                <p>Spiritual Masters who guide us on the path of devotion</p>
+            </div>
+            
+            <div class="gurus-grid">
+                <div class="guru-card" onclick="openGuruPopup('pramukh')">
+                    <div class="guru-image-wrapper">
+                        <img src="images/gurus/pramukh-swami-maharaj.jpg" alt="Pramukh Swami Maharaj" class="guru-image">
+                    </div>
+                    <h3>Pramukh Swami Maharaj</h3>
+                    <p class="guru-years">1921 - 2016</p>
+                </div>
+                
+                <div class="guru-card" onclick="openGuruPopup('mahant')">
+                    <div class="guru-image-wrapper">
+                        <img src="images/gurus/mahant-swami-maharaj.jpg" alt="Mahant Swami Maharaj" class="guru-image">
+                    </div>
+                    <h3>Mahant Swami Maharaj</h3>
+                    <p class="guru-years">Current Spiritual Leader</p>
+                </div>
+            </div>
+        </section>
     </main>
 
             <!-- Footer -->
@@ -313,6 +339,65 @@
             <button class="admin-trigger-btn" onclick="openAdminDashboard()">⚙️</button>
     </div>
     </footer>
+
+    <!-- Guru Popups -->
+    <div id="guru-popup-pramukh" class="guru-popup">
+        <div class="guru-popup-content">
+            <button class="close-guru-btn" onclick="closeGuruPopup('pramukh')">&times;</button>
+            <div class="guru-popup-header">
+                <img src="images/gurus/pramukh-swami-maharaj.jpg" alt="Pramukh Swami Maharaj" class="guru-popup-image">
+                <div class="guru-popup-title">
+                    <h2>Pramukh Swami Maharaj</h2>
+                    <p class="guru-popup-years">1921 - 2016</p>
+                </div>
+            </div>
+            <div class="guru-popup-body">
+                <p><strong>The Epitome of Spirituality</strong></p>
+                <p>Pramukh Swami Maharaj was the fifth spiritual successor of Bhagwan Swaminarayan and served as the guru and Pramukh of BAPS from 1950 to 2016. His life was a living example of faith, devotion, and selfless service.</p>
+                
+                <p><strong>His Legacy</strong></p>
+                <ul>
+                    <li>Inspired and consecrated over 1,100 mandirs worldwide</li>
+                    <li>Initiated over 1,000 sadhus into the spiritual path</li>
+                    <li>Promoted peace, harmony, and humanitarian service globally</li>
+                    <li>Guided millions on the path of righteousness and devotion</li>
+                    <li>His mantra: "In the joy of others, lies our own"</li>
+                </ul>
+                
+                <p><strong>His Message</strong></p>
+                <p>"In the joy of others, lies our own. In the progress of others rests our own. In the good of others abides our own."</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="guru-popup-mahant" class="guru-popup">
+        <div class="guru-popup-content">
+            <button class="close-guru-btn" onclick="closeGuruPopup('mahant')">&times;</button>
+            <div class="guru-popup-header">
+                <img src="images/gurus/mahant-swami-maharaj.jpg" alt="Mahant Swami Maharaj" class="guru-popup-image">
+                <div class="guru-popup-title">
+                    <h2>Mahant Swami Maharaj</h2>
+                    <p class="guru-popup-years">Current Spiritual Leader</p>
+                </div>
+            </div>
+            <div class="guru-popup-body">
+                <p><strong>The Sixth Spiritual Successor</strong></p>
+                <p>Mahant Swami Maharaj is the sixth spiritual successor of Bhagwan Swaminarayan and the current guru and Pramukh of BAPS. He was ordained as the spiritual leader in 2016, following the divine wish of Pramukh Swami Maharaj.</p>
+                
+                <p><strong>His Life</strong></p>
+                <ul>
+                    <li>Born as Keshavjivandas Patel on September 13, 1933</li>
+                    <li>Initiated as a sadhu in 1955 by Yogiji Maharaj</li>
+                    <li>Served devotedly under Yogiji Maharaj and Pramukh Swami Maharaj</li>
+                    <li>Known for his humility, devotion, and spiritual wisdom</li>
+                    <li>Continues the mission of peace and spirituality worldwide</li>
+                </ul>
+                
+                <p><strong>His Guidance</strong></p>
+                <p>"Stay connected to God and the guru, and you will never be alone. Their grace and blessings will always be with you."</p>
+            </div>
+        </div>
+    </div>
 
     <!-- AI Assistant Popup -->
     <div id="ai-assistant" class="ai-assistant">
@@ -550,6 +635,17 @@
                     addQuickQuestions();
                 }, 300);
             }, 500);
+        }
+
+        // Guru Popup Functions
+        function openGuruPopup(guruId) {
+            document.getElementById('guru-popup-' + guruId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGuruPopup(guruId) {
+            document.getElementById('guru-popup-' + guruId).style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
         // Admin Dashboard Functions
