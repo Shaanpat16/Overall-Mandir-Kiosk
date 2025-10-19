@@ -427,3 +427,113 @@
 127.0.0.1 - - [18/Oct/2025 16:45:11] "GET /public/images/events/fooddrive/3.jpg HTTP/1.1" 404 -
 127.0.0.1 - - [18/Oct/2025 16:45:11] "GET /public/images/events/fooddrive/1.jpg HTTP/1.1" 404 -
 127.0.0.1 - - [18/Oct/2025 16:45:11] "GET /public/images/events/fooddrive/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/events-banner.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/css/styles.css?v=1.4 HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/gurus/vv30-029.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/mahapuja/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/mahapuja/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/gurus/Mahant_Swami_Maharaj.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/mahapuja/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/chopdapujan/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/annakut/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/chopdapujan/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/annakut/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/diwali/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/chopdapujan/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/annakut/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/diwali/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/diwali/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/womensconference/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/womensconference/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/blooddrive/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/womensconference/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/blooddrive/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/blooddrive/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/walkathon/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/walkathon/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/walkathon/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/fooddrive/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/fooddrive/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:11] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:11] "GET /public/images/events/fooddrive/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:02:22] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:02:22] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/ HTTP/1.1" 304 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/temple-images/DJI_0347_Edited%20(2).png HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/gallery/mandir-exterior.png HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/mahapuja/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/mahapuja/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/mahapuja/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/chopdapujan/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/chopdapujan/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/chopdapujan/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/annakut/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/annakut/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/annakut/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/diwali/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/womensconference/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/diwali/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/diwali/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/blooddrive/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/womensconference/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/womensconference/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/blooddrive/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/blooddrive/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/walkathon/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/walkathon/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/walkathon/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/fooddrive/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/fooddrive/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [18/Oct/2025 23:30:18] code 404, message File not found
+127.0.0.1 - - [18/Oct/2025 23:30:18] "GET /public/images/events/fooddrive/3.jpg HTTP/1.1" 404 -
