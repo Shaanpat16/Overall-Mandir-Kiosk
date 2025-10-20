@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
-    <link rel="stylesheet" href="css/styles.css?v=1.8">
+    <link rel="stylesheet" href="css/styles.css?v=1.9">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1288,6 +1288,18 @@
             const screensaver = document.getElementById('screensaver-overlay');
             if (screensaver && !screensaverActive) {
                 screensaverActive = true;
+                
+                // Close all popups before showing screensaver
+                if (typeof closeAllPopups === 'function') {
+                    closeAllPopups();
+                }
+                
+                // Scroll to home page (top)
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
                 screensaver.style.display = 'flex';
                 // Force reflow
                 void screensaver.offsetWidth;
