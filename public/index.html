@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
-    <link rel="stylesheet" href="css/styles.css?v=1.7">
+    <link rel="stylesheet" href="css/styles.css?v=1.8">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -682,7 +682,7 @@
                 <h2>Family Programs</h2>
             </div>
             <div class="activity-popup-body">
-                <p><strong>Activities for the Whole Family (Premvati Mandal - Gujarātī & English)</strong></p>
+                <p><strong>Activities for the Whole Family</strong></p>
                 <p>Our Family Programs bring families together to strengthen bonds through shared spiritual experiences and cultural activities.</p>
                 
                 <p><strong>Activities Include:</strong></p>
@@ -695,11 +695,7 @@
                     <li>Devotional assemblies and spiritual discourses</li>
                 </ul>
                 
-                <p><strong>Premvati Sabha Timings:</strong></p>
-                <ul>
-                    <li>Saturday: 3:00pm - 4:00pm</li>
-                    <li>Sunday: 2:00pm - 3:00pm</li>
-                </ul>
+                <p><strong>When:</strong> Various programs throughout the year - Check calendar for dates</p>
             </div>
         </div>
     </div>
@@ -1033,13 +1029,62 @@
             }
         }
 
+        // Popup Auto-Close Timer (1 minute of inactivity)
+        let popupIdleTimer = null;
+        const POPUP_IDLE_TIME = 60000; // 1 minute in milliseconds
+
+        function startPopupIdleTimer() {
+            clearPopupIdleTimer();
+            popupIdleTimer = setTimeout(() => {
+                closeAllPopups();
+            }, POPUP_IDLE_TIME);
+        }
+
+        function clearPopupIdleTimer() {
+            if (popupIdleTimer) {
+                clearTimeout(popupIdleTimer);
+                popupIdleTimer = null;
+            }
+        }
+
+        function closeAllPopups() {
+            // Close all activity popups
+            const activityPopups = document.querySelectorAll('.activity-popup');
+            activityPopups.forEach(popup => {
+                popup.style.display = 'none';
+            });
+
+            // Close all guru popups
+            const guruPopups = document.querySelectorAll('.guru-popup');
+            guruPopups.forEach(popup => {
+                popup.style.display = 'none';
+            });
+
+            // Close all event popups
+            const eventPopups = document.querySelectorAll('.event-popup');
+            eventPopups.forEach(popup => {
+                popup.style.display = 'none';
+            });
+
+            document.body.style.overflow = 'auto';
+            clearPopupIdleTimer();
+        }
+
         // Event Popup Functions
         function openEventPopup(eventId) {
             const popup = document.getElementById('event-popup-' + eventId);
             if (popup) {
                 popup.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
-                // Reset idle timer when opening popup
+                startPopupIdleTimer();
+                
+                // Add event listeners to reset timer on interaction
+                popup.addEventListener('scroll', startPopupIdleTimer, { passive: true });
+                popup.addEventListener('touchstart', startPopupIdleTimer, { passive: true });
+                popup.addEventListener('touchmove', startPopupIdleTimer, { passive: true });
+                popup.addEventListener('click', startPopupIdleTimer);
+                
+                // Reset main idle timer when opening popup
                 if (typeof resetIdleTimer === 'function') {
                     resetIdleTimer();
                 }
@@ -1051,6 +1096,7 @@
             if (popup) {
                 popup.style.display = 'none';
                 document.body.style.overflow = 'auto';
+                clearPopupIdleTimer();
             }
         }
 
@@ -1060,7 +1106,15 @@
             if (popup) {
                 popup.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
-                // Reset idle timer when opening popup
+                startPopupIdleTimer();
+                
+                // Add event listeners to reset timer on interaction
+                popup.addEventListener('scroll', startPopupIdleTimer, { passive: true });
+                popup.addEventListener('touchstart', startPopupIdleTimer, { passive: true });
+                popup.addEventListener('touchmove', startPopupIdleTimer, { passive: true });
+                popup.addEventListener('click', startPopupIdleTimer);
+                
+                // Reset main idle timer when opening popup
                 if (typeof resetIdleTimer === 'function') {
                     resetIdleTimer();
                 }
@@ -1072,18 +1126,28 @@
             if (popup) {
                 popup.style.display = 'none';
                 document.body.style.overflow = 'auto';
+                clearPopupIdleTimer();
             }
         }
 
         // Guru Popup Functions
         function openGuruPopup(guruId) {
-            document.getElementById('guru-popup-' + guruId).style.display = 'flex';
+            const popup = document.getElementById('guru-popup-' + guruId);
+            popup.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            startPopupIdleTimer();
+            
+            // Add event listeners to reset timer on interaction
+            popup.addEventListener('scroll', startPopupIdleTimer, { passive: true });
+            popup.addEventListener('touchstart', startPopupIdleTimer, { passive: true });
+            popup.addEventListener('touchmove', startPopupIdleTimer, { passive: true });
+            popup.addEventListener('click', startPopupIdleTimer);
         }
 
         function closeGuruPopup(guruId) {
             document.getElementById('guru-popup-' + guruId).style.display = 'none';
             document.body.style.overflow = 'auto';
+            clearPopupIdleTimer();
         }
 
         // Admin Dashboard Functions
