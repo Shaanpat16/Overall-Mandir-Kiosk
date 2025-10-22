@@ -1175,3 +1175,23 @@
 10.25.21.188 - - [21/Oct/2025 21:03:24] code 404, message File not found
 10.25.21.188 - - [21/Oct/2025 21:03:24] "GET /public/images/events/womensconference/2.jpg HTTP/1.1" 404 -
 10.25.21.188 - - [21/Oct/2025 21:03:24] "GET /public/images/events/womensconference/3.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/ HTTP/1.1" 200 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/css/styles.css?v=2.2 HTTP/1.1" 200 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/mahapuja/1.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/mahapuja/2.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/mahapuja/3.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/annakut/1.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/annakut/2.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/annakut/3.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] code 404, message File not found
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/womensconference/2.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/womensconference/3.jpg HTTP/1.1" 404 -
+10.25.21.188 - - [21/Oct/2025 21:14:13] "GET /public/images/events/womensconference/1.jpg HTTP/1.1" 404 -
