@@ -1042,3 +1042,43 @@
 127.0.0.1 - - [20/Oct/2025 16:39:53] "GET /public/images/events/womensconference/3.jpg HTTP/1.1" 404 -
 127.0.0.1 - - [20/Oct/2025 16:39:53] "GET /public/images/events/fooddrive/3.jpg HTTP/1.1" 304 -
 127.0.0.1 - - [20/Oct/2025 16:39:53] "GET /public/images/events/womensconference/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/ HTTP/1.1" 200 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/css/styles.css?v=2.0 HTTP/1.1" 200 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/gallery/Edison_Diwali2019_01.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/mahapuja/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/gallery/2ILPJ2JBHBFNBFTFC5HMIONBSI.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/chopdapujan/1.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/chopdapujan/3.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/mahapuja/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/gallery/unnamed.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/chopdapujan/2.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/mahapuja/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/annakut/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/annakut/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/diwali/1.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/annakut/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/diwali/2.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/diwali/3.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/womensconference/1.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/womensconference/2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] code 404, message File not found
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/womensconference/3.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/blooddrive/2.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/blooddrive/3.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/blooddrive/1.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/walkathon/1.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/walkathon/2.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/walkathon/3.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/fooddrive/1.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/fooddrive/3.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [20/Oct/2025 16:41:58] "GET /public/images/events/fooddrive/2.jpg HTTP/1.1" 304 -
