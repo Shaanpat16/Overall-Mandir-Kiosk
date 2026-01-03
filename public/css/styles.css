@@ -1363,6 +1363,30 @@ body {
     font-weight: 600;
 }
 
+#analytics-display {
+    max-height: 400px;
+    overflow-y: auto;
+    font-size: 0.95em;
+}
+
+#analytics-display::-webkit-scrollbar {
+    width: 8px;
+}
+
+#analytics-display::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+#analytics-display::-webkit-scrollbar-thumb {
+    background: var(--text-dark);
+    border-radius: 4px;
+}
+
+#analytics-display::-webkit-scrollbar-thumb:hover {
+    background: #6d3410;
+}
+
 /* About Section */
 .about-content {
     display: grid;
@@ -1924,6 +1948,7 @@ body {
     transition: all 0.3s ease;
     text-align: center;
     animation: float 4s ease-in-out infinite;
+    cursor: pointer;
 }
 
 .qr-code-card:nth-child(2) {
