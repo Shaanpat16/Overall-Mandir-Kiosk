@@ -1353,6 +1353,66 @@ body {
     font-weight: 600;
 }
 
+/* Display Mode Section */
+.admin-display-mode-section {
+    background: var(--surface-light);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+.admin-display-mode-section h4 {
+    margin: 0 0 15px 0;
+    color: var(--text-primary);
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.display-mode-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.mode-btn {
+    background: var(--surface);
+    border: 2px solid var(--text-secondary);
+    color: var(--text-primary);
+    padding: 20px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.mode-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--shadow-medium);
+}
+
+.mode-btn.active {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.mode-icon {
+    font-size: 2em;
+}
+
+.mode-text {
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
 #analytics-display {
     max-height: 400px;
     overflow-y: auto;
@@ -2273,6 +2333,29 @@ body {
     50% {
         transform: translateY(-20px);
     }
+}
+
+/* Photo Display Mode */
+.photo-display-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.display-photo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 /* Responsive Screensaver */

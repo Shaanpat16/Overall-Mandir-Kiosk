@@ -1,0 +1,12 @@
+Add your display photo here:
+
+Filename: display-photo.jpg or display-photo.png
+
+This photo will be displayed when you switch to "Photo Mode" in the admin dashboard.
+
+Recommended:
+- Resolution: 1920x1080 or higher
+- Format: JPG or PNG
+- High quality image
+
+After adding the photo, refresh the kiosk and use the admin panel to switch to Photo Mode.
