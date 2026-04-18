@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
-    <link rel="stylesheet" href="css/styles.css?v=14.0">
+    <link rel="stylesheet" href="css/styles.css?v=14.3">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -252,6 +252,37 @@
                     </div>
                     <h3>Mahant Swami Maharaj</h3>
                     <p class="guru-years">Current Spiritual Leader</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Vicharan globe: hidden until loaded from admin dashboard -->
+        <section id="mahant-vicharan" class="section page-globe-section" style="display: none;" aria-hidden="true">
+            <div id="page-globe-test-wrap" class="page-globe-test-wrap">
+                <div class="msm-vicharan-wrap">
+                    <div class="msm-vicharan-panel">
+                        <div class="msm-panel-head">
+                            <div>
+                                <h3>Interactive Globe</h3>
+                                <p>Drag to rotate · Scroll to zoom · Click a marker for details</p>
+                            </div>
+                            <div class="msm-filters" id="page-msm-filters"></div>
+                        </div>
+                        <div class="msm-globe-stage page-msm-globe-stage">
+                            <div class="msm-globe-status" id="page-msm-globe-status">Showing all regions</div>
+                            <canvas id="page-msm-globe-canvas"></canvas>
+                        </div>
+                    </div>
+                    <aside class="msm-location-panel">
+                        <div class="msm-panel-head">
+                            <div>
+                                <h3 id="page-msm-details-title">Location</h3>
+                                <p id="page-msm-details-sub">Click a marker or a city below</p>
+                            </div>
+                        </div>
+                        <div id="page-msm-selected-detail" class="page-msm-selected-detail"></div>
+                        <div class="msm-details-body" id="page-msm-details-body"></div>
+                    </aside>
                 </div>
             </div>
         </section>
@@ -888,36 +919,12 @@
                         </div>
                     </div>
 
-                    <div class="admin-test-section">
-                        <h4>Test: Global Vicharan Globe</h4>
-                        <p class="admin-test-help">Experimental 3D view. Tap Load to enable (downloads WebGL library once).</p>
-                        <button type="button" class="admin-globe-load-btn" id="admin-globe-load-btn" onclick="loadAdminGlobeTest()">Load interactive globe</button>
-                        <div id="admin-globe-test-wrap" class="admin-globe-test-wrap" style="display: none;" aria-hidden="true">
-                            <div class="msm-vicharan-wrap">
-                                <div class="msm-vicharan-panel">
-                                    <div class="msm-panel-head">
-                                        <div>
-                                            <h3>Interactive Globe</h3>
-                                            <p>Drag to rotate · Scroll to zoom · Click a marker for details</p>
-                                        </div>
-                                        <div class="msm-filters" id="admin-msm-filters"></div>
-                                    </div>
-                                    <div class="msm-globe-stage admin-msm-globe-stage">
-                                        <div class="msm-globe-status" id="admin-msm-globe-status">Showing all regions</div>
-                                        <canvas id="admin-msm-globe-canvas"></canvas>
-                                    </div>
-                                </div>
-                                <aside class="msm-location-panel">
-                                    <div class="msm-panel-head">
-                                        <div>
-                                            <h3 id="admin-msm-details-title">Location</h3>
-                                            <p id="admin-msm-details-sub">Click a red marker or a city below</p>
-                                        </div>
-                                    </div>
-                                    <div id="admin-msm-selected-detail" class="admin-msm-selected-detail"></div>
-                                    <div class="msm-details-body" id="admin-msm-details-body"></div>
-                                </aside>
-                            </div>
+                    <div class="admin-globe-controls-section">
+                        <h4>Globe on main page</h4>
+                        <p class="admin-globe-controls-help">Controls the Global Vicharan 3D globe in the public “Mahant Swami” section. Load only when needed; hide to reduce GPU use.</p>
+                        <div class="admin-globe-controls-toolbar">
+                            <button type="button" class="admin-globe-load-btn" id="globe-admin-load-btn" onclick="loadPageGlobe()">Load globe on page</button>
+                            <button type="button" class="admin-globe-unload-btn" id="globe-admin-unload-btn" onclick="unloadPageGlobe()" style="display: none;">Hide globe on page</button>
                         </div>
                     </div>
                     
@@ -1464,43 +1471,81 @@
         const MSM_COL_SELECTED = 0xe53935;
         const MSM_COL_LINE_SELECTED = 0xff6659;
 
-        let adminGlobeThreeLoading = false;
-        let adminGlobeInited = false;
+        let pageGlobeThreeLoading = false;
+        let pageGlobeApi = null;
 
-        function loadAdminGlobeTest() {
-            const wrap = document.getElementById("admin-globe-test-wrap");
-            const btn = document.getElementById("admin-globe-load-btn");
+        function loadPageGlobe() {
+            const section = document.getElementById("mahant-vicharan");
+            const wrap = document.getElementById("page-globe-test-wrap");
+            const loadBtn = document.getElementById("globe-admin-load-btn");
+            const unloadBtn = document.getElementById("globe-admin-unload-btn");
             if (!wrap) return;
 
+            if (section) {
+                section.style.display = "block";
+                section.setAttribute("aria-hidden", "false");
+            }
             wrap.style.display = "block";
             wrap.setAttribute("aria-hidden", "false");
 
-            if (adminGlobeInited) {
-                if (typeof window.__adminGlobeResize === "function") window.__adminGlobeResize();
-                if (btn) {
-                    btn.textContent = "Globe ready";
-                    btn.disabled = true;
-                }
+            if (pageGlobeApi) {
+                pageGlobeApi.resize();
+                if (loadBtn) loadBtn.style.display = "none";
+                if (unloadBtn) unloadBtn.style.display = "inline-block";
                 return;
             }
-            if (adminGlobeThreeLoading) return;
-            adminGlobeThreeLoading = true;
+            if (pageGlobeThreeLoading) return;
+            pageGlobeThreeLoading = true;
 
-            if (btn) {
-                btn.textContent = "Loading 3D library…";
-                btn.disabled = true;
+            if (loadBtn) {
+                loadBtn.textContent = "Loading 3D library…";
+                loadBtn.disabled = true;
             }
+            if (unloadBtn) unloadBtn.style.display = "none";
 
             function finishOk() {
-                adminGlobeThreeLoading = false;
-                if (btn) {
-                    btn.textContent = "Globe ready";
-                    btn.disabled = true;
+                pageGlobeThreeLoading = false;
+                if (loadBtn) {
+                    loadBtn.style.display = "none";
+                    loadBtn.textContent = "Load globe on page";
+                    loadBtn.disabled = false;
                 }
+                if (unloadBtn) unloadBtn.style.display = "inline-block";
+            }
+
+            function onScriptError() {
+                pageGlobeThreeLoading = false;
+                if (loadBtn) {
+                    loadBtn.disabled = false;
+                    loadBtn.style.display = "inline-block";
+                    loadBtn.textContent = "Retry loading globe";
+                }
+                if (unloadBtn) unloadBtn.style.display = "none";
+                wrap.style.display = "none";
+                wrap.setAttribute("aria-hidden", "true");
+                if (section) {
+                    section.style.display = "none";
+                    section.setAttribute("aria-hidden", "true");
+                }
+                alert("Could not load 3D library. Check network and try again.");
             }
 
             if (window.THREE) {
-                initAdminGlobeTest();
+                pageGlobeApi = initVicharanGlobe("page");
+                if (!pageGlobeApi) {
+                    pageGlobeThreeLoading = false;
+                    if (loadBtn) {
+                        loadBtn.disabled = false;
+                        loadBtn.textContent = "Load globe on page";
+                    }
+                    wrap.style.display = "none";
+                    wrap.setAttribute("aria-hidden", "true");
+                    if (section) {
+                        section.style.display = "none";
+                        section.setAttribute("aria-hidden", "true");
+                    }
+                    return;
+                }
                 finishOk();
                 return;
             }
@@ -1509,18 +1554,52 @@
             s.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
             s.async = true;
             s.onload = function () {
-                initAdminGlobeTest();
+                pageGlobeApi = initVicharanGlobe("page");
+                if (!pageGlobeApi) {
+                    pageGlobeThreeLoading = false;
+                    if (loadBtn) {
+                        loadBtn.disabled = false;
+                        loadBtn.textContent = "Load globe on page";
+                    }
+                    wrap.style.display = "none";
+                    wrap.setAttribute("aria-hidden", "true");
+                    if (section) {
+                        section.style.display = "none";
+                        section.setAttribute("aria-hidden", "true");
+                    }
+                    return;
+                }
                 finishOk();
             };
-            s.onerror = function () {
-                adminGlobeThreeLoading = false;
-                if (btn) {
-                    btn.disabled = false;
-                    btn.textContent = "Retry loading globe";
-                }
-                alert("Could not load 3D library. Check network and try again.");
-            };
+            s.onerror = onScriptError;
             document.head.appendChild(s);
+        }
+
+        function unloadPageGlobe() {
+            const section = document.getElementById("mahant-vicharan");
+            const wrap = document.getElementById("page-globe-test-wrap");
+            const loadBtn = document.getElementById("globe-admin-load-btn");
+            const unloadBtn = document.getElementById("globe-admin-unload-btn");
+
+            if (pageGlobeApi && typeof pageGlobeApi.dispose === "function") {
+                pageGlobeApi.dispose();
+            }
+            pageGlobeApi = null;
+
+            if (wrap) {
+                wrap.style.display = "none";
+                wrap.setAttribute("aria-hidden", "true");
+            }
+            if (section) {
+                section.style.display = "none";
+                section.setAttribute("aria-hidden", "true");
+            }
+            if (loadBtn) {
+                loadBtn.style.display = "inline-block";
+                loadBtn.textContent = "Load globe on page";
+                loadBtn.disabled = false;
+            }
+            if (unloadBtn) unloadBtn.style.display = "none";
         }
 
         function msmLatLonToVec3(THREE, lat, lon, radius) {
@@ -1533,20 +1612,32 @@
             );
         }
 
-        function initAdminGlobeTest() {
-            if (!window.THREE || adminGlobeInited) return;
+        function disposeThreeHierarchy(obj) {
+            if (!obj || !window.THREE) return;
+            obj.traverse(function (child) {
+                if (child.geometry) child.geometry.dispose();
+                if (child.material) {
+                    var mats = Array.isArray(child.material) ? child.material : [child.material];
+                    mats.forEach(function (m) {
+                        if (m.map) m.map.dispose();
+                        m.dispose();
+                    });
+                }
+            });
+        }
+
+        function initVicharanGlobe(idPrefix) {
+            if (!window.THREE) return null;
 
             const THREE = window.THREE;
-            const canvas = document.getElementById("admin-msm-globe-canvas");
-            const filterWrap = document.getElementById("admin-msm-filters");
-            const detailsBody = document.getElementById("admin-msm-details-body");
-            const detailsTitle = document.getElementById("admin-msm-details-title");
-            const detailsSub = document.getElementById("admin-msm-details-sub");
-            const selectedDetail = document.getElementById("admin-msm-selected-detail");
-            const statusEl = document.getElementById("admin-msm-globe-status");
-            if (!canvas || !filterWrap || !detailsBody || !detailsTitle || !detailsSub || !statusEl) return;
-
-            adminGlobeInited = true;
+            const canvas = document.getElementById(idPrefix + "-msm-globe-canvas");
+            const filterWrap = document.getElementById(idPrefix + "-msm-filters");
+            const detailsBody = document.getElementById(idPrefix + "-msm-details-body");
+            const detailsTitle = document.getElementById(idPrefix + "-msm-details-title");
+            const detailsSub = document.getElementById(idPrefix + "-msm-details-sub");
+            const selectedDetail = document.getElementById(idPrefix + "-msm-selected-detail");
+            const statusEl = document.getElementById(idPrefix + "-msm-globe-status");
+            if (!canvas || !filterWrap || !detailsBody || !detailsTitle || !detailsSub || !statusEl) return null;
 
             const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true, powerPreference: "high-performance" });
             renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
@@ -1555,6 +1646,7 @@
             const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 1000);
             camera.position.z = 3.15;
             let targetZoom = 3.15;
+            var animationFrameId = null;
 
             const resize = () => {
                 const rect = canvas.parentElement.getBoundingClientRect();
@@ -1565,7 +1657,6 @@
                 camera.updateProjectionMatrix();
             };
             resize();
-            window.__adminGlobeResize = resize;
             window.addEventListener("resize", resize);
 
             scene.add(new THREE.AmbientLight(0x91a9c4, 0.85));
@@ -1614,7 +1705,7 @@
                     selectedMarker.dot.material.color.setHex(MSM_COL_SELECTED);
                     selectedMarker.line.material.color.setHex(MSM_COL_LINE_SELECTED);
                 }
-                document.querySelectorAll(".msm-location-card").forEach((el) => {
+                detailsBody.querySelectorAll(".msm-location-card").forEach((el) => {
                     el.classList.toggle("msm-location-card--active", marker && el.dataset.city === marker.loc.city);
                 });
             }
@@ -1622,11 +1713,11 @@
             function showLocationInfo(loc) {
                 if (selectedDetail) {
                     selectedDetail.innerHTML = `
-                        <div class="admin-msm-info-block">
-                            <h4 class="admin-msm-info-city">${loc.city}</h4>
-                            <p class="admin-msm-info-country">${loc.country}</p>
-                            <p class="admin-msm-info-coords"><strong>Coordinates:</strong> ${loc.lat.toFixed(4)}°, ${loc.lon.toFixed(4)}°</p>
-                            <p class="admin-msm-info-desc">${loc.desc}</p>
+                        <div class="globe-info-block">
+                            <h4 class="globe-info-city">${loc.city}</h4>
+                            <p class="globe-info-country">${loc.country}</p>
+                            <p class="globe-info-coords"><strong>Coordinates:</strong> ${loc.lat.toFixed(4)}°, ${loc.lon.toFixed(4)}°</p>
+                            <p class="globe-info-desc">${loc.desc}</p>
                         </div>
                     `;
                 }
@@ -1784,30 +1875,60 @@
                 targetZoom = 2.55;
             }
 
+            function onCanvasLeave() {
+                isDragging = false;
+            }
+
             canvas.addEventListener("mousedown", onPointerDown);
             window.addEventListener("mouseup", onPointerUp);
             canvas.addEventListener("mousemove", onPointerMove);
-            canvas.addEventListener("mouseleave", () => {
-                isDragging = false;
-            });
+            canvas.addEventListener("mouseleave", onCanvasLeave);
 
             canvas.addEventListener("touchstart", onPointerDown, { passive: true });
             canvas.addEventListener("touchmove", onPointerMove, { passive: true });
             canvas.addEventListener("touchend", onPointerUp, { passive: true });
 
-            canvas.addEventListener("wheel", function (e) {
+            function onWheel(e) {
                 e.preventDefault();
                 targetZoom = Math.min(4.2, Math.max(2.15, targetZoom + e.deltaY * 0.002));
-            }, { passive: false });
+            }
+            canvas.addEventListener("wheel", onWheel, { passive: false });
 
             applyRegion(activeRegion);
 
             function animate() {
-                requestAnimationFrame(animate);
+                animationFrameId = requestAnimationFrame(animate);
                 camera.position.z += (targetZoom - camera.position.z) * 0.08;
                 renderer.render(scene, camera);
             }
             animate();
+
+            function dispose() {
+                if (animationFrameId !== null) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+                window.removeEventListener("resize", resize);
+                window.removeEventListener("mouseup", onPointerUp);
+                canvas.removeEventListener("mousedown", onPointerDown);
+                canvas.removeEventListener("mousemove", onPointerMove);
+                canvas.removeEventListener("mouseleave", onCanvasLeave);
+                canvas.removeEventListener("touchstart", onPointerDown);
+                canvas.removeEventListener("touchmove", onPointerMove);
+                canvas.removeEventListener("touchend", onPointerUp);
+                canvas.removeEventListener("wheel", onWheel);
+
+                disposeThreeHierarchy(scene);
+                renderer.dispose();
+                filterWrap.innerHTML = "";
+                detailsBody.innerHTML = "";
+                if (selectedDetail) selectedDetail.innerHTML = "";
+                detailsTitle.textContent = "Location";
+                detailsSub.textContent = "Click a marker or a city below";
+                if (statusEl) statusEl.textContent = "Showing all regions";
+            }
+
+            return { resize: resize, dispose: dispose };
         }
 
         function showScreensaver() {
