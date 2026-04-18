@@ -14,9 +14,8 @@
     <!-- Header Navigation -->
         <header class="header">
         <nav class="nav-container">
-            <div class="logo">
-                <h1>BAPS Shri Swaminarayan Mandir</h1>
-                <p>Edison, New Jersey</p>
+            <div class="logo logo-text-header">
+                <img src="images/header-uploaded.png" alt="BAPS Header Logo" class="header-logo-image">
             </div>
             <div class="nav-links">
                 <a href="#home" class="nav-link active">Home</a>
@@ -874,7 +873,7 @@
                             <span class="control-text">Logout</span>
                         </button>
                     </div>
-                    
+
                     <div class="admin-display-mode-section">
                         <h4>Display Mode</h4>
                         <div class="display-mode-toggle">
@@ -886,6 +885,39 @@
                                 <span class="mode-icon">🖼️</span>
                                 <span class="mode-text">Photo Mode</span>
                             </button>
+                        </div>
+                    </div>
+
+                    <div class="admin-test-section">
+                        <h4>Test: Global Vicharan Globe</h4>
+                        <p class="admin-test-help">Experimental 3D view. Tap Load to enable (downloads WebGL library once).</p>
+                        <button type="button" class="admin-globe-load-btn" id="admin-globe-load-btn" onclick="loadAdminGlobeTest()">Load interactive globe</button>
+                        <div id="admin-globe-test-wrap" class="admin-globe-test-wrap" style="display: none;" aria-hidden="true">
+                            <div class="msm-vicharan-wrap">
+                                <div class="msm-vicharan-panel">
+                                    <div class="msm-panel-head">
+                                        <div>
+                                            <h3>Interactive Globe</h3>
+                                            <p>Drag to rotate · Scroll to zoom · Click a marker for details</p>
+                                        </div>
+                                        <div class="msm-filters" id="admin-msm-filters"></div>
+                                    </div>
+                                    <div class="msm-globe-stage admin-msm-globe-stage">
+                                        <div class="msm-globe-status" id="admin-msm-globe-status">Showing all regions</div>
+                                        <canvas id="admin-msm-globe-canvas"></canvas>
+                                    </div>
+                                </div>
+                                <aside class="msm-location-panel">
+                                    <div class="msm-panel-head">
+                                        <div>
+                                            <h3 id="admin-msm-details-title">Location</h3>
+                                            <p id="admin-msm-details-sub">Click a red marker or a city below</p>
+                                        </div>
+                                    </div>
+                                    <div id="admin-msm-selected-detail" class="admin-msm-selected-detail"></div>
+                                    <div class="msm-details-body" id="admin-msm-details-body"></div>
+                                </aside>
+                            </div>
                         </div>
                     </div>
                     
@@ -1321,6 +1353,7 @@
             resetAdminDashboard();
         }
 
+
         // Display Mode Functions
         function switchToKioskMode() {
             // Hide photo display
@@ -1404,6 +1437,378 @@
         let idleTimer = null;
         const IDLE_TIME = 60000; // 1 minute in milliseconds
         let screensaverActive = false;
+
+        // Admin test: Global Vicharan Globe (lazy-loaded Three.js, no auto-spin)
+        const MSM_LOCATIONS = [
+            { city: "Ahmedabad", country: "India", lat: 23.0225, lon: 72.5714, region: "india", desc: "Major assemblies and guidance in Gujarat." },
+            { city: "Sarangpur", country: "India", lat: 22.169, lon: 71.893, region: "india", desc: "A deeply important BAPS spiritual campus." },
+            { city: "Mumbai", country: "India", lat: 19.076, lon: 72.8777, region: "india", desc: "Dadar mandir and a key seva chapter." },
+            { city: "Edison, NJ", country: "USA", lat: 40.5187, lon: -74.4121, region: "na", desc: "A major center for satsang and family activities." },
+            { city: "Robbinsville, NJ", country: "USA", lat: 40.2168, lon: -74.6199, region: "na", desc: "Landmark mandir campus in North America." },
+            { city: "London", country: "United Kingdom", lat: 51.5072, lon: -0.1276, region: "eu", desc: "Neasden region satsang and inspiration." },
+            { city: "Nairobi", country: "Kenya", lat: -1.2921, lon: 36.8219, region: "af", desc: "A key East African vicharan center." },
+            { city: "Abu Dhabi", country: "UAE", lat: 24.4539, lon: 54.3773, region: "me", desc: "Historic BAPS Hindu Mandir milestone." }
+        ];
+
+        const MSM_REGIONS = {
+            all: "All Regions",
+            india: "India",
+            na: "North America",
+            eu: "UK & Europe",
+            af: "Africa",
+            me: "Middle East"
+        };
+
+        const MSM_COL_DEFAULT = 0xb7e6ff;
+        const MSM_COL_LINE_DEFAULT = 0x8dd3ff;
+        const MSM_COL_SELECTED = 0xe53935;
+        const MSM_COL_LINE_SELECTED = 0xff6659;
+
+        let adminGlobeThreeLoading = false;
+        let adminGlobeInited = false;
+
+        function loadAdminGlobeTest() {
+            const wrap = document.getElementById("admin-globe-test-wrap");
+            const btn = document.getElementById("admin-globe-load-btn");
+            if (!wrap) return;
+
+            wrap.style.display = "block";
+            wrap.setAttribute("aria-hidden", "false");
+
+            if (adminGlobeInited) {
+                if (typeof window.__adminGlobeResize === "function") window.__adminGlobeResize();
+                if (btn) {
+                    btn.textContent = "Globe ready";
+                    btn.disabled = true;
+                }
+                return;
+            }
+            if (adminGlobeThreeLoading) return;
+            adminGlobeThreeLoading = true;
+
+            if (btn) {
+                btn.textContent = "Loading 3D library…";
+                btn.disabled = true;
+            }
+
+            function finishOk() {
+                adminGlobeThreeLoading = false;
+                if (btn) {
+                    btn.textContent = "Globe ready";
+                    btn.disabled = true;
+                }
+            }
+
+            if (window.THREE) {
+                initAdminGlobeTest();
+                finishOk();
+                return;
+            }
+
+            const s = document.createElement("script");
+            s.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+            s.async = true;
+            s.onload = function () {
+                initAdminGlobeTest();
+                finishOk();
+            };
+            s.onerror = function () {
+                adminGlobeThreeLoading = false;
+                if (btn) {
+                    btn.disabled = false;
+                    btn.textContent = "Retry loading globe";
+                }
+                alert("Could not load 3D library. Check network and try again.");
+            };
+            document.head.appendChild(s);
+        }
+
+        function msmLatLonToVec3(THREE, lat, lon, radius) {
+            const phi = (90 - lat) * Math.PI / 180;
+            const theta = (lon + 180) * Math.PI / 180;
+            return new THREE.Vector3(
+                -(radius * Math.sin(phi) * Math.cos(theta)),
+                radius * Math.cos(phi),
+                radius * Math.sin(phi) * Math.sin(theta)
+            );
+        }
+
+        function initAdminGlobeTest() {
+            if (!window.THREE || adminGlobeInited) return;
+
+            const THREE = window.THREE;
+            const canvas = document.getElementById("admin-msm-globe-canvas");
+            const filterWrap = document.getElementById("admin-msm-filters");
+            const detailsBody = document.getElementById("admin-msm-details-body");
+            const detailsTitle = document.getElementById("admin-msm-details-title");
+            const detailsSub = document.getElementById("admin-msm-details-sub");
+            const selectedDetail = document.getElementById("admin-msm-selected-detail");
+            const statusEl = document.getElementById("admin-msm-globe-status");
+            if (!canvas || !filterWrap || !detailsBody || !detailsTitle || !detailsSub || !statusEl) return;
+
+            adminGlobeInited = true;
+
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true, powerPreference: "high-performance" });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 1000);
+            camera.position.z = 3.15;
+            let targetZoom = 3.15;
+
+            const resize = () => {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                const w = Math.max(1, rect.width);
+                const h = Math.max(1, rect.height);
+                renderer.setSize(w, h, false);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+            };
+            resize();
+            window.__adminGlobeResize = resize;
+            window.addEventListener("resize", resize);
+
+            scene.add(new THREE.AmbientLight(0x91a9c4, 0.85));
+            const sun = new THREE.DirectionalLight(0xffffff, 1.45);
+            sun.position.set(5, 2.5, 4.5);
+            scene.add(sun);
+
+            const starsGeo = new THREE.BufferGeometry();
+            const starCount = 500;
+            const positions = new Float32Array(starCount * 3);
+            for (let i = 0; i < starCount; i++) {
+                const t = Math.random() * Math.PI * 2;
+                const p = Math.acos((Math.random() * 2) - 1);
+                const r = 26 + Math.random() * 40;
+                positions[i * 3] = r * Math.sin(p) * Math.cos(t);
+                positions[i * 3 + 1] = r * Math.sin(p) * Math.sin(t);
+                positions[i * 3 + 2] = r * Math.cos(p);
+            }
+            starsGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+            scene.add(new THREE.Points(starsGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.06, opacity: 0.75, transparent: true })));
+
+            const loader = new THREE.TextureLoader();
+            const earthMap = loader.load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg");
+
+            const globeGroup = new THREE.Group();
+            scene.add(globeGroup);
+
+            const earth = new THREE.Mesh(
+                new THREE.SphereGeometry(1, 48, 48),
+                new THREE.MeshPhongMaterial({ map: earthMap, shininess: 12 })
+            );
+            globeGroup.add(earth);
+
+            const markerGroup = new THREE.Group();
+            globeGroup.add(markerGroup);
+            const markers = [];
+            let selectedMarker = null;
+
+            function setSelectedMarker(marker) {
+                if (selectedMarker) {
+                    selectedMarker.dot.material.color.setHex(MSM_COL_DEFAULT);
+                    selectedMarker.line.material.color.setHex(MSM_COL_LINE_DEFAULT);
+                }
+                selectedMarker = marker || null;
+                if (selectedMarker) {
+                    selectedMarker.dot.material.color.setHex(MSM_COL_SELECTED);
+                    selectedMarker.line.material.color.setHex(MSM_COL_LINE_SELECTED);
+                }
+                document.querySelectorAll(".msm-location-card").forEach((el) => {
+                    el.classList.toggle("msm-location-card--active", marker && el.dataset.city === marker.loc.city);
+                });
+            }
+
+            function showLocationInfo(loc) {
+                if (selectedDetail) {
+                    selectedDetail.innerHTML = `
+                        <div class="admin-msm-info-block">
+                            <h4 class="admin-msm-info-city">${loc.city}</h4>
+                            <p class="admin-msm-info-country">${loc.country}</p>
+                            <p class="admin-msm-info-coords"><strong>Coordinates:</strong> ${loc.lat.toFixed(4)}°, ${loc.lon.toFixed(4)}°</p>
+                            <p class="admin-msm-info-desc">${loc.desc}</p>
+                        </div>
+                    `;
+                }
+                detailsTitle.textContent = loc.city;
+                detailsSub.textContent = loc.country;
+                if (statusEl) statusEl.textContent = "Selected: " + loc.city;
+            }
+
+            MSM_LOCATIONS.forEach((loc) => {
+                const base = msmLatLonToVec3(THREE, loc.lat, loc.lon, 1.004);
+                const tip = msmLatLonToVec3(THREE, loc.lat, loc.lon, 1.048);
+                const line = new THREE.Line(
+                    new THREE.BufferGeometry().setFromPoints([base, tip]),
+                    new THREE.LineBasicMaterial({ color: MSM_COL_LINE_DEFAULT })
+                );
+                const dot = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.016, 10, 10),
+                    new THREE.MeshBasicMaterial({ color: MSM_COL_DEFAULT })
+                );
+                dot.position.copy(tip);
+                dot.userData.markerRef = true;
+                markerGroup.add(line, dot);
+                markers.push({ loc, line, dot, visible: true });
+            });
+
+            let isDragging = false;
+            let dragStart = { x: 0, y: 0 };
+            let last = { x: 0, y: 0 };
+            let movedPx = 0;
+            const DRAG_SENS = 0.006;
+
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+            let activeRegion = "all";
+
+            const renderDetails = (region) => {
+                const list = MSM_LOCATIONS.filter((l) => region === "all" || l.region === region);
+                detailsTitle.textContent = MSM_REGIONS[region];
+                detailsSub.textContent = list.length + " locations — click one to focus";
+                detailsBody.innerHTML = "";
+                list.forEach((loc) => {
+                    const card = document.createElement("div");
+                    card.className = "msm-location-card";
+                    card.dataset.city = loc.city;
+                    card.innerHTML = `
+                        <h4>${loc.city}</h4>
+                        <div class="msm-country">${loc.country}</div>
+                        <p>${loc.desc}</p>
+                    `;
+                    card.addEventListener("click", () => {
+                        const m = markers.find((mk) => mk.loc.city === loc.city && mk.visible);
+                        if (m) {
+                            setSelectedMarker(m);
+                            showLocationInfo(loc);
+                            const targetY = (-loc.lon * Math.PI / 180) - Math.PI;
+                            const targetX = (loc.lat * Math.PI) / 180;
+                            globeGroup.rotation.y += (targetY - globeGroup.rotation.y) * 0.35;
+                            globeGroup.rotation.x += (targetX - globeGroup.rotation.x) * 0.35;
+                            globeGroup.rotation.x = Math.max(-1.1, Math.min(1.1, globeGroup.rotation.x));
+                            targetZoom = 2.65;
+                        }
+                    });
+                    detailsBody.appendChild(card);
+                });
+            };
+
+            const applyRegion = (region) => {
+                activeRegion = region;
+                markers.forEach((marker) => {
+                    const vis = region === "all" || marker.loc.region === region;
+                    marker.visible = vis;
+                    marker.line.visible = vis;
+                    marker.dot.visible = vis;
+                });
+                if (selectedMarker && !selectedMarker.visible) {
+                    setSelectedMarker(null);
+                    if (selectedDetail) selectedDetail.innerHTML = "";
+                }
+                statusEl.textContent = region === "all" ? "Showing all regions" : "Focused on " + MSM_REGIONS[region];
+                renderDetails(region);
+            };
+
+            filterWrap.innerHTML = "";
+            Object.entries(MSM_REGIONS).forEach(([key, label], index) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "msm-filter-btn" + (index === 0 ? " active" : "");
+                button.textContent = label;
+                button.addEventListener("click", () => {
+                    filterWrap.querySelectorAll(".msm-filter-btn").forEach((b) => b.classList.remove("active"));
+                    button.classList.add("active");
+                    applyRegion(key);
+                });
+                filterWrap.appendChild(button);
+            });
+
+            function onPointerDown(e) {
+                const cx = e.clientX !== undefined ? e.clientX : e.touches[0].clientX;
+                const cy = e.clientY !== undefined ? e.clientY : e.touches[0].clientY;
+                isDragging = true;
+                movedPx = 0;
+                dragStart = { x: cx, y: cy };
+                last = { x: cx, y: cy };
+            }
+
+            function onPointerMove(e) {
+                const cx = e.clientX !== undefined ? e.clientX : e.touches[0].clientX;
+                const cy = e.clientY !== undefined ? e.clientY : e.touches[0].clientY;
+
+                if (isDragging) {
+                    const dx = cx - last.x;
+                    const dy = cy - last.y;
+                    movedPx += Math.abs(dx) + Math.abs(dy);
+                    last = { x: cx, y: cy };
+                    globeGroup.rotation.y += dx * DRAG_SENS;
+                    globeGroup.rotation.x += dy * DRAG_SENS;
+                    globeGroup.rotation.x = Math.max(-1.1, Math.min(1.1, globeGroup.rotation.x));
+                    return;
+                }
+
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = ((cx - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((cy - rect.top) / rect.height) * 2 + 1;
+                raycaster.setFromCamera(mouse, camera);
+                const hit = raycaster.intersectObjects(markers.filter((m) => m.visible).map((m) => m.dot));
+                canvas.style.cursor = hit.length ? "pointer" : "grab";
+            }
+
+            function onPointerUp(e) {
+                const cx = e.clientX !== undefined ? e.clientX : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : dragStart.x);
+                const cy = e.clientY !== undefined ? e.clientY : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : dragStart.y);
+                const wasDrag = movedPx > 8;
+                isDragging = false;
+
+                if (wasDrag) return;
+
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = ((cx - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((cy - rect.top) / rect.height) * 2 + 1;
+                raycaster.setFromCamera(mouse, camera);
+                const visibleDots = markers.filter((m) => m.visible).map((m) => m.dot);
+                const hits = raycaster.intersectObjects(visibleDots);
+                if (!hits.length) return;
+                const clicked = markers.find((m) => m.dot === hits[0].object);
+                if (!clicked) return;
+
+                setSelectedMarker(clicked);
+                showLocationInfo(clicked.loc);
+                const loc = clicked.loc;
+                const targetY = (-loc.lon * Math.PI) / 180 - Math.PI;
+                const targetX = (loc.lat * Math.PI) / 180;
+                globeGroup.rotation.y += (targetY - globeGroup.rotation.y) * 0.25;
+                globeGroup.rotation.x += (targetX - globeGroup.rotation.x) * 0.25;
+                globeGroup.rotation.x = Math.max(-1.1, Math.min(1.1, globeGroup.rotation.x));
+                targetZoom = 2.55;
+            }
+
+            canvas.addEventListener("mousedown", onPointerDown);
+            window.addEventListener("mouseup", onPointerUp);
+            canvas.addEventListener("mousemove", onPointerMove);
+            canvas.addEventListener("mouseleave", () => {
+                isDragging = false;
+            });
+
+            canvas.addEventListener("touchstart", onPointerDown, { passive: true });
+            canvas.addEventListener("touchmove", onPointerMove, { passive: true });
+            canvas.addEventListener("touchend", onPointerUp, { passive: true });
+
+            canvas.addEventListener("wheel", function (e) {
+                e.preventDefault();
+                targetZoom = Math.min(4.2, Math.max(2.15, targetZoom + e.deltaY * 0.002));
+            }, { passive: false });
+
+            applyRegion(activeRegion);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                camera.position.z += (targetZoom - camera.position.z) * 0.08;
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
 
         function showScreensaver() {
             const screensaver = document.getElementById('screensaver-overlay');
