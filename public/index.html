@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
-    <link rel="stylesheet" href="css/styles.css?v=15.0">
+    <link rel="stylesheet" href="css/styles.css?v=20.0">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -32,7 +32,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section kiosk-page active" data-tab="home">
         <div class="hero-image">
-            <img src="images/temple-images/DJI_0347_Edited (2).png" alt="BAPS Shri Swaminarayan Mandir" class="hero-temple-image">
+            <img src="images/temple-images/DJI_0347_Edited%20(2).png" alt="BAPS Shri Swaminarayan Mandir" class="hero-temple-image">
             <div class="hero-image-overlay">
                 <p class="hero-label">Welcome</p>
                 <h1 class="hero-title">Welcome to BAPS Shri Swaminarayan Mandir</h1>
@@ -108,80 +108,43 @@
             </div>
         </section>
 
-        <!-- Events Section -->
+        <!-- Events Section (same layout pattern as Activities) -->
         <section id="events" class="section events-section kiosk-page" data-tab="events">
             <div class="section-header">
                 <h2>Past Events</h2>
-                <p>Explore our sacred rituals, festivals, and charitable initiatives</p>
+                <p>Explore our sacred rituals, festivals, and charitable initiatives.</p>
             </div>
-            <div class="events-flat-list">
-                <p class="events-group-title">Sacred Rituals</p>
-                <button class="event-row" onclick="openEventPopup('mahapuja')">
-                    <img src="images/events/mahapuja/1.jpg" alt="Maha Puja">
-                    <div class="event-row-info">
-                        <h3>Maha Puja</h3>
-                        <p>Grand worship ceremony with Vedic rituals and sacred offerings.</p>
-                    </div>
-                    <span class="event-row-arrow">›</span>
-                </button>
-                <button class="event-row" onclick="openEventPopup('chopdapujan')">
-                    <img src="images/events/chopdapujan/1.jpg" alt="Chopda Pujan">
-                    <div class="event-row-info">
-                        <h3>Chopda Pujan</h3>
-                        <p>Hindu New Year blessing ceremony with traditional prayers.</p>
-                    </div>
-                    <span class="event-row-arrow">›</span>
-                </button>
-                <button class="event-row" onclick="openEventPopup('annakut')">
-                    <img src="images/events/annakut/1.jpg" alt="Annakut">
-                    <div class="event-row-info">
-                        <h3>Annakut</h3>
-                        <p>Mountain of food offering with hundreds of devotional dishes.</p>
-                    </div>
-                    <span class="event-row-arrow">›</span>
-                </button>
-                <p class="events-group-title">Festivals</p>
-                <button class="event-row" onclick="openEventPopup('diwali')">
-                    <img src="images/events/diwali/1.jpg" alt="Diwali">
-                    <div class="event-row-info">
-                        <h3>Diwali</h3>
-                        <p>Festival of lights with prayer, celebration, and cultural joy.</p>
-                    </div>
-                    <span class="event-row-arrow">›</span>
-                </button>
-                <button class="event-row" onclick="openEventPopup('womensconference')">
-                    <img src="images/events/womensconference/1.jpg" alt="Women's Conference">
-                    <div class="event-row-info">
-                        <h3>Women's Conference</h3>
-                        <p>Annual gathering for inspiration, learning, and spiritual growth.</p>
-                    </div>
-                    <span class="event-row-arrow">›</span>
-                </button>
-                <p class="events-group-title">BAPS Charities</p>
-                <button class="event-row" onclick="openEventPopup('blooddrive')">
-                    <img src="images/events/blooddrive/1.jpg" alt="Blood Drive">
-                    <div class="event-row-info">
-                        <h3>Blood Drive</h3>
-                        <p>Community blood donation drive supporting local hospitals.</p>
-                    </div>
-                    <span class="event-row-arrow">›</span>
-                </button>
-                <button class="event-row" onclick="openEventPopup('walkathon')">
-                    <img src="images/events/walkathon/1.jpg" alt="Walkathon">
-                    <div class="event-row-info">
-                        <h3>Walkathon</h3>
-                        <p>Family-friendly charity walk promoting health and service.</p>
-                    </div>
-                    <span class="event-row-arrow">›</span>
-                </button>
-                <button class="event-row" onclick="openEventPopup('fooddrive')">
-                    <img src="images/events/fooddrive/1.jpg" alt="Food Drive">
-                    <div class="event-row-info">
-                        <h3>Food Drive</h3>
-                        <p>Collecting food to serve families in need with compassion.</p>
-                    </div>
-                    <span class="event-row-arrow">›</span>
-                </button>
+
+            <div class="activities-grid">
+                <div class="activity-card themed-activity-card" onclick="trackClick('event', 'Chopda Pujan'); openEventPopup('chopdapujan')" style="background-image:url('images/events/chopdapujan/1.jpg')">
+                    <h3>Chopda Pujan</h3>
+                    <p>Hindu New Year blessing ceremony with traditional prayers.</p>
+                    <span class="time-badge">Sacred ritual</span>
+                </div>
+
+                <div class="activity-card themed-activity-card" onclick="trackClick('event', 'Diwali'); openEventPopup('diwali')" style="background-image:url('images/events/diwali/1.jpg')">
+                    <h3>Diwali</h3>
+                    <p>Festival of lights with prayer, celebration, and cultural joy.</p>
+                    <span class="time-badge">Festival</span>
+                </div>
+
+                <div class="activity-card themed-activity-card" onclick="trackClick('event', 'Blood Drive'); openEventPopup('blooddrive')" style="background-image:url('images/events/blooddrive/1.jpg')">
+                    <h3>Blood Drive</h3>
+                    <p>Community blood donation drive supporting local hospitals.</p>
+                    <span class="time-badge">BAPS Charities</span>
+                </div>
+
+                <div class="activity-card themed-activity-card" onclick="trackClick('event', 'Walkathon'); openEventPopup('walkathon')" style="background-image:url('images/events/walkathon/1.jpg')">
+                    <h3>Walkathon</h3>
+                    <p>Family-friendly charity walk promoting health and service.</p>
+                    <span class="time-badge">BAPS Charities</span>
+                </div>
+
+                <div class="activity-card themed-activity-card events-event-card--wide" onclick="trackClick('event', 'Food Drive'); openEventPopup('fooddrive')" style="background-image:url('images/events/fooddrive/1.jpg')">
+                    <h3>Food Drive</h3>
+                    <p>Collecting food to serve families in need with compassion.</p>
+                    <span class="time-badge">BAPS Charities</span>
+                </div>
             </div>
         </section>
 
@@ -455,31 +418,6 @@
     </footer>
 
     <!-- Event Popups -->
-    <div id="event-popup-mahapuja" class="event-popup">
-        <div class="event-popup-content">
-            <button class="close-event-btn" onclick="closeEventPopup('mahapuja')">&times;</button>
-            <div class="event-popup-header">
-                <h2>Maha Puja</h2>
-            </div>
-            <div class="event-popup-body">
-                <div class="event-popup-images">
-                    <img src="images/events/mahapuja/1.jpg" alt="Maha Puja 1" class="event-popup-image">
-                    <img src="images/events/mahapuja/2.jpg" alt="Maha Puja 2" class="event-popup-image">
-                    <img src="images/events/mahapuja/3.jpg" alt="Maha Puja 3" class="event-popup-image">
-                </div>
-                <p><strong>Grand Worship Ceremony</strong></p>
-                <p>Maha Puja is an elaborate worship ceremony performed with great devotion and traditional Vedic rituals. This sacred ceremony includes offerings of flowers, fruits, and prayers to the deities.</p>
-                <p><strong>Highlights:</strong></p>
-                <ul>
-                    <li>Traditional Vedic chanting and mantras</li>
-                    <li>Sacred offerings and abhishek</li>
-                    <li>Community participation and blessings</li>
-                    <li>Prasad distribution to all devotees</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
     <div id="event-popup-chopdapujan" class="event-popup">
         <div class="event-popup-content">
             <button class="close-event-btn" onclick="closeEventPopup('chopdapujan')">&times;</button>
@@ -500,31 +438,6 @@
                     <li>Blessings for business prosperity</li>
                     <li>Worship of Goddess Lakshmi and Lord Ganesha</li>
                     <li>Community prayers for success and abundance</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="event-popup-annakut" class="event-popup">
-        <div class="event-popup-content">
-            <button class="close-event-btn" onclick="closeEventPopup('annakut')">&times;</button>
-            <div class="event-popup-header">
-                <h2>Annakut</h2>
-            </div>
-            <div class="event-popup-body">
-                <div class="event-popup-images">
-                    <img src="images/events/annakut/1.jpg" alt="Annakut 1" class="event-popup-image">
-                    <img src="images/events/annakut/2.jpg" alt="Annakut 2" class="event-popup-image">
-                    <img src="images/events/annakut/3.jpg" alt="Annakut 3" class="event-popup-image">
-                </div>
-                <p><strong>Mountain of Food Offering</strong></p>
-                <p>Annakut, meaning "mountain of food," is a grand festival where hundreds of vegetarian dishes are prepared and offered to the deities. This festival celebrates the first day of the Hindu New Year.</p>
-                <p><strong>Features:</strong></p>
-                <ul>
-                    <li>Over 500 varieties of vegetarian dishes prepared</li>
-                    <li>Beautiful artistic arrangement of food offerings</li>
-                    <li>Celebration of Hindu New Year (Bestu Varas)</li>
-                    <li>Community feast and prasad distribution</li>
                 </ul>
             </div>
         </div>
@@ -551,32 +464,6 @@
                     <li>Traditional rangoli and decorations</li>
                     <li>Special aarti and prayers</li>
                     <li>Community dinner and sweets distribution</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="event-popup-womensconference" class="event-popup">
-        <div class="event-popup-content">
-            <button class="close-event-btn" onclick="closeEventPopup('womensconference')">&times;</button>
-            <div class="event-popup-header">
-                <h2>Women's Conference</h2>
-            </div>
-            <div class="event-popup-body">
-                <div class="event-popup-images">
-                    <img src="images/events/womensconference/1.jpg" alt="Women's Conference 1" class="event-popup-image">
-                    <img src="images/events/womensconference/2.jpg" alt="Women's Conference 2" class="event-popup-image">
-                    <img src="images/events/womensconference/3.jpg" alt="Women's Conference 3" class="event-popup-image">
-                </div>
-                <p><strong>Empowerment and Spiritual Growth</strong></p>
-                <p>Our annual Women's Conference brings together women from all backgrounds for spiritual inspiration, personal development workshops, and community building.</p>
-                <p><strong>Conference Highlights:</strong></p>
-                <ul>
-                    <li>Inspirational keynote speakers</li>
-                    <li>Personal development workshops</li>
-                    <li>Spiritual discourses and discussions</li>
-                    <li>Cultural performances and activities</li>
-                    <li>Networking and community building</li>
                 </ul>
             </div>
         </div>
