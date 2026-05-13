@@ -25,6 +25,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 180px;
+    scrollbar-gutter: stable;
 }
 
 body {
@@ -287,7 +288,7 @@ body {
     padding: 40px 30px;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 12px var(--shadow);
-    transition: var(--transition);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     cursor: pointer;
     text-align: center;
     position: relative;
@@ -400,19 +401,21 @@ body {
 
 .activity-popup-image-container {
     width: 100%;
-    max-height: 250px;
+    height: 280px;
+    max-height: 280px;
+    min-height: 280px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.5);
+    display: block;
+    flex-shrink: 0;
+    background: #1a1a1a;
 }
 
 .activity-popup-image {
     width: 100%;
-    height: auto;
-    max-height: 250px;
-    object-fit: contain;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
     display: block;
 }
 
@@ -3292,9 +3295,10 @@ html, body {
     flex-direction: column;
     justify-content: flex-end;
     padding: 18px 16px;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    transition: box-shadow 0.2s ease;
 }
 
 .themed-activity-card::before {
@@ -3302,11 +3306,31 @@ html, body {
     position: absolute;
     inset: 0;
     background: linear-gradient(to top, rgba(20, 20, 20, 0.88), rgba(20, 20, 20, 0.22));
+    z-index: 0;
+    pointer-events: none;
+}
+
+.themed-activity-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.15s ease;
+}
+
+.themed-activity-card:hover::after {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.themed-activity-card:active::after {
+    background: rgba(0, 0, 0, 0.14);
 }
 
 .themed-activity-card > * {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     color: #fff;
 }
 
@@ -3393,16 +3417,15 @@ html, body {
 .kiosk-page[data-tab="events"] .themed-activity-card:hover,
 .kiosk-page[data-tab="events"] .themed-activity-card:active {
     transform: none !important;
+    filter: none !important;
 }
 
 .kiosk-page[data-tab="events"] .themed-activity-card:hover {
-    filter: brightness(1.04);
-    border-color: rgba(255, 255, 255, 0.22);
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .kiosk-page[data-tab="events"] .themed-activity-card:active {
-    filter: brightness(0.96);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .kiosk-page[data-tab="events"] .section-header {
@@ -3483,16 +3506,15 @@ html, body {
 .kiosk-page[data-tab="activities"] .themed-activity-card:hover,
 .kiosk-page[data-tab="activities"] .themed-activity-card:active {
     transform: none !important;
+    filter: none !important;
 }
 
 .kiosk-page[data-tab="activities"] .themed-activity-card:hover {
-    filter: brightness(1.04);
-    border-color: rgba(255, 255, 255, 0.22);
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .kiosk-page[data-tab="activities"] .themed-activity-card:active {
-    filter: brightness(0.96);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .kiosk-page[data-tab="activities"] {
