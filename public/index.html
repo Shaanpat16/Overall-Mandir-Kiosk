@@ -7,8 +7,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
-    <link rel="stylesheet" href="css/styles.css?v=20.1">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=31.2">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="idle-progress-bar" class="idle-progress-bar"></div>
@@ -23,6 +23,7 @@
                 <a href="#activities" class="nav-link">Activities</a>
                 <a href="#events" class="nav-link">Events</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#facilities" class="nav-link" onclick="event.preventDefault(); switchTab('facilities');">Facilities</a>
                 <a href="#about" class="nav-link">About</a>
             </div>
             <div class="topbar-time" id="topbar-time"></div>
@@ -32,13 +33,25 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section kiosk-page active" data-tab="home">
         <div class="hero-image">
-            <img src="images/temple-images/DJI_0347_Edited%20(2).png" alt="BAPS Shri Swaminarayan Mandir" class="hero-temple-image">
+            <img src="images/gallery/01.Kishore-Kishori-adhiveshan25.png" alt="Kishore-Kishori Adhiveshan 2025 at BAPS Shri Swaminarayan Mandir" class="hero-temple-image">
             <div class="hero-image-overlay">
                 <p class="hero-label">Welcome</p>
                 <h1 class="hero-title">Welcome to BAPS Shri Swaminarayan Mandir</h1>
                 <p class="hero-subtitle">Experience divine peace and spiritual tranquility in our sacred temple</p>
             </div>
         </div>
+        <!-- UPCOMING CARD IMAGE: add your photo to public/images/upcoming/ then set src below -->
+        <button type="button" id="home-upcoming-card" class="home-upcoming-card home-upcoming-card--image" onclick="openUpcomingEventsPopup(); trackClick('navigation', 'home_upcoming')">
+            <img id="home-upcoming-card-image" class="home-upcoming-card-bg" src="images/upcoming/card.jpg" alt="" onerror="this.onerror=null;this.src='images/events/diwali/1.jpg'">
+            <span class="home-upcoming-content">
+                <span class="home-upcoming-label">Upcoming Events</span>
+                <span class="home-upcoming-title" id="home-upcoming-preview">Weekly sabhas, festivals &amp; programs</span>
+                <span class="home-upcoming-meta">
+                    <span class="home-upcoming-count" id="home-upcoming-count">4 events</span>
+                    <span class="home-upcoming-tap">Tap to view all →</span>
+                </span>
+            </span>
+        </button>
         <div class="quick-strip">
             <button class="quick-card quick-card--image" style="background-image:url('images/activities/balbalika/66._Bal_Balika_adhiveshan25.jpg')" onclick="switchTab('activities')">
                 <h3>Activities</h3>
@@ -48,15 +61,14 @@
                 <h3>Events</h3>
                 <p>Festivals & celebrations</p>
             </button>
+            <button type="button" class="quick-card quick-card--image" style="background-image:linear-gradient(135deg,#1e3a5f 0%,#3a5ec8 100%)" onclick="switchTab('facilities'); trackClick('navigation', 'home_facilities')">
+                <h3>Facilities</h3>
+                <p>Gym, halls & Shayona</p>
+            </button>
             <button class="quick-card quick-card--image" style="background-image:url('images/gallery/05_edison_mahantswamiJJ_2025.jpg')" onclick="switchTab('connect')">
                 <h3>Connect</h3>
                 <p>QR & contact</p>
             </button>
-        </div>
-        <div class="home-image-strip">
-            <img src="images/gallery/mandir-exterior.png" alt="Mandir exterior">
-            <img src="images/gallery/03_edison_diwali2024.jpg" alt="Diwali celebration">
-            <img src="images/gallery/05_edison_mahantswamiJJ_2025.jpg" alt="Mandir celebration">
         </div>
     </section>
 
@@ -88,7 +100,7 @@
                     <span class="time-badge">Sat 3:30-5 PM · Sun 2:30-4 PM</span>
                 </div>
                 
-                <div class="activity-card themed-activity-card" onclick="trackClick('activity', 'Better Living'); openActivityPopup('betterliving')" style="background-image:url('images/activities/betterliving/02.-Edison-Life_Saving_Skills_HAL_2025-1108x720.jpg')">
+                <div class="activity-card themed-activity-card themed-activity-card--betterliving" onclick="trackClick('activity', 'Better Living'); openActivityPopup('betterliving')" style="background-image:url('images/activities/betterliving/02.-Edison-Life_Saving_Skills_HAL_2025-1108x720.jpg')">
                     <h3>Better Living</h3>
                     <p>Personal Development</p>
                     <span class="time-badge">Sat 5-7 PM · Yogi Hall</span>
@@ -157,12 +169,12 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/gallery/mandir-exterior.png" alt="BAPS Mandir Exterior" class="gallery-image">
+                    <img src="images/gallery/01.Kishore-Kishori-adhiveshan25.png" alt="Kishore-Kishori Adhiveshan 2025" class="gallery-image">
                     <div class="gallery-overlay">
-                        <h3>Mandir Exterior</h3>
-                        <p>Beautiful temple architecture</p>
+                        <h3>Kishore-Kishori Adhiveshan 2025</h3>
+                        <p>Teen programs and spiritual gathering</p>
                     </div>
-                            </div>
+                </div>
 
                 <div class="gallery-item">
                     <img src="images/gallery/03_edison_diwali2024.jpg" alt="Diwali 2024 Celebration" class="gallery-image">
@@ -203,6 +215,36 @@
                         <p>Traditional ceremonies</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Facilities -->
+        <section id="facilities" class="section facilities-section kiosk-page" data-tab="facilities">
+            <div class="section-header">
+                <h2>Mandir Facilities</h2>
+                <p>Spaces for sports, programs, celebrations, and prasad</p>
+            </div>
+            <div class="facilities-grid">
+                <button type="button" class="activity-card themed-activity-card facility-card facility-card--gym" onclick="trackClick('facility', 'gym'); openFacilityPopup('gym')">
+                    <h3>Basketball Gym</h3>
+                    <p>Indoor court &amp; recreation</p>
+                    <span class="time-badge">Tap for details</span>
+                </button>
+                <button type="button" class="activity-card themed-activity-card facility-card facility-card--hall" onclick="trackClick('facility', 'mainhall'); openFacilityPopup('mainhall')">
+                    <h3>Main Hall</h3>
+                    <p>LED screens &amp; large programs</p>
+                    <span class="time-badge">Tap for details</span>
+                </button>
+                <button type="button" class="activity-card themed-activity-card facility-card facility-card--banquet" onclick="trackClick('facility', 'banquet'); openFacilityPopup('banquet')">
+                    <h3>Banquet Hall</h3>
+                    <p>Reserved events &amp; gatherings</p>
+                    <span class="time-badge">Tap for details</span>
+                </button>
+                <button type="button" class="activity-card themed-activity-card facility-card facility-card--shayona" onclick="trackClick('facility', 'shayona'); openFacilityPopup('shayona')">
+                    <h3>Shayona</h3>
+                    <p>Dining hall &amp; prasad</p>
+                    <span class="time-badge">Tap for details</span>
+                </button>
             </div>
         </section>
 
@@ -379,6 +421,12 @@
             </span>
             <span class="tab-label">Gallery</span>
         </button>
+        <button class="tab-btn" data-tab-btn="facilities" onclick="switchTab('facilities')">
+            <span class="tab-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 21V10l8-6 8 6v11H4m2-2h12v-9l-6-4.5L6 10v9m4-4h4v4h-4z"/></svg>
+            </span>
+            <span class="tab-label">Facilities</span>
+        </button>
         <button class="tab-btn" data-tab-btn="connect" onclick="switchTab('connect')">
             <span class="tab-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 1 6 6c0 1.7-.7 3.2-1.8 4.3A8 8 0 0 1 20 19v1H4v-1a8 8 0 0 1 3.8-6.7A6 6 0 0 1 12 2"/></svg>
@@ -399,6 +447,7 @@
                 <ul>
                     <li><a href="#timings">Darshan Timings</a></li>
                     <li><a href="#events">Events</a></li>
+                    <li><a href="#facilities" onclick="event.preventDefault(); switchTab('facilities');">Facilities</a></li>
                     <li><a href="#about">About Us</a></li>
                 </ul>
                     </div>
@@ -416,6 +465,32 @@
             <button class="admin-trigger-btn" onclick="openAdminDashboard()">⚙️</button>
     </div>
     </footer>
+
+    <!-- Upcoming Events Popup -->
+    <div id="upcoming-events-popup" class="upcoming-events-popup">
+        <div class="upcoming-events-popup-content">
+            <div class="upcoming-events-popup-header">
+                <button type="button" class="close-upcoming-btn" onclick="closeUpcomingEventsPopup()" aria-label="Close">&times;</button>
+                <h2>Upcoming Events</h2>
+                <p class="upcoming-events-subtitle">Programs and celebrations at Edison Mandir</p>
+            </div>
+            <div class="upcoming-events-list" id="upcoming-events-list"></div>
+        </div>
+    </div>
+
+    <!-- Facility detail (single reusable popup) -->
+    <div id="facility-popup" class="activity-popup" style="display: none;">
+        <div class="activity-popup-content">
+            <button type="button" class="close-activity-btn" onclick="closeFacilityPopup()" aria-label="Close">&times;</button>
+            <div class="activity-popup-header">
+                <h2 id="facility-popup-title">Facility</h2>
+            </div>
+            <div id="facility-popup-image-wrap" class="activity-popup-image-container">
+                <img id="facility-popup-image" src="" alt="" class="activity-popup-image">
+            </div>
+            <div class="activity-popup-body" id="facility-popup-body"></div>
+        </div>
+    </div>
 
     <!-- Event Popups -->
     <div id="event-popup-chopdapujan" class="event-popup">
@@ -652,7 +727,7 @@
                 <h2>Better Living</h2>
             </div>
             <div class="activity-popup-image-container">
-                <img src="images/activities/betterliving/02.-Edison-Life_Saving_Skills_HAL_2025-1108x720.jpg" alt="Better Living Activity" class="activity-popup-image" onerror="this.style.display='none'">
+                <img src="images/activities/betterliving/02.-Edison-Life_Saving_Skills_HAL_2025-1108x720.jpg" alt="Better Living Activity" class="activity-popup-image activity-popup-image--betterliving" onerror="this.style.display='none'">
             </div>
             <div class="activity-popup-body">
                 <p><strong>Personal Development Program (Sanyukta Mandal - Gujarātī & English)</strong></p>
@@ -882,6 +957,15 @@
                         </div>
                     </div>
 
+                    <div class="admin-startup-screensaver-section">
+                        <h4>Startup screen</h4>
+                        <p class="admin-startup-screensaver-help">When off, the kiosk goes straight to the home screen. The idle “tap to wake” screensaver still appears after a period of inactivity.</p>
+                        <label class="admin-startup-screensaver-toggle">
+                            <input type="checkbox" id="startup-screensaver-toggle" checked onchange="onStartupScreensaverPreferenceChange()">
+                            <span>Show “click to start” on load</span>
+                        </label>
+                    </div>
+
                     <div class="admin-globe-controls-section">
                         <h4>Globe on main page</h4>
                         <p class="admin-globe-controls-help">Controls the Global Vicharan 3D globe in the public “Mahant Swami” section. Load only when needed; hide to reduce GPU use.</p>
@@ -936,6 +1020,17 @@
             const tabButtons = document.querySelectorAll('[data-tab-btn]');
             tabButtons.forEach((btn) => {
                 btn.classList.toggle('active', btn.getAttribute('data-tab-btn') === tabName);
+            });
+
+            document.querySelectorAll('.nav-link').forEach(function (link) {
+                const href = link.getAttribute('href') || '';
+                link.classList.remove('active');
+                if (tabName === 'home' && href === '#home') link.classList.add('active');
+                if (tabName === 'activities' && href === '#activities') link.classList.add('active');
+                if (tabName === 'events' && href === '#events') link.classList.add('active');
+                if (tabName === 'gallery' && href === '#gallery') link.classList.add('active');
+                if (tabName === 'facilities' && href === '#facilities') link.classList.add('active');
+                if (tabName === 'connect' && href === '#about') link.classList.add('active');
             });
 
             if (hero && main) {
@@ -1177,6 +1272,12 @@
                 popup.style.display = 'none';
             });
 
+            const upcomingPopup = document.getElementById('upcoming-events-popup');
+            if (upcomingPopup) upcomingPopup.style.display = 'none';
+
+            const facilityPopup = document.getElementById('facility-popup');
+            if (facilityPopup) facilityPopup.style.display = 'none';
+
             document.body.style.overflow = 'auto';
             clearPopupIdleTimer();
         }
@@ -1211,7 +1312,213 @@
             }
         }
 
-        // Activity Popup Functions
+        const FACILITIES = {
+            gym: {
+                title: 'Basketball Gym',
+                image: 'images/facilities/basketball-gym.jpg',
+                bodyHtml:
+                    '<p><strong>Indoor court &amp; recreation</strong></p>' +
+                    '<p>Our basketball gym offers a full-size court for sports, youth programs, and community recreation in a clean, dedicated space on mandir grounds.</p>' +
+                    '<p><strong>Typical uses</strong></p>' +
+                    '<ul>' +
+                    '<li>Basketball and indoor sports</li>' +
+                    '<li>Youth activities and team events</li>' +
+                    '<li>Organized programs by reservation</li>' +
+                    '</ul>' +
+                    '<p><em>Ask a volunteer for open gym times and booking.</em></p>'
+            },
+            mainhall: {
+                title: 'Main Hall',
+                image: 'images/facilities/main-hall.jpg',
+                bodyHtml:
+                    '<p><strong>Large programs &amp; LED screens</strong></p>' +
+                    '<p>The main hall hosts major assemblies, festivals, and presentations with spacious seating and large LED screens for clear viewing throughout the room.</p>' +
+                    '<p><strong>Highlights</strong></p>' +
+                    '<ul>' +
+                    '<li>Big-screen broadcasts and program visuals</li>' +
+                    '<li>Major sabhas, cultural programs, and celebrations</li>' +
+                    '<li>Comfortable seating for families and guests</li>' +
+                    '</ul>' +
+                    '<p><em>Program schedules are announced on Telegram and at the welcome desk.</em></p>'
+            },
+            banquet: {
+                title: 'Banquet Hall',
+                image: 'images/facilities/banquet-hall.jpg',
+                bodyHtml:
+                    '<p><strong>Reserved events &amp; gatherings</strong></p>' +
+                    '<p>The banquet hall is available for approved private events—weddings, receptions, and community gatherings—with catering support and flexible layout options.</p>' +
+                    '<p><strong>Notes</strong></p>' +
+                    '<ul>' +
+                    '<li>Reservations and policies through mandir administration</li>' +
+                    '<li>Ideal for larger seated meals and receptions</li>' +
+                    '<li>Coordinated with mandir volunteers for setup</li>' +
+                    '</ul>' +
+                    '<p><em>Contact the mandir office for availability and guidelines.</em></p>'
+            },
+            shayona: {
+                title: 'Shayona',
+                image: 'images/facilities/shayona.jpg',
+                bodyHtml:
+                    '<p><strong>Dining hall &amp; prasad</strong></p>' +
+                    '<p>Shayona is where devotees enjoy delicious vegetarian meals and prasad in a calm, satsang-friendly atmosphere after darshan and programs.</p>' +
+                    '<p><strong>What to expect</strong></p>' +
+                    '<ul>' +
+                    '<li>Fresh vegetarian fare and traditional snacks</li>' +
+                    '<li>Seating for families and groups</li>' +
+                    '<li>Open hours aligned with major program days</li>' +
+                    '</ul>' +
+                    '<p><em>Hours may vary; check at the desk on your visit.</em></p>'
+            }
+        };
+
+        function openFacilityPopup(key) {
+            const data = FACILITIES[key];
+            const popup = document.getElementById('facility-popup');
+            if (!data || !popup) return;
+
+            const titleEl = document.getElementById('facility-popup-title');
+            const bodyEl = document.getElementById('facility-popup-body');
+            const imgEl = document.getElementById('facility-popup-image');
+            const wrapEl = document.getElementById('facility-popup-image-wrap');
+
+            if (titleEl) titleEl.textContent = data.title;
+            if (bodyEl) bodyEl.innerHTML = data.bodyHtml;
+
+            if (wrapEl && imgEl) {
+                if (data.image) {
+                    wrapEl.style.display = '';
+                    imgEl.onload = function () {
+                        wrapEl.style.display = '';
+                    };
+                    imgEl.onerror = function () {
+                        wrapEl.style.display = 'none';
+                    };
+                    imgEl.src = data.image;
+                    imgEl.alt = data.title;
+                } else {
+                    wrapEl.style.display = 'none';
+                }
+            }
+
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            startPopupIdleTimer();
+            attachPopupIdleListeners(popup);
+            if (typeof resetIdleTimer === 'function') resetIdleTimer();
+        }
+
+        function closeFacilityPopup() {
+            const popup = document.getElementById('facility-popup');
+            if (!popup) return;
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            clearPopupIdleTimer();
+        }
+
+        const UPCOMING_EVENTS = [
+            {
+                title: 'Weekly Sabhas',
+                date: 'Every Saturday & Sunday',
+                time: 'See Activities for timings',
+                category: 'Recurring',
+                description: 'Bal/Balika, Kishore/Kishori, Yuvak/Yuvati, and Better Living assemblies each weekend.',
+                image: 'images/activities/balbalika/66._Bal_Balika_adhiveshan25.jpg'
+            },
+            {
+                title: 'Shri Swaminarayan Jayanti',
+                date: 'April 2026',
+                time: 'Program times announced via Telegram',
+                category: 'Festival',
+                description: 'Celebration of Bhagwan Swaminarayan\'s birth with devotional programs for the whole family.',
+                image: 'images/gallery/03_edison_diwali2024.jpg'
+            },
+            {
+                title: 'Kishore-Kishori Summer Shibir',
+                date: 'July 2026',
+                time: 'Details via mandir announcements',
+                category: 'Youth',
+                description: 'Residential spiritual retreat for teens with workshops, satsang, and team activities.',
+                image: 'images/gallery/01.Kishore-Kishori-adhiveshan25.png'
+            },
+            {
+                title: 'Diwali Celebration',
+                date: 'November 2026',
+                time: 'Evening program — time TBA',
+                category: 'Festival',
+                description: 'Festival of Lights with decorations, aarti, cultural programs, and community celebration.',
+                image: 'images/events/diwali/1.jpg'
+            }
+        ];
+
+        function renderUpcomingEventsList() {
+            const list = document.getElementById('upcoming-events-list');
+            if (!list) return;
+
+            list.innerHTML = UPCOMING_EVENTS.map(function (event) {
+                const imgHtml = event.image
+                    ? '<img src="' + event.image + '" alt="" class="upcoming-event-thumb" loading="lazy">'
+                    : '';
+                return (
+                    '<article class="upcoming-event-item">' +
+                        imgHtml +
+                        '<div class="upcoming-event-body">' +
+                            '<div class="upcoming-event-meta">' +
+                                '<span class="upcoming-event-date">' + event.date + '</span>' +
+                                '<span class="upcoming-event-badge">' + event.category + '</span>' +
+                            '</div>' +
+                            '<h3>' + event.title + '</h3>' +
+                            '<p class="upcoming-event-time">' + event.time + '</p>' +
+                            '<p class="upcoming-event-desc">' + event.description + '</p>' +
+                        '</div>' +
+                    '</article>'
+                );
+            }).join('');
+        }
+
+        function updateUpcomingHomeCard() {
+            const card = document.getElementById('home-upcoming-card');
+            const cardImage = document.getElementById('home-upcoming-card-image');
+            const preview = document.getElementById('home-upcoming-preview');
+            const count = document.getElementById('home-upcoming-count');
+            if (card && cardImage && cardImage.getAttribute('src')) {
+                card.style.backgroundImage = "url('" + cardImage.getAttribute('src') + "')";
+            }
+            if (preview && UPCOMING_EVENTS.length) {
+                preview.textContent = UPCOMING_EVENTS[0].title + ' · ' + UPCOMING_EVENTS[0].date;
+            }
+            if (count) {
+                count.textContent = UPCOMING_EVENTS.length + (UPCOMING_EVENTS.length === 1 ? ' event' : ' events');
+            }
+        }
+
+        function attachPopupIdleListeners(popup) {
+            if (!popup || popup.dataset.idleBound === 'true') return;
+            popup.dataset.idleBound = 'true';
+            popup.addEventListener('scroll', startPopupIdleTimer, { passive: true });
+            popup.addEventListener('touchstart', startPopupIdleTimer, { passive: true });
+            popup.addEventListener('touchmove', startPopupIdleTimer, { passive: true });
+            popup.addEventListener('click', startPopupIdleTimer);
+        }
+
+        function openUpcomingEventsPopup() {
+            const popup = document.getElementById('upcoming-events-popup');
+            if (!popup) return;
+            renderUpcomingEventsList();
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            startPopupIdleTimer();
+            attachPopupIdleListeners(popup);
+            if (typeof resetIdleTimer === 'function') resetIdleTimer();
+        }
+
+        function closeUpcomingEventsPopup() {
+            const popup = document.getElementById('upcoming-events-popup');
+            if (!popup) return;
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            clearPopupIdleTimer();
+        }
+
         function openActivityPopup(activityId) {
             const popup = document.getElementById('activity-popup-' + activityId);
             if (popup) {
@@ -1320,6 +1627,7 @@
                 currentPasscode = '';
                 updatePasscodeDisplay();
                 document.getElementById('admin-error').textContent = '';
+                syncStartupScreensaverToggle();
                 displayAnalytics(); // Show analytics when admin logs in
             } else {
                 document.getElementById('admin-error').textContent = 'Incorrect passcode';
@@ -1427,6 +1735,7 @@
         // Observe all sections and cards
         document.addEventListener('DOMContentLoaded', () => {
             switchTab('home');
+            updateUpcomingHomeCard();
             const fadeElements = document.querySelectorAll('.section, .timing-card, .event-card, .gallery-item, .about-card');
             fadeElements.forEach(el => {
                 el.classList.add('fade-in');
@@ -1446,6 +1755,33 @@
 
         // Screensaver / Idle Detection
         let idleTimer = null;
+        const STARTUP_SCREENSAVER_STORAGE_KEY = 'kioskStartupScreensaver';
+
+        function isStartupScreensaverEnabled() {
+            const v = localStorage.getItem(STARTUP_SCREENSAVER_STORAGE_KEY);
+            if (v === null) return true;
+            return v === '1' || v === 'true';
+        }
+
+        function setStartupScreensaverEnabled(enabled) {
+            localStorage.setItem(STARTUP_SCREENSAVER_STORAGE_KEY, enabled ? '1' : '0');
+        }
+
+        function syncStartupScreensaverToggle() {
+            const el = document.getElementById('startup-screensaver-toggle');
+            if (el) el.checked = isStartupScreensaverEnabled();
+        }
+
+        function onStartupScreensaverPreferenceChange() {
+            const el = document.getElementById('startup-screensaver-toggle');
+            if (!el) return;
+            setStartupScreensaverEnabled(el.checked);
+            if (!el.checked && screensaverActive) {
+                hideScreensaver();
+                resetIdleTimer();
+            }
+        }
+
         const IDLE_TIME = 90000; // 90 seconds
         const IDLE_WARN_TIME = 70000; // start progress bar
         let screensaverActive = false;
@@ -2046,9 +2382,13 @@
                 }, { passive: true, capture: true });
             });
 
-            // Show screensaver on initial page load
+            // Optional startup “click to start” (admin can disable; idle screensaver unchanged)
             setTimeout(function() {
-                showScreensaver();
+                if (isStartupScreensaverEnabled()) {
+                    showScreensaver();
+                } else {
+                    resetIdleTimer();
+                }
             }, 500);
         }
 
