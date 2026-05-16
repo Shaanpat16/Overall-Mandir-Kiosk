@@ -1,0 +1,409 @@
+/**
+ * Akshardham-inspired theme for Edison Mandir kiosk
+ * Reference: https://usa.akshardham.org/
+ */
+
+.ak-theme {
+    --primary-color: #2a1515;
+    --secondary-color: #8b2e2e;
+    --accent-color: #a67c2e;
+    --strip-color: #5c1f1f;
+    --accent-soft: rgba(139, 46, 46, 0.1);
+    --background: #f7f4ef;
+    --surface: #ffffff;
+    --surface-light: #f0ebe3;
+    --text-primary: #1f1a17;
+    --text-secondary: rgba(31, 26, 23, 0.62);
+    --text-light: #ffffff;
+    --shadow: rgba(42, 21, 21, 0.06);
+    --shadow-medium: rgba(42, 21, 21, 0.12);
+    --ak-gold: #c9a84c;
+    --ak-cream: #faf8f5;
+    --ak-maroon: #7a2828;
+    --border-radius: 4px;
+}
+
+body.ak-theme {
+    background: var(--ak-cream);
+    color: var(--text-primary);
+}
+
+.ak-theme .header {
+    background: #fff;
+    border-bottom: 1px solid rgba(42, 21, 21, 0.08);
+    box-shadow: 0 1px 0 rgba(42, 21, 21, 0.04);
+    backdrop-filter: none;
+}
+
+.ak-theme .nav-link {
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 0;
+    padding: 10px 12px;
+    background: transparent;
+}
+
+.ak-theme .nav-link:hover,
+.ak-theme .nav-link.active {
+    background: transparent;
+    color: var(--ak-maroon);
+    box-shadow: none;
+    border-bottom: 2px solid var(--ak-maroon);
+    border-radius: 0;
+}
+
+.ak-theme .topbar-time {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+}
+
+/* Home layout */
+.ak-theme .kiosk-page[data-tab="home"] {
+    grid-template-rows:
+        auto
+        minmax(30vh, 1fr)
+        minmax(130px, 17vh)
+        minmax(110px, 14vh);
+    gap: 12px;
+    padding: 10px 16px 12px;
+}
+
+.ak-theme .home-alerts {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.ak-theme .home-alert-card {
+    text-align: left;
+    padding: 14px 16px;
+    border: 1px solid rgba(42, 21, 21, 0.1);
+    border-radius: 2px;
+    background: #fff;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ak-theme .home-alert-card:hover {
+    border-color: rgba(122, 40, 40, 0.35);
+    box-shadow: 0 4px 16px rgba(42, 21, 21, 0.08);
+}
+
+.ak-theme .home-alert-card--hours {
+    background: linear-gradient(135deg, #fff 0%, #f5efe6 100%);
+}
+
+.ak-theme .home-alert-eyebrow {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ak-maroon);
+    margin-bottom: 6px;
+}
+
+.ak-theme .home-alert-title {
+    display: block;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.ak-theme .home-alert-title strong {
+    font-weight: 700;
+    color: var(--ak-maroon);
+}
+
+/* Hero */
+.ak-theme .ak-hero {
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(42, 21, 21, 0.08);
+}
+
+.ak-theme .ak-hero-overlay {
+    padding: 24px 22px 20px;
+    background: linear-gradient(to top, rgba(20, 12, 10, 0.88) 0%, rgba(20, 12, 10, 0.35) 55%, transparent 100%);
+}
+
+.ak-theme .ak-hero-overlay .hero-label {
+    color: var(--ak-gold);
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+}
+
+.ak-theme .ak-hero-overlay .hero-title {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.ak-theme .ak-hero-overlay .hero-subtitle {
+    font-size: 1rem;
+    max-width: 40ch;
+    font-style: italic;
+}
+
+/* Discover / Explore editorial cards */
+.ak-theme .home-discover-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    min-height: 0;
+}
+
+.ak-theme .ak-editorial-card {
+    position: relative;
+    min-height: 130px;
+    padding: 18px 16px;
+    border: 0;
+    border-radius: 2px;
+    overflow: hidden;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.ak-theme .ak-editorial-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(20, 10, 8, 0.92) 0%, rgba(20, 10, 8, 0.35) 55%, rgba(20, 10, 8, 0.15) 100%);
+    z-index: 0;
+}
+
+.ak-theme .ak-editorial-eyebrow,
+.ak-theme .ak-editorial-title,
+.ak-theme .ak-editorial-cta {
+    position: relative;
+    z-index: 1;
+}
+
+.ak-theme .ak-editorial-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ak-gold);
+    margin-bottom: 4px;
+}
+
+.ak-theme .ak-editorial-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.ak-theme .ak-editorial-cta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    opacity: 0.95;
+}
+
+/* Latest / upcoming card */
+.ak-theme .ak-latest-card {
+    border: 1px solid rgba(42, 21, 21, 0.12);
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(42, 21, 21, 0.08);
+    animation: none;
+}
+
+.ak-theme .home-upcoming-card--featured {
+    border: 1px solid rgba(201, 168, 76, 0.45);
+    box-shadow: 0 6px 24px rgba(42, 21, 21, 0.1);
+}
+
+.ak-theme .home-upcoming-live-badge {
+    background: var(--ak-maroon);
+    letter-spacing: 0.14em;
+}
+
+.ak-theme .home-upcoming-label {
+    color: var(--ak-gold);
+}
+
+.ak-theme .quick-strip {
+    display: none;
+}
+
+/* Section headers — editorial */
+.ak-theme .ak-section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 24px;
+    padding: 0 12px;
+}
+
+.ak-theme .ak-section-header .ak-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ak-maroon);
+    margin-bottom: 8px;
+}
+
+.ak-theme .ak-section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    line-height: 1.08;
+}
+
+.ak-theme .ak-section-header p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.ak-theme .section-header:not(.ak-section-header) h2 {
+    font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+    color: var(--text-primary);
+}
+
+/* Tab bar */
+.ak-theme .tab-bar {
+    background: #fff;
+    border-top: 1px solid rgba(42, 21, 21, 0.1);
+    padding: 8px 10px calc(10px + env(safe-area-inset-bottom));
+    gap: 4px;
+}
+
+.ak-theme .tab-btn {
+    color: var(--text-secondary);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+    min-height: 58px;
+}
+
+.ak-theme .tab-btn.active {
+    background: rgba(122, 40, 40, 0.08);
+    color: var(--ak-maroon);
+}
+
+.ak-theme .tab-btn.active .tab-icon svg {
+    fill: var(--ak-maroon);
+}
+
+/* Cards & grids */
+.ak-theme .main-content {
+    background: transparent;
+}
+
+.ak-theme .kiosk-page.active[data-tab="activities"],
+.ak-theme .kiosk-page.active[data-tab="events"],
+.ak-theme .kiosk-page.active[data-tab="gallery"],
+.ak-theme .kiosk-page.active[data-tab="connect"] {
+    background: var(--ak-cream);
+}
+
+.ak-theme .activity-card,
+.ak-theme .themed-activity-card,
+.ak-theme .gallery-item,
+.ak-theme .about-card,
+.ak-theme .qr-code-card {
+    border-radius: 2px;
+}
+
+.ak-theme .themed-activity-card::before {
+    background: linear-gradient(to top, rgba(25, 12, 10, 0.9), rgba(25, 12, 10, 0.25));
+}
+
+/* Popups */
+.ak-theme .activity-popup,
+.ak-theme .event-popup,
+.ak-theme .guru-popup,
+.ak-theme .upcoming-events-popup,
+.ak-theme .upcoming-event-detail-popup {
+    background: rgba(25, 14, 12, 0.82);
+}
+
+.ak-theme .activity-popup-header,
+.ak-theme .event-popup-header,
+.ak-theme .guru-popup-header,
+.ak-theme .upcoming-events-popup-header {
+    background: linear-gradient(135deg, #5c1f1f 0%, #3d1515 55%, #2a1515 100%);
+    border-radius: 2px 2px 0 0;
+}
+
+.ak-theme .activity-popup-content,
+.ak-theme .event-popup-content,
+.ak-theme .guru-popup-content,
+.ak-theme .upcoming-events-popup-content,
+.ak-theme .upcoming-event-detail-content {
+    border-radius: 2px;
+    animation: none;
+}
+
+.ak-theme .upcoming-event-badge {
+    background: rgba(122, 40, 40, 0.1);
+    color: var(--ak-maroon);
+}
+
+.ak-theme .upcoming-event-date {
+    color: var(--ak-maroon);
+}
+
+.ak-theme .upcoming-event-detail-phone,
+.ak-theme .upcoming-event-detail-back,
+.ak-theme .upcoming-event-detail-qr-label,
+.ak-theme .upcoming-event-detail-contact-label {
+    color: var(--ak-maroon);
+}
+
+.ak-theme .upcoming-event-detail-back {
+    background: var(--ak-maroon);
+    color: #fff;
+    border-radius: 2px;
+}
+
+.ak-theme .footer {
+    background: #2a1515;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.ak-theme .footer a {
+    color: var(--ak-gold);
+}
+
+.ak-theme .idle-progress-bar.visible {
+    background: var(--ak-maroon);
+}
+
+@media (max-width: 900px) {
+    .ak-theme .home-alerts {
+        grid-template-columns: 1fr;
+    }
+
+    .ak-theme .home-discover-row {
+        grid-template-columns: 1fr;
+    }
+
+    .ak-theme .kiosk-page[data-tab="home"] {
+        grid-template-rows: auto minmax(28vh, 1fr) auto auto;
+    }
+}

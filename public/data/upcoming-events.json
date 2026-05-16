@@ -1,0 +1,50 @@
+{
+  "homeCardImage": "images/upcoming/card.jpg",
+  "events": [
+    {
+      "id": "yogi-jayanti",
+      "title": "Yogi Jayanti",
+      "date": "Today & tomorrow · May 16–17",
+      "time": "Program times at the welcome desk",
+      "category": "Celebration",
+      "description": "Join us to celebrate Yogi Jayanti with devotional programs at Edison Mandir.",
+      "longDescription": "Celebrate Yogi Jayanti with satsang, darshan, and family programs across the mandir campus. All are welcome—check in at the welcome desk for today's schedule and hall locations.",
+      "image": "images/gallery/05_edison_mahantswamiJJ_2025.jpg",
+      "qrImage": "images/qr-codes/2.png",
+      "signupUrl": "",
+      "qrHint": "Scan for Telegram updates and program details",
+      "contactName": "Mandir welcome desk",
+      "contactPhone": "(732) 572-1234"
+    },
+    {
+      "id": "sports-day",
+      "title": "Sports Day — Balaks & Balikas",
+      "date": "Sunday, May 31",
+      "time": "Morning program — time at welcome desk",
+      "category": "Youth",
+      "description": "A fun Sports Day for Balaks and Balikas. Wear comfortable clothes and bring your energy!",
+      "longDescription": "Balaks and Balikas Sports Day includes team games, races, and group activities on the mandir grounds. Parents: please register interest so we can plan teams and refreshments. Athletic wear and water bottles recommended.",
+      "image": "images/activities/balbalika/66._Bal_Balika_adhiveshan25.jpg",
+      "qrImage": "images/qr-codes/1.png",
+      "signupUrl": "",
+      "qrHint": "Scan the interest form to sign up",
+      "contactName": "Bal/Balika coordinators",
+      "contactPhone": "(732) 572-1234"
+    },
+    {
+      "id": "walkathon",
+      "title": "Walkathon",
+      "date": "Sunday, May 31",
+      "time": "Open to all — start time at welcome desk",
+      "category": "Community",
+      "description": "Walkathon for everyone in the mandir community. All ages welcome.",
+      "longDescription": "Join the mandir Walkathon—an all-ages community walk supporting wellness and seva. Register so we can share the route, meeting point, and any weather updates. Strollers and walking partners welcome.",
+      "image": "images/events/walkathon/1.jpg",
+      "qrImage": "images/qr-codes/1.png",
+      "signupUrl": "",
+      "qrHint": "Scan to register for the Walkathon",
+      "contactName": "Mandir office",
+      "contactPhone": "(732) 572-1234"
+    }
+  ]
+}

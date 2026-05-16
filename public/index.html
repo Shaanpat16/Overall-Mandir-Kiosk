@@ -7,10 +7,11 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
-    <link rel="stylesheet" href="css/styles.css?v=31.2">
+    <link rel="stylesheet" href="css/styles.css?v=31.8">
+    <link rel="stylesheet" href="css/akshardham-theme.css?v=1.2">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="ak-theme">
     <div id="idle-progress-bar" class="idle-progress-bar"></div>
     <!-- Header Navigation -->
         <header class="header">
@@ -19,66 +20,74 @@
                 <img src="images/header-uploaded.png" alt="BAPS Header Logo" class="header-logo-image">
             </div>
             <div class="nav-links legacy-nav-links">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#activities" class="nav-link">Activities</a>
-                <a href="#events" class="nav-link">Events</a>
+                <a href="#home" class="nav-link active">Visit</a>
+                <a href="#activities" class="nav-link">Discover</a>
+                <a href="#events" class="nav-link">Explore</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
-                <a href="#facilities" class="nav-link" onclick="event.preventDefault(); switchTab('facilities');">Facilities</a>
-                <a href="#about" class="nav-link">About</a>
+                <a href="#about" class="nav-link">Connect</a>
             </div>
             <div class="topbar-time" id="topbar-time"></div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Home (Akshardham-style visit hub) -->
     <section id="home" class="hero-section kiosk-page active" data-tab="home">
-        <div class="hero-image">
-            <img src="images/gallery/01.Kishore-Kishori-adhiveshan25.png" alt="Kishore-Kishori Adhiveshan 2025 at BAPS Shri Swaminarayan Mandir" class="hero-temple-image">
-            <div class="hero-image-overlay">
-                <p class="hero-label">Welcome</p>
-                <h1 class="hero-title">Welcome to BAPS Shri Swaminarayan Mandir</h1>
-                <p class="hero-subtitle">Experience divine peace and spiritual tranquility in our sacred temple</p>
+        <div class="home-alerts" role="region" aria-label="Visitor information">
+            <button type="button" class="home-alert-card" onclick="openUpcomingEventsPopup(); trackClick('navigation', 'home_alert_events')">
+                <span class="home-alert-eyebrow">Upcoming at Edison Mandir</span>
+                <span class="home-alert-title" id="home-alert-events-title">Programs &amp; celebrations — tap to view</span>
+            </button>
+            <button type="button" class="home-alert-card home-alert-card--hours" onclick="switchTab('connect'); trackClick('navigation', 'home_alert_hours')">
+                <span class="home-alert-eyebrow">Hours &amp; Information</span>
+                <span class="home-alert-title">Murti Darshan <strong>7–11 AM</strong> &amp; <strong>4–8 PM</strong> daily · Campus open 7 AM–8 PM</span>
+            </button>
+        </div>
+
+        <div class="hero-image ak-hero">
+            <img src="images/gallery/01.Kishore-Kishori-adhiveshan25.png" alt="BAPS Shri Swaminarayan Mandir, Edison" class="hero-temple-image">
+            <div class="hero-image-overlay ak-hero-overlay">
+                <p class="hero-label">BAPS Shri Swaminarayan Mandir</p>
+                <h1 class="hero-title">Edison, New Jersey</h1>
+                <p class="hero-subtitle">A place of devotion, learning, and community for all ages</p>
             </div>
         </div>
-        <!-- UPCOMING CARD IMAGE: add your photo to public/images/upcoming/ then set src below -->
-        <button type="button" id="home-upcoming-card" class="home-upcoming-card home-upcoming-card--image" onclick="openUpcomingEventsPopup(); trackClick('navigation', 'home_upcoming')">
+
+        <div class="home-discover-row">
+            <button type="button" class="ak-editorial-card" style="background-image:url('images/activities/balbalika/66._Bal_Balika_adhiveshan25.jpg')" onclick="switchTab('activities'); trackClick('navigation', 'home_discover')">
+                <span class="ak-editorial-eyebrow">Discover</span>
+                <span class="ak-editorial-title">Activities &amp; sabhas</span>
+                <span class="ak-editorial-cta">Get started →</span>
+            </button>
+            <button type="button" class="ak-editorial-card" style="background-image:url('images/events/diwali/1.jpg')" onclick="switchTab('events'); trackClick('navigation', 'home_explore')">
+                <span class="ak-editorial-eyebrow">Explore</span>
+                <span class="ak-editorial-title">Events &amp; festivals</span>
+                <span class="ak-editorial-cta">Get started →</span>
+            </button>
+        </div>
+
+        <button type="button" id="home-upcoming-card" class="home-upcoming-card home-upcoming-card--image home-upcoming-card--featured ak-latest-card" onclick="openUpcomingEventsPopup(); trackClick('navigation', 'home_upcoming')" aria-label="View upcoming events">
+            <span class="home-upcoming-live-badge" id="home-upcoming-live-badge"><span class="home-upcoming-live-dot" aria-hidden="true"></span> Latest</span>
             <img id="home-upcoming-card-image" class="home-upcoming-card-bg" src="images/upcoming/card.jpg" alt="" onerror="this.onerror=null;this.src='images/events/diwali/1.jpg'">
             <span class="home-upcoming-content">
-                <span class="home-upcoming-label">Upcoming Events</span>
-                <span class="home-upcoming-title" id="home-upcoming-preview">Weekly sabhas, festivals &amp; programs</span>
+                <span class="home-upcoming-label">Upcoming events</span>
+                <span class="home-upcoming-title" id="home-upcoming-preview">Yogi Jayanti · Today &amp; tomorrow</span>
+                <span class="home-upcoming-chips" id="home-upcoming-chips" aria-hidden="true"></span>
                 <span class="home-upcoming-meta">
-                    <span class="home-upcoming-count" id="home-upcoming-count">4 events</span>
-                    <span class="home-upcoming-tap">Tap to view all →</span>
+                    <span class="home-upcoming-count" id="home-upcoming-count">3 events</span>
+                    <span class="home-upcoming-tap">See all &amp; sign up →</span>
                 </span>
             </span>
         </button>
-        <div class="quick-strip">
-            <button class="quick-card quick-card--image" style="background-image:url('images/activities/balbalika/66._Bal_Balika_adhiveshan25.jpg')" onclick="switchTab('activities')">
-                <h3>Activities</h3>
-                <p>Programs for all ages</p>
-            </button>
-            <button class="quick-card quick-card--image" style="background-image:url('images/events/diwali/1.jpg')" onclick="switchTab('events')">
-                <h3>Events</h3>
-                <p>Festivals & celebrations</p>
-            </button>
-            <button type="button" class="quick-card quick-card--image" style="background-image:linear-gradient(135deg,#1e3a5f 0%,#3a5ec8 100%)" onclick="switchTab('facilities'); trackClick('navigation', 'home_facilities')">
-                <h3>Facilities</h3>
-                <p>Gym, halls & Shayona</p>
-            </button>
-            <button class="quick-card quick-card--image" style="background-image:url('images/gallery/05_edison_mahantswamiJJ_2025.jpg')" onclick="switchTab('connect')">
-                <h3>Connect</h3>
-                <p>QR & contact</p>
-            </button>
-        </div>
     </section>
 
     <!-- Main Content -->
     <main class="main-content">
         <!-- Activities Section -->
         <section id="activities" class="section activities-section kiosk-page" data-tab="activities">
-            <div class="section-header">
-                <h2>Our Activities</h2>
-                <p>Engage in spiritual and community activities for all ages</p>
+            <div class="section-header ak-section-header">
+                <span class="ak-eyebrow">Discover</span>
+                <h2>Activities &amp; sabhas</h2>
+                <p>Spiritual and community programs for every age at Edison Mandir</p>
             </div>
             
             <div class="activities-grid">
@@ -122,9 +131,10 @@
 
         <!-- Events Section (same layout pattern as Activities) -->
         <section id="events" class="section events-section kiosk-page" data-tab="events">
-            <div class="section-header">
-                <h2>Past Events</h2>
-                <p>Explore our sacred rituals, festivals, and charitable initiatives.</p>
+            <div class="section-header ak-section-header">
+                <span class="ak-eyebrow">Explore</span>
+                <h2>Events &amp; festivals</h2>
+                <p>Sacred rituals, celebrations, and community seva at the mandir</p>
             </div>
 
             <div class="activities-grid">
@@ -162,10 +172,11 @@
 
         <!-- Gallery Section -->
         <section id="gallery" class="section kiosk-page" data-tab="gallery">
-            <div class="section-header">
-                <h2>Mandir Gallery</h2>
-                <p>Explore the beauty and architecture of our sacred mandir</p>
-                        </div>
+            <div class="section-header ak-section-header">
+                <span class="ak-eyebrow">Gallery</span>
+                <h2>Mandir moments</h2>
+                <p>Celebrations, programs, and life at BAPS Edison</p>
+            </div>
             
             <div class="gallery-grid">
                 <div class="gallery-item">
@@ -218,41 +229,12 @@
             </div>
         </section>
 
-        <!-- Facilities -->
-        <section id="facilities" class="section facilities-section kiosk-page" data-tab="facilities">
-            <div class="section-header">
-                <h2>Mandir Facilities</h2>
-                <p>Spaces for sports, programs, celebrations, and prasad</p>
-            </div>
-            <div class="facilities-grid">
-                <button type="button" class="activity-card themed-activity-card facility-card facility-card--gym" onclick="trackClick('facility', 'gym'); openFacilityPopup('gym')">
-                    <h3>Basketball Gym</h3>
-                    <p>Indoor court &amp; recreation</p>
-                    <span class="time-badge">Tap for details</span>
-                </button>
-                <button type="button" class="activity-card themed-activity-card facility-card facility-card--hall" onclick="trackClick('facility', 'mainhall'); openFacilityPopup('mainhall')">
-                    <h3>Main Hall</h3>
-                    <p>LED screens &amp; large programs</p>
-                    <span class="time-badge">Tap for details</span>
-                </button>
-                <button type="button" class="activity-card themed-activity-card facility-card facility-card--banquet" onclick="trackClick('facility', 'banquet'); openFacilityPopup('banquet')">
-                    <h3>Banquet Hall</h3>
-                    <p>Reserved events &amp; gatherings</p>
-                    <span class="time-badge">Tap for details</span>
-                </button>
-                <button type="button" class="activity-card themed-activity-card facility-card facility-card--shayona" onclick="trackClick('facility', 'shayona'); openFacilityPopup('shayona')">
-                    <h3>Shayona</h3>
-                    <p>Dining hall &amp; prasad</p>
-                    <span class="time-badge">Tap for details</span>
-                </button>
-            </div>
-        </section>
-
         <!-- About Section -->
         <section id="about" class="section kiosk-page" data-tab="connect">
-            <div class="section-header">
-                <h2>About Our Mandir</h2>
-                <p>Discover the spiritual heritage and community of BAPS</p>
+            <div class="section-header ak-section-header">
+                <span class="ak-eyebrow">About</span>
+                <h2>Our mandir</h2>
+                <p>Spiritual heritage and community at BAPS Edison</p>
             </div>
             
             <div class="about-content">
@@ -401,31 +383,25 @@
             <span class="tab-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M3 11.2 12 4l9 7.2v8.3a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1z"/></svg>
             </span>
-            <span class="tab-label">Home</span>
+            <span class="tab-label">Visit</span>
         </button>
         <button class="tab-btn" data-tab-btn="activities" onclick="switchTab('activities')">
             <span class="tab-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M4 5h16v3H4zm0 5h16v3H4zm0 5h10v3H4z"/></svg>
             </span>
-            <span class="tab-label">Activities</span>
+            <span class="tab-label">Discover</span>
         </button>
         <button class="tab-btn" data-tab-btn="events" onclick="switchTab('events')">
             <span class="tab-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m1 4v2h10V7zm0 4v6h10v-6z"/></svg>
             </span>
-            <span class="tab-label">Events</span>
+            <span class="tab-label">Explore</span>
         </button>
         <button class="tab-btn" data-tab-btn="gallery" onclick="switchTab('gallery')">
             <span class="tab-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m1 11 3-3 2 2 4-4 3 5z"/></svg>
             </span>
             <span class="tab-label">Gallery</span>
-        </button>
-        <button class="tab-btn" data-tab-btn="facilities" onclick="switchTab('facilities')">
-            <span class="tab-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 21V10l8-6 8 6v11H4m2-2h12v-9l-6-4.5L6 10v9m4-4h4v4h-4z"/></svg>
-            </span>
-            <span class="tab-label">Facilities</span>
         </button>
         <button class="tab-btn" data-tab-btn="connect" onclick="switchTab('connect')">
             <span class="tab-icon" aria-hidden="true">
@@ -447,7 +423,6 @@
                 <ul>
                     <li><a href="#timings">Darshan Timings</a></li>
                     <li><a href="#events">Events</a></li>
-                    <li><a href="#facilities" onclick="event.preventDefault(); switchTab('facilities');">Facilities</a></li>
                     <li><a href="#about">About Us</a></li>
                 </ul>
                     </div>
@@ -472,23 +447,45 @@
             <div class="upcoming-events-popup-header">
                 <button type="button" class="close-upcoming-btn" onclick="closeUpcomingEventsPopup()" aria-label="Close">&times;</button>
                 <h2>Upcoming Events</h2>
-                <p class="upcoming-events-subtitle">Programs and celebrations at Edison Mandir</p>
+                <p class="upcoming-events-subtitle">Tap any event for details, QR sign-up, and contact info</p>
             </div>
             <div class="upcoming-events-list" id="upcoming-events-list"></div>
         </div>
     </div>
 
-    <!-- Facility detail (single reusable popup) -->
-    <div id="facility-popup" class="activity-popup" style="display: none;">
-        <div class="activity-popup-content">
-            <button type="button" class="close-activity-btn" onclick="closeFacilityPopup()" aria-label="Close">&times;</button>
-            <div class="activity-popup-header">
-                <h2 id="facility-popup-title">Facility</h2>
+    <!-- Upcoming event detail (QR, contact, full description) -->
+    <div id="upcoming-event-detail-popup" class="upcoming-event-detail-popup" style="display: none;">
+        <div class="upcoming-event-detail-content">
+            <button type="button" class="close-upcoming-detail-btn" onclick="closeUpcomingEventDetail()" aria-label="Close">&times;</button>
+            <div class="upcoming-event-detail-hero">
+                <img id="upcoming-detail-hero-img" src="" alt="">
             </div>
-            <div id="facility-popup-image-wrap" class="activity-popup-image-container">
-                <img id="facility-popup-image" src="" alt="" class="activity-popup-image">
+            <div class="upcoming-event-detail-body">
+                <div class="upcoming-event-detail-meta">
+                    <span class="upcoming-event-date" id="upcoming-detail-date"></span>
+                    <span class="upcoming-event-badge" id="upcoming-detail-badge"></span>
+                </div>
+                <h2 id="upcoming-detail-title"></h2>
+                <p class="upcoming-event-time" id="upcoming-detail-time"></p>
+                <p class="upcoming-event-detail-lead" id="upcoming-detail-short"></p>
+                <div class="upcoming-event-detail-long" id="upcoming-detail-long"></div>
+                <div class="upcoming-event-detail-actions">
+                    <div class="upcoming-event-detail-qr-block">
+                        <p class="upcoming-event-detail-qr-label">Scan to learn more or sign up</p>
+                        <div class="upcoming-event-detail-qr-wrap">
+                            <img id="upcoming-detail-qr" src="" alt="QR code for event sign-up">
+                        </div>
+                        <p class="upcoming-event-detail-qr-hint" id="upcoming-detail-qr-hint"></p>
+                    </div>
+                    <div class="upcoming-event-detail-contact-block">
+                        <p class="upcoming-event-detail-contact-label">Questions? Contact</p>
+                        <p class="upcoming-event-detail-contact-name" id="upcoming-detail-contact-name"></p>
+                        <a class="upcoming-event-detail-phone" id="upcoming-detail-phone" href=""></a>
+                        <p class="upcoming-event-detail-contact-note">Welcome desk can also help during mandir hours.</p>
+                    </div>
+                </div>
+                <button type="button" class="upcoming-event-detail-back" onclick="closeUpcomingEventDetail()">← Back to all events</button>
             </div>
-            <div class="activity-popup-body" id="facility-popup-body"></div>
         </div>
     </div>
 
@@ -1029,7 +1026,6 @@
                 if (tabName === 'activities' && href === '#activities') link.classList.add('active');
                 if (tabName === 'events' && href === '#events') link.classList.add('active');
                 if (tabName === 'gallery' && href === '#gallery') link.classList.add('active');
-                if (tabName === 'facilities' && href === '#facilities') link.classList.add('active');
                 if (tabName === 'connect' && href === '#about') link.classList.add('active');
             });
 
@@ -1056,6 +1052,16 @@
             lastReset: new Date().toLocaleDateString()
         };
 
+        let analyticsSaveTimer = null;
+
+        function persistAnalytics() {
+            if (analyticsSaveTimer) clearTimeout(analyticsSaveTimer);
+            analyticsSaveTimer = setTimeout(function () {
+                localStorage.setItem('kioskAnalytics', JSON.stringify(analytics));
+                analyticsSaveTimer = null;
+            }, 400);
+        }
+
         function trackClick(category, item) {
             analytics.totalClicks++;
             
@@ -1071,7 +1077,7 @@
                 analytics.qrCodeViews++;
             }
             
-            localStorage.setItem('kioskAnalytics', JSON.stringify(analytics));
+            persistAnalytics();
         }
 
         function displayAnalytics() {
@@ -1123,7 +1129,7 @@
         const aiResponses = {
             timings: "Our Murti Darshan is open daily from 7:00 AM - 11:00 AM and 4:00 PM - 8:00 PM. The Mandir Campus is open from 7:00 AM - 8:00 PM daily.",
             aarti: "We have two daily Aarti ceremonies: Morning Aarti at 7:00 AM and Evening Aarti at 6:30 PM. All are welcome to join!",
-            events: "We have upcoming events including Pramukh Swami Maharaj Janma Jayanti - Saturday November 22nd at 5:00 PM and Sunday November 23rd at 4:00 PM. Check our Events section for more details!",
+            events: "Upcoming at Edison Mandir: Yogi Jayanti today and tomorrow (May 16–17). On Sunday, May 31: Sports Day for Balaks and Balikas, and a Walkathon for everyone. Tap Upcoming Events on the home screen for details.",
             location: "BAPS Shri Swaminarayan Mandir is located in Edison, New Jersey. You can reach us at (732) 572-1234 or email info.edison@usa.baps.org",
             abhishek: "Nilkanth Varni Abhishek is available on weekdays from 7:00 AM - 11:00 AM and 4:00 PM - 6:00 PM. On weekends, it's available from 7:00 PM - 8:00 PM.",
             default: "I can help you with information about Darshan Timings, Aarti Times, Events, and Location. Please select a topic or ask me a question!"
@@ -1275,8 +1281,8 @@
             const upcomingPopup = document.getElementById('upcoming-events-popup');
             if (upcomingPopup) upcomingPopup.style.display = 'none';
 
-            const facilityPopup = document.getElementById('facility-popup');
-            if (facilityPopup) facilityPopup.style.display = 'none';
+            const upcomingDetailPopup = document.getElementById('upcoming-event-detail-popup');
+            if (upcomingDetailPopup) upcomingDetailPopup.style.display = 'none';
 
             document.body.style.overflow = 'auto';
             clearPopupIdleTimer();
@@ -1289,17 +1295,8 @@
                 popup.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
                 startPopupIdleTimer();
-                
-                // Add event listeners to reset timer on interaction
-                popup.addEventListener('scroll', startPopupIdleTimer, { passive: true });
-                popup.addEventListener('touchstart', startPopupIdleTimer, { passive: true });
-                popup.addEventListener('touchmove', startPopupIdleTimer, { passive: true });
-                popup.addEventListener('click', startPopupIdleTimer);
-                
-                // Reset main idle timer when opening popup
-                if (typeof resetIdleTimer === 'function') {
-                    resetIdleTimer();
-                }
+                attachPopupIdleListeners(popup);
+                if (typeof resetIdleTimer === 'function') resetIdleTimer();
             }
         }
 
@@ -1312,165 +1309,139 @@
             }
         }
 
-        const FACILITIES = {
-            gym: {
-                title: 'Basketball Gym',
-                image: 'images/facilities/basketball-gym.jpg',
-                bodyHtml:
-                    '<p><strong>Indoor court &amp; recreation</strong></p>' +
-                    '<p>Our basketball gym offers a full-size court for sports, youth programs, and community recreation in a clean, dedicated space on mandir grounds.</p>' +
-                    '<p><strong>Typical uses</strong></p>' +
-                    '<ul>' +
-                    '<li>Basketball and indoor sports</li>' +
-                    '<li>Youth activities and team events</li>' +
-                    '<li>Organized programs by reservation</li>' +
-                    '</ul>' +
-                    '<p><em>Ask a volunteer for open gym times and booking.</em></p>'
-            },
-            mainhall: {
-                title: 'Main Hall',
-                image: 'images/facilities/main-hall.jpg',
-                bodyHtml:
-                    '<p><strong>Large programs &amp; LED screens</strong></p>' +
-                    '<p>The main hall hosts major assemblies, festivals, and presentations with spacious seating and large LED screens for clear viewing throughout the room.</p>' +
-                    '<p><strong>Highlights</strong></p>' +
-                    '<ul>' +
-                    '<li>Big-screen broadcasts and program visuals</li>' +
-                    '<li>Major sabhas, cultural programs, and celebrations</li>' +
-                    '<li>Comfortable seating for families and guests</li>' +
-                    '</ul>' +
-                    '<p><em>Program schedules are announced on Telegram and at the welcome desk.</em></p>'
-            },
-            banquet: {
-                title: 'Banquet Hall',
-                image: 'images/facilities/banquet-hall.jpg',
-                bodyHtml:
-                    '<p><strong>Reserved events &amp; gatherings</strong></p>' +
-                    '<p>The banquet hall is available for approved private events—weddings, receptions, and community gatherings—with catering support and flexible layout options.</p>' +
-                    '<p><strong>Notes</strong></p>' +
-                    '<ul>' +
-                    '<li>Reservations and policies through mandir administration</li>' +
-                    '<li>Ideal for larger seated meals and receptions</li>' +
-                    '<li>Coordinated with mandir volunteers for setup</li>' +
-                    '</ul>' +
-                    '<p><em>Contact the mandir office for availability and guidelines.</em></p>'
-            },
-            shayona: {
-                title: 'Shayona',
-                image: 'images/facilities/shayona.jpg',
-                bodyHtml:
-                    '<p><strong>Dining hall &amp; prasad</strong></p>' +
-                    '<p>Shayona is where devotees enjoy delicious vegetarian meals and prasad in a calm, satsang-friendly atmosphere after darshan and programs.</p>' +
-                    '<p><strong>What to expect</strong></p>' +
-                    '<ul>' +
-                    '<li>Fresh vegetarian fare and traditional snacks</li>' +
-                    '<li>Seating for families and groups</li>' +
-                    '<li>Open hours aligned with major program days</li>' +
-                    '</ul>' +
-                    '<p><em>Hours may vary; check at the desk on your visit.</em></p>'
-            }
+        const UPCOMING_EVENTS_JSON_URL = 'data/upcoming-events.json';
+
+        let upcomingEventsData = {
+            homeCardImage: 'images/upcoming/card.jpg',
+            events: []
         };
 
-        function openFacilityPopup(key) {
-            const data = FACILITIES[key];
-            const popup = document.getElementById('facility-popup');
-            if (!data || !popup) return;
-
-            const titleEl = document.getElementById('facility-popup-title');
-            const bodyEl = document.getElementById('facility-popup-body');
-            const imgEl = document.getElementById('facility-popup-image');
-            const wrapEl = document.getElementById('facility-popup-image-wrap');
-
-            if (titleEl) titleEl.textContent = data.title;
-            if (bodyEl) bodyEl.innerHTML = data.bodyHtml;
-
-            if (wrapEl && imgEl) {
-                if (data.image) {
-                    wrapEl.style.display = '';
-                    imgEl.onload = function () {
-                        wrapEl.style.display = '';
-                    };
-                    imgEl.onerror = function () {
-                        wrapEl.style.display = 'none';
-                    };
-                    imgEl.src = data.image;
-                    imgEl.alt = data.title;
-                } else {
-                    wrapEl.style.display = 'none';
-                }
-            }
-
-            popup.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            startPopupIdleTimer();
-            attachPopupIdleListeners(popup);
-            if (typeof resetIdleTimer === 'function') resetIdleTimer();
-        }
-
-        function closeFacilityPopup() {
-            const popup = document.getElementById('facility-popup');
-            if (!popup) return;
-            popup.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            clearPopupIdleTimer();
-        }
-
-        const UPCOMING_EVENTS = [
+        const UPCOMING_EVENTS_FALLBACK = [
             {
-                title: 'Weekly Sabhas',
-                date: 'Every Saturday & Sunday',
-                time: 'See Activities for timings',
-                category: 'Recurring',
-                description: 'Bal/Balika, Kishore/Kishori, Yuvak/Yuvati, and Better Living assemblies each weekend.',
-                image: 'images/activities/balbalika/66._Bal_Balika_adhiveshan25.jpg'
+                id: 'yogi-jayanti',
+                title: 'Yogi Jayanti',
+                date: 'Today & tomorrow · May 16–17',
+                time: 'Program times at the welcome desk',
+                category: 'Celebration',
+                description: 'Join us to celebrate Yogi Jayanti with devotional programs at Edison Mandir.',
+                longDescription: 'Celebrate Yogi Jayanti with satsang, darshan, and family programs across the mandir campus. All are welcome—check in at the welcome desk for today\'s schedule and hall locations.',
+                image: 'images/gallery/05_edison_mahantswamiJJ_2025.jpg',
+                qrImage: 'images/qr-codes/2.png',
+                signupUrl: '',
+                qrHint: 'Scan for Telegram updates and program details',
+                contactName: 'Mandir welcome desk',
+                contactPhone: '(732) 572-1234'
             },
             {
-                title: 'Shri Swaminarayan Jayanti',
-                date: 'April 2026',
-                time: 'Program times announced via Telegram',
-                category: 'Festival',
-                description: 'Celebration of Bhagwan Swaminarayan\'s birth with devotional programs for the whole family.',
-                image: 'images/gallery/03_edison_diwali2024.jpg'
-            },
-            {
-                title: 'Kishore-Kishori Summer Shibir',
-                date: 'July 2026',
-                time: 'Details via mandir announcements',
+                id: 'sports-day',
+                title: 'Sports Day — Balaks & Balikas',
+                date: 'Sunday, May 31',
+                time: 'Morning program — time at welcome desk',
                 category: 'Youth',
-                description: 'Residential spiritual retreat for teens with workshops, satsang, and team activities.',
-                image: 'images/gallery/01.Kishore-Kishori-adhiveshan25.png'
+                description: 'A fun Sports Day for Balaks and Balikas. Wear comfortable clothes and bring your energy!',
+                longDescription: 'Balaks and Balikas Sports Day includes team games, races, and group activities on the mandir grounds. Parents: please register interest so we can plan teams and refreshments. Athletic wear and water bottles recommended.',
+                image: 'images/activities/balbalika/66._Bal_Balika_adhiveshan25.jpg',
+                qrImage: 'images/qr-codes/1.png',
+                signupUrl: '',
+                qrHint: 'Scan the interest form to sign up',
+                contactName: 'Bal/Balika coordinators',
+                contactPhone: '(732) 572-1234'
             },
             {
-                title: 'Diwali Celebration',
-                date: 'November 2026',
-                time: 'Evening program — time TBA',
-                category: 'Festival',
-                description: 'Festival of Lights with decorations, aarti, cultural programs, and community celebration.',
-                image: 'images/events/diwali/1.jpg'
+                id: 'walkathon',
+                title: 'Walkathon',
+                date: 'Sunday, May 31',
+                time: 'Open to all — start time at welcome desk',
+                category: 'Community',
+                description: 'Walkathon for everyone in the mandir community. All ages welcome.',
+                longDescription: 'Join the mandir Walkathon—an all-ages community walk supporting wellness and seva. Register so we can share the route, meeting point, and any weather updates. Strollers and walking partners welcome.',
+                image: 'images/events/walkathon/1.jpg',
+                qrImage: 'images/qr-codes/1.png',
+                signupUrl: '',
+                qrHint: 'Scan to register for the Walkathon',
+                contactName: 'Mandir office',
+                contactPhone: '(732) 572-1234'
             }
         ];
+
+        function escapeHtml(str) {
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function loadUpcomingEventsData() {
+            return fetch(UPCOMING_EVENTS_JSON_URL, { cache: 'no-store' })
+                .then(function (res) {
+                    if (!res.ok) throw new Error('upcoming-events.json not found');
+                    return res.json();
+                })
+                .then(function (data) {
+                    if (data && Array.isArray(data.events) && data.events.length) {
+                        upcomingEventsData = {
+                            homeCardImage: data.homeCardImage || 'images/upcoming/card.jpg',
+                            events: data.events
+                        };
+                    } else {
+                        upcomingEventsData = {
+                            homeCardImage: (data && data.homeCardImage) || 'images/upcoming/card.jpg',
+                            events: UPCOMING_EVENTS_FALLBACK
+                        };
+                    }
+                })
+                .catch(function () {
+                    upcomingEventsData = {
+                        homeCardImage: 'images/upcoming/card.jpg',
+                        events: UPCOMING_EVENTS_FALLBACK
+                    };
+                });
+        }
+
+        function getUpcomingEvents() {
+            if (upcomingEventsData.events && upcomingEventsData.events.length) {
+                return upcomingEventsData.events;
+            }
+            return UPCOMING_EVENTS_FALLBACK;
+        }
+
+        function getUpcomingHomeCardImage() {
+            return upcomingEventsData.homeCardImage || 'images/upcoming/card.jpg';
+        }
+
+        function getUpcomingQrSrc(event) {
+            if (event.qrImage) return event.qrImage;
+            if (event.signupUrl) {
+                return 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=14&data=' + encodeURIComponent(event.signupUrl);
+            }
+            return 'images/qr-codes/1.png';
+        }
 
         function renderUpcomingEventsList() {
             const list = document.getElementById('upcoming-events-list');
             if (!list) return;
+            const events = getUpcomingEvents();
 
-            list.innerHTML = UPCOMING_EVENTS.map(function (event) {
+            list.innerHTML = events.map(function (event, index) {
                 const imgHtml = event.image
-                    ? '<img src="' + event.image + '" alt="" class="upcoming-event-thumb" loading="lazy">'
+                    ? '<img src="' + escapeHtml(event.image) + '" alt="" class="upcoming-event-thumb" loading="lazy">'
                     : '';
                 return (
-                    '<article class="upcoming-event-item">' +
+                    '<button type="button" class="upcoming-event-item upcoming-event-item--clickable" data-event-index="' + index + '" onclick="openUpcomingEventDetail(' + index + ')">' +
                         imgHtml +
                         '<div class="upcoming-event-body">' +
                             '<div class="upcoming-event-meta">' +
-                                '<span class="upcoming-event-date">' + event.date + '</span>' +
-                                '<span class="upcoming-event-badge">' + event.category + '</span>' +
+                                '<span class="upcoming-event-date">' + escapeHtml(event.date) + '</span>' +
+                                '<span class="upcoming-event-badge">' + escapeHtml(event.category) + '</span>' +
                             '</div>' +
-                            '<h3>' + event.title + '</h3>' +
-                            '<p class="upcoming-event-time">' + event.time + '</p>' +
-                            '<p class="upcoming-event-desc">' + event.description + '</p>' +
+                            '<h3>' + escapeHtml(event.title) + '</h3>' +
+                            '<p class="upcoming-event-time">' + escapeHtml(event.time) + '</p>' +
+                            '<p class="upcoming-event-desc">' + escapeHtml(event.description) + '</p>' +
+                            '<span class="upcoming-event-cta">Tap for details, QR &amp; contact →</span>' +
                         '</div>' +
-                    '</article>'
+                    '</button>'
                 );
             }).join('');
         }
@@ -1480,14 +1451,83 @@
             const cardImage = document.getElementById('home-upcoming-card-image');
             const preview = document.getElementById('home-upcoming-preview');
             const count = document.getElementById('home-upcoming-count');
-            if (card && cardImage && cardImage.getAttribute('src')) {
-                card.style.backgroundImage = "url('" + cardImage.getAttribute('src') + "')";
+            const chips = document.getElementById('home-upcoming-chips');
+            const liveBadge = document.getElementById('home-upcoming-live-badge');
+            const events = getUpcomingEvents();
+            const homeSrc = getUpcomingHomeCardImage();
+
+            if (cardImage) {
+                cardImage.src = homeSrc;
             }
-            if (preview && UPCOMING_EVENTS.length) {
-                preview.textContent = UPCOMING_EVENTS[0].title + ' · ' + UPCOMING_EVENTS[0].date;
+            if (card && homeSrc) {
+                card.style.backgroundImage = "url('" + homeSrc.replace(/'/g, "%27") + "')";
+            }
+            if (preview && events.length) {
+                preview.textContent = events[0].title + ' · ' + events[0].date;
+            }
+            const alertTitle = document.getElementById('home-alert-events-title');
+            if (alertTitle && events.length) {
+                alertTitle.textContent = events[0].title + ' · ' + events[0].date + ' — tap to view';
             }
             if (count) {
-                count.textContent = UPCOMING_EVENTS.length + (UPCOMING_EVENTS.length === 1 ? ' event' : ' events');
+                count.textContent = events.length + (events.length === 1 ? ' event' : ' events');
+            }
+            if (liveBadge && events.length) {
+                liveBadge.innerHTML = '<span class="home-upcoming-live-dot" aria-hidden="true"></span> ' + events.length + ' upcoming';
+            }
+            if (chips) {
+                chips.innerHTML = events.slice(0, 3).map(function (e) {
+                    return '<span class="home-upcoming-chip">' + escapeHtml(e.title) + '</span>';
+                }).join('');
+            }
+        }
+
+        function openUpcomingEventDetail(index) {
+            const events = getUpcomingEvents();
+            const event = events[index];
+            const popup = document.getElementById('upcoming-event-detail-popup');
+            if (!event || !popup) return;
+
+            const hero = document.getElementById('upcoming-detail-hero-img');
+            const qr = document.getElementById('upcoming-detail-qr');
+            const phone = document.getElementById('upcoming-detail-phone');
+
+            if (hero) {
+                hero.src = event.image || '';
+                hero.alt = event.title;
+            }
+            document.getElementById('upcoming-detail-date').textContent = event.date;
+            document.getElementById('upcoming-detail-badge').textContent = event.category;
+            document.getElementById('upcoming-detail-title').textContent = event.title;
+            document.getElementById('upcoming-detail-time').textContent = event.time;
+            document.getElementById('upcoming-detail-short').textContent = event.description;
+            document.getElementById('upcoming-detail-long').textContent = event.longDescription || event.description;
+            document.getElementById('upcoming-detail-contact-name').textContent = event.contactName || 'Mandir office';
+            document.getElementById('upcoming-detail-qr-hint').textContent = event.qrHint || 'Scan with your phone camera';
+
+            if (qr) qr.src = getUpcomingQrSrc(event);
+            if (phone) {
+                const digits = (event.contactPhone || '').replace(/\D/g, '');
+                phone.textContent = event.contactPhone || '(732) 572-1234';
+                phone.href = digits ? 'tel:+1' + digits : 'tel:+17325721234';
+            }
+
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            startPopupIdleTimer();
+            attachPopupIdleListeners(popup);
+            if (typeof resetIdleTimer === 'function') resetIdleTimer();
+            if (typeof trackClick === 'function') trackClick('navigation', 'upcoming_detail_' + event.id);
+        }
+
+        function closeUpcomingEventDetail() {
+            const popup = document.getElementById('upcoming-event-detail-popup');
+            if (!popup) return;
+            popup.style.display = 'none';
+            const listPopup = document.getElementById('upcoming-events-popup');
+            if (!listPopup || listPopup.style.display === 'none') {
+                document.body.style.overflow = 'auto';
+                clearPopupIdleTimer();
             }
         }
 
@@ -1515,6 +1555,7 @@
             const popup = document.getElementById('upcoming-events-popup');
             if (!popup) return;
             popup.style.display = 'none';
+            closeUpcomingEventDetail();
             document.body.style.overflow = 'auto';
             clearPopupIdleTimer();
         }
@@ -1525,17 +1566,8 @@
                 popup.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
                 startPopupIdleTimer();
-                
-                // Add event listeners to reset timer on interaction
-                popup.addEventListener('scroll', startPopupIdleTimer, { passive: true });
-                popup.addEventListener('touchstart', startPopupIdleTimer, { passive: true });
-                popup.addEventListener('touchmove', startPopupIdleTimer, { passive: true });
-                popup.addEventListener('click', startPopupIdleTimer);
-                
-                // Reset main idle timer when opening popup
-                if (typeof resetIdleTimer === 'function') {
-                    resetIdleTimer();
-                }
+                attachPopupIdleListeners(popup);
+                if (typeof resetIdleTimer === 'function') resetIdleTimer();
             }
         }
 
@@ -1554,12 +1586,7 @@
             popup.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             startPopupIdleTimer();
-            
-            // Add event listeners to reset timer on interaction
-            popup.addEventListener('scroll', startPopupIdleTimer, { passive: true });
-            popup.addEventListener('touchstart', startPopupIdleTimer, { passive: true });
-            popup.addEventListener('touchmove', startPopupIdleTimer, { passive: true });
-            popup.addEventListener('click', startPopupIdleTimer);
+            attachPopupIdleListeners(popup);
         }
 
         function closeGuruPopup(guruId) {
@@ -1735,7 +1762,9 @@
         // Observe all sections and cards
         document.addEventListener('DOMContentLoaded', () => {
             switchTab('home');
-            updateUpcomingHomeCard();
+            loadUpcomingEventsData().then(function () {
+                updateUpcomingHomeCard();
+            });
             const fadeElements = document.querySelectorAll('.section, .timing-card, .event-card, .gallery-item, .about-card');
             fadeElements.forEach(el => {
                 el.classList.add('fade-in');
@@ -1784,27 +1813,45 @@
 
         const IDLE_TIME = 90000; // 90 seconds
         const IDLE_WARN_TIME = 70000; // start progress bar
+        const IDLE_ACTIVITY_THROTTLE = 2500;
         let screensaverActive = false;
         let idleStartAt = Date.now();
-        let idleProgressRaf = null;
+        let idleProgressInterval = null;
+        let idleActivityLastReset = 0;
 
         function setIdleProgress() {
             const bar = document.getElementById('idle-progress-bar');
-            if (!bar) return;
+            if (!bar || screensaverActive) return;
             const elapsed = Date.now() - idleStartAt;
 
             if (elapsed >= IDLE_WARN_TIME && elapsed < IDLE_TIME) {
                 const pct = ((elapsed - IDLE_WARN_TIME) / (IDLE_TIME - IDLE_WARN_TIME)) * 100;
                 bar.classList.add('visible');
-                bar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+                bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
             } else {
                 bar.classList.remove('visible');
                 bar.style.width = '0%';
             }
+        }
 
-            if (!screensaverActive) {
-                idleProgressRaf = requestAnimationFrame(setIdleProgress);
+        function startIdleProgressPolling() {
+            if (idleProgressInterval) return;
+            idleProgressInterval = setInterval(setIdleProgress, 500);
+        }
+
+        function stopIdleProgressPolling() {
+            if (idleProgressInterval) {
+                clearInterval(idleProgressInterval);
+                idleProgressInterval = null;
             }
+        }
+
+        function onUserActivity() {
+            if (screensaverActive) return;
+            const now = Date.now();
+            if (now - idleActivityLastReset < IDLE_ACTIVITY_THROTTLE) return;
+            idleActivityLastReset = now;
+            resetIdleTimer();
         }
 
         // Admin test: Global Vicharan Globe (lazy-loaded Three.js, no auto-spin)
@@ -2297,6 +2344,11 @@
             const screensaver = document.getElementById('screensaver-overlay');
             if (screensaver && !screensaverActive) {
                 screensaverActive = true;
+                stopIdleProgressPolling();
+                if (idleTimer) {
+                    clearTimeout(idleTimer);
+                    idleTimer = null;
+                }
                 
                 // Close all popups before showing screensaver
                 if (typeof closeAllPopups === 'function') {
@@ -2304,10 +2356,7 @@
                 }
                 
                 // Scroll to home page (top)
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo(0, 0);
                 
                 screensaver.style.display = 'flex';
                 // Force reflow
@@ -2329,7 +2378,7 @@
                 
                 // Track session start
                 analytics.sessionsStarted++;
-                localStorage.setItem('kioskAnalytics', JSON.stringify(analytics));
+                persistAnalytics();
             }
         }
 
@@ -2337,15 +2386,11 @@
             if (idleTimer) {
                 clearTimeout(idleTimer);
             }
-            if (idleProgressRaf) {
-                cancelAnimationFrame(idleProgressRaf);
-                idleProgressRaf = null;
-            }
+            stopIdleProgressPolling();
             idleStartAt = Date.now();
-            // Only set new timer if screensaver is not active
             if (!screensaverActive) {
                 idleTimer = setTimeout(showScreensaver, IDLE_TIME);
-                idleProgressRaf = requestAnimationFrame(setIdleProgress);
+                startIdleProgressPolling();
             }
         }
 
@@ -2371,15 +2416,10 @@
                 resetIdleTimer();
             });
 
-            // Track user activity on document
-            const activityEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart', 'touchmove'];
-            
-            activityEvents.forEach(function(eventType) {
-                document.addEventListener(eventType, function() {
-                    if (!screensaverActive) {
-                        resetIdleTimer();
-                    }
-                }, { passive: true, capture: true });
+            // Throttled idle reset — no mousemove/touchmove (they caused constant jank on kiosk)
+            const activityEvents = ['mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
+            activityEvents.forEach(function (eventType) {
+                document.addEventListener(eventType, onUserActivity, { passive: true, capture: true });
             });
 
             // Optional startup “click to start” (admin can disable; idle screensaver unchanged)
