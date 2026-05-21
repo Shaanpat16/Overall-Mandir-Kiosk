@@ -1,0 +1,1172 @@
+/**
+ * Edison Kiosk — Design System
+ * Blue gradient · Neue Montreal · large-radius curved cards
+ */
+
+/* ── Font faces ── */
+@font-face {
+    font-family: 'Neue Montreal';
+    src: local('Neue Montreal'), local('NeueMontreal-Regular'),
+         url('../fonts/NeueMontreal-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neue Montreal';
+    src: local('Neue Montreal Bold'), local('NeueMontreal-Bold'),
+         url('../fonts/NeueMontreal-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── Design tokens ── */
+.edison-theme {
+    --edison-bg: #f3f3f3;
+    --edison-surface: #ffffff;
+    --edison-blue-start: #1a6fd4;
+    --edison-blue-end: #0d3d7a;
+    --edison-blue-mid: #1558b0;
+    --edison-blue-soft: rgba(26, 111, 212, 0.10);
+    --edison-blue-text: #1a6fd4;
+    --edison-radius-lg: 28px;
+    --edison-radius-md: 24px;
+    --edison-radius-sm: 16px;
+    --edison-font: 'Neue Montreal', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --edison-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    --edison-shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+    --edison-text: #1a1a1a;
+    --edison-text-secondary: #666666;
+    --edison-text-light: #ffffff;
+    --edison-card-gap: 16px;
+    --edison-page-pad: 20px;
+    --edison-nav-height: 72px;
+    /* Cropped bottom-nav.png aspect (576×122) */
+    --kiosk-nav-h: clamp(72px, 12dvh, 132px);
+}
+
+/* ── Global base ── */
+body.edison-theme {
+    font-family: var(--edison-font);
+    background: var(--edison-bg);
+    color: var(--edison-text);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── HIDE top header ── */
+.edison-theme .header {
+    display: none !important;
+}
+
+/* ── Hide old Akshardham elements ── */
+.edison-theme .home-alerts,
+.edison-theme .ak-hero,
+.edison-theme .hero-image.ak-hero,
+.edison-theme .home-discover-row,
+.edison-theme .home-upcoming-card:not(.edison-home-card),
+.edison-theme .legacy-nav-links {
+    display: none !important;
+}
+
+/* ═══════════════════════════════════════
+   HOME PAGE — design PNG + overlay taps
+   ═══════════════════════════════════════ */
+
+.edison-theme .edison-home-png,
+.edison-theme .edison-home-png.kiosk-page[data-tab="home"] {
+    display: block;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    height: 100vh;
+    min-height: 100dvh;
+    max-height: none;
+    padding: 0;
+    margin: 0 !important;
+    overflow: hidden;
+    background: #000;
+    z-index: 50;
+}
+
+.edison-home-png__frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    max-width: none;
+}
+
+.edison-home-png__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    image-rendering: auto;
+}
+
+.edison-home-png__hotspots {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.edison-home-png__hit {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: var(--edison-radius-lg);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.edison-home-png__hit:active {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Positions tuned for images/design/home-screen.png (576×1024) */
+.edison-home-png__hit--activities {
+    top: 49%;
+    left: 2.5%;
+    width: 45%;
+    height: 16%;
+}
+
+.edison-home-png__hit--events {
+    top: 66.5%;
+    left: 2.5%;
+    width: 45%;
+    height: 16%;
+}
+
+.edison-home-png__hit--upcoming {
+    top: 49%;
+    left: 50.5%;
+    width: 46%;
+    height: 34%;
+}
+
+/* Bottom nav on PNG (5 equal tabs) */
+.edison-home-png__hit--nav {
+    top: auto;
+    bottom: 0;
+    height: 12%;
+    border-radius: 0;
+}
+
+.edison-home-png__hit--nav-home {
+    left: 0;
+    width: 20%;
+}
+
+.edison-home-png__hit--nav-activities {
+    left: 20%;
+    width: 20%;
+}
+
+.edison-home-png__hit--nav-events {
+    left: 40%;
+    width: 20%;
+}
+
+.edison-home-png__hit--nav-gallery {
+    left: 60%;
+    width: 20%;
+}
+
+.edison-home-png__hit--nav-about {
+    left: 80%;
+    width: 20%;
+}
+
+/* Legacy built home (unused) */
+.edison-home {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: var(--edison-page-pad);
+    padding-bottom: calc(var(--edison-nav-height) + 16px);
+    background: var(--edison-bg);
+    gap: var(--edison-card-gap);
+}
+
+.edison-home-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--edison-card-gap);
+    flex: 1;
+    min-height: 0;
+}
+
+/* ── Welcome hero card ── */
+.edison-welcome-hero {
+    border-radius: var(--edison-radius-lg);
+    background: linear-gradient(135deg, var(--edison-blue-start) 0%, var(--edison-blue-end) 100%);
+    color: var(--edison-text-light);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    box-shadow: var(--edison-shadow-lg);
+    min-height: 380px;
+}
+
+.edison-welcome-hero__content {
+    padding: 32px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.edison-welcome-hero__lockup {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 6px;
+    line-height: 1.45;
+}
+
+.edison-welcome-hero__title {
+    font-family: var(--edison-font);
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.0;
+    margin: 4px 0 12px;
+}
+
+.edison-welcome-hero__desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    opacity: 0.88;
+    max-width: 34ch;
+    margin-bottom: 14px;
+}
+
+.edison-welcome-hero__hours {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: var(--edison-radius-sm);
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+}
+
+.edison-welcome-hero__hours h2 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    opacity: 0.9;
+}
+
+.edison-welcome-hero__hours p {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    opacity: 0.92;
+    margin: 0;
+}
+
+.edison-welcome-hero__qr {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 5px;
+    object-fit: contain;
+    margin-top: auto;
+}
+
+.edison-welcome-hero__photo {
+    position: relative;
+    overflow: hidden;
+    background-image: url('../images/design/hero-mandir.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* ── Home grid (2-col) ── */
+.edison-home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--edison-card-gap);
+    flex: 1;
+    min-height: 280px;
+}
+
+.edison-home-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--edison-radius-lg);
+    box-shadow: var(--edison-shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--edison-text-light);
+    text-align: left;
+    background: #333;
+    transition: transform 0.2s ease;
+}
+
+.edison-home-card:active {
+    transform: scale(0.97);
+}
+
+/* Card-specific background images */
+.edison-home-card--activities .edison-card__media--bleed {
+    background-image: url('../images/design/home-activities.jpg');
+}
+
+.edison-home-card--events .edison-card__media--bleed {
+    background-image: url('../images/design/home-events.jpg');
+}
+
+.edison-home-card--upcoming .edison-card__media--bleed {
+    background-image: url('../images/design/home-upcoming.jpg');
+}
+
+.edison-home-card--upcoming {
+    grid-row: 1 / 3;
+    grid-column: 2;
+}
+
+/* ═══════════════════════════════════════
+   EDISON CARD COMPONENT (shared)
+   ═══════════════════════════════════════ */
+
+.edison-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--edison-radius-lg);
+    box-shadow: var(--edison-shadow);
+    background: var(--edison-surface);
+}
+
+.edison-card:active {
+    transform: scale(0.98);
+}
+
+.edison-card__media {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.edison-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.12) 55%, rgba(0, 0, 0, 0.04) 100%);
+}
+
+.edison-card__media--bleed {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -8%;
+    height: 116%;
+    background-size: cover;
+    background-position: center top;
+    z-index: 0;
+}
+
+.edison-card__media--bleed::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.12) 55%, rgba(0, 0, 0, 0.04) 100%);
+}
+
+.edison-card__title {
+    position: relative;
+    z-index: 1;
+    color: var(--edison-text-light);
+    font-family: var(--edison-font);
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.15;
+    padding: 18px 22px;
+    margin-top: auto;
+    display: block;
+}
+
+.edison-card__title--right {
+    text-align: right;
+}
+
+.edison-card__title--center {
+    text-align: center;
+}
+
+/* ═══════════════════════════════════════
+   INNER PAGES — shared layout
+   ═══════════════════════════════════════ */
+
+.edison-page {
+    background: var(--edison-bg);
+    padding: var(--edison-page-pad);
+    padding-top: 16px;
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    box-sizing: border-box;
+    min-height: 0;
+}
+
+.edison-page-title {
+    font-family: var(--edison-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--edison-text);
+    margin: 0 0 4px;
+    line-height: 1.15;
+}
+
+.edison-page-subtitle {
+    font-size: 0.88rem;
+    color: var(--edison-text-secondary);
+    margin: 0 0 16px;
+    line-height: 1.4;
+}
+
+/* ── Card grid (Activities / Events) ── */
+.edison-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--edison-card-gap);
+}
+
+.edison-tile-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--edison-radius-lg);
+    box-shadow: var(--edison-shadow);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--edison-text-light);
+    text-align: left;
+    background: #333;
+    min-height: 150px;
+    transition: transform 0.2s ease;
+}
+
+.edison-tile-card:active {
+    transform: scale(0.97);
+}
+
+.edison-tile-card p {
+    position: relative;
+    z-index: 1;
+    padding: 0 22px;
+    font-size: 0.82rem;
+    opacity: 0.88;
+    margin: 2px 0 0;
+}
+
+.edison-tile-card .time-badge {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 6px 22px 18px;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--edison-text-light);
+}
+
+.edison-tile-card .edison-card__title {
+    padding-bottom: 2px;
+}
+
+.edison-tile-card--wide {
+    grid-column: 1 / -1;
+}
+
+/* Override base activity-card styles */
+.edison-theme .activity-card.edison-tile-card {
+    padding: 0;
+    border: 0;
+    background: #333;
+    box-shadow: var(--edison-shadow);
+}
+
+.edison-theme .activity-card.edison-tile-card h3 {
+    color: var(--edison-text-light);
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.edison-theme .activity-card.edison-tile-card p {
+    color: var(--edison-text-light);
+    font-size: 0.82rem;
+    margin: 0;
+}
+
+.edison-theme .activity-card.edison-tile-card:hover {
+    transform: scale(0.98);
+    box-shadow: var(--edison-shadow-lg);
+    background: #333;
+    border-color: transparent;
+}
+
+.edison-theme .activity-card.edison-tile-card:active {
+    transform: scale(0.96);
+}
+
+.edison-theme .themed-activity-card::before {
+    border-radius: var(--edison-radius-lg);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0.04) 100%);
+}
+
+/* ═══════════════════════════════════════
+   GALLERY
+   ═══════════════════════════════════════ */
+
+.edison-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--edison-card-gap);
+}
+
+.edison-gallery-tile {
+    border-radius: var(--edison-radius-lg);
+    overflow: hidden;
+}
+
+.edison-theme .gallery-item {
+    border-radius: var(--edison-radius-lg);
+    overflow: hidden;
+}
+
+.edison-theme .gallery-image {
+    border-radius: 0;
+}
+
+.edison-theme .gallery-overlay {
+    border-radius: 0;
+    padding: 12px 16px;
+}
+
+.edison-theme .gallery-overlay h3 {
+    font-family: var(--edison-font);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.edison-theme .gallery-overlay p {
+    font-size: 0.82rem;
+}
+
+.edison-theme .gallery-item:hover {
+    transform: none;
+    box-shadow: var(--edison-shadow-lg);
+}
+
+.edison-theme .gallery-item:active {
+    transform: scale(0.98);
+}
+
+/* ═══════════════════════════════════════
+   ABOUT (scrollable sections)
+   ═══════════════════════════════════════ */
+
+.edison-about-block {
+    padding: var(--edison-page-pad);
+    padding-bottom: 0;
+}
+
+.edison-about-block:first-of-type {
+    padding-top: 24px;
+}
+
+.edison-about-block:last-of-type {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+.edison-theme .section-header {
+    text-align: left;
+    padding: 0 4px;
+    margin: 0 0 16px;
+    max-width: none;
+}
+
+.edison-theme .section-header h2 {
+    font-family: var(--edison-font);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--edison-text);
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+
+.edison-theme .section-header p {
+    font-size: 0.9rem;
+    color: var(--edison-text-secondary);
+    font-style: normal;
+    margin: 0;
+}
+
+/* Hide old eyebrow elements */
+.edison-theme .ak-eyebrow {
+    display: none;
+}
+
+.edison-theme .ak-section-header {
+    text-align: left;
+    max-width: none;
+    padding: 0 4px;
+    margin: 0 0 16px;
+}
+
+.edison-theme .about-card {
+    border-radius: var(--edison-radius-lg);
+    background: var(--edison-surface);
+    box-shadow: var(--edison-shadow);
+}
+
+.edison-theme .about-card h3 {
+    font-family: var(--edison-font);
+    font-weight: 700;
+    color: var(--edison-text);
+}
+
+/* Gurus */
+.edison-theme .gurus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--edison-card-gap);
+}
+
+.edison-theme .guru-card {
+    border-radius: var(--edison-radius-lg);
+    box-shadow: var(--edison-shadow);
+    overflow: hidden;
+    background: var(--edison-surface);
+}
+
+.edison-theme .guru-image-wrapper {
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.edison-theme .guru-card h3 {
+    font-family: var(--edison-font);
+    font-weight: 700;
+    padding: 12px 16px 4px;
+}
+
+.edison-theme .guru-years {
+    padding: 0 16px 14px;
+    color: var(--edison-text-secondary);
+}
+
+/* QR codes */
+.edison-theme .qr-codes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--edison-card-gap);
+}
+
+.edison-theme .qr-code-card {
+    border-radius: var(--edison-radius-lg);
+    box-shadow: var(--edison-shadow);
+    background: var(--edison-surface);
+    overflow: hidden;
+}
+
+.edison-theme .qr-code-card h3 {
+    font-family: var(--edison-font);
+    font-weight: 700;
+}
+
+.edison-theme .qr-code-image-wrapper {
+    border-radius: var(--edison-radius-md);
+}
+
+/* Contact */
+.edison-theme .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--edison-card-gap);
+}
+
+.edison-theme .contact-item {
+    border-radius: var(--edison-radius-md);
+    background: var(--edison-surface);
+    box-shadow: var(--edison-shadow);
+    padding: 18px 20px;
+}
+
+.edison-theme .contact-item strong {
+    font-family: var(--edison-font);
+    font-weight: 700;
+    color: var(--edison-text);
+}
+
+/* Footer */
+.edison-theme .footer {
+    background: var(--edison-blue-end);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: var(--edison-radius-lg) var(--edison-radius-lg) 0 0;
+    margin-top: 20px;
+}
+
+.edison-theme .footer h3,
+.edison-theme .footer h4 {
+    font-family: var(--edison-font);
+}
+
+.edison-theme .footer a {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* Bottom tab bar removed — navigation is on home PNG hotspots */
+
+.edison-theme .tab-bar {
+    display: none !important;
+}
+
+.edison-theme .tab-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--edison-font);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #999;
+    border-radius: var(--edison-radius-sm);
+    padding: 6px 4px;
+    transition: color 0.15s ease, background 0.15s ease;
+    min-height: 54px;
+}
+
+.edison-theme .tab-btn .tab-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.edison-theme .tab-btn .tab-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: #999;
+    transition: fill 0.15s ease;
+}
+
+.edison-theme .tab-btn.active {
+    color: var(--edison-blue-text);
+    background: var(--edison-blue-soft);
+}
+
+.edison-theme .tab-btn.active .tab-icon svg {
+    fill: var(--edison-blue-text);
+}
+
+/* ═══════════════════════════════════════
+   POPUPS & OVERLAYS — white surface, blue accents
+   ═══════════════════════════════════════ */
+
+.edison-theme .activity-popup,
+.edison-theme .event-popup,
+.edison-theme .guru-popup,
+.edison-theme .upcoming-events-popup,
+.edison-theme .upcoming-event-detail-popup {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.edison-theme .activity-popup-content,
+.edison-theme .event-popup-content,
+.edison-theme .guru-popup-content,
+.edison-theme .upcoming-events-popup-content,
+.edison-theme .upcoming-event-detail-content {
+    border-radius: var(--edison-radius-lg);
+    box-shadow: var(--edison-shadow-lg);
+    animation: none;
+    overflow: hidden;
+}
+
+.edison-theme .activity-popup-header,
+.edison-theme .event-popup-header {
+    background: linear-gradient(135deg, var(--edison-blue-start) 0%, var(--edison-blue-end) 100%);
+    border-radius: 0;
+    color: var(--edison-text-light);
+}
+
+.edison-theme .activity-popup-header h2,
+.edison-theme .event-popup-header h2 {
+    font-family: var(--edison-font);
+    font-weight: 700;
+    color: var(--edison-text-light);
+}
+
+.edison-theme .guru-popup-header {
+    background: linear-gradient(135deg, var(--edison-blue-start) 0%, var(--edison-blue-end) 100%);
+    border-radius: 0;
+}
+
+.edison-theme .guru-popup-content h2 {
+    font-family: var(--edison-font);
+    color: var(--edison-text-light);
+}
+
+.edison-theme .guru-popup-image {
+    border-radius: var(--edison-radius-md);
+}
+
+.edison-theme .upcoming-events-popup-header {
+    background: linear-gradient(135deg, var(--edison-blue-start) 0%, var(--edison-blue-end) 100%);
+    border-radius: 0;
+    color: var(--edison-text-light);
+}
+
+.edison-theme .upcoming-events-popup-header h2 {
+    font-family: var(--edison-font);
+    font-weight: 700;
+    color: var(--edison-text-light);
+}
+
+.edison-theme .upcoming-events-subtitle {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.edison-theme .upcoming-event-badge {
+    background: var(--edison-blue-soft);
+    color: var(--edison-blue-text);
+    border-radius: 20px;
+}
+
+.edison-theme .upcoming-event-date {
+    color: var(--edison-blue-text);
+    font-weight: 600;
+}
+
+.edison-theme .upcoming-event-item {
+    border-radius: var(--edison-radius-md);
+}
+
+.edison-theme .upcoming-event-thumb {
+    border-radius: var(--edison-radius-sm);
+}
+
+.edison-theme .upcoming-event-cta {
+    color: var(--edison-blue-text);
+    font-weight: 600;
+}
+
+.edison-theme .upcoming-event-detail-content {
+    border-radius: var(--edison-radius-lg);
+    overflow: hidden;
+}
+
+.edison-theme .upcoming-event-detail-hero img {
+    border-radius: 0;
+}
+
+.edison-theme .upcoming-event-detail-phone,
+.edison-theme .upcoming-event-detail-qr-label,
+.edison-theme .upcoming-event-detail-contact-label {
+    color: var(--edison-blue-text);
+}
+
+.edison-theme .upcoming-event-detail-back {
+    background: var(--edison-blue-start);
+    color: #fff;
+    border-radius: var(--edison-radius-sm);
+    font-family: var(--edison-font);
+    font-weight: 600;
+}
+
+.edison-theme .upcoming-event-detail-back:hover {
+    background: var(--edison-blue-mid);
+}
+
+/* Close buttons in popups */
+.edison-theme .close-activity-btn,
+.edison-theme .close-event-btn,
+.edison-theme .close-guru-btn,
+.edison-theme .close-upcoming-btn,
+.edison-theme .close-upcoming-detail-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    color: #fff;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.edison-theme .close-activity-btn:hover,
+.edison-theme .close-event-btn:hover,
+.edison-theme .close-guru-btn:hover,
+.edison-theme .close-upcoming-btn:hover,
+.edison-theme .close-upcoming-detail-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Popup images */
+.edison-theme .activity-popup-image {
+    border-radius: 0;
+}
+
+.edison-theme .event-popup-image {
+    border-radius: var(--edison-radius-sm);
+}
+
+.edison-theme .event-popup-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    padding: 0 20px;
+    margin-bottom: 16px;
+}
+
+/* Popup body text */
+.edison-theme .activity-popup-body,
+.edison-theme .event-popup-body,
+.edison-theme .guru-popup-body {
+    font-family: var(--edison-font);
+    padding: 20px 24px 28px;
+}
+
+.edison-theme .activity-popup-body h2,
+.edison-theme .event-popup-body h2,
+.edison-theme .guru-popup-body p strong {
+    font-family: var(--edison-font);
+}
+
+/* ═══════════════════════════════════════
+   SCREENSAVER
+   ═══════════════════════════════════════ */
+
+.edison-theme .screensaver-overlay {
+    background: linear-gradient(135deg, var(--edison-blue-end) 0%, #0a2a5c 50%, var(--edison-blue-start) 100%);
+}
+
+.edison-theme .screensaver-title {
+    font-family: var(--edison-font);
+    font-weight: 700;
+}
+
+.edison-theme .screensaver-subtitle {
+    font-family: var(--edison-font);
+}
+
+.edison-theme .screensaver-prompt {
+    font-family: var(--edison-font);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* ═══════════════════════════════════════
+   ADMIN DASHBOARD
+   ═══════════════════════════════════════ */
+
+.edison-theme .admin-dashboard {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.edison-theme .admin-dashboard-content {
+    border-radius: var(--edison-radius-lg);
+    box-shadow: var(--edison-shadow-lg);
+    overflow: hidden;
+}
+
+.edison-theme .admin-header {
+    background: linear-gradient(135deg, var(--edison-blue-start) 0%, var(--edison-blue-end) 100%);
+}
+
+.edison-theme .admin-header h3 {
+    font-family: var(--edison-font);
+    color: var(--edison-text-light);
+}
+
+.edison-theme .close-admin-btn {
+    color: var(--edison-text-light);
+}
+
+.edison-theme .num-btn {
+    border-radius: var(--edison-radius-sm);
+}
+
+.edison-theme .control-btn {
+    border-radius: var(--edison-radius-md);
+}
+
+.edison-theme .mode-btn {
+    border-radius: var(--edison-radius-sm);
+}
+
+.edison-theme .mode-btn.active {
+    background: var(--edison-blue-soft);
+    color: var(--edison-blue-text);
+    border-color: var(--edison-blue-text);
+}
+
+/* ═══════════════════════════════════════
+   IDLE PROGRESS BAR
+   ═══════════════════════════════════════ */
+
+.edison-theme .idle-progress-bar.visible {
+    background: var(--edison-blue-start);
+}
+
+/* ═══════════════════════════════════════
+   MAIN CONTENT wrapper
+   ═══════════════════════════════════════ */
+
+.edison-theme .hero-section,
+.edison-theme .edison-home-png,
+.edison-theme .main-content {
+    margin-top: 0 !important;
+}
+
+/* ═══════════════════════════════════════
+   BOTTOM NAV (cropped from home design)
+   ═══════════════════════════════════════ */
+
+.kiosk-bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    height: var(--kiosk-nav-h);
+    max-height: var(--kiosk-nav-h);
+    background: #fff;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.kiosk-bottom-nav[hidden] {
+    display: none !important;
+}
+
+.kiosk-bottom-nav__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.kiosk-bottom-nav__hits {
+    position: absolute;
+    inset: 0;
+}
+
+.kiosk-bottom-nav__hit {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.kiosk-bottom-nav__hit[data-nav-tab="home"] { left: 0; width: 20%; }
+.kiosk-bottom-nav__hit[data-nav-tab="activities"] { left: 20%; width: 20%; }
+.kiosk-bottom-nav__hit[data-nav-tab="events"] { left: 40%; width: 20%; }
+.kiosk-bottom-nav__hit[data-nav-tab="gallery"] { left: 60%; width: 20%; }
+.kiosk-bottom-nav__hit[data-nav-tab="about"] { left: 80%; width: 20%; }
+
+.kiosk-bottom-nav__hit:active {
+    background: rgba(26, 111, 212, 0.12);
+}
+
+.kiosk-bottom-nav__hit--active {
+    background: rgba(26, 111, 212, 0.08);
+}
+
+/* Inner pages: content area above bottom nav */
+.edison-theme.ak-theme .main-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: var(--kiosk-nav-h);
+    width: 100%;
+    height: auto !important;
+    min-height: 0;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: var(--edison-bg);
+    overflow: hidden;
+    z-index: 40;
+    display: none;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* About tab: scroll through About + Gurus + QR + Contact sections */
+.edison-theme.ak-theme .main-content:has(.kiosk-page.active[data-tab="about"]) {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Activities / Events: grid fills space above nav */
+.edison-theme.ak-theme .kiosk-page.active[data-tab="activities"],
+.edison-theme.ak-theme .kiosk-page.active[data-tab="events"] {
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    box-sizing: border-box !important;
+}
+
+.edison-theme.ak-theme .kiosk-page.active[data-tab="gallery"] {
+    height: 100% !important;
+    overflow-y: auto !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    box-sizing: border-box !important;
+}

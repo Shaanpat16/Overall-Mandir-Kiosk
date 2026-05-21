@@ -3048,12 +3048,12 @@ html, body {
     display: none;
 }
 
-.main-content > .kiosk-page.active[data-tab="connect"] {
+.main-content > .kiosk-page.active[data-tab="about"] {
     flex: 0 0 auto;
     display: block;
 }
 
-.main-content > .kiosk-page.active:not([data-tab="connect"]) {
+.main-content > .kiosk-page.active:not([data-tab="about"]) {
     flex: 1 1 auto;
     min-height: 0;
     display: flex;
