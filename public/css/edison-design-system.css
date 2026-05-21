@@ -1062,103 +1062,105 @@ body.edison-theme {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(
-        ellipse 75% 55% at 50% 50%,
-        rgba(0, 0, 0, 0.38) 0%,
-        rgba(0, 0, 0, 0.12) 45%,
-        transparent 72%
-    );
-}
-
-.edison-theme .screensaver-overlay:not(.screensaver-overlay--has-image) .screensaver-scrim {
-    background: radial-gradient(
-        ellipse 70% 50% at 50% 50%,
-        rgba(0, 0, 0, 0.28) 0%,
-        transparent 65%
-    );
+    background: none;
 }
 
 .edison-theme .screensaver-content {
     position: absolute;
     inset: 0;
     z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(24px, 5vw, 48px);
-    box-sizing: border-box;
     pointer-events: none;
 }
 
+/* Mid-screen on Welcome_screen.png — between header copy and bottom mandir line */
 .edison-theme .screensaver-cta {
+    position: absolute;
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%, -50%);
     pointer-events: auto;
     font-family: var(--edison-font);
-    width: min(88vw, 520px);
+    width: min(92vw, 700px);
     margin: 0;
-    padding: clamp(28px, 5.5vh, 44px) clamp(36px, 7vw, 56px);
-    border: 3px solid var(--edison-blue-start);
-    outline: 3px solid rgba(255, 255, 255, 0.85);
-    outline-offset: 4px;
-    border-radius: var(--edison-radius-lg);
-    background: var(--edison-surface);
-    color: var(--edison-text);
+    padding: clamp(36px, 7vh, 56px) clamp(52px, 11vw, 92px);
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: #fff;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: clamp(8px, 1.5vh, 12px);
+    justify-content: center;
     text-align: center;
-    box-shadow: var(--edison-shadow-lg);
-    animation: screensaverCtaEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both,
-               screensaverCtaGlow 2.8s ease-in-out 0.7s infinite;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: none;
     -webkit-tap-highlight-color: transparent;
+    animation: screensaverCtaEnter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both,
+               screensaverCtaPulse 1.35s ease-in-out 0.8s infinite;
 }
 
 .edison-theme .screensaver-cta__label {
-    display: block;
-    font-size: clamp(1.65rem, 5.2vw, 2.35rem);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.02em;
+    font-size: clamp(5rem, 18vw, 9.25rem);
     font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    color: var(--edison-blue-start);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    color: #fff;
+    animation: screensaverCtaTextGlow 1.35s ease-in-out 0.8s infinite;
 }
 
-.edison-theme .screensaver-cta__hint {
+.edison-theme .screensaver-cta__line {
     display: block;
-    font-size: clamp(0.95rem, 2.6vw, 1.1rem);
-    font-weight: 400;
-    line-height: 1.35;
-    color: var(--edison-text-secondary);
+}
+
+.edison-theme .screensaver-cta__here-to {
+    white-space: nowrap;
 }
 
 .edison-theme .screensaver-cta:active {
-    transform: scale(0.98);
-    box-shadow: var(--edison-shadow);
+    animation: none;
+    transform: translate(-50%, -50%) scale(0.97);
 }
 
 @keyframes screensaverCtaEnter {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translate(-50%, -46%);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-50%, -50%);
     }
 }
 
-@keyframes screensaverCtaGlow {
+@keyframes screensaverCtaPulse {
     0%, 100% {
-        box-shadow:
-            0 8px 40px rgba(0, 0, 0, 0.14),
-            0 0 0 0 rgba(26, 111, 212, 0);
-        outline-color: rgba(255, 255, 255, 0.85);
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.92;
     }
     50% {
-        box-shadow:
-            0 12px 48px rgba(0, 0, 0, 0.22),
-            0 0 0 6px rgba(26, 111, 212, 0.18);
-        outline-color: rgba(255, 255, 255, 1);
+        transform: translate(-50%, -50%) scale(1.06);
+        opacity: 1;
+    }
+}
+
+@keyframes screensaverCtaTextGlow {
+    0%, 100% {
+        text-shadow:
+            0 0 12px rgba(255, 255, 255, 0.4),
+            0 2px 24px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+        text-shadow:
+            0 0 32px rgba(255, 255, 255, 0.9),
+            0 0 48px rgba(255, 255, 255, 0.45),
+            0 2px 24px rgba(0, 0, 0, 0.35);
     }
 }
 
