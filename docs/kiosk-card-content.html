@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BAPS Edison Kiosk — Card Content Reference</title>
+  <style>
+    @page { margin: 0.75in; }
+    body { font-family: Georgia, "Times New Roman", serif; color: #2c1810; line-height: 1.45; font-size: 11pt; max-width: 7.5in; margin: 0 auto; padding: 0.5in; }
+    h1 { color: #6b1a1a; font-size: 22pt; border-bottom: 2px solid #c9a227; padding-bottom: 8px; margin-bottom: 4px; }
+    .subtitle { color: #5a4a3a; font-size: 11pt; margin-bottom: 24px; }
+    h2 { color: #6b1a1a; font-size: 14pt; margin-top: 28px; page-break-after: avoid; border-left: 4px solid #c9a227; padding-left: 10px; }
+    h3 { color: #4a3020; font-size: 12pt; margin-top: 18px; page-break-after: avoid; }
+    .card { border: 1px solid #d4c4a8; border-radius: 6px; padding: 14px 16px; margin: 12px 0 18px; background: #faf6ef; page-break-inside: avoid; }
+    .card-meta { font-size: 9.5pt; color: #6a5a4a; margin: 4px 0 8px; }
+    .badge { display: inline-block; background: #6b1a1a; color: #fff; font-size: 8.5pt; padding: 2px 8px; border-radius: 3px; margin-right: 6px; font-family: system-ui, sans-serif; }
+    ul { margin: 6px 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    p { margin: 6px 0; }
+    .toc { background: #f0e8d8; padding: 12px 16px; border-radius: 6px; margin-bottom: 24px; }
+    .toc ol { margin: 8px 0 0; padding-left: 22px; }
+    .toc li { margin: 4px 0; }
+    .section-intro { font-style: italic; color: #5a4a3a; margin-bottom: 12px; }
+    footer { margin-top: 32px; font-size: 9pt; color: #888; text-align: center; border-top: 1px solid #ddd; padding-top: 12px; }
+  </style>
+</head>
+<body>
+
+<h1>BAPS Edison Mandir Kiosk</h1>
+<p class="subtitle">Complete card &amp; content reference — generated May 21, 2026<br>
+Source: <code>public/index.html</code> and <code>public/data/upcoming-events.json</code></p>
+
+<div class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li>Home — Visit hub</li>
+    <li>Upcoming events (live)</li>
+    <li>Activities &amp; sabhas</li>
+    <li>Events &amp; festivals</li>
+    <li>Gallery</li>
+    <li>About our mandir</li>
+    <li>Our gurus</li>
+    <li>Connect — QR codes &amp; contact</li>
+    <li>AI assistant quick answers</li>
+  </ol>
+</div>
+
+<h2>1. Home — Visit hub</h2>
+<p class="section-intro">Akshardham-style landing: alerts, hero, editorial cards, and featured upcoming events.</p>
+
+<div class="card">
+  <h3>Alert — Upcoming at Edison Mandir</h3>
+  <p class="card-meta"><span class="badge">Home</span> Tap opens upcoming events list</p>
+  <p><strong>Eyebrow:</strong> Upcoming at Edison Mandir</p>
+  <p><strong>Title:</strong> Programs &amp; celebrations — tap to view</p>
+</div>
+
+<div class="card">
+  <h3>Alert — Hours &amp; Information</h3>
+  <p class="card-meta"><span class="badge">Home</span> Navigates to Connect tab</p>
+  <p><strong>Eyebrow:</strong> Hours &amp; Information</p>
+  <p><strong>Title:</strong> Murti Darshan <strong>7–11 AM</strong> &amp; <strong>4–8 PM</strong> daily · Campus open 7 AM–8 PM</p>
+</div>
+
+<div class="card">
+  <h3>Hero</h3>
+  <p><strong>Label:</strong> BAPS Shri Swaminarayan Mandir</p>
+  <p><strong>Title:</strong> Edison, New Jersey</p>
+  <p><strong>Subtitle:</strong> A place of devotion, learning, and community for all ages</p>
+</div>
+
+<div class="card">
+  <h3>Editorial — Discover</h3>
+  <p class="card-meta"><span class="badge">Home</span> Opens Activities tab</p>
+  <p><strong>Title:</strong> Activities &amp; sabhas</p>
+  <p><strong>CTA:</strong> Get started →</p>
+  <p><strong>Section intro (Activities):</strong> Spiritual and community programs for every age at Edison Mandir</p>
+</div>
+
+<div class="card">
+  <h3>Editorial — Explore</h3>
+  <p class="card-meta"><span class="badge">Home</span> Opens Events tab</p>
+  <p><strong>Title:</strong> Events &amp; festivals</p>
+  <p><strong>CTA:</strong> Get started →</p>
+  <p><strong>Section intro (Events):</strong> Sacred rituals, celebrations, and community seva at the mandir</p>
+</div>
+
+<div class="card">
+  <h3>Featured — Upcoming events card</h3>
+  <p class="card-meta"><span class="badge">Home</span> Live badge: “Latest” · Tap opens upcoming events</p>
+  <p><strong>Label:</strong> Upcoming events</p>
+  <p><strong>Preview:</strong> Driven by JSON (e.g. Yogi Jayanti · Today &amp; tomorrow)</p>
+  <p><strong>Meta:</strong> Event count + “See all &amp; sign up →”</p>
+  <p><strong>Background image:</strong> <code>images/upcoming/card.jpg</code></p>
+</div>
+
+<h2>2. Upcoming events (live)</h2>
+<p class="section-intro">Configured in <code>public/data/upcoming-events.json</code>. Detail popups include long description, QR, and contact.</p>
+
+<div class="card">
+  <h3>Yogi Jayanti</h3>
+  <p class="card-meta"><span class="badge">Celebration</span> Today &amp; tomorrow · May 16–17</p>
+  <p><strong>Time:</strong> Program times at the welcome desk</p>
+  <p><strong>Short:</strong> Join us to celebrate Yogi Jayanti with devotional programs at Edison Mandir.</p>
+  <p><strong>Long:</strong> Celebrate Yogi Jayanti with satsang, darshan, and family programs across the mandir campus. All are welcome—check in at the welcome desk for today's schedule and hall locations.</p>
+  <p><strong>QR hint:</strong> Scan for Telegram updates and program details</p>
+  <p><strong>Contact:</strong> Mandir welcome desk · (732) 572-1234</p>
+</div>
+
+<div class="card">
+  <h3>Sports Day — Balaks &amp; Balikas</h3>
+  <p class="card-meta"><span class="badge">Youth</span> Sunday, May 31</p>
+  <p><strong>Time:</strong> Morning program — time at welcome desk</p>
+  <p><strong>Short:</strong> A fun Sports Day for Balaks and Balikas. Wear comfortable clothes and bring your energy!</p>
+  <p><strong>Long:</strong> Balaks and Balikas Sports Day includes team games, races, and group activities on the mandir grounds. Parents: please register interest so we can plan teams and refreshments. Athletic wear and water bottles recommended.</p>
+  <p><strong>QR hint:</strong> Scan the interest form to sign up</p>
+  <p><strong>Contact:</strong> Bal/Balika coordinators · (732) 572-1234</p>
+</div>
+
+<div class="card">
+  <h3>Walkathon</h3>
+  <p class="card-meta"><span class="badge">Community</span> Sunday, May 31</p>
+  <p><strong>Time:</strong> Open to all — start time at welcome desk</p>
+  <p><strong>Short:</strong> Walkathon for everyone in the mandir community. All ages welcome.</p>
+  <p><strong>Long:</strong> Join the mandir Walkathon—an all-ages community walk supporting wellness and seva. Register so we can share the route, meeting point, and any weather updates. Strollers and walking partners welcome.</p>
+  <p><strong>QR hint:</strong> Scan to register for the Walkathon</p>
+  <p><strong>Contact:</strong> Mandir office · (732) 572-1234</p>
+</div>
+
+<h2>3. Activities &amp; sabhas</h2>
+
+<div class="card">
+  <h3>Bal/Balika</h3>
+  <p class="card-meta"><span class="badge">Card</span> Children's Activities · Sat 5–7 PM · Sun 4–6 PM</p>
+  <p><strong>Ages:</strong> 5–11 years (Pre-K – Grade 8)</p>
+  <p>Our Bal/Balika sabha provides a nurturing environment for children to learn about Hindu culture, values, and traditions through engaging activities.</p>
+  <p><strong>Activities include:</strong></p>
+  <ul>
+    <li>Weekly sabha sessions with stories and games</li>
+    <li>Learning shlokas and bhajans</li>
+    <li>Festival celebrations and cultural programs</li>
+    <li>Character building through moral stories</li>
+    <li>Arts &amp; crafts projects</li>
+    <li>Sports and recreational activities</li>
+    <li>Music classes (Keyboard &amp; Tablā)</li>
+    <li>Dance classes (Bharatnātyam)</li>
+    <li>Gujarātī language classes</li>
+  </ul>
+  <p><strong>Sabha timings:</strong> Saturday 5:00–7:00 PM · Sunday 4:00–6:00 PM</p>
+</div>
+
+<div class="card">
+  <h3>Kishore/Kishori</h3>
+  <p class="card-meta"><span class="badge">Card</span> Teen Programs · Sat 1:30–2:45 PM · Sun 12:30–1:45 PM</p>
+  <p><strong>Ages:</strong> 12–18 years (Grades 9–12 &amp; College)</p>
+  <p>Our Kishore/Kishori sabha helps teenagers develop strong values, leadership skills, and spiritual awareness during their formative years.</p>
+  <p><strong>Activities include:</strong></p>
+  <ul>
+    <li>Weekly sabha with discussions on contemporary topics</li>
+    <li>Sports and recreational activities</li>
+    <li>Community service projects</li>
+    <li>Leadership development programs</li>
+    <li>Annual summer shibirs and conventions</li>
+  </ul>
+  <p><strong>Sabha timings:</strong> Saturday 1:30–2:45 PM · Sunday 12:30–1:45 PM</p>
+</div>
+
+<div class="card">
+  <h3>Yuvak/Yuvati</h3>
+  <p class="card-meta"><span class="badge">Card</span> Young Adult Activities · Sat 3:30–5 PM · Sun 2:30–4 PM</p>
+  <p><strong>Ages:</strong> 18+ years (Post College)</p>
+  <p>Our Yuvak/Yuvati sabha provides young adults with spiritual guidance and opportunities for personal growth in a supportive community.</p>
+  <p><strong>Activities include:</strong></p>
+  <ul>
+    <li>Weekly sabha with spiritual discourses</li>
+    <li>Career guidance and mentorship</li>
+    <li>Social service initiatives</li>
+    <li>Regional and national conventions</li>
+    <li>Study groups on Hindu scriptures</li>
+  </ul>
+  <p><strong>Sabha timings:</strong> Saturday 3:30–5:00 PM · Sunday 2:30–4:00 PM</p>
+</div>
+
+<div class="card">
+  <h3>Better Living</h3>
+  <p class="card-meta"><span class="badge">Card</span> Personal Development · Sat 5–7 PM · Yogi Hall</p>
+  <p><strong>Program:</strong> Personal Development (Sanyukta Mandal — Gujarātī &amp; English)</p>
+  <p>Better Living offers practical workshops and seminars on applying Hindu values to improve various aspects of daily life through weekly satsang assemblies.</p>
+  <p><strong>Topics include:</strong></p>
+  <ul>
+    <li>Stress management and work-life balance</li>
+    <li>Building healthy relationships</li>
+    <li>Parenting with Hindu values</li>
+    <li>Financial planning and ethical living</li>
+    <li>Health and wellness from a spiritual perspective</li>
+    <li>Spiritual discourses and devotional singing</li>
+  </ul>
+  <p><strong>Satsang:</strong> Saturday 5:00–7:00 PM in Yogi Hall</p>
+</div>
+
+<div class="card">
+  <h3>International Students</h3>
+  <p class="card-meta"><span class="badge">Card</span> Student Community · Sunday &amp; Weekdays</p>
+  <p><strong>Focus:</strong> Community for students away from home</p>
+  <p>Our International Students program provides a home away from home for students pursuing their education in the United States.</p>
+  <p><strong>We offer:</strong></p>
+  <ul>
+    <li>Weekly gatherings and spiritual discussions</li>
+    <li>Cultural celebrations during Indian festivals</li>
+    <li>Study groups and academic support</li>
+    <li>Networking opportunities with professionals</li>
+    <li>Free prasad and meals on weekends</li>
+  </ul>
+  <p><strong>When:</strong> Sundays and select weekdays — contact us for schedule</p>
+</div>
+
+<div class="card">
+  <h3>Family Programs</h3>
+  <p class="card-meta"><span class="badge">Card</span> Activities for Families · Various · Check calendar</p>
+  <p><strong>Focus:</strong> Activities for the whole family</p>
+  <p>Our Family Programs bring families together to strengthen bonds through shared spiritual experiences and cultural activities.</p>
+  <p><strong>Activities include:</strong></p>
+  <ul>
+    <li>Family sabhas with interactive sessions</li>
+    <li>Festival celebrations for all ages</li>
+    <li>Picnics and recreational outings</li>
+    <li>Family volunteer service opportunities</li>
+    <li>Parenting workshops and family counseling</li>
+    <li>Devotional assemblies and spiritual discourses</li>
+  </ul>
+  <p><strong>When:</strong> Various programs throughout the year — check calendar for dates</p>
+</div>
+
+<h2>4. Events &amp; festivals</h2>
+
+<div class="card">
+  <h3>Chopda Pujan</h3>
+  <p class="card-meta"><span class="badge">Card</span> Sacred ritual</p>
+  <p><strong>Card text:</strong> Hindu New Year blessing ceremony with traditional prayers.</p>
+  <p><strong>Hindu New Year Business Blessing</strong></p>
+  <p>Chopda Pujan is a special ceremony performed during Diwali to worship account books and business records, seeking blessings for prosperity and success in the coming year.</p>
+  <p><strong>Significance:</strong></p>
+  <ul>
+    <li>Marks beginning of Hindu financial year</li>
+    <li>Blessings for business prosperity</li>
+    <li>Worship of Goddess Lakshmi and Lord Ganesha</li>
+    <li>Community prayers for success and abundance</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Diwali</h3>
+  <p class="card-meta"><span class="badge">Card</span> Festival</p>
+  <p><strong>Card text:</strong> Festival of lights with prayer, celebration, and cultural joy.</p>
+  <p><strong>Festival of Lights</strong></p>
+  <p>Diwali is one of the most celebrated Hindu festivals, symbolizing the victory of light over darkness and good over evil. Our mandir hosts grand celebrations with lights, decorations, and cultural programs.</p>
+  <p><strong>Celebrations include:</strong></p>
+  <ul>
+    <li>Thousands of diyas and decorative lights</li>
+    <li>Cultural performances and music programs</li>
+    <li>Traditional rangoli and decorations</li>
+    <li>Special aarti and prayers</li>
+    <li>Community dinner and sweets distribution</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Blood Drive</h3>
+  <p class="card-meta"><span class="badge">Card</span> BAPS Charities</p>
+  <p><strong>Card text:</strong> Community blood donation drive supporting local hospitals.</p>
+  <p><strong>Saving Lives Through Service</strong></p>
+  <p>Our regular blood drives partner with local blood banks to help save lives in our community. Every donation can save up to three lives.</p>
+  <p><strong>Impact:</strong></p>
+  <ul>
+    <li>Multiple blood drives held throughout the year</li>
+    <li>Hundreds of pints of blood collected</li>
+    <li>Partnership with local hospitals and blood banks</li>
+    <li>Volunteer opportunities for all ages</li>
+    <li>Direct impact on saving lives in our community</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Walkathon</h3>
+  <p class="card-meta"><span class="badge">Card</span> BAPS Charities</p>
+  <p><strong>Card text:</strong> Family-friendly charity walk promoting health and service.</p>
+  <p><strong>Walking Together for a Cause</strong></p>
+  <p>Our annual charity walkathon brings the community together to promote health, wellness, and raise funds for important charitable causes.</p>
+  <p><strong>Event features:</strong></p>
+  <ul>
+    <li>Family-friendly 5K walk/run</li>
+    <li>Funds raised for community causes</li>
+    <li>Health and wellness activities</li>
+    <li>Refreshments and entertainment</li>
+    <li>Building community spirit and unity</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Food Drive</h3>
+  <p class="card-meta"><span class="badge">Card</span> BAPS Charities (wide card)</p>
+  <p><strong>Card text:</strong> Collecting food to serve families in need with compassion.</p>
+  <p><strong>Feeding Those in Need</strong></p>
+  <p>Our food drives collect non-perishable food items and organize distribution to local food banks and families in need, ensuring no one in our community goes hungry.</p>
+  <p><strong>Our efforts:</strong></p>
+  <ul>
+    <li>Regular food collection drives</li>
+    <li>Distribution to local food banks</li>
+    <li>Direct assistance to families in need</li>
+    <li>Volunteer opportunities for packing and distribution</li>
+    <li>Thousands of meals provided annually</li>
+  </ul>
+</div>
+
+<h2>5. Gallery</h2>
+<p class="section-intro">Mandir moments — Celebrations, programs, and life at BAPS Edison</p>
+
+<div class="card">
+  <h3>Kishore-Kishori Adhiveshan 2025</h3>
+  <p>Teen programs and spiritual gathering</p>
+</div>
+<div class="card">
+  <h3>Diwali 2024</h3>
+  <p>Festival of Lights celebration</p>
+</div>
+<div class="card">
+  <h3>Mahant Swami JJ 2025</h3>
+  <p>Spiritual guidance and blessings</p>
+</div>
+<div class="card">
+  <h3>Diwali 2019</h3>
+  <p>Festival of Lights celebration</p>
+</div>
+<div class="card">
+  <h3>Community Gathering</h3>
+  <p>Devotees in prayer</p>
+</div>
+<div class="card">
+  <h3>Sacred Celebration</h3>
+  <p>Traditional ceremonies</p>
+</div>
+
+<h2>6. About our mandir</h2>
+<p class="section-intro">Spiritual heritage and community at BAPS Edison</p>
+
+<div class="card">
+  <h3>Community Spirit</h3>
+  <p>Join our vibrant community of devotees from diverse backgrounds united in spiritual practice.</p>
+</div>
+<div class="card">
+  <h3>Spiritual Learning</h3>
+  <p>Regular classes, discourses, and educational programs for all ages and backgrounds.</p>
+</div>
+<div class="card">
+  <h3>Service to Society</h3>
+  <p>Engage in community service, charity work, and humanitarian activities.</p>
+</div>
+
+<h2>7. Our gurus</h2>
+
+<div class="card">
+  <h3>Pramukh Swami Maharaj (1921–2016)</h3>
+  <p><strong>The Epitome of Spirituality</strong></p>
+  <p>Pramukh Swami Maharaj was the fifth spiritual successor of Bhagwan Swaminarayan and served as the guru and Pramukh of BAPS from 1950 to 2016. His life was a living example of faith, devotion, and selfless service.</p>
+  <p><strong>His legacy:</strong></p>
+  <ul>
+    <li>Inspired and consecrated over 1,100 mandirs worldwide</li>
+    <li>Initiated over 1,000 sadhus into the spiritual path</li>
+    <li>Promoted peace, harmony, and humanitarian service globally</li>
+    <li>Guided millions on the path of righteousness and devotion</li>
+    <li>His mantra: "In the joy of others, lies our own"</li>
+  </ul>
+  <p><strong>His message:</strong> "In the joy of others, lies our own. In the progress of others rests our own. In the good of others abides our own."</p>
+</div>
+
+<div class="card">
+  <h3>Mahant Swami Maharaj — Current Spiritual Leader</h3>
+  <p><strong>The Sixth Spiritual Successor</strong></p>
+  <p>Mahant Swami Maharaj is the sixth spiritual successor of Bhagwan Swaminarayan and the current guru and Pramukh of BAPS. He was ordained as the spiritual leader in 2016, following the divine wish of Pramukh Swami Maharaj.</p>
+  <p><strong>His life:</strong></p>
+  <ul>
+    <li>Born as Keshavjivandas Patel on September 13, 1933</li>
+    <li>Initiated as a sadhu in 1955 by Yogiji Maharaj</li>
+    <li>Served devotedly under Yogiji Maharaj and Pramukh Swami Maharaj</li>
+    <li>Known for his humility, devotion, and spiritual wisdom</li>
+    <li>Continues the mission of peace and spirituality worldwide</li>
+  </ul>
+  <p><strong>His guidance:</strong> "Stay connected to God and the guru, and you will never be alone. Their grace and blessings will always be with you."</p>
+</div>
+
+<h2>8. Connect — QR codes &amp; contact</h2>
+
+<div class="card">
+  <h3>Interest Form</h3>
+  <p class="card-meta">QR: <code>images/qr-codes/1.png</code></p>
+  <p>Scan to register your interest</p>
+</div>
+<div class="card">
+  <h3>Telegram Channel</h3>
+  <p class="card-meta">QR: <code>images/qr-codes/2.png</code></p>
+  <p>Join our community updates</p>
+</div>
+
+<div class="card">
+  <h3>Stay Connected — Contact</h3>
+  <p><strong>Address:</strong> BAPS Shri Swaminarayan Mandir, Edison, New Jersey</p>
+  <p><strong>Phone:</strong> (732) 572-1234</p>
+  <p><strong>Email:</strong> info.edison@usa.baps.org</p>
+</div>
+
+<h2>9. AI assistant quick answers</h2>
+
+<div class="card">
+  <h3>Darshan timings</h3>
+  <p>Murti Darshan: daily 7:00 AM–11:00 AM and 4:00 PM–8:00 PM. Mandir campus: 7:00 AM–8:00 PM daily.</p>
+</div>
+<div class="card">
+  <h3>Aarti times</h3>
+  <p>Morning Aarti 7:00 AM · Evening Aarti 6:30 PM. All are welcome.</p>
+</div>
+<div class="card">
+  <h3>Upcoming events (AI)</h3>
+  <p>Yogi Jayanti today and tomorrow (May 16–17). Sunday May 31: Sports Day (Balaks &amp; Balikas) and Walkathon for everyone.</p>
+</div>
+<div class="card">
+  <h3>Location</h3>
+  <p>BAPS Shri Swaminarayan Mandir, Edison, New Jersey. Phone (732) 572-1234 · info.edison@usa.baps.org</p>
+</div>
+<div class="card">
+  <h3>Nilkanth Varni Abhishek</h3>
+  <p>Weekdays 7:00–11:00 AM and 4:00–6:00 PM. Weekends 7:00–8:00 PM.</p>
+</div>
+
+<footer>BAPS Shri Swaminarayan Mandir · Edison, New Jersey · Kiosk content reference</footer>
+</body>
+</html>
