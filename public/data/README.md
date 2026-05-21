@@ -21,3 +21,25 @@ Controls the **home upcoming card** and all **upcoming event** popups.
 After saving, refresh the kiosk browser (or use **Refresh** in admin).
 
 Put image files under `public/images/upcoming/` (see `images/upcoming/README.md`).
+
+## Page images (`public/images/pages/`)
+
+| Folder | Tab |
+|--------|-----|
+| `1-home/` | Home |
+| `2-activities/` | Activities |
+| `3-rituals/` | Rituals |
+| `4-baps-charities/` | BAPS Charities |
+
+Add `screen.png` (1080×1920) in each folder. See `public/images/pages/README.md`.
+
+## `section-overlays.json`
+
+Full-page **overlay images** for Activities, Rituals, and BAPS Charities with transparent tap buttons that open popups.
+
+| Field | Description |
+|-------|-------------|
+| `activities.image` | e.g. `images/overlays/activities/screen.jpg` |
+| `activities.buttons[]` | `left`, `top`, `width`, `height` (percent), `target`, `action` (`activity` / `event`), `trackName`, `ariaLabel` |
+
+Put images in `public/images/overlays/` (see `images/overlays/README.md`). If an image is missing, that tab uses the **card grid** fallback.

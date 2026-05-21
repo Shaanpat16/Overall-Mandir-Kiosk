@@ -316,7 +316,7 @@ body.ak-theme {
 
 .ak-theme .kiosk-page.active[data-tab="activities"],
 .ak-theme .kiosk-page.active[data-tab="events"],
-.ak-theme .kiosk-page.active[data-tab="gallery"],
+.ak-theme .kiosk-page.active[data-tab="charities"],
 .ak-theme .kiosk-page.active[data-tab="connect"] {
     background: var(--ak-cream);
 }
@@ -333,28 +333,28 @@ body.ak-theme {
     background: linear-gradient(to top, rgba(25, 12, 10, 0.9), rgba(25, 12, 10, 0.25));
 }
 
-/* Popups */
-.ak-theme .activity-popup,
-.ak-theme .event-popup,
-.ak-theme .guru-popup,
-.ak-theme .upcoming-events-popup,
-.ak-theme .upcoming-event-detail-popup {
+/* Popups — skipped when body also has .edison-theme (see edison-design-system.css) */
+body.ak-theme:not(.edison-theme) .activity-popup,
+body.ak-theme:not(.edison-theme) .event-popup,
+body.ak-theme:not(.edison-theme) .guru-popup,
+body.ak-theme:not(.edison-theme) .upcoming-events-popup,
+body.ak-theme:not(.edison-theme) .upcoming-event-detail-popup {
     background: rgba(25, 14, 12, 0.82);
 }
 
-.ak-theme .activity-popup-header,
-.ak-theme .event-popup-header,
-.ak-theme .guru-popup-header,
-.ak-theme .upcoming-events-popup-header {
+body.ak-theme:not(.edison-theme) .activity-popup-header,
+body.ak-theme:not(.edison-theme) .event-popup-header,
+body.ak-theme:not(.edison-theme) .guru-popup-header,
+body.ak-theme:not(.edison-theme) .upcoming-events-popup-header {
     background: linear-gradient(135deg, #5c1f1f 0%, #3d1515 55%, #2a1515 100%);
     border-radius: 2px 2px 0 0;
 }
 
-.ak-theme .activity-popup-content,
-.ak-theme .event-popup-content,
-.ak-theme .guru-popup-content,
-.ak-theme .upcoming-events-popup-content,
-.ak-theme .upcoming-event-detail-content {
+body.ak-theme:not(.edison-theme) .activity-popup-content,
+body.ak-theme:not(.edison-theme) .event-popup-content,
+body.ak-theme:not(.edison-theme) .guru-popup-content,
+body.ak-theme:not(.edison-theme) .upcoming-events-popup-content,
+body.ak-theme:not(.edison-theme) .upcoming-event-detail-content {
     border-radius: 2px;
     animation: none;
 }

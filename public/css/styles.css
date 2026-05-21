@@ -3067,7 +3067,7 @@ html, body {
     overflow: hidden;
 }
 
-.main-content > .kiosk-page.active[data-tab="gallery"] {
+.main-content > .kiosk-page.active[data-tab="charities"] {
     overflow-y: auto;
 }
 

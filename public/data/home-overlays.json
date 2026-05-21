@@ -1,0 +1,13 @@
+{
+  "referenceSize": { "width": 1080, "height": 1920 },
+  "buttons": [
+    { "id": "activities", "nav": false, "left": 2.96, "top": 40.52, "width": 46.48, "height": 23.02 },
+    { "id": "events", "nav": false, "left": 2.96, "top": 64.17, "width": 46.48, "height": 23.02 },
+    { "id": "upcoming", "nav": false, "left": 50.56, "top": 40.52, "width": 46.48, "height": 46.72 },
+    { "id": "nav-home", "nav": true, "left": 0, "width": 20 },
+    { "id": "nav-activities", "nav": true, "left": 20, "width": 20 },
+    { "id": "nav-events", "nav": true, "left": 40, "width": 20 },
+    { "id": "nav-charities", "nav": true, "left": 60, "width": 20 },
+    { "id": "nav-about", "nav": true, "left": 80, "width": 20 }
+  ]
+}

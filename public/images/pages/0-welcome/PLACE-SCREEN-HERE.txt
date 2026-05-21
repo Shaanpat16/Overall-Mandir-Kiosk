@@ -1,0 +1,13 @@
+Welcome / tap-to-start screen
+
+Put your welcome design here as:
+
+  Welcome_screen.png   (current file)
+  screen.png
+  screen.jpg
+  page.png
+  page.jpg
+
+Size: 1080 × 1920 (portrait)
+
+Delete this file after you add the image.

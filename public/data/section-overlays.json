@@ -1,0 +1,26 @@
+{
+  "referenceSize": { "width": 1080, "height": 1920 },
+  "activities": {
+    "image": "images/pages/2-activities/screen.png",
+    "buttons": [
+      { "target": "balbalika", "action": "activity", "trackName": "Bal/Balika", "ariaLabel": "Bal/Balika", "left": 3.7, "top": 26, "width": 45.65, "height": 20.18 },
+      { "target": "kishorekishori", "action": "activity", "trackName": "Kishore/Kishori", "ariaLabel": "Kishore/Kishori", "left": 50.65, "top": 26, "width": 45.65, "height": 20.18 },
+      { "target": "yuvakyuvati", "action": "activity", "trackName": "Yuvak/Yuvati", "ariaLabel": "Yuvak/Yuvati", "left": 3.7, "top": 46.91, "width": 45.65, "height": 20.18 },
+      { "target": "family", "action": "activity", "trackName": "Sanyukta Sabha", "ariaLabel": "Sanyukta Sabha", "left": 50.65, "top": 46.91, "width": 45.65, "height": 20.18 },
+      { "target": "international", "action": "activity", "trackName": "International Students", "ariaLabel": "International Students", "left": 3.7, "top": 67.82, "width": 45.65, "height": 20.18 },
+      { "target": "betterliving", "action": "activity", "trackName": "Better Living", "ariaLabel": "Better Living Seminar", "left": 50.65, "top": 67.82, "width": 45.65, "height": 20.18 }
+    ]
+  },
+  "events": {
+    "image": "images/pages/3-rituals/page.png",
+    "buttons": []
+  },
+  "charities": {
+    "image": "images/pages/4-baps-charities/page.jpg",
+    "buttons": [
+      { "target": "fooddrive", "action": "event", "trackName": "Food Drive", "ariaLabel": "Food Drive", "left": 3.5, "top": 23, "width": 93, "height": 20 },
+      { "target": "walkathon", "action": "event", "trackName": "Walkathon", "ariaLabel": "Walkathon", "left": 3.5, "top": 45, "width": 93, "height": 20 },
+      { "target": "blooddrive", "action": "event", "trackName": "Blood Drive", "ariaLabel": "Blood Drive", "left": 3.5, "top": 67, "width": 93, "height": 20 }
+    ]
+  }
+}

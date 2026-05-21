@@ -1,0 +1,12 @@
+Page 3 — RITUALS
+
+Put your Rituals screen here as:
+
+  screen.png   (preferred)
+  screen.jpg
+  page.png
+  page.jpg
+
+Size: 1080 × 1920 (portrait)
+
+Delete this file after you add the image.

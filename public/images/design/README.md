@@ -8,7 +8,7 @@ Optional: also add **`home-screen@2x.png`** at 2× size and we can wire `srcset`
 
 Replace `home-screen.png` anytime; hard-refresh the browser (`Cmd+Shift+R`) after updating.
 
-**`bottom-nav.png`** — Cropped bottom tab bar (auto-generated from `home-screen.png`). Shown on Activities, Events, Gallery, and About. Re-crop after replacing the home screen if the nav design changes.
+**`bottom-nav.png`** — Cropped bottom tab bar (auto-generated from `home-screen.png`). Shown on Activities, Rituals, BAPS Charities, and About. Re-crop after replacing the home screen if the nav design changes.
 
 ## Optional card crops (legacy built home)
 

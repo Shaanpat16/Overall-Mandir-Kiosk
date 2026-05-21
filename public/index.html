@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
     <link rel="stylesheet" href="css/styles.css?v=32.0">
-    <link rel="stylesheet" href="css/edison-design-system.css?v=2.6">
+    <link rel="stylesheet" href="css/edison-design-system.css?v=3.9">
     <link rel="stylesheet" href="css/akshardham-theme.css?v=1.3">
 </head>
 <body class="edison-theme ak-theme">
@@ -22,8 +22,8 @@
             <div class="nav-links legacy-nav-links">
                 <a href="#home" class="nav-link active">Visit</a>
                 <a href="#activities" class="nav-link">Discover</a>
-                <a href="#events" class="nav-link">Explore</a>
-                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#events" class="nav-link">Rituals</a>
+                <a href="#charities" class="nav-link">BAPS Charities</a>
                 <a href="#about" class="nav-link">Connect</a>
             </div>
             <div class="topbar-time" id="topbar-time"></div>
@@ -34,174 +34,42 @@
     <section id="home" class="edison-home-png kiosk-page active" data-tab="home">
         <div class="edison-home-png__frame">
             <img
-                src="images/design/home-screen.png"
+                src="images/pages/1-home/screen.png"
                 alt="BAPS Shri Swaminarayan Mandir, Edison — Welcome"
                 class="edison-home-png__img"
-                width="576"
-                height="1024"
+                width="1080"
+                height="1920"
                 draggable="false"
                 decoding="sync"
             >
             <nav class="edison-home-png__hotspots" aria-label="Home navigation">
-                <button type="button" class="edison-home-png__hit edison-home-png__hit--activities" onclick="switchTab('activities'); trackClick('navigation', 'home_activities')" aria-label="Activities and Sabha"></button>
-                <button type="button" class="edison-home-png__hit edison-home-png__hit--events" onclick="switchTab('events'); trackClick('navigation', 'home_events')" aria-label="Events and Festivals"></button>
-                <button type="button" class="edison-home-png__hit edison-home-png__hit--upcoming" onclick="openUpcomingEventsPopup(); trackClick('navigation', 'home_upcoming')" aria-label="Upcoming Events"></button>
-                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-home" onclick="switchTab('home'); trackClick('navigation', 'nav_home')" aria-label="Home"></button>
-                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-activities" onclick="switchTab('activities'); trackClick('navigation', 'nav_activities')" aria-label="Activities"></button>
-                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-events" onclick="switchTab('events'); trackClick('navigation', 'nav_events')" aria-label="Events"></button>
-                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-gallery" onclick="switchTab('gallery'); trackClick('navigation', 'nav_gallery')" aria-label="Gallery"></button>
-                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-about" onclick="switchTab('about'); trackClick('navigation', 'nav_about')" aria-label="About"></button>
+                <button type="button" class="edison-home-png__hit edison-home-png__hit--activities" data-hit-id="activities" onclick="switchTab('activities'); trackClick('navigation', 'home_activities')" aria-label="Activities and Sabha"></button>
+                <button type="button" class="edison-home-png__hit edison-home-png__hit--events" data-hit-id="events" onclick="switchTab('events'); trackClick('navigation', 'home_rituals')" aria-label="Rituals and Festivals"></button>
+                <button type="button" class="edison-home-png__hit edison-home-png__hit--upcoming" data-hit-id="upcoming" onclick="openUpcomingEventsPopup(); trackClick('navigation', 'home_upcoming')" aria-label="Upcoming Events"></button>
+                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-home" data-hit-id="nav-home" onclick="switchTab('home'); trackClick('navigation', 'nav_home')" aria-label="Home"></button>
+                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-activities" data-hit-id="nav-activities" onclick="switchTab('activities'); trackClick('navigation', 'nav_activities')" aria-label="Activities"></button>
+                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-events" data-hit-id="nav-events" onclick="switchTab('events'); trackClick('navigation', 'nav_rituals')" aria-label="Rituals"></button>
+                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-charities" data-hit-id="nav-charities" onclick="switchTab('charities'); trackClick('navigation', 'nav_baps_charities')" aria-label="BAPS Charities"></button>
+                <button type="button" class="edison-home-png__hit edison-home-png__hit--nav edison-home-png__hit--nav-about" data-hit-id="nav-about" onclick="switchTab('about'); trackClick('navigation', 'nav_about')" aria-label="About"></button>
             </nav>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Activities Section -->
-        <section id="activities" class="section activities-section kiosk-page" data-tab="activities">
-            <div class="section-header ak-section-header">
-                <span class="ak-eyebrow">Discover</span>
-                <h2>Activities &amp; sabhas</h2>
-                <p>Spiritual and community programs for every age at Edison Mandir</p>
-            </div>
-
-            <div class="activities-grid">
-                <div class="activity-card themed-activity-card" onclick="trackClick('activity', 'Bal/Balika'); openActivityPopup('balbalika')" style="background-image:url('images/activities/balbalika/66._Bal_Balika_adhiveshan25.jpg')">
-                    <h3>Bal/Balika</h3>
-                    <p>Children's Activities</p>
-                    <span class="time-badge">Sat 5-7 PM · Sun 4-6 PM</span>
-                </div>
-
-                <div class="activity-card themed-activity-card" onclick="trackClick('activity', 'Kishore/Kishori'); openActivityPopup('kishorekishori')" style="background-image:url('images/activities/kishorekishori/2025-10-22 02.13.39.jpg')">
-                    <h3>Kishore/Kishori</h3>
-                    <p>Teen Programs</p>
-                    <span class="time-badge">Sat 1:30-2:45 PM · Sun 12:30-1:45 PM</span>
-                </div>
-
-                <div class="activity-card themed-activity-card" onclick="trackClick('activity', 'Yuvak/Yuvati'); openActivityPopup('yuvakyuvati')" style="background-image:url('images/activities/yuvakyuvati/Edison_Guru_Bhakti_Din2022_38.jpeg')">
-                    <h3>Yuvak/Yuvati</h3>
-                    <p>Young Adult Activities</p>
-                    <span class="time-badge">Sat 3:30-5 PM · Sun 2:30-4 PM</span>
-                </div>
-
-                <div class="activity-card themed-activity-card themed-activity-card--betterliving" onclick="trackClick('activity', 'Better Living'); openActivityPopup('betterliving')" style="background-image:url('images/activities/betterliving/02.-Edison-Life_Saving_Skills_HAL_2025-1108x720.jpg')">
-                    <h3>Better Living</h3>
-                    <p>Personal Development</p>
-                    <span class="time-badge">Sat 5-7 PM · Yogi Hall</span>
-                </div>
-
-                <div class="activity-card themed-activity-card" onclick="trackClick('activity', 'International Students'); openActivityPopup('international')" style="background-image:url('images/activities/international/Edison_Guru_Bhakti_Din2022_06.jpeg')">
-                    <h3>International Students</h3>
-                    <p>Student Community</p>
-                    <span class="time-badge">Sunday &amp; Weekdays</span>
-                </div>
-
-                <div class="activity-card themed-activity-card" onclick="trackClick('activity', 'Family Programs'); openActivityPopup('family')" style="background-image:url('images/activities/family/Edison_Yagna_MM19_40_001.jpg')">
-                    <h3>Family Programs</h3>
-                    <p>Activities for Families</p>
-                    <span class="time-badge">Various · Check calendar</span>
-                </div>
-            </div>
+        <!-- Activities: full-screen design image + invisible tap targets -->
+        <section id="activities" class="section kiosk-page page-overlay-page" data-tab="activities">
+            <div id="page-overlay-activities" class="page-overlay-host" data-overlay-page="activities"></div>
         </section>
 
-        <!-- Events Section -->
-        <section id="events" class="section events-section kiosk-page" data-tab="events">
-            <div class="section-header ak-section-header">
-                <span class="ak-eyebrow">Explore</span>
-                <h2>Events &amp; festivals</h2>
-                <p>Sacred rituals, celebrations, and community seva at the mandir</p>
-            </div>
-
-            <div class="activities-grid">
-                <div class="activity-card themed-activity-card" onclick="trackClick('event', 'Chopda Pujan'); openEventPopup('chopdapujan')" style="background-image:url('images/events/chopdapujan/1.jpg')">
-                    <h3>Chopda Pujan</h3>
-                    <p>Hindu New Year blessing ceremony with traditional prayers.</p>
-                    <span class="time-badge">Sacred ritual</span>
-                </div>
-
-                <div class="activity-card themed-activity-card" onclick="trackClick('event', 'Diwali'); openEventPopup('diwali')" style="background-image:url('images/events/diwali/1.jpg')">
-                    <h3>Diwali</h3>
-                    <p>Festival of lights with prayer, celebration, and cultural joy.</p>
-                    <span class="time-badge">Festival</span>
-                </div>
-
-                <div class="activity-card themed-activity-card" onclick="trackClick('event', 'Blood Drive'); openEventPopup('blooddrive')" style="background-image:url('images/events/blooddrive/1.jpg')">
-                    <h3>Blood Drive</h3>
-                    <p>Community blood donation drive supporting local hospitals.</p>
-                    <span class="time-badge">BAPS Charities</span>
-                </div>
-
-                <div class="activity-card themed-activity-card" onclick="trackClick('event', 'Walkathon'); openEventPopup('walkathon')" style="background-image:url('images/events/walkathon/1.jpg')">
-                    <h3>Walkathon</h3>
-                    <p>Family-friendly charity walk promoting health and service.</p>
-                    <span class="time-badge">BAPS Charities</span>
-                </div>
-
-                <div class="activity-card themed-activity-card events-event-card--wide" onclick="trackClick('event', 'Food Drive'); openEventPopup('fooddrive')" style="background-image:url('images/events/fooddrive/1.jpg')">
-                    <h3>Food Drive</h3>
-                    <p>Collecting food to serve families in need with compassion.</p>
-                    <span class="time-badge">BAPS Charities</span>
-                </div>
-            </div>
+        <!-- Rituals: full-screen design image (display only; no content popups) -->
+        <section id="events" class="section kiosk-page page-overlay-page" data-tab="events">
+            <div id="page-overlay-events" class="page-overlay-host" data-overlay-page="events"></div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="section kiosk-page" data-tab="gallery">
-            <div class="section-header ak-section-header">
-                <span class="ak-eyebrow">Gallery</span>
-                <h2>Mandir moments</h2>
-                <p>Celebrations, programs, and life at BAPS Edison</p>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/gallery/01.Kishore-Kishori-adhiveshan25.png" alt="Kishore-Kishori Adhiveshan 2025" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <h3>Kishore-Kishori Adhiveshan 2025</h3>
-                        <p>Teen programs and spiritual gathering</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="images/gallery/03_edison_diwali2024.jpg" alt="Diwali 2024 Celebration" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <h3>Diwali 2024</h3>
-                        <p>Festival of Lights celebration</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="images/gallery/05_edison_mahantswamiJJ_2025.jpg" alt="Mahant Swami JJ 2025" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <h3>Mahant Swami JJ 2025</h3>
-                        <p>Spiritual guidance and blessings</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="images/gallery/Edison_Diwali2019_01.jpg" alt="Diwali 2019 Celebration" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <h3>Diwali 2019</h3>
-                        <p>Festival of Lights celebration</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="images/gallery/2ILPJ2JBHBFNBFTFC5HMIONBSI.jpg" alt="Mandir Gathering" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <h3>Community Gathering</h3>
-                        <p>Devotees in prayer</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="images/gallery/unnamed.jpg" alt="Mandir Event" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <h3>Sacred Celebration</h3>
-                        <p>Traditional ceremonies</p>
-                    </div>
-                </div>
-            </div>
+        <!-- BAPS Charities: full-screen design image + invisible tap targets -->
+        <section id="charities" class="section kiosk-page page-overlay-page" data-tab="charities">
+            <div id="page-overlay-charities" class="page-overlay-host" data-overlay-page="charities"></div>
         </section>
 
         <!-- About Section -->
@@ -359,8 +227,8 @@
         <div class="kiosk-bottom-nav__hits">
             <button type="button" class="kiosk-bottom-nav__hit" data-nav-tab="home" onclick="switchTab('home'); trackClick('navigation', 'nav_home')" aria-label="Home"></button>
             <button type="button" class="kiosk-bottom-nav__hit" data-nav-tab="activities" onclick="switchTab('activities'); trackClick('navigation', 'nav_activities')" aria-label="Activities"></button>
-            <button type="button" class="kiosk-bottom-nav__hit" data-nav-tab="events" onclick="switchTab('events'); trackClick('navigation', 'nav_events')" aria-label="Events"></button>
-            <button type="button" class="kiosk-bottom-nav__hit" data-nav-tab="gallery" onclick="switchTab('gallery'); trackClick('navigation', 'nav_gallery')" aria-label="Gallery"></button>
+            <button type="button" class="kiosk-bottom-nav__hit" data-nav-tab="events" onclick="switchTab('events'); trackClick('navigation', 'nav_rituals')" aria-label="Rituals"></button>
+            <button type="button" class="kiosk-bottom-nav__hit" data-nav-tab="charities" onclick="switchTab('charities'); trackClick('navigation', 'nav_baps_charities')" aria-label="BAPS Charities"></button>
             <button type="button" class="kiosk-bottom-nav__hit" data-nav-tab="about" onclick="switchTab('about'); trackClick('navigation', 'nav_about')" aria-label="About"></button>
         </div>
     </nav>
@@ -376,7 +244,7 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="#timings">Darshan Timings</a></li>
-                    <li><a href="#events">Events</a></li>
+                    <li><a href="#events">Rituals</a></li>
                     <li><a href="#about">About Us</a></li>
                 </ul>
                     </div>
@@ -816,12 +684,17 @@
         </div>
     </div>
 
-    <!-- Screensaver Overlay -->
-    <div id="screensaver-overlay" class="screensaver-overlay">
+    <!-- Welcome / idle screensaver — full-screen image + tap CTA -->
+    <div id="screensaver-overlay" class="screensaver-overlay" role="button" aria-label="Tap to start the kiosk">
+        <div class="screensaver-media" aria-hidden="true">
+            <img id="screensaver-bg" class="screensaver-bg" src="" alt="" width="1080" height="1920" draggable="false" decoding="async">
+            <div class="screensaver-scrim"></div>
+        </div>
         <div class="screensaver-content">
-            <h1 class="screensaver-title">BAPS Shri Swaminarayan Mandir</h1>
-            <p class="screensaver-subtitle">Edison, New Jersey</p>
-            <div class="screensaver-prompt">Click anywhere to start</div>
+            <button type="button" id="screensaver-cta" class="screensaver-cta">
+                <span class="screensaver-cta__label">Tap here to begin</span>
+                <span class="screensaver-cta__hint">Touch anywhere on the screen</span>
+            </button>
         </div>
     </div>
 
@@ -910,11 +783,17 @@
 
                     <div class="admin-startup-screensaver-section">
                         <h4>Startup screen</h4>
-                        <p class="admin-startup-screensaver-help">When off, the kiosk goes straight to the home screen. The idle “tap to wake” screensaver still appears after a period of inactivity.</p>
+                        <p class="admin-startup-screensaver-help">When off, the kiosk goes straight to the home screen. The idle welcome screen still appears after inactivity. Image: <code>public/images/pages/0-welcome/Welcome_screen.png</code> (1080×1920).</p>
                         <label class="admin-startup-screensaver-toggle">
                             <input type="checkbox" id="startup-screensaver-toggle" checked onchange="onStartupScreensaverPreferenceChange()">
                             <span>Show “click to start” on load</span>
                         </label>
+                    </div>
+
+                    <div class="admin-section-overlays-section">
+                        <h4>Section overlay images</h4>
+                        <p class="admin-section-overlays-help">Upload full-page designs to <code>public/images/pages/</code> (1-home, 2-activities, 3-rituals, 4-baps-charities). Tune tap zones in <code>home-overlays.json</code> and <code>section-overlays.json</code>.</p>
+                        <ul class="admin-section-overlays-list" id="admin-section-overlays-list"></ul>
                     </div>
 
                     <div class="admin-globe-controls-section">
@@ -959,6 +838,7 @@
 
         function switchTab(tabName) {
             if (tabName === 'connect') tabName = 'about';
+            closeAllPopups();
             const hero = document.getElementById('home');
             const main = document.querySelector('.main-content');
 
@@ -975,16 +855,15 @@
                 if (tabName === 'home' && href === '#home') link.classList.add('active');
                 if (tabName === 'activities' && href === '#activities') link.classList.add('active');
                 if (tabName === 'events' && href === '#events') link.classList.add('active');
-                if (tabName === 'gallery' && href === '#gallery') link.classList.add('active');
+                if (tabName === 'charities' && href === '#charities') link.classList.add('active');
                 if (tabName === 'about' && href === '#about') link.classList.add('active');
             });
 
             const bottomNav = document.getElementById('kiosk-bottom-nav');
+            const fullScreenOverlayTabs = ['home', 'activities', 'events', 'charities'];
             if (bottomNav) {
-                if (tabName === 'home') {
-                    bottomNav.hidden = true;
-                } else {
-                    bottomNav.hidden = false;
+                bottomNav.hidden = fullScreenOverlayTabs.indexOf(tabName) !== -1;
+                if (!bottomNav.hidden) {
                     bottomNav.querySelectorAll('.kiosk-bottom-nav__hit').forEach(function (btn) {
                         btn.classList.toggle('kiosk-bottom-nav__hit--active', btn.getAttribute('data-nav-tab') === tabName);
                     });
@@ -1095,7 +974,7 @@
             events: "Upcoming at Edison Mandir: Yogi Jayanti today and tomorrow (May 16–17). On Sunday, May 31: Sports Day for Balaks and Balikas, and a Walkathon for everyone. Tap Upcoming Events on the home screen for details.",
             location: "BAPS Shri Swaminarayan Mandir is located in Edison, New Jersey. You can reach us at (732) 572-1234 or email info.edison@usa.baps.org",
             abhishek: "Nilkanth Varni Abhishek is available on weekdays from 7:00 AM - 11:00 AM and 4:00 PM - 6:00 PM. On weekends, it's available from 7:00 PM - 8:00 PM.",
-            default: "I can help you with information about Darshan Timings, Aarti Times, Events, and Location. Please select a topic or ask me a question!"
+            default: "I can help you with information about Darshan Timings, Aarti Times, Rituals, BAPS Charities, and Location. Please select a topic or ask me a question!"
         };
 
         function openAIAssistant() {
@@ -1249,6 +1128,268 @@
 
             document.body.style.overflow = 'auto';
             clearPopupIdleTimer();
+        }
+
+        // Section overlay pages (Activities / Rituals / BAPS Charities)
+        let sectionOverlaysConfig = null;
+        var OVERLAY_NAV_BUTTONS = [
+            { tab: 'home', trackName: 'nav_home', ariaLabel: 'Home', left: 0, width: 20, nav: true },
+            { tab: 'activities', trackName: 'nav_activities', ariaLabel: 'Activities', left: 20, width: 20, nav: true },
+            { tab: 'events', trackName: 'nav_rituals', ariaLabel: 'Rituals', left: 40, width: 20, nav: true },
+            { tab: 'charities', trackName: 'nav_baps_charities', ariaLabel: 'BAPS Charities', left: 60, width: 20, nav: true },
+            { tab: 'about', trackName: 'nav_about', ariaLabel: 'About', left: 80, width: 20, nav: true }
+        ];
+        function loadSectionOverlaysConfig() {
+            return fetch('data/section-overlays.json?_=' + Date.now())
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .catch(function () { return null; });
+        }
+
+        function handleOverlayButtonClick(btn) {
+            if (!btn) return;
+            if (btn.action === 'activity') {
+                trackClick('activity', btn.trackName || btn.target);
+                openActivityPopup(btn.target);
+            } else if (btn.action === 'event') {
+                trackClick('event', btn.trackName || btn.target);
+                openEventPopup(btn.target);
+            }
+        }
+
+        function pageImageCandidates(configuredPath) {
+            if (!configuredPath) return [];
+            var dir = configuredPath.replace(/\/[^/]+$/, '');
+            var names = ['screen.png', 'screen.jpg', 'page.png', 'page.jpg'];
+            var list = [];
+            names.forEach(function (name) {
+                var p = dir + '/' + name;
+                if (list.indexOf(p) === -1) list.push(p);
+            });
+            if (list.indexOf(configuredPath) === -1) list.unshift(configuredPath);
+            return list;
+        }
+
+        function loadImageWithFallbacks(img, paths, onSuccess, onFailure) {
+            var index = 0;
+            function tryPath() {
+                if (index >= paths.length) {
+                    if (onFailure) onFailure();
+                    return;
+                }
+                img.onload = function () {
+                    if (onSuccess) onSuccess();
+                };
+                img.onerror = function () {
+                    index += 1;
+                    tryPath();
+                };
+                img.src = paths[index];
+            }
+            tryPath();
+        }
+
+        function getRenderedImageBox(img, frame) {
+            const nw = img.naturalWidth;
+            const nh = img.naturalHeight;
+            const fw = frame.clientWidth;
+            const fh = frame.clientHeight;
+            if (!nw || !nh || !fw || !fh) return null;
+            const scale = Math.min(fw / nw, fh / nh);
+            const rw = nw * scale;
+            const rh = nh * scale;
+            return {
+                x: (fw - rw) / 2,
+                y: 0,
+                w: rw,
+                h: rh
+            };
+        }
+
+        function applyOverlayHitRect(hit, btn) {
+            if (!btn) return;
+            hit.style.borderRadius = '0';
+            hit.style.left = btn.left + '%';
+            hit.style.width = btn.width + '%';
+            if (btn.nav) {
+                hit.style.top = 'auto';
+                hit.style.bottom = '0';
+                hit.style.height = '12%';
+            } else {
+                hit.style.top = btn.top + '%';
+                hit.style.height = btn.height + '%';
+                hit.style.bottom = 'auto';
+            }
+        }
+
+        function syncOverlayHits(frame, img, nav) {
+            const box = getRenderedImageBox(img, frame);
+            if (!box) return;
+            nav.style.left = box.x + 'px';
+            nav.style.top = box.y + 'px';
+            nav.style.width = box.w + 'px';
+            nav.style.height = box.h + 'px';
+            nav.querySelectorAll('[data-overlay-btn]').forEach(function (hit) {
+                const raw = hit.getAttribute('data-overlay-btn');
+                if (!raw) return;
+                try {
+                    applyOverlayHitRect(hit, JSON.parse(raw));
+                } catch (e) { /* ignore */ }
+            });
+        }
+
+        var HOME_OVERLAY_BUTTONS = [
+            { "id": "activities", "nav": false, "left": 2.96, "top": 40.52, "width": 46.48, "height": 23.02 },
+            { "id": "events", "nav": false, "left": 2.96, "top": 64.17, "width": 46.48, "height": 23.02 },
+            { "id": "upcoming", "nav": false, "left": 50.56, "top": 40.52, "width": 46.48, "height": 46.72 },
+            { "id": "nav-home", "nav": true, "left": 0, "width": 20 },
+            { "id": "nav-activities", "nav": true, "left": 20, "width": 20 },
+            { "id": "nav-events", "nav": true, "left": 40, "width": 20 },
+            { "id": "nav-charities", "nav": true, "left": 60, "width": 20 },
+            { "id": "nav-about", "nav": true, "left": 80, "width": 20 }
+        ];
+
+        function appendOverlayNavHits(navEl, frame, img) {
+            OVERLAY_NAV_BUTTONS.forEach(function (nb) {
+                const hit = document.createElement('button');
+                hit.type = 'button';
+                hit.className = 'page-overlay__hit page-overlay__hit--nav';
+                hit.setAttribute('aria-label', nb.ariaLabel);
+                hit.setAttribute('data-overlay-btn', JSON.stringify(nb));
+                hit.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    trackClick('navigation', nb.trackName);
+                    switchTab(nb.tab);
+                });
+                navEl.appendChild(hit);
+            });
+            syncOverlayHits(frame, img, navEl);
+        }
+
+        function bindHomeOverlayButtons(nav, buttons) {
+            (buttons || HOME_OVERLAY_BUTTONS).forEach(function (btn) {
+                const hit = nav.querySelector('[data-hit-id="' + btn.id + '"]');
+                if (hit) hit.setAttribute('data-overlay-btn', JSON.stringify(btn));
+            });
+        }
+
+        function initHomeOverlay() {
+            const frame = document.querySelector('#home .edison-home-png__frame');
+            const img = frame && frame.querySelector('.edison-home-png__img');
+            const nav = frame && frame.querySelector('.edison-home-png__hotspots');
+            if (!frame || !img || !nav) return;
+
+            function layoutHits() {
+                syncOverlayHits(frame, img, nav);
+            }
+
+            function bindAndLayout(buttons) {
+                bindHomeOverlayButtons(nav, buttons);
+                layoutHits();
+            }
+
+            bindHomeOverlayButtons(nav, HOME_OVERLAY_BUTTONS);
+            fetch('data/home-overlays.json?_=' + Date.now())
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (data) {
+                    if (data && data.buttons) bindAndLayout(data.buttons);
+                })
+                .catch(function () { layoutHits(); });
+
+            var homePaths = pageImageCandidates('images/pages/1-home/screen.png');
+            homePaths.push('images/design/home-screen.png');
+            loadImageWithFallbacks(img, homePaths, layoutHits, layoutHits);
+            if (typeof ResizeObserver !== 'undefined') {
+                new ResizeObserver(layoutHits).observe(frame);
+            } else {
+                window.addEventListener('resize', layoutHits);
+            }
+        }
+
+        function mountPageOverlay(pageKey, config) {
+            const host = document.getElementById('page-overlay-' + pageKey);
+            if (!host || !config || !config.image) return;
+
+            host.innerHTML = '';
+            const frame = document.createElement('div');
+            frame.className = 'page-overlay__frame';
+
+            const img = document.createElement('img');
+            img.className = 'page-overlay__img';
+            img.alt = pageKey;
+            img.draggable = false;
+            img.decoding = 'sync';
+
+            const nav = document.createElement('nav');
+            nav.className = 'page-overlay__hits';
+            nav.setAttribute('aria-label', pageKey + ' page');
+
+            (config.buttons || []).forEach(function (btn) {
+                const hit = document.createElement('button');
+                hit.type = 'button';
+                hit.className = 'page-overlay__hit';
+                hit.setAttribute('aria-label', btn.ariaLabel || btn.trackName || 'Open');
+                hit.setAttribute('data-overlay-btn', JSON.stringify(btn));
+                hit.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    handleOverlayButtonClick(btn);
+                });
+                nav.appendChild(hit);
+            });
+
+            frame.appendChild(img);
+            frame.appendChild(nav);
+            host.appendChild(frame);
+
+            function layoutHits() {
+                syncOverlayHits(frame, img, nav);
+            }
+
+            function onImageReady() {
+                appendOverlayNavHits(nav, frame, img);
+                layoutHits();
+            }
+
+            if (typeof ResizeObserver !== 'undefined') {
+                const ro = new ResizeObserver(layoutHits);
+                ro.observe(frame);
+                host._overlayResizeObserver = ro;
+            } else {
+                window.addEventListener('resize', layoutHits);
+            }
+
+            loadImageWithFallbacks(img, pageImageCandidates(config.image), onImageReady, function () {
+                host.innerHTML = '<p class="page-overlay__placeholder">Add image in <code>' + config.image.replace(/\/[^/]+$/, '/') + '</code> as screen.png</p>';
+            });
+        }
+
+        function initSectionOverlays() {
+            if (new URLSearchParams(window.location.search).get('overlay_debug') === '1') {
+                document.documentElement.classList.add('overlay-debug');
+            }
+            initHomeOverlay();
+            loadSectionOverlaysConfig().then(function (data) {
+                sectionOverlaysConfig = data;
+                if (!data) return;
+                ['activities', 'events', 'charities'].forEach(function (key) {
+                    if (data[key]) mountPageOverlay(key, data[key]);
+                });
+                renderAdminSectionOverlaysList(data);
+            });
+        }
+
+        function renderAdminSectionOverlaysList(data) {
+            const list = document.getElementById('admin-section-overlays-list');
+            if (!list || !data) return;
+            const labels = { activities: 'Activities', events: 'Rituals', charities: 'BAPS Charities' };
+            list.innerHTML = '';
+            ['activities', 'events', 'charities'].forEach(function (key) {
+                const li = document.createElement('li');
+                const cfg = data[key];
+                const path = cfg && cfg.image ? cfg.image : '(no image)';
+                const n = cfg && cfg.buttons ? cfg.buttons.length : 0;
+                li.textContent = (labels[key] || key) + ': ' + path + ' — ' + n + ' tap buttons';
+                list.appendChild(li);
+            });
         }
 
         // Event Popup Functions
@@ -1582,10 +1723,19 @@
             if (currentPasscode === ADMIN_PASSCODE) {
                 document.getElementById('admin-login-screen').style.display = 'none';
                 document.getElementById('admin-dashboard-screen').style.display = 'block';
+                if (!sectionOverlaysConfig) {
+                    loadSectionOverlaysConfig().then(function (data) {
+                        sectionOverlaysConfig = data;
+                        renderAdminSectionOverlaysList(data);
+                    });
+                } else {
+                    renderAdminSectionOverlaysList(sectionOverlaysConfig);
+                }
                 currentPasscode = '';
                 updatePasscodeDisplay();
                 document.getElementById('admin-error').textContent = '';
                 syncStartupScreensaverToggle();
+                renderAdminSectionOverlaysList(sectionOverlaysConfig);
                 displayAnalytics(); // Show analytics when admin logs in
             } else {
                 document.getElementById('admin-error').textContent = 'Incorrect passcode';
@@ -1687,7 +1837,8 @@
             loadUpcomingEventsData().then(function () {
                 updateUpcomingHomeCard();
             });
-            const fadeElements = document.querySelectorAll('.section, .timing-card, .event-card, .gallery-item, .about-card');
+            initSectionOverlays();
+            const fadeElements = document.querySelectorAll('.section, .timing-card, .event-card, .about-card');
             fadeElements.forEach(el => {
                 el.classList.add('fade-in');
                 observer.observe(el);
@@ -2316,6 +2467,33 @@
             }
         }
 
+        function welcomeImageCandidates() {
+            return [
+                'images/pages/0-welcome/Welcome_screen.png',
+                'images/pages/0-welcome/screen.png',
+                'images/pages/0-welcome/screen.jpg',
+                'images/pages/0-welcome/page.png',
+                'images/pages/0-welcome/page.jpg'
+            ];
+        }
+
+        function initWelcomeScreenImage() {
+            const img = document.getElementById('screensaver-bg');
+            const overlay = document.getElementById('screensaver-overlay');
+            if (!img || !overlay) return;
+
+            function setHasImage(has) {
+                overlay.classList.toggle('screensaver-overlay--has-image', !!has);
+            }
+
+            loadImageWithFallbacks(img, welcomeImageCandidates(), function () {
+                setHasImage(true);
+            }, function () {
+                img.removeAttribute('src');
+                setHasImage(false);
+            });
+        }
+
         // Initialize screensaver after DOM is fully loaded
         function initScreensaver() {
             const screensaver = document.getElementById('screensaver-overlay');
@@ -2323,6 +2501,8 @@
                 console.error('Screensaver element not found');
                 return;
             }
+
+            initWelcomeScreenImage();
 
             // Hide screensaver on any interaction with it
             screensaver.addEventListener('click', function(e) {
