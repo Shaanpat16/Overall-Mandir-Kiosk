@@ -710,7 +710,8 @@ body.edison-theme {
 .edison-theme.ak-theme .event-popup,
 .edison-theme.ak-theme .guru-popup,
 .edison-theme.ak-theme .upcoming-events-popup,
-.edison-theme.ak-theme .upcoming-event-detail-popup {
+.edison-theme.ak-theme .upcoming-event-detail-popup,
+.edison-theme.ak-theme .about-panel-popup {
     background: rgba(0, 0, 0, 0.55) !important;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -724,7 +725,6 @@ body.edison-theme {
     border-radius: var(--edison-radius-lg) !important;
     border: none !important;
     box-shadow: var(--edison-shadow-lg) !important;
-    animation: none !important;
     overflow: hidden !important;
     background: var(--edison-surface);
     font-family: var(--edison-font);
@@ -732,6 +732,47 @@ body.edison-theme {
     max-height: min(90vh, 880px) !important;
     display: flex !important;
     flex-direction: column !important;
+}
+
+/* Popup open animation */
+.edison-theme.ak-theme .activity-popup.kiosk-popup--visible,
+.edison-theme.ak-theme .event-popup.kiosk-popup--visible,
+.edison-theme.ak-theme .guru-popup.kiosk-popup--visible,
+.edison-theme.ak-theme .upcoming-events-popup.kiosk-popup--visible,
+.edison-theme.ak-theme .upcoming-event-detail-popup.kiosk-popup--visible,
+.edison-theme.ak-theme .about-panel-popup.kiosk-popup--visible {
+    animation: edisonPopupBackdropIn 0.45s ease both;
+}
+
+.edison-theme.ak-theme .activity-popup.kiosk-popup--opening .activity-popup-content,
+.edison-theme.ak-theme .event-popup.kiosk-popup--opening .event-popup-content,
+.edison-theme.ak-theme .guru-popup.kiosk-popup--opening .guru-popup-content,
+.edison-theme.ak-theme .upcoming-events-popup.kiosk-popup--opening .upcoming-events-popup-content,
+.edison-theme.ak-theme .upcoming-event-detail-popup.kiosk-popup--opening .upcoming-event-detail-content,
+.edison-theme.ak-theme .about-panel-popup.kiosk-popup--opening .about-panel-popup-content,
+.edison-theme.ak-theme .activity-popup.kiosk-popup--visible .activity-popup-content,
+.edison-theme.ak-theme .event-popup.kiosk-popup--visible .event-popup-content,
+.edison-theme.ak-theme .guru-popup.kiosk-popup--visible .guru-popup-content,
+.edison-theme.ak-theme .upcoming-events-popup.kiosk-popup--visible .upcoming-events-popup-content,
+.edison-theme.ak-theme .upcoming-event-detail-popup.kiosk-popup--visible .upcoming-event-detail-content,
+.edison-theme.ak-theme .about-panel-popup.kiosk-popup--visible .about-panel-popup-content {
+    animation: edisonPopupPanelIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+}
+
+@keyframes edisonPopupBackdropIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes edisonPopupPanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(32px) scale(0.94);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .edison-theme.ak-theme .activity-popup-content {
@@ -941,7 +982,27 @@ body.edison-theme {
 }
 
 .edison-theme.ak-theme .activity-popup-image {
+    width: 100%;
+    height: 100%;
     border-radius: 0;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.edison-theme.ak-theme .activity-popup-image--yuvakyuvati {
+    object-position: center 82%;
+}
+
+.edison-theme.ak-theme .activity-popup-image--sanyukta {
+    object-position: center 45%;
+}
+
+.edison-theme.ak-theme .event-popup-image--walkathon {
+    object-position: center 58%;
+}
+
+.edison-theme.ak-theme .upcoming-event-detail-hero img[data-hero-id="yogi-jayanti"] {
+    object-position: center 38%;
 }
 
 .edison-theme.ak-theme .upcoming-event-badge {
@@ -1307,11 +1368,8 @@ body.edison-theme {
     box-sizing: border-box;
 }
 
-/* About tab: scroll through About + Gurus + QR + Contact sections */
-.edison-theme.ak-theme .main-content:has(.kiosk-page.active[data-tab="about"]) {
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+.edison-theme .footer--legacy {
+    display: none !important;
 }
 
 /* ═══════════════════════════════════════
@@ -1320,20 +1378,50 @@ body.edison-theme {
 
 .edison-theme.ak-theme .main-content:has(.kiosk-page.active.page-overlay-page) {
     bottom: 0 !important;
+    height: 100dvh !important;
+    height: 100vh !important;
+    min-height: 100dvh;
+    min-height: 100vh;
 }
 
 .edison-theme.ak-theme .kiosk-page.page-overlay-page.active {
-    position: absolute;
+    position: fixed;
     inset: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh;
+    height: 100vh;
+    min-height: 100dvh;
+    min-height: 100vh;
     padding: 0 !important;
     margin: 0 !important;
     overflow: hidden;
-    background: #000;
+    background: #fff;
+    z-index: 45;
+}
+
+/* Slower page-to-page fade */
+.edison-theme #home.edison-home-png,
+.edison-theme .kiosk-page.page-overlay-page {
+    transition: opacity 0.65s ease;
+}
+
+.edison-theme #home.kiosk-page--tab-fade-out,
+.edison-theme .kiosk-page.kiosk-page--tab-fade-out {
+    opacity: 0 !important;
+}
+
+.edison-theme #home.kiosk-page--tab-fade-in,
+.edison-theme .kiosk-page.kiosk-page--tab-fade-in {
+    opacity: 0;
+}
+
+body.kiosk-tab-transitioning .page-overlay__img {
+    transition: opacity 0.65s ease;
 }
 
 .page-overlay-host {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -1344,18 +1432,24 @@ body.edison-theme {
     width: 100%;
     height: 100%;
     margin: 0;
-    background: #000;
+    background: #fff;
 }
 
 .page-overlay__img {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: contain;
-    object-position: center top;
+    object-fit: cover;
+    object-position: center center;
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
+}
+
+/* Rituals / info pages: show full artwork without cropping */
+.edison-theme #page-overlay-events .page-overlay__img {
+    object-fit: contain;
+    object-position: center top;
 }
 
 .page-overlay__hits {
@@ -1415,6 +1509,74 @@ html.overlay-debug .edison-home-png__hit:not(.edison-home-png__hit--nav) {
 
 .page-overlay__placeholder code {
     font-size: 0.85rem;
+}
+
+/* About overlay sub-panels (Gurus, QR, Contact) */
+.edison-theme.ak-theme .about-panel-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.edison-theme.ak-theme .about-panel-popup-content {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    max-height: min(90vh, 880px);
+    overflow-y: auto;
+    background: var(--edison-surface);
+    border-radius: var(--edison-radius-lg);
+    box-shadow: var(--edison-shadow-lg);
+    padding: 28px 24px 32px;
+    font-family: var(--edison-font);
+}
+
+.edison-theme.ak-theme .about-panel-header {
+    margin-bottom: 20px;
+    padding-right: 48px;
+}
+
+.edison-theme.ak-theme .about-panel-header h2 {
+    font-family: var(--edison-font);
+    font-size: clamp(1.65rem, 5vmin, 2.1rem);
+    font-weight: 700;
+    color: var(--edison-blue-start);
+    margin: 0 0 8px;
+}
+
+.edison-theme.ak-theme .about-panel-header p {
+    font-family: var(--edison-font);
+    font-size: clamp(1rem, 2.6vmin, 1.15rem);
+    color: var(--edison-text-secondary);
+    margin: 0;
+    font-style: italic;
+}
+
+.edison-theme.ak-theme .about-panel-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: var(--edison-blue-soft);
+    color: var(--edison-blue-start);
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.edison-theme.ak-theme .about-panel-popup .gurus-grid,
+.edison-theme.ak-theme .about-panel-popup .qr-codes-grid,
+.edison-theme.ak-theme .about-panel-popup .contact-grid {
+    gap: var(--edison-card-gap);
 }
 
 .admin-section-overlays-section {

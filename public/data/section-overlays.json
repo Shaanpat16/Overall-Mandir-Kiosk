@@ -22,5 +22,15 @@
       { "target": "walkathon", "action": "event", "trackName": "Walkathon", "ariaLabel": "Walkathon", "left": 3.5, "top": 45, "width": 93, "height": 20 },
       { "target": "blooddrive", "action": "event", "trackName": "Blood Drive", "ariaLabel": "Blood Drive", "left": 3.5, "top": 67, "width": 93, "height": 20 }
     ]
+  },
+  "about": {
+    "image": "images/pages/5-about/Heading.png",
+    "buttons": [
+      { "target": "pramukh", "action": "guru", "trackName": "Pramukh Swami", "ariaLabel": "Pramukh Swami Maharaj", "left": 3.7, "top": 26, "width": 45.65, "height": 20.18 },
+      { "target": "mahant", "action": "guru", "trackName": "Mahant Swami", "ariaLabel": "Mahant Swami Maharaj", "left": 50.65, "top": 26, "width": 45.65, "height": 20.18 },
+      { "target": "gurus", "action": "aboutPanel", "trackName": "Our Gurus", "ariaLabel": "Our Gurus", "left": 3.7, "top": 46.91, "width": 45.65, "height": 20.18 },
+      { "target": "qr", "action": "aboutPanel", "trackName": "Connect", "ariaLabel": "QR Codes", "left": 50.65, "top": 46.91, "width": 45.65, "height": 20.18 },
+      { "target": "contact", "action": "aboutPanel", "trackName": "Contact", "ariaLabel": "Contact", "left": 3.7, "top": 67.82, "width": 92.6, "height": 20.18 }
+    ]
   }
 }

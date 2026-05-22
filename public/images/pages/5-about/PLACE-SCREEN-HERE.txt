@@ -1,0 +1,17 @@
+Page 5 — ABOUT
+
+Put your About screen design here as:
+
+  Heading.png   (current file)
+  screen.png
+  screen.jpg
+  page.png
+  page.jpg
+
+Size: 1080 × 1920 (portrait)
+
+Tap zones are tuned in public/data/section-overlays.json → "about".
+
+Use ?overlay_debug=1 to see red hit rectangles while aligning.
+
+Delete this file after you add the image.

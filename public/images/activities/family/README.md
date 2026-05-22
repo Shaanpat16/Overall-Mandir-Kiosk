@@ -1,6 +1,6 @@
-# Family Programs Activity Image
+# Sanyukta Sabha Activity Image
 
-Add **1 image** to represent the Family Programs program.
+Popup uses `images/events/mahapuja/BAPS_Bangkok_Mandir_Mahotsav_Mahapuja_02.jpg`. Add a dedicated image here if you prefer a local file.
 
 ## Required Image:
 - **Filename:** `1.jpg` or `1.png`

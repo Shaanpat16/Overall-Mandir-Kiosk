@@ -317,6 +317,7 @@ body.ak-theme {
 .ak-theme .kiosk-page.active[data-tab="activities"],
 .ak-theme .kiosk-page.active[data-tab="events"],
 .ak-theme .kiosk-page.active[data-tab="charities"],
+.ak-theme .kiosk-page.active[data-tab="about"],
 .ak-theme .kiosk-page.active[data-tab="connect"] {
     background: var(--ak-cream);
 }

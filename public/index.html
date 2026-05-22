@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     <title>BAPS Shri Swaminarayan Mandir - Digital Kiosk</title>
     <link rel="stylesheet" href="css/styles.css?v=32.0">
-    <link rel="stylesheet" href="css/edison-design-system.css?v=4.9">
+    <link rel="stylesheet" href="css/edison-design-system.css?v=5.3">
     <link rel="stylesheet" href="css/akshardham-theme.css?v=1.3">
 </head>
 <body class="edison-theme ak-theme">
@@ -72,61 +72,9 @@
             <div id="page-overlay-charities" class="page-overlay-host" data-overlay-page="charities"></div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section kiosk-page" data-tab="about">
-            <div class="section-header ak-section-header">
-                <span class="ak-eyebrow">About</span>
-                <h2>Our mandir</h2>
-                <p>Spiritual heritage and community at BAPS Edison</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-grid">
-                    <div class="about-card">
-                        <div class="about-icon"></div>
-                        <h3>Community Spirit</h3>
-                        <p>Join our vibrant community of devotees from diverse backgrounds united in spiritual practice.</p>
-            </div>
-
-                    <div class="about-card">
-                        <div class="about-icon"></div>
-                        <h3>Spiritual Learning</h3>
-                        <p>Regular classes, discourses, and educational programs for all ages and backgrounds.</p>
-                    </div>
-                    
-                    <div class="about-card">
-                        <div class="about-icon"></div>
-                        <h3>Service to Society</h3>
-                        <p>Engage in community service, charity work, and humanitarian activities.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gurus Section -->
-        <section id="gurus" class="section gurus-section kiosk-page" data-tab="about">
-            <div class="section-header">
-                <h2>Our Gurus</h2>
-                <p>Spiritual Leaders who guide us on the path of devotion</p>
-            </div>
-            
-            <div class="gurus-grid">
-                <div class="guru-card" onclick="trackClick('guru', 'Pramukh Swami Maharaj'); openGuruPopup('pramukh')">
-                    <div class="guru-image-wrapper">
-                        <img src="images/gurus/vv30-029.jpg" alt="Pramukh Swami Maharaj" class="guru-image">
-                    </div>
-                    <h3>Pramukh Swami Maharaj</h3>
-                    <p class="guru-years">1921 - 2016</p>
-                </div>
-                
-                <div class="guru-card" onclick="trackClick('guru', 'Mahant Swami Maharaj'); openGuruPopup('mahant')">
-                    <div class="guru-image-wrapper">
-                        <img src="images/gurus/Mahant_Swami_Maharaj.jpg" alt="Mahant Swami Maharaj" class="guru-image">
-                    </div>
-                    <h3>Mahant Swami Maharaj</h3>
-                    <p class="guru-years">Current Spiritual Leader</p>
-                </div>
-            </div>
+        <!-- About: full-screen design image + invisible tap targets -->
+        <section id="about" class="section kiosk-page page-overlay-page" data-tab="about">
+            <div id="page-overlay-about" class="page-overlay-host" data-overlay-page="about"></div>
         </section>
 
         <!-- Global Vicharan globe: hidden until loaded from admin dashboard -->
@@ -160,65 +108,6 @@
             </div>
         </section>
 
-        <!-- QR Codes Section -->
-        <section id="qr-codes" class="section qr-codes-section kiosk-page" data-tab="about">
-            <div class="section-header">
-                <h2>Connect With Us</h2>
-                <p>Scan to stay engaged with our community</p>
-            </div>
-            
-            <div class="qr-codes-grid">
-                <div class="qr-code-card" onclick="trackClick('qrcode', 'Interest Form')">
-                    <div class="qr-code-image-wrapper">
-                        <img src="images/qr-codes/1.png" alt="Interest Form QR Code" class="qr-code-image">
-                    </div>
-                    <h3>Interest Form</h3>
-                    <p>Scan to register your interest</p>
-                </div>
-                
-                <div class="qr-code-card" onclick="trackClick('qrcode', 'Telegram Channel')">
-                    <div class="qr-code-image-wrapper">
-                        <img src="images/qr-codes/2.png" alt="Telegram Channel QR Code" class="qr-code-image">
-                    </div>
-                    <h3>Telegram Channel</h3>
-                    <p>Join our community updates</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Information Section -->
-        <section id="contact" class="section contact-section kiosk-page" data-tab="about">
-            <div class="section-header">
-                <h2>Stay Connected</h2>
-                <p>Get in touch with us</p>
-            </div>
-            
-            <div class="contact-info">
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <span class="contact-icon"></span>
-                        <div>
-                            <strong>Address</strong>
-                            <p>BAPS Shri Swaminarayan Mandir<br>Edison, New Jersey</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon"></span>
-                        <div>
-                            <strong>Phone</strong>
-                            <p>(732) 572-1234</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon"></span>
-                        <div>
-                            <strong>Email</strong>
-                            <p>info.edison@usa.baps.org</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Bottom nav (cropped from home design) — inner pages -->
@@ -233,8 +122,8 @@
         </div>
     </nav>
 
-            <!-- Footer -->
-            <footer class="footer kiosk-page" data-tab="about">
+            <!-- Footer (legacy; hidden on Edison full-screen tabs) -->
+            <footer class="footer footer--legacy">
                 <div class="footer-content">
             <div class="footer-section">
                 <h3>BAPS Shri Swaminarayan Mandir</h3>
@@ -262,6 +151,94 @@
             <button class="admin-trigger-btn" onclick="openAdminDashboard()">⚙️</button>
     </div>
     </footer>
+
+    <!-- About overlay panels (opened from About page tap zones) -->
+    <div id="about-panel-gurus" class="about-panel-popup" style="display: none;" onclick="if(event.target===this) closeAboutPanel()">
+        <div class="about-panel-popup-content">
+            <button type="button" class="about-panel-close" onclick="closeAboutPanel()" aria-label="Close">&times;</button>
+            <div class="about-panel-header">
+                <h2>Our Gurus</h2>
+                <p>Spiritual leaders who guide us on the path of devotion</p>
+            </div>
+            <div class="gurus-grid">
+                <div class="guru-card" onclick="trackClick('guru', 'Pramukh Swami Maharaj'); openGuruPopup('pramukh')">
+                    <div class="guru-image-wrapper">
+                        <img src="images/gurus/vv30-029.jpg" alt="Pramukh Swami Maharaj" class="guru-image">
+                    </div>
+                    <h3>Pramukh Swami Maharaj</h3>
+                    <p class="guru-years">1921 - 2016</p>
+                </div>
+                <div class="guru-card" onclick="trackClick('guru', 'Mahant Swami Maharaj'); openGuruPopup('mahant')">
+                    <div class="guru-image-wrapper">
+                        <img src="images/gurus/Mahant_Swami_Maharaj.jpg" alt="Mahant Swami Maharaj" class="guru-image">
+                    </div>
+                    <h3>Mahant Swami Maharaj</h3>
+                    <p class="guru-years">Current Spiritual Leader</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-panel-qr" class="about-panel-popup" style="display: none;" onclick="if(event.target===this) closeAboutPanel()">
+        <div class="about-panel-popup-content">
+            <button type="button" class="about-panel-close" onclick="closeAboutPanel()" aria-label="Close">&times;</button>
+            <div class="about-panel-header">
+                <h2>Connect With Us</h2>
+                <p>Scan to stay engaged with our community</p>
+            </div>
+            <div class="qr-codes-grid">
+                <div class="qr-code-card" onclick="trackClick('qrcode', 'Interest Form')">
+                    <div class="qr-code-image-wrapper">
+                        <img src="images/qr-codes/1.png" alt="Interest Form QR Code" class="qr-code-image">
+                    </div>
+                    <h3>Interest Form</h3>
+                    <p>Scan to register your interest</p>
+                </div>
+                <div class="qr-code-card" onclick="trackClick('qrcode', 'Telegram Channel')">
+                    <div class="qr-code-image-wrapper">
+                        <img src="images/qr-codes/2.png" alt="Telegram Channel QR Code" class="qr-code-image">
+                    </div>
+                    <h3>Telegram Channel</h3>
+                    <p>Join our community updates</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-panel-contact" class="about-panel-popup" style="display: none;" onclick="if(event.target===this) closeAboutPanel()">
+        <div class="about-panel-popup-content">
+            <button type="button" class="about-panel-close" onclick="closeAboutPanel()" aria-label="Close">&times;</button>
+            <div class="about-panel-header">
+                <h2>Stay Connected</h2>
+                <p>Get in touch with us</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Address</strong>
+                            <p>BAPS Shri Swaminarayan Mandir<br>Edison, New Jersey</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Phone</strong>
+                            <p>(732) 572-1234</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info.edison@usa.baps.org</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Upcoming Events Popup -->
     <div id="upcoming-events-popup" class="upcoming-events-popup">
@@ -397,9 +374,9 @@
             </div>
             <div class="event-popup-body">
                 <div class="event-popup-images">
-                    <img src="images/events/walkathon/1.jpg" alt="Walkathon 1" class="event-popup-image">
-                    <img src="images/events/walkathon/2.jpg" alt="Walkathon 2" class="event-popup-image">
-                    <img src="images/events/walkathon/3.jpg" alt="Walkathon 3" class="event-popup-image">
+                    <img src="images/events/walkathon/1.jpg" alt="Walkathon 1" class="event-popup-image event-popup-image--walkathon">
+                    <img src="images/events/walkathon/2.jpg" alt="Walkathon 2" class="event-popup-image event-popup-image--walkathon">
+                    <img src="images/events/walkathon/3.jpg" alt="Walkathon 3" class="event-popup-image event-popup-image--walkathon">
                 </div>
                 <p><strong>Walking Together for a Cause</strong></p>
                 <p>Our annual charity walkathon brings the community together to promote health, wellness, and raise funds for important charitable causes.</p>
@@ -515,7 +492,7 @@
                 <h2>Yuvak/Yuvati</h2>
             </div>
             <div class="activity-popup-image-container">
-                <img src="images/activities/yuvakyuvati/Edison_Guru_Bhakti_Din2022_38.jpeg" alt="Yuvak/Yuvati Activity" class="activity-popup-image" onerror="this.style.display='none'">
+                <img src="images/activities/yuvakyuvati/Edison_Guru_Bhakti_Din2022_38.jpeg" alt="Yuvak/Yuvati Activity" class="activity-popup-image activity-popup-image--yuvakyuvati" onerror="this.style.display='none'">
             </div>
             <div class="activity-popup-body">
                 <p><strong>Ages: 18+ years (Post College)</strong></p>
@@ -601,26 +578,25 @@
         <div class="activity-popup-content">
             <button class="close-activity-btn" onclick="closeActivityPopup('family')">&times;</button>
             <div class="activity-popup-header">
-                <h2>Family Programs</h2>
+                <h2>Sanyukta Sabha</h2>
             </div>
             <div class="activity-popup-image-container">
-                <img src="images/activities/family/Edison_Yagna_MM19_40_001.jpg" alt="Family Programs Activity" class="activity-popup-image" onerror="this.style.display='none'">
+                <img src="images/events/mahapuja/BAPS_Bangkok_Mandir_Mahotsav_Mahapuja_02.jpg" alt="Sanyukta Sabha" class="activity-popup-image activity-popup-image--sanyukta" onerror="this.style.display='none'">
             </div>
             <div class="activity-popup-body">
-                <p><strong>Activities for the Whole Family</strong></p>
-                <p>Our Family Programs bring families together to strengthen bonds through shared spiritual experiences and cultural activities.</p>
+                <p><strong>Combined Devotional Assembly</strong></p>
+                <p>Sanyukta Sabha brings the mandir community together for an uplifting program of katha, bhajans, aarti, and shared satsang.</p>
                 
-                <p><strong>Activities Include:</strong></p>
+                <p><strong>Program Includes:</strong></p>
                 <ul>
-                    <li>Family sabhas with interactive sessions</li>
-                    <li>Festival celebrations for all ages</li>
-                    <li>Picnics and recreational outings</li>
-                    <li>Family volunteer service opportunities</li>
-                    <li>Parenting workshops and family counseling</li>
-                    <li>Devotional assemblies and spiritual discourses</li>
+                    <li>Katha by santos</li>
+                    <li>Devotional bhajans</li>
+                    <li>Aarti and prayers</li>
+                    <li>Spiritual discourses for all ages</li>
+                    <li>Opportunities for family participation</li>
                 </ul>
                 
-                <p><strong>When:</strong> Various programs throughout the year - Check calendar for dates</p>
+                <p><strong>When:</strong> Scheduled sabhas throughout the year — check the welcome desk or upcoming events for dates</p>
             </div>
         </div>
     </div>
@@ -795,7 +771,7 @@
 
                     <div class="admin-section-overlays-section">
                         <h4>Section overlay images</h4>
-                        <p class="admin-section-overlays-help">Upload full-page designs to <code>public/images/pages/</code> (1-home, 2-activities, 3-rituals, 4-baps-charities). Tune tap zones in <code>home-overlays.json</code> and <code>section-overlays.json</code>.</p>
+                        <p class="admin-section-overlays-help">Upload full-page designs to <code>public/images/pages/</code> (1-home through 5-about). Tune tap zones in <code>home-overlays.json</code> and <code>section-overlays.json</code>.</p>
                         <ul class="admin-section-overlays-list" id="admin-section-overlays-list"></ul>
                     </div>
 
@@ -839,17 +815,19 @@
         setInterval(updateTopbarClock, 1000);
         updateTopbarClock();
 
-        function switchTab(tabName) {
-            if (tabName === 'connect') tabName = 'about';
-            closeAllPopups();
+        var KIOSK_TAB_TRANSITION_MS = 650;
+
+        function applyKioskTab(tabName) {
             const hero = document.getElementById('home');
             const main = document.querySelector('.main-content');
-
             const pages = document.querySelectorAll('.kiosk-page');
-            pages.forEach((page) => {
+
+            pages.forEach(function (page) {
                 const matches = page.getAttribute('data-tab') === tabName;
                 page.classList.toggle('active', matches);
-                page.style.display = matches ? '' : 'none';
+                if (page.id !== 'home') {
+                    page.style.display = matches ? '' : 'none';
+                }
             });
 
             document.querySelectorAll('.nav-link').forEach(function (link) {
@@ -863,7 +841,7 @@
             });
 
             const bottomNav = document.getElementById('kiosk-bottom-nav');
-            const fullScreenOverlayTabs = ['home', 'activities', 'events', 'charities'];
+            const fullScreenOverlayTabs = ['home', 'activities', 'events', 'charities', 'about'];
             if (bottomNav) {
                 bottomNav.hidden = fullScreenOverlayTabs.indexOf(tabName) !== -1;
                 if (!bottomNav.hidden) {
@@ -877,12 +855,86 @@
             if (hero && main) {
                 if (tabName === 'home') {
                     hero.style.display = '';
+                    hero.classList.add('active');
                     main.style.display = 'none';
                 } else {
+                    hero.classList.remove('active');
                     hero.style.display = 'none';
                     main.style.display = 'flex';
                 }
             }
+        }
+
+        function switchTab(tabName) {
+            if (tabName === 'connect') tabName = 'about';
+            closeAllPopups();
+
+            const hero = document.getElementById('home');
+            const leaving = [];
+            if (hero && hero.classList.contains('active')) leaving.push(hero);
+            document.querySelectorAll('.kiosk-page.active').forEach(function (page) {
+                if (page !== hero) leaving.push(page);
+            });
+
+            if (!leaving.length) {
+                applyKioskTab(tabName);
+                return;
+            }
+
+            document.body.classList.add('kiosk-tab-transitioning');
+            leaving.forEach(function (el) { el.classList.add('kiosk-page--tab-fade-out'); });
+
+            setTimeout(function () {
+                leaving.forEach(function (el) {
+                    el.classList.remove('kiosk-page--tab-fade-out', 'active');
+                });
+                applyKioskTab(tabName);
+
+                const entering = [];
+                if (tabName === 'home' && hero) {
+                    hero.style.display = '';
+                    entering.push(hero);
+                } else {
+                    document.querySelectorAll('.kiosk-page.active').forEach(function (page) {
+                        if (page !== hero) entering.push(page);
+                    });
+                }
+
+                entering.forEach(function (el) {
+                    el.classList.add('kiosk-page--tab-fade-in');
+                });
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        entering.forEach(function (el) { el.classList.remove('kiosk-page--tab-fade-in'); });
+                        document.body.classList.remove('kiosk-tab-transitioning');
+                    });
+                });
+            }, KIOSK_TAB_TRANSITION_MS);
+        }
+
+        function showKioskPopup(popup) {
+            if (!popup) return;
+            popup.classList.remove('kiosk-popup--closing', 'kiosk-popup--visible');
+            popup.style.display = 'flex';
+            popup.classList.add('kiosk-popup--opening');
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    popup.classList.remove('kiosk-popup--opening');
+                    popup.classList.add('kiosk-popup--visible');
+                });
+            });
+        }
+
+        function hideKioskPopup(popup) {
+            if (!popup) return;
+            popup.classList.remove('kiosk-popup--visible', 'kiosk-popup--opening');
+            popup.classList.add('kiosk-popup--closing');
+            setTimeout(function () {
+                if (popup.classList.contains('kiosk-popup--closing')) {
+                    popup.style.display = 'none';
+                    popup.classList.remove('kiosk-popup--closing');
+                }
+            }, 320);
         }
 
         // Click Tracking System
@@ -1105,29 +1157,10 @@
         }
 
         function closeAllPopups() {
-            // Close all activity popups
-            const activityPopups = document.querySelectorAll('.activity-popup');
-            activityPopups.forEach(popup => {
+            document.querySelectorAll('.activity-popup, .guru-popup, .event-popup, .upcoming-events-popup, .upcoming-event-detail-popup, .about-panel-popup').forEach(function (popup) {
+                popup.classList.remove('kiosk-popup--visible', 'kiosk-popup--opening', 'kiosk-popup--closing');
                 popup.style.display = 'none';
             });
-
-            // Close all guru popups
-            const guruPopups = document.querySelectorAll('.guru-popup');
-            guruPopups.forEach(popup => {
-                popup.style.display = 'none';
-            });
-
-            // Close all event popups
-            const eventPopups = document.querySelectorAll('.event-popup');
-            eventPopups.forEach(popup => {
-                popup.style.display = 'none';
-            });
-
-            const upcomingPopup = document.getElementById('upcoming-events-popup');
-            if (upcomingPopup) upcomingPopup.style.display = 'none';
-
-            const upcomingDetailPopup = document.getElementById('upcoming-event-detail-popup');
-            if (upcomingDetailPopup) upcomingDetailPopup.style.display = 'none';
 
             document.body.style.overflow = 'auto';
             clearPopupIdleTimer();
@@ -1156,13 +1189,41 @@
             } else if (btn.action === 'event') {
                 trackClick('event', btn.trackName || btn.target);
                 openEventPopup(btn.target);
+            } else if (btn.action === 'guru') {
+                trackClick('guru', btn.trackName || btn.target);
+                openGuruPopup(btn.target);
+            } else if (btn.action === 'aboutPanel') {
+                trackClick('navigation', 'about_' + btn.target);
+                openAboutPanel(btn.target);
+            }
+        }
+
+        function openAboutPanel(panelId) {
+            closeAboutPanel();
+            const popup = document.getElementById('about-panel-' + panelId);
+            if (!popup) return;
+            showKioskPopup(popup);
+            document.body.style.overflow = 'hidden';
+            startPopupIdleTimer();
+            attachPopupIdleListeners(popup);
+            if (typeof resetIdleTimer === 'function') resetIdleTimer();
+        }
+
+        function closeAboutPanel() {
+            document.querySelectorAll('.about-panel-popup').forEach(function (popup) {
+                hideKioskPopup(popup);
+            });
+            const anyOpen = document.querySelector('.activity-popup[style*="flex"], .event-popup[style*="flex"], .guru-popup[style*="flex"], .upcoming-events-popup[style*="flex"], .upcoming-event-detail-popup[style*="flex"]');
+            if (!anyOpen) {
+                document.body.style.overflow = 'auto';
+                clearPopupIdleTimer();
             }
         }
 
         function pageImageCandidates(configuredPath) {
             if (!configuredPath) return [];
             var dir = configuredPath.replace(/\/[^/]+$/, '');
-            var names = ['screen.png', 'screen.jpg', 'page.png', 'page.jpg'];
+            var names = ['Heading.png', 'screen.png', 'screen.jpg', 'page.png', 'page.jpg'];
             var list = [];
             names.forEach(function (name) {
                 var p = dir + '/' + name;
@@ -1373,7 +1434,7 @@
             loadSectionOverlaysConfig().then(function (data) {
                 sectionOverlaysConfig = data;
                 if (!data) return;
-                ['activities', 'events', 'charities'].forEach(function (key) {
+                ['activities', 'events', 'charities', 'about'].forEach(function (key) {
                     if (data[key]) mountPageOverlay(key, data[key]);
                 });
                 renderAdminSectionOverlaysList(data);
@@ -1383,9 +1444,9 @@
         function renderAdminSectionOverlaysList(data) {
             const list = document.getElementById('admin-section-overlays-list');
             if (!list || !data) return;
-            const labels = { activities: 'Activities', events: 'Rituals', charities: 'BAPS Charities' };
+            const labels = { activities: 'Activities', events: 'Rituals', charities: 'BAPS Charities', about: 'About' };
             list.innerHTML = '';
-            ['activities', 'events', 'charities'].forEach(function (key) {
+            ['activities', 'events', 'charities', 'about'].forEach(function (key) {
                 const li = document.createElement('li');
                 const cfg = data[key];
                 const path = cfg && cfg.image ? cfg.image : '(no image)';
@@ -1399,7 +1460,7 @@
         function openEventPopup(eventId) {
             const popup = document.getElementById('event-popup-' + eventId);
             if (popup) {
-                popup.style.display = 'flex';
+                showKioskPopup(popup);
                 document.body.style.overflow = 'hidden';
                 startPopupIdleTimer();
                 attachPopupIdleListeners(popup);
@@ -1410,7 +1471,7 @@
         function closeEventPopup(eventId) {
             const popup = document.getElementById('event-popup-' + eventId);
             if (popup) {
-                popup.style.display = 'none';
+                hideKioskPopup(popup);
                 document.body.style.overflow = 'auto';
                 clearPopupIdleTimer();
             }
@@ -1433,6 +1494,7 @@
                 description: 'Join us to celebrate Yogi Jayanti with devotional programs at Edison Mandir.',
                 longDescription: 'Celebrate Yogi Jayanti with satsang, darshan, and family programs across the mandir campus. All are welcome—check in at the welcome desk for today\'s schedule and hall locations.',
                 image: 'images/gallery/05_edison_mahantswamiJJ_2025.jpg',
+                imagePosition: 'center 38%',
                 qrImage: 'images/qr-codes/2.png',
                 signupUrl: '',
                 qrHint: 'Scan for Telegram updates and program details',
@@ -1570,6 +1632,8 @@
             if (hero) {
                 hero.src = event.image || '';
                 hero.alt = event.title;
+                hero.setAttribute('data-hero-id', event.id || '');
+                hero.style.objectPosition = event.imagePosition || '';
             }
             document.getElementById('upcoming-detail-date').textContent = event.date;
             document.getElementById('upcoming-detail-badge').textContent = event.category;
@@ -1587,7 +1651,7 @@
                 phone.href = digits ? 'tel:+1' + digits : 'tel:+17325721234';
             }
 
-            popup.style.display = 'flex';
+            showKioskPopup(popup);
             document.body.style.overflow = 'hidden';
             startPopupIdleTimer();
             attachPopupIdleListeners(popup);
@@ -1598,7 +1662,7 @@
         function closeUpcomingEventDetail() {
             const popup = document.getElementById('upcoming-event-detail-popup');
             if (!popup) return;
-            popup.style.display = 'none';
+            hideKioskPopup(popup);
             const listPopup = document.getElementById('upcoming-events-popup');
             if (!listPopup || listPopup.style.display === 'none') {
                 document.body.style.overflow = 'auto';
@@ -1619,7 +1683,7 @@
             const popup = document.getElementById('upcoming-events-popup');
             if (!popup) return;
             renderUpcomingEventsList();
-            popup.style.display = 'flex';
+            showKioskPopup(popup);
             document.body.style.overflow = 'hidden';
             startPopupIdleTimer();
             attachPopupIdleListeners(popup);
@@ -1629,7 +1693,7 @@
         function closeUpcomingEventsPopup() {
             const popup = document.getElementById('upcoming-events-popup');
             if (!popup) return;
-            popup.style.display = 'none';
+            hideKioskPopup(popup);
             closeUpcomingEventDetail();
             document.body.style.overflow = 'auto';
             clearPopupIdleTimer();
@@ -1638,7 +1702,7 @@
         function openActivityPopup(activityId) {
             const popup = document.getElementById('activity-popup-' + activityId);
             if (popup) {
-                popup.style.display = 'flex';
+                showKioskPopup(popup);
                 document.body.style.overflow = 'hidden';
                 startPopupIdleTimer();
                 attachPopupIdleListeners(popup);
@@ -1649,7 +1713,7 @@
         function closeActivityPopup(activityId) {
             const popup = document.getElementById('activity-popup-' + activityId);
             if (popup) {
-                popup.style.display = 'none';
+                hideKioskPopup(popup);
                 document.body.style.overflow = 'auto';
                 clearPopupIdleTimer();
             }
@@ -1658,14 +1722,14 @@
         // Guru Popup Functions
         function openGuruPopup(guruId) {
             const popup = document.getElementById('guru-popup-' + guruId);
-            popup.style.display = 'flex';
+            showKioskPopup(popup);
             document.body.style.overflow = 'hidden';
             startPopupIdleTimer();
             attachPopupIdleListeners(popup);
         }
 
         function closeGuruPopup(guruId) {
-            document.getElementById('guru-popup-' + guruId).style.display = 'none';
+            hideKioskPopup(document.getElementById('guru-popup-' + guruId));
             document.body.style.overflow = 'auto';
             clearPopupIdleTimer();
         }

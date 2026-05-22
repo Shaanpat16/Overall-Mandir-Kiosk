@@ -30,16 +30,19 @@ Put image files under `public/images/upcoming/` (see `images/upcoming/README.md`
 | `2-activities/` | Activities |
 | `3-rituals/` | Rituals |
 | `4-baps-charities/` | BAPS Charities |
+| `5-about/` | About |
 
 Add `screen.png` (1080×1920) in each folder. See `public/images/pages/README.md`.
 
 ## `section-overlays.json`
 
-Full-page **overlay images** for Activities, Rituals, and BAPS Charities with transparent tap buttons that open popups.
+Full-page **overlay images** with transparent tap buttons that open popups or About panels.
 
 | Field | Description |
 |-------|-------------|
-| `activities.image` | e.g. `images/overlays/activities/screen.jpg` |
-| `activities.buttons[]` | `left`, `top`, `width`, `height` (percent), `target`, `action` (`activity` / `event`), `trackName`, `ariaLabel` |
+| `*.image` | e.g. `images/pages/5-about/screen.png` |
+| `*.buttons[]` | `left`, `top`, `width`, `height` (percent), `target`, `action`, `trackName`, `ariaLabel` |
 
-Put images in `public/images/overlays/` (see `images/overlays/README.md`). If an image is missing, that tab uses the **card grid** fallback.
+**Actions:** `activity` · `event` · `guru` (opens guru popup) · `aboutPanel` (opens Gurus / QR / Contact panel — targets: `gurus`, `qr`, `contact`)
+
+Tune with `?overlay_debug=1`. If an image is missing, that tab shows a placeholder message.
