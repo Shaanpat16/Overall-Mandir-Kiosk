@@ -122,7 +122,7 @@ export const ACTIVITIES = [
     id: 'satsang',
     title: 'Satsang Sabha',
     demographic: 'All Ages',
-    image: '/images/activity-sanyukta.jpg',
+    image: '/images/activity-satsang-sabha.jpg',
     schedule: [
       { day: 'Saturday', time: '5:00 PM – 7:00 PM' },
       { day: 'Sunday', time: '4:00 PM – 6:00 PM' },
