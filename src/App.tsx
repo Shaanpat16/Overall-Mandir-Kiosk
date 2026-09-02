@@ -73,7 +73,6 @@ export default function App() {
         className="status-bar"
         style={{
           color: isAttract ? 'var(--surface)' : 'var(--ink)',
-          pointerEvents: 'none',
           transition: 'color 0.5s',
         }}
       >

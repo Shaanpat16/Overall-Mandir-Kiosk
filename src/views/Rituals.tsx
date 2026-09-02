@@ -10,11 +10,13 @@ export default function Rituals({ onBack }: RitualsProps) {
   return (
     <div className="view-container" style={{ background: 'var(--canvas)' }}>
       <div className="content-well">
+        {/* Back */}
         <motion.button
           onClick={onBack}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, ease: appleEase }}
+          whileTap={{ scale: 0.96 }}
           style={{
             background: 'none',
             border: 'none',
@@ -42,19 +44,19 @@ export default function Rituals({ onBack }: RitualsProps) {
         </motion.h1>
         <motion.p
           className="text-body"
-          style={{ marginTop: 8, marginBottom: 'var(--s-48)' }}
+          style={{ marginTop: 8, marginBottom: 'var(--s-40)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.15 }}
         >
-          Spiritual and community programs for every age.
+          Daily worship, darshan, and sacred ceremonies.
         </motion.p>
 
-        {/* Murti hero image */}
+        {/* Hero image */}
         <motion.div
           style={{
             width: '100%',
-            height: 360,
+            height: 380,
             borderRadius: 'var(--card-radius)',
             overflow: 'hidden',
             marginBottom: 'var(--s-48)',
@@ -66,12 +68,23 @@ export default function Rituals({ onBack }: RitualsProps) {
           <img
             src="/images/home-events.jpg"
             alt="Sacred Shrines"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
           />
         </motion.div>
 
-        {/* Ritual items */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-32)' }}>
+        {/* Ritual list */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--s-32)',
+          }}
+        >
           {RITUALS.map((ritual, i) => (
             <motion.div
               key={ritual.id}
@@ -82,42 +95,58 @@ export default function Rituals({ onBack }: RitualsProps) {
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: appleEase, delay: 0.15 + i * 0.06 }}
+              transition={{
+                duration: 0.5,
+                ease: appleEase,
+                delay: 0.15 + i * 0.06,
+              }}
             >
               <div style={{ flex: 1 }}>
-                <p style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 28,
-                  fontWeight: 600,
-                  color: 'var(--ink)',
-                  lineHeight: 1.15,
-                  marginBottom: 8,
-                }}>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 28,
+                    fontWeight: 600,
+                    color: 'var(--ink)',
+                    lineHeight: 1.15,
+                    marginBottom: 8,
+                  }}
+                >
                   {ritual.title}
                 </p>
                 {ritual.times.map((t, j) => (
-                  <p key={j} style={{
-                    fontFamily: 'var(--font-ui)',
-                    fontSize: 17,
-                    color: 'var(--muted)',
-                    lineHeight: 1.5,
-                  }}>
+                  <p
+                    key={j}
+                    style={{
+                      fontFamily: 'var(--font-ui)',
+                      fontSize: 17,
+                      color: 'var(--muted)',
+                      lineHeight: 1.5,
+                    }}
+                  >
                     {t}
                   </p>
                 ))}
               </div>
               {'image' in ritual && ritual.image && (
-                <div style={{
-                  width: 120,
-                  height: 120,
-                  borderRadius: 20,
-                  overflow: 'hidden',
-                  flexShrink: 0,
-                }}>
+                <div
+                  style={{
+                    width: 120,
+                    height: 120,
+                    borderRadius: 20,
+                    overflow: 'hidden',
+                    flexShrink: 0,
+                  }}
+                >
                   <img
                     src={ritual.image}
                     alt={ritual.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
                   />
                 </div>
               )}
@@ -125,7 +154,7 @@ export default function Rituals({ onBack }: RitualsProps) {
           ))}
         </div>
 
-        <div style={{ height: 140 }} />
+        <div style={{ height: 100 }} />
       </div>
     </div>
   );
