@@ -39,7 +39,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
             position: 'absolute',
             inset: 0,
             background: isAttract
-              ? 'linear-gradient(180deg, rgba(28,25,22,0.15) 0%, rgba(28,25,22,0.6) 100%)'
+              ? 'linear-gradient(180deg, rgba(28,25,22,0.2) 0%, rgba(28,25,22,0.65) 100%)'
               : 'linear-gradient(180deg, rgba(28,25,22,0.1) 0%, rgba(28,25,22,0.45) 100%)',
             transition: `opacity ${durations.slow}s`,
           }}
@@ -60,144 +60,114 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               inset: 0,
               display: 'flex',
               flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
               zIndex: 10,
             }}
             onClick={onWake}
           >
-            {/* BAPS logo text top-left */}
-            <motion.div
+            {/* Main centred headline — "Welcome home." */}
+            <motion.h1
               style={{
-                position: 'absolute',
-                top: 64,
-                left: 64,
+                fontFamily: 'var(--font-display)',
+                fontSize: 128,
+                fontWeight: 600,
+                lineHeight: 1,
+                color: 'var(--surface)',
+                textShadow: '0 4px 60px rgba(0,0,0,0.35)',
+                letterSpacing: '-0.02em',
+                marginBottom: 20,
+              }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: appleEase, delay: 0.3 }}
+            >
+              Welcome <em style={{ fontWeight: 400 }}>home</em>.
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 22,
+                color: 'rgba(255,251,245,0.75)',
+                letterSpacing: '0.03em',
+                maxWidth: 600,
+                lineHeight: 1.5,
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
             >
-              <p style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 24,
-                fontWeight: 600,
-                fontStyle: 'italic',
-                color: 'var(--surface)',
-                lineHeight: 1.2,
-                textShadow: '0 2px 20px rgba(0,0,0,0.4)',
-              }}>
-                BAPS <span style={{ fontStyle: 'normal', fontWeight: 400 }}>Shri Swaminarayan Mandir</span>
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: 14,
-                fontWeight: 500,
-                color: 'rgba(255,251,245,0.7)',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                marginTop: 4,
-              }}>
-                {MANDIR_INFO.shortName}
-              </p>
-            </motion.div>
+              BAPS Shri Swaminarayan Mandir &middot; Edison, NJ
+            </motion.p>
 
-            {/* Main headline — big and bold */}
-            <div style={{
-              position: 'absolute',
-              top: 240,
-              left: 64,
-              right: 64,
-            }}>
-              <motion.h1
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 120,
-                  fontWeight: 600,
-                  lineHeight: 1,
-                  color: 'var(--surface)',
-                  textShadow: '0 4px 60px rgba(0,0,0,0.4)',
-                  letterSpacing: '-0.02em',
-                }}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: appleEase, delay: 0.3 }}
-              >
-                Welcome
-              </motion.h1>
-              <motion.p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: 22,
-                  color: 'rgba(255,251,245,0.8)',
-                  marginTop: 20,
-                  lineHeight: 1.5,
-                  maxWidth: 500,
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
-                {MANDIR_INFO.tagline}
-              </motion.p>
-            </div>
-
-            {/* Hours block */}
+            {/* Hours block — centred below */}
             <motion.div
               style={{
-                position: 'absolute',
-                top: 560,
-                left: 64,
+                marginTop: 64,
+                display: 'flex',
+                gap: 64,
+                alignItems: 'flex-start',
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
             >
-              <p style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 36,
-                fontWeight: 600,
-                color: 'var(--surface)',
-                marginBottom: 12,
-                textShadow: '0 2px 20px rgba(0,0,0,0.3)',
-              }}>
-                Hours
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: 18,
-                fontWeight: 600,
-                color: 'rgba(255,251,245,0.9)',
-                marginBottom: 4,
-              }}>
-                {TIMINGS.campus.label}
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: 17,
-                color: 'rgba(255,251,245,0.7)',
-                marginBottom: 16,
-              }}>
-                {TIMINGS.campus.open} – {TIMINGS.campus.close}
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: 18,
-                fontWeight: 600,
-                color: 'rgba(255,251,245,0.9)',
-                marginBottom: 4,
-              }}>
-                {TIMINGS.darshan.label}
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: 17,
-                color: 'rgba(255,251,245,0.7)',
-                lineHeight: 1.4,
-              }}>
-                {TIMINGS.darshan.morning.open} – {TIMINGS.darshan.morning.close}<br />
-                {TIMINGS.darshan.evening.open} – {TIMINGS.darshan.evening.close}
-              </p>
+              <div style={{ textAlign: 'center' }}>
+                <p style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: 'rgba(255,251,245,0.6)',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  marginBottom: 8,
+                }}>
+                  {TIMINGS.campus.label}
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 20,
+                  fontWeight: 500,
+                  color: 'rgba(255,251,245,0.9)',
+                }}>
+                  {TIMINGS.campus.open} – {TIMINGS.campus.close}
+                </p>
+              </div>
+              <div style={{
+                width: 1,
+                height: 48,
+                background: 'rgba(255,251,245,0.2)',
+                alignSelf: 'center',
+              }} />
+              <div style={{ textAlign: 'center' }}>
+                <p style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: 'rgba(255,251,245,0.6)',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  marginBottom: 8,
+                }}>
+                  {TIMINGS.darshan.label}
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 20,
+                  fontWeight: 500,
+                  color: 'rgba(255,251,245,0.9)',
+                  lineHeight: 1.5,
+                }}>
+                  {TIMINGS.darshan.morning.open} – {TIMINGS.darshan.morning.close}<br />
+                  {TIMINGS.darshan.evening.open} – {TIMINGS.darshan.evening.close}
+                </p>
+              </div>
             </motion.div>
 
-            {/* Breathing touch pill in the hands zone */}
+            {/* Breathing touch pill */}
             <motion.div
               style={{
                 position: 'absolute',
@@ -259,10 +229,11 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
             <motion.div
               style={{
                 position: 'absolute',
-                top: -320,
-                left: 64,
-                right: 64,
+                top: -280,
+                left: 0,
+                right: 0,
                 zIndex: 5,
+                textAlign: 'center',
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -277,14 +248,13 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 lineHeight: 1.05,
                 letterSpacing: '-0.02em',
               }}>
-                Welcome
+                Welcome <em style={{ fontWeight: 400 }}>home</em>.
               </h1>
               <p style={{
                 fontFamily: 'var(--font-ui)',
                 fontSize: 18,
                 color: 'rgba(255,251,245,0.8)',
                 marginTop: 12,
-                maxWidth: 440,
                 lineHeight: 1.5,
               }}>
                 {MANDIR_INFO.tagline}
@@ -325,7 +295,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               ))}
             </div>
 
-            {/* Upcoming Events row */}
+            {/* About & Connect row */}
             <motion.button
               onClick={() => onNavigate('about')}
               style={{
@@ -345,7 +315,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               transition={{ duration: 0.5, ease: appleEase, delay: 0.35 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div>
+              <div style={{ textAlign: 'left' }}>
                 <p style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: 24,
