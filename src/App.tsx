@@ -116,7 +116,7 @@ export default function App() {
             key="attract-home"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
             transition={transitions.slow}
             style={{ position: 'absolute', inset: 0 }}
           >
@@ -127,9 +127,9 @@ export default function App() {
         {view === 'activities' && (
           <motion.div
             key="activities"
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 1.03 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
             transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
@@ -140,9 +140,9 @@ export default function App() {
         {view === 'rituals' && (
           <motion.div
             key="rituals"
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 1.03 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
             transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
@@ -153,9 +153,9 @@ export default function App() {
         {view === 'charities' && (
           <motion.div
             key="charities"
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 1.03 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
             transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
@@ -166,9 +166,9 @@ export default function App() {
         {view === 'about' && (
           <motion.div
             key="about"
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 1.03 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
             transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >

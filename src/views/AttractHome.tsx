@@ -1,4 +1,3 @@
-import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { transitions, durations, appleEase } from '../motion/easing';
 import { HOME_TILES, MANDIR_INFO, TIMINGS, type ViewName } from '../data/content';
@@ -22,26 +21,7 @@ const ORBS = [
 
 const spring = { type: 'spring' as const, stiffness: 200, damping: 22 };
 
-const ZOOM_ORIGINS: Record<string, string> = {
-  activities: '25% 74%',
-  rituals: '75% 74%',
-  charities: '50% 90%',
-};
-
 export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHomeProps) {
-  const [zoomTile, setZoomTile] = useState<string | null>(null);
-  const zoomImage = HOME_TILES.find((t) => t.id === zoomTile)?.image;
-
-  const handleTileClick = useCallback(
-    (tile: (typeof HOME_TILES)[number]) => {
-      setZoomTile(tile.id);
-      setTimeout(() => {
-        setZoomTile(null);
-        onNavigate(tile.view);
-      }, 420);
-    },
-    [onNavigate],
-  );
   return (
     <div className="view-container" style={{ background: 'var(--canvas)' }}>
       {/* ── Full-bleed hero photo ── */}
@@ -377,7 +357,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                     <PhotoCard
                       image={tile.image}
                       title={tile.label}
-                      onClick={() => handleTileClick(tile)}
+                      onClick={() => onNavigate(tile.view)}
                       layoutId={`tile-${tile.id}`}
                       style={{ width: '100%', height: '100%' }}
                     />
@@ -430,45 +410,6 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 </motion.span>
               </motion.button>
             </div>
-
-            {/* ── Zoom-to-fill overlay ── */}
-            <AnimatePresence>
-              {zoomTile && zoomImage && (
-                <motion.div
-                  key="zoom-overlay"
-                  initial={{ opacity: 0, scale: 0.35, borderRadius: 36 }}
-                  animate={{ opacity: 1, scale: 1, borderRadius: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, ease: appleEase }}
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    zIndex: 50,
-                    overflow: 'hidden',
-                    transformOrigin: ZOOM_ORIGINS[zoomTile] || '50% 50%',
-                  }}
-                >
-                  <img
-                    src={zoomImage}
-                    alt=""
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background:
-                        'linear-gradient(transparent 50%, rgba(28,25,22,0.4))',
-                    }}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>
