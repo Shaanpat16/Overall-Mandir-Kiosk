@@ -101,6 +101,17 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               />
             ))}
 
+            {/* ── Centred content wrapper (fills screen, pushes pill to bottom) ── */}
+            <div
+              style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+
             {/* ── Headline — word-by-word blur reveal ── */}
             <h1
               style={{
@@ -208,6 +219,8 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 </p>
               </div>
             </motion.div>
+
+            </div>{/* end centred content wrapper */}
 
             {/* ── Touch pill — centred, shimmer glow ── */}
             <motion.div
