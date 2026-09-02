@@ -1,0 +1,43 @@
+:root {
+  /* Color — photography carries color; UI stays quiet */
+  --canvas: #F3EEE4;
+  --ink: #1C1916;
+  --muted: #6E675F;
+  --surface: #FFFBF5;
+  --saffron: #C45C26;
+  --saffron-soft: rgba(196, 92, 38, 0.12);
+
+  /* Dock frosted glass */
+  --dock-bg: rgba(28, 25, 22, 0.62);
+  --dock-blur: 24px;
+
+  /* Typography */
+  --font-display: 'Fraunces', serif;
+  --font-ui: 'Sora', sans-serif;
+
+  /* Kiosk canvas */
+  --kiosk-w: 1080px;
+  --kiosk-h: 1920px;
+  --frame-inset: 40px;
+  --frame-radius: 48px;
+  --card-radius: 36px;
+  --pill-radius: 999px;
+
+  /* Spacing (8pt grid) */
+  --s-4: 4px;
+  --s-8: 8px;
+  --s-12: 12px;
+  --s-16: 16px;
+  --s-24: 24px;
+  --s-32: 32px;
+  --s-40: 40px;
+  --s-48: 48px;
+  --s-64: 64px;
+  --s-80: 80px;
+
+  /* Motion — Apple easing */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 300ms;
+  --duration-normal: 500ms;
+  --duration-slow: 800ms;
+}

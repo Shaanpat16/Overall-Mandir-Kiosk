@@ -1,0 +1,333 @@
+@import './tokens.css';
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Kiosk lockdown */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+/* Dev scaling wrapper — centers the 1080×1920 canvas and scales to fit */
+.kiosk-scaler {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+}
+
+.kiosk-frame {
+  width: var(--kiosk-w);
+  height: var(--kiosk-h);
+  background: var(--canvas);
+  border-radius: var(--frame-radius);
+  overflow: hidden;
+  position: relative;
+  transform-origin: center center;
+  flex-shrink: 0;
+}
+
+/* Typography helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-ui {
+  font-family: var(--font-ui);
+}
+
+/* Hero display text */
+.text-hero {
+  font-family: var(--font-display);
+  font-size: 80px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.text-hero em,
+.text-hero i {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Section headings */
+.text-heading {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.text-heading em,
+.text-heading i {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Stat numbers */
+.text-stat {
+  font-family: var(--font-ui);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Body */
+.text-body {
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* Small caps nav labels */
+.text-nav {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+/* Pill button base */
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  padding: 0 var(--s-40);
+  border-radius: var(--pill-radius);
+  font-family: var(--font-ui);
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: transform var(--duration-fast) var(--ease-out),
+              opacity var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pill-btn:active {
+  transform: scale(0.97);
+}
+
+.pill-btn--primary {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.pill-btn--secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+
+.pill-btn--accent {
+  background: var(--saffron);
+  color: var(--surface);
+}
+
+/* Photo cards */
+.photo-card {
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--s-32);
+  background: linear-gradient(transparent, rgba(28, 25, 22, 0.7));
+}
+
+.photo-card__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--surface);
+}
+
+/* Dock */
+.dock {
+  position: absolute;
+  bottom: var(--s-32);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 920px;
+  height: 88px;
+  background: var(--dock-bg);
+  backdrop-filter: blur(var(--dock-blur));
+  -webkit-backdrop-filter: blur(var(--dock-blur));
+  border-radius: var(--pill-radius);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--s-8);
+  z-index: 100;
+}
+
+.dock__item {
+  flex: 1;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--pill-radius);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 251, 245, 0.6);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+  transition: color var(--duration-fast) var(--ease-out),
+              background var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dock__item:active {
+  transform: scale(0.97);
+}
+
+.dock__item--active {
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Status bar */
+.status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--s-48);
+  z-index: 90;
+}
+
+.status-bar__label {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.status-bar__time {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-8);
+  padding: var(--s-8) var(--s-16);
+  border-radius: var(--pill-radius);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-badge--open {
+  background: rgba(76, 140, 74, 0.15);
+  color: #4c8c4a;
+}
+
+.status-badge--closed {
+  background: rgba(196, 92, 38, 0.12);
+  color: var(--saffron);
+}
+
+/* Ken Burns attract */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+/* Breathing pill */
+@keyframes breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* View container */
+.view-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Content well: lives between status bar and dock */
+.content-well {
+  position: absolute;
+  top: 140px;
+  left: var(--s-48);
+  right: var(--s-48);
+  bottom: 140px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.content-well::-webkit-scrollbar {
+  display: none;
+}
+
+/* Divider */
+.divider {
+  width: 1.5px;
+  height: 48px;
+  background: rgba(28, 25, 22, 0.12);
+  flex-shrink: 0;
+}
