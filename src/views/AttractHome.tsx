@@ -209,14 +209,13 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               </div>
             </motion.div>
 
-            {/* ── Touch pill — shimmer glow ── */}
+            {/* ── Touch pill — centred, shimmer glow ── */}
             <motion.div
               style={{
-                position: 'absolute',
-                bottom: 300,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                padding: '18px 44px',
+                marginTop: 'auto',
+                marginBottom: 260,
+                alignSelf: 'center',
+                padding: '18px 48px',
                 borderRadius: 999,
                 background: 'rgba(255,251,245,0.12)',
                 backdropFilter: 'blur(20px)',
