@@ -88,8 +88,8 @@ export default function App() {
             style={
               isAttract
                 ? {
-                    background: campusOpen ? 'rgba(76,140,74,0.25)' : 'rgba(196,92,38,0.25)',
-                    color: campusOpen ? '#8fcc8d' : '#e8a07a',
+                    background: campusOpen ? 'rgba(5,150,105,0.25)' : 'rgba(155,27,48,0.25)',
+                    color: campusOpen ? '#6ee7b7' : '#fda4af',
                   }
                 : undefined
             }

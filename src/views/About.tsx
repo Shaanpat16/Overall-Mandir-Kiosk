@@ -72,7 +72,7 @@ export default function About({ onBack }: AboutProps) {
                   borderRadius: 'var(--card-radius)',
                   overflow: 'hidden',
                   marginBottom: 'var(--s-16)',
-                  background: '#111',
+                  background: 'var(--ink)',
                 }}
               >
                 <img
@@ -250,7 +250,7 @@ export default function About({ onBack }: AboutProps) {
                   <div
                     style={{
                       height: 1,
-                      background: 'rgba(28,25,22,0.06)',
+                      background: 'rgba(17,24,39,0.06)',
                       marginTop: 'var(--s-16)',
                     }}
                   />

@@ -84,7 +84,7 @@ export default function Activities({ onBack }: ActivitiesProps) {
               position: 'absolute',
               inset: 0,
               background:
-                'linear-gradient(transparent 20%, rgba(28,25,22,0.75))',
+                'linear-gradient(transparent 20%, rgba(17,24,39,0.75))',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-end',
@@ -333,7 +333,7 @@ export default function Activities({ onBack }: ActivitiesProps) {
                         <div
                           style={{
                             height: 1,
-                            background: 'rgba(28,25,22,0.06)',
+                            background: 'rgba(17,24,39,0.06)',
                             marginBottom: 20,
                           }}
                         />

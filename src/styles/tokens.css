@@ -1,14 +1,18 @@
 :root {
-  /* Color — photography carries color; UI stays quiet */
-  --canvas: #F3EEE4;
-  --ink: #1C1916;
-  --muted: #6E675F;
-  --surface: #FFFBF5;
-  --saffron: #C45C26;
-  --saffron-soft: rgba(196, 92, 38, 0.12);
+  /* Color — cool marble base + temple crimson accent */
+  --canvas: #F5F6FA;
+  --ink: #111827;
+  --muted: #64748B;
+  --surface: #FFFFFF;
+  --accent: #9B1B30;
+  --accent-soft: rgba(155, 27, 48, 0.10);
+
+  /* Legacy aliases (attract screen still references these) */
+  --saffron: var(--accent);
+  --saffron-soft: var(--accent-soft);
 
   /* Dock frosted glass */
-  --dock-bg: rgba(28, 25, 22, 0.62);
+  --dock-bg: rgba(17, 24, 39, 0.68);
   --dock-blur: 24px;
 
   /* Typography */

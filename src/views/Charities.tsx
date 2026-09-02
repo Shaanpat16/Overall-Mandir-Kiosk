@@ -240,7 +240,7 @@ export default function Charities({ onBack }: CharitiesProps) {
                       position: 'absolute',
                       inset: 0,
                       background:
-                        'linear-gradient(transparent 30%, rgba(28,25,22,0.7))',
+                        'linear-gradient(transparent 30%, rgba(17,24,39,0.7))',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'flex-end',
