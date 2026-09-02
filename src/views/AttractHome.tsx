@@ -101,21 +101,6 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               />
             ))}
 
-            {/* ── BAPS Edison header image ── */}
-            <motion.img
-              src="/images/baps-edison-header.png"
-              alt="BAPS Shri Swaminarayan Mandir — Edison, NJ"
-              style={{
-                width: 560,
-                height: 'auto',
-                marginBottom: 48,
-                filter: 'drop-shadow(0 4px 30px rgba(0,0,0,0.3))',
-              }}
-              initial={{ opacity: 0, y: 30, filter: 'blur(10px) drop-shadow(0 4px 30px rgba(0,0,0,0.3))' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px) drop-shadow(0 4px 30px rgba(0,0,0,0.3))' }}
-              transition={{ duration: 1, ease: appleEase, delay: 0.2 }}
-            />
-
             {/* ── Headline — word-by-word blur reveal ── */}
             <h1
               style={{
@@ -131,7 +116,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               <motion.span
                 initial={{ opacity: 0, y: 50, filter: 'blur(14px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 1, ease: appleEase, delay: 0.5 }}
+                transition={{ duration: 1, ease: appleEase, delay: 0.3 }}
                 style={{ display: 'inline-block' }}
               >
                 Welcome
@@ -139,7 +124,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               <motion.span
                 initial={{ opacity: 0, y: 50, filter: 'blur(14px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 1, ease: appleEase, delay: 0.9 }}
+                transition={{ duration: 1, ease: appleEase, delay: 0.7 }}
                 style={{
                   display: 'inline-block',
                   fontWeight: 400,
@@ -151,12 +136,28 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               <motion.span
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 15, delay: 1.4 }}
+                transition={{ type: 'spring', stiffness: 500, damping: 15, delay: 1.2 }}
                 style={{ display: 'inline-block' }}
               >
                 .
               </motion.span>
             </h1>
+
+            {/* Subtitle */}
+            <motion.p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 22,
+                color: 'rgba(255,251,245,0.7)',
+                marginTop: 24,
+                letterSpacing: '0.02em',
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: appleEase, delay: 1.3 }}
+            >
+              BAPS Shri Swaminarayan Mandir &middot; Edison, NJ
+            </motion.p>
 
             {/* Hours — two-column */}
             <motion.div
@@ -208,23 +209,24 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               </div>
             </motion.div>
 
-            {/* ── Touch pill — centred, shimmer glow ── */}
+            {/* ── Touch pill — shimmer glow ── */}
             <motion.div
               style={{
-                marginTop: 'auto',
-                marginBottom: 260,
-                padding: '18px 48px',
+                position: 'absolute',
+                bottom: 300,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                padding: '18px 44px',
                 borderRadius: 999,
                 background: 'rgba(255,251,245,0.12)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255,251,245,0.1)',
                 animation: 'shimmerGlow 2.4s ease-in-out infinite',
-                alignSelf: 'center',
               }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: appleEase, delay: 2.2 }}
+              transition={{ duration: 1, ease: appleEase, delay: 2.0 }}
             >
               <span
                 style={{
