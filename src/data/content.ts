@@ -7,7 +7,7 @@ export const MANDIR_INFO = {
   phone: '(732) 572-1234',
   email: 'info.edison@usa.baps.org',
   website: 'baps.org/edison',
-  tagline: 'A Hindu temple for prayer, learning, and community.',
+  tagline: 'A Hindu house of worship. Come join us for prayer ceremonies, festivals, and activities.',
 } as const;
 
 export const TIMINGS = {
@@ -23,129 +23,183 @@ export const TIMINGS = {
     label: 'Daily Arti',
   },
   abhishek: {
-    weekday: { morning: '7:00 AM – 11:00 AM', evening: '4:00 PM – 6:00 PM' },
+    weekday: { morning: '7:15 AM – 11:00 AM', evening: '4:00 PM – 6:00 PM' },
     weekend: { morning: '7:00 AM – 11:00 AM', evening: '7:00 PM – 8:00 PM' },
     label: 'Nilkanth Varni Abhishek',
   },
 } as const;
 
+/* ─── Rituals ────────────────────────────────────────────────── */
 export const RITUALS = [
   {
     id: 'darshan',
     title: 'Sacred Shrines Darshan',
-    times: ['7 AM – 11 AM', '4 PM – 8 PM'],
+    times: ['AM: 7:00 AM – 11:00 AM', 'PM: 4:00 PM – 8:00 PM'],
     image: '/images/home-events.jpg',
   },
   {
     id: 'arti',
     title: 'Aarti',
-    times: ['7 AM Daily', '6:30 PM Daily'],
+    times: ['Morning Aarti: 7:00 AM', 'Evening Aarti: 6:30 PM'],
   },
   {
     id: 'abhishek',
     title: 'Nilkanth Varni Abhishek',
-    times: ['Mon–Fri: 7–11 AM & 4–6 PM', 'Sat–Sun: 7–11 AM & 7–8 PM'],
+    times: [
+      'Weekday Mornings: 7:15 AM – 11:00 AM',
+      'Weekday Evenings: 4:00 PM – 6:00 PM',
+      'Weekends: 7:00 AM – 11:00 AM & 7:00 PM – 8:00 PM',
+    ],
   },
   {
     id: 'chestha',
     title: 'Chestha',
-    times: ['7 PM – 7:30 PM Saturday', '6 PM – 6:30 PM Sunday'],
+    times: ['Saturday: 7:00 PM – 7:30 PM', 'Sunday: 6:00 PM – 6:30 PM'],
     image: '/images/ritual-chopdapujan.jpg',
   },
   {
     id: 'mahapuja',
     title: 'Punam Mahapuja',
-    times: ['Every Punam from 6 PM to 7:45 PM', 'Aarti, Abhishek, and Mahapuja'],
+    times: ['Every Punam: 6:00 PM – 7:45 PM', 'Includes Aarti, Abhishek & Mahapuja'],
     image: '/images/ritual-mahapuja.jpg',
   },
   {
     id: 'ekadashi',
     title: 'Ekadashi Bhajan Sandhya',
-    times: ['Every Ekadashi from 7 PM to 7:45 PM'],
+    times: ['Every Ekadashi: 7:00 PM – 7:45 PM'],
   },
 ] as const;
 
+/* ─── Upcoming Event ─────────────────────────────────────────── */
+export const UPCOMING_EVENT = {
+  title: 'Janmashtami Celebration',
+  image: '/images/event-diwali.jpg',
+  dates: [
+    { label: 'Saturday, September 5', time: '5:00 PM – 7:15 PM' },
+    { label: 'Sunday, September 6', time: '4:00 PM – 6:15 PM' },
+  ],
+} as const;
+
+/* ─── Activities & Sabha ─────────────────────────────────────── */
 export const ACTIVITIES = [
   {
     id: 'balbalika',
-    title: 'Bal-Balika',
-    subtitle: 'Pre-K to 8th grade',
+    title: 'Bal-Balika Sabha',
+    demographic: 'Children · Pre-K – 8th grade',
     image: '/images/activity-balbalika.jpg',
-    schedule: ['Saturday: 5:00 PM – 7:00 PM', 'Sunday: 4:00 PM – 6:00 PM'],
+    schedule: [
+      { day: 'Saturday', time: '5:15 PM – 7:00 PM' },
+      { day: 'Sunday', time: '4:15 PM – 6:00 PM' },
+    ],
     description:
       'A nurturing environment for children to learn about Hindu culture, values, and traditions through engaging activities, stories, games, shlokas, and bhajans.',
   },
   {
     id: 'kishorekishori',
-    title: 'Kishore-Kishori',
-    subtitle: '9th grade to College Senior',
+    title: 'Kishore-Kishori Sabha',
+    demographic: 'Teens · 9th grade – College',
     image: '/images/activity-kishorekishori.jpg',
-    schedule: ['Saturday: 1:30 PM – 2:45 PM', 'Sunday: 12:30 PM – 1:45 PM'],
+    schedule: [
+      { day: 'Saturday', time: '1:00 PM – 2:30 PM' },
+      { day: 'Sunday', time: '12:30 PM – 2:00 PM' },
+    ],
     description:
       'Helps teenagers develop strong values, leadership skills, and spiritual awareness through discussions, community service, and sports.',
   },
   {
     id: 'yuvakyuvati',
-    title: 'Yuvak-Yuvati',
-    subtitle: '23–30 years old',
+    title: 'Yuvak-Yuvati Sabha',
+    demographic: 'Young Adults · 21–35',
     image: '/images/home-activities.jpg',
-    schedule: ['Saturday: 3:30 PM – 5:00 PM', 'Sunday: 2:30 PM – 4:00 PM'],
+    schedule: [
+      { day: 'Saturday', time: '3:30 PM – 5:00 PM' },
+      { day: 'Sunday', time: '2:30 PM – 4:00 PM' },
+    ],
     description:
       'Provides young adults with spiritual guidance, career mentorship, and opportunities for personal growth in a supportive community.',
   },
   {
-    id: 'sanyukta',
-    title: 'Sanyukta Sabha',
-    subtitle: '30 years+',
+    id: 'satsang',
+    title: 'Satsang Sabha',
+    demographic: 'All Ages',
     image: '/images/activity-sanyukta.jpg',
-    schedule: ['Scheduled throughout the year'],
+    schedule: [
+      { day: 'Saturday', time: '5:00 PM – 7:00 PM' },
+      { day: 'Sunday', time: '4:00 PM – 6:00 PM' },
+    ],
     description:
-      'Brings the mandir community together for katha, bhajans, aarti, and shared satsang. Check the welcome desk for dates.',
-  },
-  {
-    id: 'international',
-    title: 'International Students',
-    subtitle: 'Students away from home',
-    image: '/images/home-upcoming.jpg',
-    schedule: ['Weekly gatherings'],
-    description:
-      'A home away from home for students pursuing their education in the United States, with gatherings, festivals, and academic support.',
+      'The heart of the mandir community — weekly assembly bringing everyone together for katha, bhajans, aarti, and shared spiritual fellowship.',
   },
   {
     id: 'betterliving',
     title: 'Better Living Seminar',
-    subtitle: 'Personal development',
+    demographic: 'Open to All · Bi-Weekly',
     image: '/images/activity-betterliving.jpg',
-    schedule: ['Saturday: 5:00 PM – 7:00 PM in Yogi Hall'],
+    schedule: [{ day: 'Saturday (Bi-Weekly)', time: '5:30 PM – 7:00 PM' }],
     description:
-      'Practical workshops on applying Hindu values to daily life — stress management, relationships, parenting, and wellness.',
+      'Practical workshops on applying Hindu values to daily life — stress management, relationships, parenting, and wellness. Held in Yogi Hall.',
   },
+  {
+    id: 'gujarati',
+    title: 'Gujarati Classes',
+    demographic: 'Children',
+    image: '/images/home-upcoming.jpg',
+    schedule: [
+      { day: 'Saturday', time: '4:00 PM – 5:00 PM' },
+      { day: 'Sunday', time: '3:00 PM – 4:00 PM' },
+    ],
+    description:
+      'Language classes for children to learn Gujarati reading, writing, and conversation skills, helping preserve cultural heritage and family connections.',
+  },
+] as const;
+
+/* ─── BAPS Charities ─────────────────────────────────────────── */
+export const CHARITY_IMPACT = [
+  { number: '1,000+', label: 'Walk-Runs' },
+  { number: '500+', label: 'Health Fairs' },
+  { number: '2M+', label: 'Trees Planted' },
 ] as const;
 
 export const CHARITIES = [
   {
-    id: 'fooddrive',
-    title: 'Food Drive',
-    image: '/images/charity-fooddrive.jpg',
-    description:
-      'Our food drives collect non-perishable food items and organize distribution to local food banks and families in need, ensuring no one in our community goes hungry.',
-  },
-  {
-    id: 'walkathon',
-    title: 'Walkathon',
+    id: 'walkrun',
+    title: 'Walk Green Walk-Run',
     image: '/images/event-walkathon.jpg',
+    stat: '45,000+',
+    statLabel: 'participants across 100+ cities',
     description:
-      'Our annual charity walkathon brings the community together to promote health, wellness, and raise funds for important charitable causes.',
+      'Annual charity walkathons uniting communities nationwide to raise funds for local hospitals, schools, and health organizations. In over 20 years, BAPS Charities has organized more than 1,000 Walk-Runs supporting causes from cancer research to children\'s education.',
   },
   {
-    id: 'blooddrive',
-    title: 'Blood Drive',
-    image: '/images/charity-blooddrive.jpg',
+    id: 'fooddrive',
+    title: 'Food Drives',
+    image: '/images/charity-fooddrive.jpg',
+    stat: '100K+',
+    statLabel: 'meals provided',
     description:
-      'Our regular blood drives partner with local blood banks to help save lives in our community. Every donation can save up to three lives.',
+      'Community food drives collecting non-perishable goods and distributing hot meals to families facing food insecurity. From coast to coast, volunteers mobilize to ensure no one in the community goes hungry.',
+  },
+  {
+    id: 'healthfairs',
+    title: 'Health Fairs & Blood Drives',
+    image: '/images/charity-blooddrive.jpg',
+    stat: '10,000+',
+    statLabel: 'served annually',
+    description:
+      'Free health screenings, consultations, and wellness education run by volunteer medical professionals. Regular blood and bone marrow drives in partnership with local blood banks — every donation can save up to three lives.',
+  },
+  {
+    id: 'education',
+    title: 'Education & Youth',
+    image: '/images/event-annakut.jpg',
+    stat: '5,000',
+    statLabel: 'scholarships yearly',
+    description:
+      'Supporting education through scholarships, school construction, literacy campaigns, and professional development. BAPS Charities has built 55 schools in areas affected by conflict or disaster.',
   },
 ] as const;
 
+/* ─── Gurus ──────────────────────────────────────────────────── */
 export const GURUS = [
   {
     id: 'pramukh-swami',
@@ -159,13 +213,14 @@ export const GURUS = [
     name: 'Mahant Swami Maharaj',
     years: 'Current Spiritual Leader',
     image: '/images/guru-mahant-swami.jpg',
-    quote: 'Stay connected to God and the guru, and you will never be alone.',
+    quote: 'Stay connected to God and the guru.',
   },
 ] as const;
 
 export const ABOUT_TEXT =
   'BAPS Shri Swaminarayan Mandir in Edison is a sacred Hindu place of worship. Since 1996, it has served as the spiritual home for thousands of families across central New Jersey, offering daily worship, cultural education, and community service. The Mandir is open to all, every day of the year.';
 
+/* ─── Home tiles ─────────────────────────────────────────────── */
 export const HOME_TILES = [
   { id: 'activities', label: 'Activities', image: '/images/home-activities.jpg', view: 'activities' as const },
   { id: 'rituals', label: 'Rituals', image: '/images/home-events.jpg', view: 'rituals' as const },

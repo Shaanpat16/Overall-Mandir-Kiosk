@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { appleEase } from '../motion/easing';
-import { RITUALS } from '../data/content';
+import { RITUALS, TIMINGS } from '../data/content';
 
 interface RitualsProps {
   onBack: () => void;
@@ -153,6 +153,56 @@ export default function Rituals({ onBack }: RitualsProps) {
             </motion.div>
           ))}
         </div>
+
+        {/* Quick reference card */}
+        <motion.div
+          style={{
+            background: 'var(--surface)',
+            borderRadius: 'var(--card-radius)',
+            padding: 'var(--s-32)',
+            marginTop: 'var(--s-48)',
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: appleEase, delay: 0.5 }}
+        >
+          <p
+            style={{
+              fontFamily: 'var(--font-ui)',
+              fontSize: 13,
+              fontWeight: 600,
+              color: 'var(--saffron)',
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              marginBottom: 'var(--s-16)',
+            }}
+          >
+            Campus Hours
+          </p>
+          <div
+            style={{ display: 'flex', justifyContent: 'space-between' }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 17,
+                color: 'var(--muted)',
+              }}
+            >
+              {TIMINGS.campus.label}
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 17,
+                fontWeight: 600,
+                color: 'var(--ink)',
+              }}
+            >
+              {TIMINGS.campus.open} – {TIMINGS.campus.close}
+            </span>
+          </div>
+        </motion.div>
 
         <div style={{ height: 100 }} />
       </div>
