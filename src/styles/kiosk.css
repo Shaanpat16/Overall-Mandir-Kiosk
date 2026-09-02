@@ -231,7 +231,6 @@ body {
 }
 
 .dock__item--active {
-  background: var(--surface);
   color: var(--ink);
   font-weight: 600;
 }
@@ -296,6 +295,27 @@ body {
 @keyframes breathe {
   0%, 100% { opacity: 0.55; }
   50% { opacity: 1; }
+}
+
+/* Shimmer glow pulse — touch pill */
+@keyframes shimmerGlow {
+  0%, 100% {
+    opacity: 0.5;
+    box-shadow: 0 0 24px rgba(255,251,245,0.08), inset 0 0 12px rgba(255,251,245,0.04);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 48px rgba(255,251,245,0.18), inset 0 0 20px rgba(255,251,245,0.08);
+  }
+}
+
+/* Floating atmospheric orbs */
+@keyframes orbDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(30px, -40px) scale(1.08); }
+  50%  { transform: translate(-20px, -15px) scale(0.96); }
+  75%  { transform: translate(15px, -30px) scale(1.04); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
 /* View container */

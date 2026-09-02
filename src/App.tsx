@@ -127,10 +127,10 @@ export default function App() {
         {view === 'activities' && (
           <motion.div
             key="activities"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: appleEase }}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 1.03 }}
+            transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
             <Activities onBack={goHome} />
@@ -140,10 +140,10 @@ export default function App() {
         {view === 'rituals' && (
           <motion.div
             key="rituals"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: appleEase }}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 1.03 }}
+            transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
             <Rituals onBack={goHome} />
@@ -153,10 +153,10 @@ export default function App() {
         {view === 'charities' && (
           <motion.div
             key="charities"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: appleEase }}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 1.03 }}
+            transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
             <Charities onBack={goHome} />
@@ -166,10 +166,10 @@ export default function App() {
         {view === 'about' && (
           <motion.div
             key="about"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: appleEase }}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 1.03 }}
+            transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
             <About onBack={goHome} />

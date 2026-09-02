@@ -1,10 +1,47 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { appleEase } from '../motion/easing';
 import { CHARITIES, CHARITY_IMPACT } from '../data/content';
 
 interface CharitiesProps {
   onBack: () => void;
+}
+
+function CountUp({ value, delay = 0 }: { value: string; delay?: number }) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const duration = 1.8;
+    let raf: number;
+    const timer = setTimeout(() => {
+      const start = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min((now - start) / (duration * 1000), 1);
+        setProgress(1 - Math.pow(1 - p, 3));
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    }, delay * 1000);
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(raf);
+    };
+  }, [delay]);
+
+  const match = value.match(/^([\d,]+)(.*)/);
+  if (!match) return <>{value}</>;
+  const target = parseInt(match[1].replace(/,/g, ''));
+  const suffix = match[2];
+  const current = Math.floor(progress * target);
+  const formatted = match[1].includes(',')
+    ? current.toLocaleString()
+    : String(current);
+  return (
+    <>
+      {formatted}
+      {suffix}
+    </>
+  );
 }
 
 export default function Charities({ onBack }: CharitiesProps) {
@@ -76,11 +113,11 @@ export default function Charities({ onBack }: CharitiesProps) {
               marginTop: 8,
             }}
           >
-            "In the joy of others lies our own."
+            &ldquo;In the joy of others lies our own.&rdquo;
           </p>
         </motion.div>
 
-        {/* ── Impact Stats ── */}
+        {/* ── Animated Impact Stats ── */}
         <motion.div
           style={{
             display: 'flex',
@@ -89,18 +126,30 @@ export default function Charities({ onBack }: CharitiesProps) {
             borderRadius: 'var(--card-radius)',
             overflow: 'hidden',
           }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: appleEase, delay: 0.12 }}
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            type: 'spring',
+            stiffness: 200,
+            damping: 22,
+            delay: 0.12,
+          }}
         >
           {CHARITY_IMPACT.map((stat, i) => (
-            <div
+            <motion.div
               key={stat.label}
               style={{
                 flex: 1,
                 background: i === 1 ? 'var(--ink)' : 'var(--surface)',
                 padding: '28px 16px',
                 textAlign: 'center',
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                ease: appleEase,
+                delay: 0.3 + i * 0.15,
               }}
             >
               <p
@@ -113,21 +162,22 @@ export default function Charities({ onBack }: CharitiesProps) {
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >
-                {stat.number}
+                <CountUp value={stat.number} delay={0.5 + i * 0.2} />
               </p>
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
                   fontSize: 13,
                   fontWeight: 500,
-                  color: i === 1 ? 'rgba(255,251,245,0.6)' : 'var(--muted)',
+                  color:
+                    i === 1 ? 'rgba(255,251,245,0.6)' : 'var(--muted)',
                   marginTop: 6,
                   letterSpacing: '0.02em',
                 }}
               >
                 {stat.label}
               </p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
@@ -141,15 +191,21 @@ export default function Charities({ onBack }: CharitiesProps) {
         >
           {CHARITIES.map((charity, i) => {
             const isExpanded = expanded === charity.id;
+            const fromLeft = i % 2 === 0;
             return (
               <motion.div
                 key={charity.id}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{
+                  opacity: 0,
+                  x: fromLeft ? -40 : 40,
+                  scale: 0.95,
+                }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{
-                  duration: 0.5,
-                  ease: appleEase,
-                  delay: 0.18 + i * 0.07,
+                  type: 'spring',
+                  stiffness: 180,
+                  damping: 22,
+                  delay: 0.6 + i * 0.1,
                 }}
               >
                 <motion.div
@@ -164,7 +220,7 @@ export default function Charities({ onBack }: CharitiesProps) {
                     WebkitTapHighlightColor: 'transparent',
                     transition: 'border-radius 0.3s',
                   }}
-                  whileTap={{ scale: 0.98 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() =>
                     setExpanded(isExpanded ? null : charity.id)
                   }
@@ -256,7 +312,11 @@ export default function Charities({ onBack }: CharitiesProps) {
                   >
                     <motion.span
                       animate={{ rotate: isExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.3, ease: appleEase }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 20,
+                      }}
                       style={{
                         fontSize: 14,
                         color: 'var(--surface)',
@@ -268,7 +328,6 @@ export default function Charities({ onBack }: CharitiesProps) {
                   </div>
                 </motion.div>
 
-                {/* Expandable detail */}
                 <AnimatePresence>
                   {isExpanded && (
                     <motion.div

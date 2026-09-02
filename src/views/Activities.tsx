@@ -177,12 +177,17 @@ export default function Activities({ onBack }: ActivitiesProps) {
             return (
               <motion.div
                 key={act.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{
+                  opacity: 0,
+                  x: i % 2 === 0 ? -30 : 30,
+                  scale: 0.96,
+                }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{
-                  duration: 0.5,
-                  ease: appleEase,
-                  delay: 0.22 + i * 0.05,
+                  type: 'spring',
+                  stiffness: 200,
+                  damping: 22,
+                  delay: 0.22 + i * 0.08,
                 }}
               >
                 <motion.div
