@@ -192,9 +192,8 @@ body {
 .dock {
   position: absolute;
   bottom: var(--s-32);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 920px;
+  left: var(--s-48);
+  right: var(--s-48);
   height: 88px;
   background: var(--dock-bg);
   backdrop-filter: blur(var(--dock-blur));

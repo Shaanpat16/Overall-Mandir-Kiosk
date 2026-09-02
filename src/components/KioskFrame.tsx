@@ -14,7 +14,7 @@ export default function KioskFrame({ children }: KioskFrameProps) {
       const vh = window.innerHeight;
       const sx = vw / 1080;
       const sy = vh / 1920;
-      setScale(Math.min(sx, sy, 1));
+      setScale(Math.min(sx, sy));
     };
     resize();
     window.addEventListener('resize', resize);

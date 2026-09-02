@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { appleEase } from '../motion/easing';
-import { ABOUT_TEXT, MANDIR_INFO } from '../data/content';
+import { GURUS, MANDIR_INFO } from '../data/content';
 
 interface AboutProps {
   onBack: () => void;
@@ -25,59 +25,154 @@ export default function About({ onBack }: AboutProps) {
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
             padding: 'var(--s-16) 0',
-            marginBottom: 'var(--s-16)',
+            marginBottom: 'var(--s-8)',
             WebkitTapHighlightColor: 'transparent',
           }}
         >
-          ← Back
+          ← Home
         </motion.button>
 
-        {/* Hero photo */}
-        <motion.div
+        {/* Our Gurus heading */}
+        <motion.h1
           style={{
-            width: '100%',
-            height: 500,
-            borderRadius: 'var(--card-radius)',
-            overflow: 'hidden',
-            marginBottom: 'var(--s-48)',
+            fontFamily: 'var(--font-display)',
+            fontSize: 52,
+            fontWeight: 500,
+            fontStyle: 'italic',
+            color: 'var(--ink)',
+            textAlign: 'center',
+            marginBottom: 'var(--s-40)',
           }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: appleEase, delay: 0.05 }}
         >
-          <img
-            src="/images/mandir-aerial.png"
-            alt="BAPS Shri Swaminarayan Mandir Edison"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-            }}
-          />
-        </motion.div>
+          Our Gurus
+        </motion.h1>
 
-        {/* Heading */}
-        <motion.h1
-          className="text-heading"
-          style={{ marginBottom: 'var(--s-32)' }}
+        {/* Guru cards side by side */}
+        <motion.div
+          style={{
+            display: 'flex',
+            gap: 'var(--s-24)',
+            marginBottom: 'var(--s-64)',
+          }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: appleEase, delay: 0.12 }}
         >
-          About the <em>Mandir</em>
-        </motion.h1>
+          {GURUS.map((guru) => (
+            <div key={guru.id} style={{ flex: 1, textAlign: 'center' }}>
+              <div style={{
+                width: '100%',
+                aspectRatio: '1',
+                borderRadius: 'var(--card-radius)',
+                overflow: 'hidden',
+                marginBottom: 'var(--s-16)',
+                background: '#111',
+              }}>
+                <img
+                  src={guru.image}
+                  alt={guru.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              </div>
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 22,
+                fontWeight: 600,
+                color: 'var(--ink)',
+                lineHeight: 1.2,
+                marginBottom: 4,
+              }}>
+                {guru.name}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 15,
+                color: 'var(--muted)',
+              }}>
+                {guru.years}
+              </p>
+            </div>
+          ))}
+        </motion.div>
 
-        {/* Body text */}
-        <motion.p
-          className="text-body"
-          style={{ marginBottom: 'var(--s-48)', lineHeight: 1.6 }}
+        {/* Connect With Us */}
+        <motion.div
+          style={{ textAlign: 'center', marginBottom: 'var(--s-40)' }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: appleEase, delay: 0.18 }}
+          transition={{ duration: 0.6, ease: appleEase, delay: 0.2 }}
         >
-          {ABOUT_TEXT}
-        </motion.p>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 44,
+            fontWeight: 600,
+            color: 'var(--ink)',
+            marginBottom: 8,
+          }}>
+            Connect With Us
+          </h2>
+          <p className="text-body">Scan to stay up to date</p>
+        </motion.div>
+
+        {/* QR codes */}
+        <motion.div
+          style={{
+            display: 'flex',
+            gap: 'var(--s-24)',
+            marginBottom: 'var(--s-48)',
+          }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: appleEase, delay: 0.26 }}
+        >
+          <div style={{ flex: 1, textAlign: 'center' }}>
+            <div style={{
+              background: 'var(--surface)',
+              borderRadius: 'var(--card-radius)',
+              padding: 'var(--s-32)',
+              marginBottom: 'var(--s-12)',
+            }}>
+              <img
+                src="/images/qr-interest.png"
+                alt="Interest Form QR"
+                style={{ width: '100%', maxWidth: 240, margin: '0 auto', display: 'block' }}
+              />
+            </div>
+            <p style={{
+              fontFamily: 'var(--font-ui)',
+              fontSize: 16,
+              fontWeight: 500,
+              color: 'var(--ink)',
+            }}>
+              Interest Form
+            </p>
+          </div>
+          <div style={{ flex: 1, textAlign: 'center' }}>
+            <div style={{
+              background: 'var(--surface)',
+              borderRadius: 'var(--card-radius)',
+              padding: 'var(--s-32)',
+              marginBottom: 'var(--s-12)',
+            }}>
+              <img
+                src="/images/qr-telegram.png"
+                alt="Telegram Channel QR"
+                style={{ width: '100%', maxWidth: 240, margin: '0 auto', display: 'block' }}
+              />
+            </div>
+            <p style={{
+              fontFamily: 'var(--font-ui)',
+              fontSize: 16,
+              fontWeight: 500,
+              color: 'var(--ink)',
+            }}>
+              Telegram Channel
+            </p>
+          </div>
+        </motion.div>
 
         {/* Contact card */}
         <motion.div
@@ -88,43 +183,39 @@ export default function About({ onBack }: AboutProps) {
           }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: appleEase, delay: 0.24 }}
+          transition={{ duration: 0.6, ease: appleEase, delay: 0.32 }}
         >
           <p className="text-nav" style={{ marginBottom: 'var(--s-24)', color: 'var(--saffron)' }}>
-            Contact
+            Stay Connected
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-16)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span className="text-body" style={{ fontSize: 18, color: 'var(--muted)' }}>Address</span>
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 18, fontWeight: 500, color: 'var(--ink)', textAlign: 'right', maxWidth: 400 }}>
-                {MANDIR_INFO.address}
+              <span style={{
+                fontFamily: 'var(--font-ui)', fontSize: 17, fontWeight: 500, color: 'var(--ink)',
+                textAlign: 'right', maxWidth: 360,
+              }}>
+                BAPS Shri Swaminarayan Mandir<br />Edison, New Jersey
               </span>
             </div>
             <div style={{ height: 1, background: 'rgba(28,25,22,0.06)' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span className="text-body" style={{ fontSize: 18, color: 'var(--muted)' }}>Phone</span>
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 18, fontWeight: 500, color: 'var(--ink)' }}>
+              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 17, fontWeight: 500, color: 'var(--ink)' }}>
                 {MANDIR_INFO.phone}
               </span>
             </div>
             <div style={{ height: 1, background: 'rgba(28,25,22,0.06)' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span className="text-body" style={{ fontSize: 18, color: 'var(--muted)' }}>Email</span>
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 18, fontWeight: 500, color: 'var(--ink)' }}>
+              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 17, fontWeight: 500, color: 'var(--ink)' }}>
                 {MANDIR_INFO.email}
-              </span>
-            </div>
-            <div style={{ height: 1, background: 'rgba(28,25,22,0.06)' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span className="text-body" style={{ fontSize: 18, color: 'var(--muted)' }}>Web</span>
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 18, fontWeight: 500, color: 'var(--ink)' }}>
-                {MANDIR_INFO.website}
               </span>
             </div>
           </div>
         </motion.div>
 
-        <div style={{ height: 120 }} />
+        <div style={{ height: 140 }} />
       </div>
     </div>
   );

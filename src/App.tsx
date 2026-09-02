@@ -7,9 +7,9 @@ import type { ViewName } from './data/content';
 import KioskFrame from './components/KioskFrame';
 import Dock from './components/Dock';
 import AttractHome from './views/AttractHome';
-import Visit from './views/Visit';
-import Today from './views/Today';
-import Events from './views/Events';
+import Activities from './views/Activities';
+import Rituals from './views/Rituals';
+import Charities from './views/Charities';
 import About from './views/About';
 
 function useClock() {
@@ -55,12 +55,8 @@ export default function App() {
     };
   }, [resetIdle]);
 
-  const navigate = useCallback((v: ViewName) => {
-    setView(v);
-  }, []);
-
+  const navigate = useCallback((v: ViewName) => setView(v), []);
   const goHome = useCallback(() => setView('home'), []);
-
   const wake = useCallback(() => setView('home'), []);
 
   const isAttract = view === 'attract';
@@ -72,14 +68,14 @@ export default function App() {
 
   return (
     <KioskFrame>
-      {/* Status bar — always visible, adapts color to attract vs content */}
-      <motion.div
+      {/* Status bar */}
+      <div
         className="status-bar"
-        animate={{
+        style={{
           color: isAttract ? 'var(--surface)' : 'var(--ink)',
+          pointerEvents: 'none',
+          transition: 'color 0.5s',
         }}
-        transition={transitions.normal}
-        style={{ pointerEvents: 'none' }}
       >
         <span
           className="status-bar__label"
@@ -93,21 +89,16 @@ export default function App() {
             style={
               isAttract
                 ? {
-                    background: campusOpen ? 'rgba(76,140,74,0.2)' : 'rgba(196,92,38,0.2)',
+                    background: campusOpen ? 'rgba(76,140,74,0.25)' : 'rgba(196,92,38,0.25)',
                     color: campusOpen ? '#8fcc8d' : '#e8a07a',
                   }
                 : undefined
             }
           >
-            <span
-              style={{
-                width: 7,
-                height: 7,
-                borderRadius: '50%',
-                background: 'currentColor',
-                display: 'inline-block',
-              }}
-            />
+            <span style={{
+              width: 7, height: 7, borderRadius: '50%',
+              background: 'currentColor', display: 'inline-block',
+            }} />
             {campusOpen ? 'Open' : 'Closed'}
           </span>
           <span
@@ -117,7 +108,7 @@ export default function App() {
             {formatTime(clock)}
           </span>
         </div>
-      </motion.div>
+      </div>
 
       {/* Views */}
       <AnimatePresence mode="wait">
@@ -130,50 +121,46 @@ export default function App() {
             transition={transitions.slow}
             style={{ position: 'absolute', inset: 0 }}
           >
-            <AttractHome
-              isAttract={isAttract}
-              onWake={wake}
-              onNavigate={navigate}
-            />
+            <AttractHome isAttract={isAttract} onWake={wake} onNavigate={navigate} />
           </motion.div>
         )}
 
-        {view === 'visit' && (
+        {view === 'activities' && (
           <motion.div
-            key="visit"
+            key="activities"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
-            <Visit onBack={goHome} />
+            <Activities onBack={goHome} />
           </motion.div>
         )}
 
-        {view === 'today' && (
+        {view === 'rituals' && (
           <motion.div
-            key="today"
+            key="rituals"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
-            <Today onBack={goHome} />
+            <Rituals onBack={goHome} />
           </motion.div>
         )}
 
-        {view === 'events' && (
+        {view === 'charities' && (
           <motion.div
-            key="events"
+            key="charities"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
-            <Events onBack={goHome} />
+            <Charities onBack={goHome} />
           </motion.div>
         )}
 

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { transitions, durations, appleEase } from '../motion/easing';
-import { HOME_TILES, type ViewName } from '../data/content';
+import { HOME_TILES, MANDIR_INFO, TIMINGS, type ViewName } from '../data/content';
 import PhotoCard from '../components/PhotoCard';
 
 interface AttractHomeProps {
@@ -12,17 +12,16 @@ interface AttractHomeProps {
 export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHomeProps) {
   return (
     <div className="view-container" style={{ background: 'var(--canvas)' }}>
-      {/* Ken Burns hero */}
+      {/* Full-bleed hero photo */}
       <div
         style={{
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
-          height: isAttract ? '100%' : 880,
+          height: isAttract ? '100%' : 720,
           overflow: 'hidden',
-          borderRadius: isAttract ? 0 : '0 0 var(--card-radius) var(--card-radius)',
-          transition: `height ${durations.slow}s cubic-bezier(0.22,1,0.36,1), border-radius ${durations.slow}s cubic-bezier(0.22,1,0.36,1)`,
+          transition: `height ${durations.slow}s cubic-bezier(0.22,1,0.36,1)`,
         }}
       >
         <div
@@ -33,27 +32,21 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
             backgroundSize: 'cover',
             backgroundPosition: 'center 30%',
             animation: isAttract ? `kenBurns ${durations.attract}s ease-in-out infinite alternate` : 'none',
-            transform: isAttract ? undefined : 'scale(1)',
-            transition: `transform ${durations.slow}s cubic-bezier(0.22,1,0.36,1)`,
           }}
         />
-        {/* Gradient overlay */}
         <div
           style={{
             position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: isAttract ? '60%' : '50%',
+            inset: 0,
             background: isAttract
-              ? 'linear-gradient(transparent, rgba(28,25,22,0.5))'
-              : 'linear-gradient(transparent, rgba(28,25,22,0.35))',
+              ? 'linear-gradient(180deg, rgba(28,25,22,0.15) 0%, rgba(28,25,22,0.6) 100%)'
+              : 'linear-gradient(180deg, rgba(28,25,22,0.1) 0%, rgba(28,25,22,0.45) 100%)',
             transition: `opacity ${durations.slow}s`,
           }}
         />
       </div>
 
-      {/* Attract headline + breathing pill */}
+      {/* ——— ATTRACT STATE ——— */}
       <AnimatePresence>
         {isAttract && (
           <motion.div
@@ -64,61 +57,161 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
             transition={transitions.slow}
             style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
+              inset: 0,
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '0 var(--s-64)',
               zIndex: 10,
             }}
             onClick={onWake}
           >
-            <motion.h1
-              className="text-hero"
-              style={{
-                color: 'var(--surface)',
-                textAlign: 'center',
-                marginBottom: 'var(--s-16)',
-                textShadow: '0 2px 40px rgba(0,0,0,0.3)',
-              }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: appleEase, delay: 0.3 }}
-            >
-              Welcome <em>home</em>.
-            </motion.h1>
-            <motion.p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: 20,
-                color: 'rgba(255,251,245,0.7)',
-                textAlign: 'center',
-                letterSpacing: '0.04em',
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1 }}
-            >
-              BAPS Shri Swaminarayan Mandir &middot; Edison, NJ
-            </motion.p>
-
-            {/* Breathing touch pill */}
+            {/* BAPS logo text top-left */}
             <motion.div
               style={{
                 position: 'absolute',
-                bottom: 420,
+                top: 64,
+                left: 64,
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 24,
+                fontWeight: 600,
+                fontStyle: 'italic',
+                color: 'var(--surface)',
+                lineHeight: 1.2,
+                textShadow: '0 2px 20px rgba(0,0,0,0.4)',
+              }}>
+                BAPS <span style={{ fontStyle: 'normal', fontWeight: 400 }}>Shri Swaminarayan Mandir</span>
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 14,
+                fontWeight: 500,
+                color: 'rgba(255,251,245,0.7)',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                marginTop: 4,
+              }}>
+                {MANDIR_INFO.shortName}
+              </p>
+            </motion.div>
+
+            {/* Main headline — big and bold */}
+            <div style={{
+              position: 'absolute',
+              top: 240,
+              left: 64,
+              right: 64,
+            }}>
+              <motion.h1
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 120,
+                  fontWeight: 600,
+                  lineHeight: 1,
+                  color: 'var(--surface)',
+                  textShadow: '0 4px 60px rgba(0,0,0,0.4)',
+                  letterSpacing: '-0.02em',
+                }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: appleEase, delay: 0.3 }}
+              >
+                Welcome
+              </motion.h1>
+              <motion.p
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 22,
+                  color: 'rgba(255,251,245,0.8)',
+                  marginTop: 20,
+                  lineHeight: 1.5,
+                  maxWidth: 500,
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                {MANDIR_INFO.tagline}
+              </motion.p>
+            </div>
+
+            {/* Hours block */}
+            <motion.div
+              style={{
+                position: 'absolute',
+                top: 560,
+                left: 64,
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 36,
+                fontWeight: 600,
+                color: 'var(--surface)',
+                marginBottom: 12,
+                textShadow: '0 2px 20px rgba(0,0,0,0.3)',
+              }}>
+                Hours
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 18,
+                fontWeight: 600,
+                color: 'rgba(255,251,245,0.9)',
+                marginBottom: 4,
+              }}>
+                {TIMINGS.campus.label}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 17,
+                color: 'rgba(255,251,245,0.7)',
+                marginBottom: 16,
+              }}>
+                {TIMINGS.campus.open} – {TIMINGS.campus.close}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 18,
+                fontWeight: 600,
+                color: 'rgba(255,251,245,0.9)',
+                marginBottom: 4,
+              }}>
+                {TIMINGS.darshan.label}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 17,
+                color: 'rgba(255,251,245,0.7)',
+                lineHeight: 1.4,
+              }}>
+                {TIMINGS.darshan.morning.open} – {TIMINGS.darshan.morning.close}<br />
+                {TIMINGS.darshan.evening.open} – {TIMINGS.darshan.evening.close}
+              </p>
+            </motion.div>
+
+            {/* Breathing touch pill in the hands zone */}
+            <motion.div
+              style={{
+                position: 'absolute',
+                bottom: 340,
+                left: '50%',
+                transform: 'translateX(-50%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '16px 40px',
+                padding: '20px 48px',
                 borderRadius: 999,
                 background: 'rgba(255,251,245,0.15)',
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
                 animation: 'breathe 2.4s ease-in-out infinite',
               }}
               initial={{ opacity: 0, y: 20 }}
@@ -128,21 +221,21 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               <span
                 style={{
                   fontFamily: 'var(--font-ui)',
-                  fontSize: 15,
+                  fontSize: 17,
                   fontWeight: 500,
                   color: 'var(--surface)',
-                  letterSpacing: '0.12em',
+                  letterSpacing: '0.14em',
                   textTransform: 'uppercase',
                 }}
               >
-                Touch to begin
+                Touch to explore
               </span>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Home content: status bar is in App, so this is just tiles */}
+      {/* ——— HOME STATE (after wake) ——— */}
       <AnimatePresence>
         {!isAttract && (
           <motion.div
@@ -153,36 +246,72 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
             transition={transitions.normal}
             style={{
               position: 'absolute',
-              top: 880,
+              top: 720,
               left: 0,
               right: 0,
-              bottom: 140,
-              padding: `var(--s-32) var(--s-48)`,
+              bottom: 0,
+              padding: 'var(--s-40) var(--s-48) 0',
               display: 'flex',
               flexDirection: 'column',
-              gap: 'var(--s-24)',
             }}
           >
-            {/* Section heading */}
-            <h2
-              className="text-heading"
-              style={{ marginBottom: 'var(--s-8)' }}
+            {/* Home hero text on top of photo */}
+            <motion.div
+              style={{
+                position: 'absolute',
+                top: -320,
+                left: 64,
+                right: 64,
+                zIndex: 5,
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: appleEase, delay: 0.05 }}
             >
-              Explore the <em>Mandir</em>
-            </h2>
+              <h1 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 72,
+                fontWeight: 600,
+                color: 'var(--surface)',
+                textShadow: '0 4px 40px rgba(0,0,0,0.4)',
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+              }}>
+                Welcome
+              </h1>
+              <p style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 18,
+                color: 'rgba(255,251,245,0.8)',
+                marginTop: 12,
+                maxWidth: 440,
+                lineHeight: 1.5,
+              }}>
+                {MANDIR_INFO.tagline}
+              </p>
+            </motion.div>
 
-            {/* Destination tiles */}
-            <div style={{ display: 'flex', gap: 'var(--s-24)', flex: 1, minHeight: 0 }}>
+            {/* Destination photo tiles — 2x2 grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 'var(--s-16)',
+              flex: '0 0 auto',
+              marginBottom: 'var(--s-16)',
+            }}>
               {HOME_TILES.map((tile, i) => (
                 <motion.div
                   key={tile.id}
-                  style={{ flex: 1, minHeight: 0 }}
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.6,
+                    duration: 0.5,
                     ease: appleEase,
-                    delay: 0.1 + i * 0.08,
+                    delay: 0.1 + i * 0.07,
+                  }}
+                  style={{
+                    height: tile.id === 'charities' ? 260 : 300,
+                    gridColumn: tile.id === 'charities' ? '1 / -1' : undefined,
                   }}
                 >
                   <PhotoCard
@@ -196,25 +325,49 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               ))}
             </div>
 
-            {/* About link */}
+            {/* Upcoming Events row */}
             <motion.button
               onClick={() => onNavigate('about')}
               style={{
-                background: 'none',
+                background: 'var(--surface)',
                 border: 'none',
                 cursor: 'pointer',
-                fontFamily: 'var(--font-ui)',
-                fontSize: 16,
-                color: 'var(--muted)',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                padding: 'var(--s-16) 0',
-                textAlign: 'center',
+                borderRadius: 'var(--card-radius)',
+                padding: 'var(--s-24) var(--s-32)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
                 WebkitTapHighlightColor: 'transparent',
+                marginBottom: 'var(--s-16)',
               }}
-              whileTap={{ scale: 0.97 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: appleEase, delay: 0.35 }}
+              whileTap={{ scale: 0.98 }}
             >
-              About Edison Mandir →
+              <div>
+                <p style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 24,
+                  fontWeight: 500,
+                  color: 'var(--ink)',
+                }}>
+                  About &amp; Connect
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 15,
+                  color: 'var(--muted)',
+                  marginTop: 4,
+                }}>
+                  Our gurus, QR codes &amp; contact info
+                </p>
+              </div>
+              <span style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: 24,
+                color: 'var(--muted)',
+              }}>→</span>
             </motion.button>
           </motion.div>
         )}

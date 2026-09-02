@@ -10,9 +10,10 @@ interface DockProps {
 
 const DOCK_ITEMS: { id: ViewName; label: string }[] = [
   { id: 'home', label: 'Home' },
-  { id: 'visit', label: 'Visit' },
-  { id: 'today', label: 'Today' },
-  { id: 'events', label: 'Events' },
+  { id: 'activities', label: 'Activities' },
+  { id: 'rituals', label: 'Rituals' },
+  { id: 'charities', label: 'Charities' },
+  { id: 'about', label: 'About' },
 ];
 
 export default function Dock({ active, onNavigate, visible }: DockProps) {
@@ -26,7 +27,7 @@ export default function Dock({ active, onNavigate, visible }: DockProps) {
       {DOCK_ITEMS.map((item) => (
         <button
           key={item.id}
-          className={`dock__item ${active === item.id || (active === 'about' && item.id === 'home') ? 'dock__item--active' : ''}`}
+          className={`dock__item ${active === item.id ? 'dock__item--active' : ''}`}
           onClick={() => onNavigate(item.id)}
         >
           {item.label}
