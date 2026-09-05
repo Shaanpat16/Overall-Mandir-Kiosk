@@ -28,7 +28,7 @@ function isCampusOpen(now: Date): boolean {
 
 export default function App() {
   const [view, setView] = useState<ViewName>('attract');
-  const idleRef = useRef<ReturnType<typeof setTimeout>>();
+  const idleRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const clock = useClock();
 
   const resetIdle = useCallback(() => {
