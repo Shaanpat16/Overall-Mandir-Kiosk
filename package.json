@@ -6,15 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "start": "serve dist -s -l tcp://0.0.0.0:${PORT:-3000}",
+    "start": "node server.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "motion": "^13.1.1",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "serve": "^14.2.6"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
