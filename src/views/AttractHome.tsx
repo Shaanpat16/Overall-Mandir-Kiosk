@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { transitions, durations, appleEase } from '../motion/easing';
 import { HOME_TILES, MANDIR_INFO, TIMINGS, type ViewName } from '../data/content';
@@ -11,6 +12,16 @@ interface AttractHomeProps {
 
 const HERO_H = 720;
 
+const SLIDESHOW = [
+  { src: '/images/hero-mandir.jpg', position: 'center 30%' },
+  { src: '/images/home-events.jpg', position: 'center 40%' },
+  { src: '/images/event-diwali.jpg', position: 'center center' },
+  { src: '/images/ritual-mahapuja.jpg', position: 'center center' },
+  { src: '/images/home-activities.jpg', position: 'center 35%' },
+  { src: '/images/event-annakut.jpg', position: 'center center' },
+];
+const SLIDE_INTERVAL = 6000;
+
 const ORBS = [
   { size: 320, x: '10%', y: '18%', dur: 18, delay: 0, color: 'rgba(196,92,38,0.06)' },
   { size: 220, x: '68%', y: '25%', dur: 22, delay: -6, color: 'rgba(255,251,245,0.05)' },
@@ -22,9 +33,19 @@ const ORBS = [
 const spring = { type: 'spring' as const, stiffness: 200, damping: 22 };
 
 export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHomeProps) {
+  const [slideIdx, setSlideIdx] = useState(0);
+
+  useEffect(() => {
+    if (!isAttract) return;
+    const id = setInterval(() => {
+      setSlideIdx((prev) => (prev + 1) % SLIDESHOW.length);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(id);
+  }, [isAttract]);
+
   return (
     <div className="view-container" style={{ background: 'var(--canvas)' }}>
-      {/* ── Full-bleed hero photo ── */}
+      {/* ── Full-bleed hero photo slideshow ── */}
       <div
         style={{
           position: 'absolute',
@@ -36,18 +57,31 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
           transition: `height ${durations.slow}s cubic-bezier(0.22,1,0.36,1)`,
         }}
       >
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            backgroundImage: 'url(/images/hero-mandir.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 30%',
-            animation: isAttract
-              ? `kenBurns ${durations.attract}s ease-in-out infinite alternate`
-              : 'none',
-          }}
-        />
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={isAttract ? slideIdx : 'home-hero'}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{
+              opacity: 1,
+              scale: isAttract ? [1, 1.06] : 1,
+            }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 1.6, ease: [0.22, 1, 0.36, 1] },
+              scale: {
+                duration: isAttract ? SLIDE_INTERVAL / 1000 : 0.6,
+                ease: 'easeInOut',
+              },
+            }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage: `url(${isAttract ? SLIDESHOW[slideIdx].src : SLIDESHOW[0].src})`,
+              backgroundSize: 'cover',
+              backgroundPosition: isAttract ? SLIDESHOW[slideIdx].position : SLIDESHOW[0].position,
+            }}
+          />
+        </AnimatePresence>
         <div
           style={{
             position: 'absolute',
@@ -56,6 +90,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               ? 'linear-gradient(180deg, rgba(28,25,22,0.18) 0%, rgba(28,25,22,0.62) 100%)'
               : 'linear-gradient(180deg, rgba(28,25,22,0.08) 0%, rgba(28,25,22,0.50) 100%)',
             transition: `background ${durations.slow}s`,
+            zIndex: 1,
           }}
         />
       </div>
