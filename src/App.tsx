@@ -79,7 +79,12 @@ export default function App() {
       >
         <span
           className="status-bar__label"
-          style={{ color: isAttract ? 'rgba(255,251,245,0.8)' : 'var(--ink)' }}
+          onClick={() => setView('attract')}
+          style={{
+            color: isAttract ? 'rgba(255,251,245,0.8)' : 'var(--ink)',
+            cursor: 'pointer',
+            pointerEvents: 'auto',
+          }}
         >
           Edison Mandir
         </span>
