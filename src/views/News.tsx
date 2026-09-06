@@ -97,6 +97,7 @@ export default function News({ onBack }: NewsProps) {
             <div
               style={{
                 width: '100%',
+                maxHeight: 420,
                 overflow: 'hidden',
                 background: '#e8e8ee',
                 display: 'flex',
@@ -109,6 +110,7 @@ export default function News({ onBack }: NewsProps) {
                 alt={item.person.name}
                 style={{
                   width: '100%',
+                  objectFit: 'cover',
                   display: 'block',
                 }}
               />
