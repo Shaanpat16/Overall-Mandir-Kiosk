@@ -227,4 +227,36 @@ export const HOME_TILES = [
   { id: 'charities', label: 'BAPS Charities', image: '/images/event-walkathon.jpg', view: 'charities' as const },
 ] as const;
 
-export type ViewName = 'attract' | 'home' | 'activities' | 'rituals' | 'charities' | 'about';
+export type ViewName = 'attract' | 'home' | 'activities' | 'rituals' | 'charities' | 'about' | 'news';
+
+/* ─── News ───────────────────────────────────────────────────── */
+export interface NewsItem {
+  id: string;
+  tag: string;
+  headline: string;
+  date: string;
+  image: string;
+  body: string;
+  /** Optional person spotlight */
+  person?: {
+    name: string;
+    headshot: string;
+    caption: string;
+  };
+}
+
+export const NEWS_ITEMS: NewsItem[] = [
+  {
+    id: 'karyakar-completion',
+    tag: 'Spotlight',
+    headline: 'Karyakar Training Completed',
+    date: 'September 2026',
+    image: '/images/news-placeholder.jpg',
+    body: 'Details coming soon.',
+    person: {
+      name: 'Name TBD',
+      headshot: '/images/news-placeholder.jpg',
+      caption: 'Successfully completed Karyakar training program',
+    },
+  },
+];

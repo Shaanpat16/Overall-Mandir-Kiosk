@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { transitions, durations, appleEase } from '../motion/easing';
-import { HOME_TILES, MANDIR_INFO, TIMINGS, type ViewName } from '../data/content';
+import { HOME_TILES, MANDIR_INFO, TIMINGS, NEWS_ITEMS, type ViewName } from '../data/content';
 import PhotoCard from '../components/PhotoCard';
 
 interface AttractHomeProps {
@@ -10,17 +9,7 @@ interface AttractHomeProps {
   onNavigate: (view: ViewName) => void;
 }
 
-const HERO_H = 720;
-
-const SLIDESHOW = [
-  { src: '/images/hero-mandir.jpg', position: 'center 30%' },
-  { src: '/images/home-events.jpg', position: 'center 40%' },
-  { src: '/images/event-diwali.jpg', position: 'center center' },
-  { src: '/images/ritual-mahapuja.jpg', position: 'center center' },
-  { src: '/images/home-activities.jpg', position: 'center 35%' },
-  { src: '/images/event-annakut.jpg', position: 'center center' },
-];
-const SLIDE_INTERVAL = 6000;
+const HERO_H = 620;
 
 const ORBS = [
   { size: 320, x: '10%', y: '18%', dur: 18, delay: 0, color: 'rgba(196,92,38,0.06)' },
@@ -33,19 +22,11 @@ const ORBS = [
 const spring = { type: 'spring' as const, stiffness: 200, damping: 22 };
 
 export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHomeProps) {
-  const [slideIdx, setSlideIdx] = useState(0);
-
-  useEffect(() => {
-    if (!isAttract) return;
-    const id = setInterval(() => {
-      setSlideIdx((prev) => (prev + 1) % SLIDESHOW.length);
-    }, SLIDE_INTERVAL);
-    return () => clearInterval(id);
-  }, [isAttract]);
+  const latestNews = NEWS_ITEMS[0];
 
   return (
     <div className="view-container" style={{ background: 'var(--canvas)' }}>
-      {/* ── Full-bleed hero photo slideshow ── */}
+      {/* ── Full-bleed hero photo ── */}
       <div
         style={{
           position: 'absolute',
@@ -57,31 +38,18 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
           transition: `height ${durations.slow}s cubic-bezier(0.22,1,0.36,1)`,
         }}
       >
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={isAttract ? slideIdx : 'home-hero'}
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{
-              opacity: 1,
-              scale: isAttract ? [1, 1.06] : 1,
-            }}
-            exit={{ opacity: 0 }}
-            transition={{
-              opacity: { duration: 1.6, ease: [0.22, 1, 0.36, 1] },
-              scale: {
-                duration: isAttract ? SLIDE_INTERVAL / 1000 : 0.6,
-                ease: 'easeInOut',
-              },
-            }}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: `url(${isAttract ? SLIDESHOW[slideIdx].src : SLIDESHOW[0].src})`,
-              backgroundSize: 'cover',
-              backgroundPosition: isAttract ? SLIDESHOW[slideIdx].position : SLIDESHOW[0].position,
-            }}
-          />
-        </AnimatePresence>
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            backgroundImage: 'url(/images/hero-mandir.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 30%',
+            animation: isAttract
+              ? `kenBurns ${durations.attract}s ease-in-out infinite alternate`
+              : 'none',
+          }}
+        />
         <div
           style={{
             position: 'absolute',
@@ -90,7 +58,6 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               ? 'linear-gradient(180deg, rgba(28,25,22,0.18) 0%, rgba(28,25,22,0.62) 100%)'
               : 'linear-gradient(180deg, rgba(28,25,22,0.08) 0%, rgba(28,25,22,0.50) 100%)',
             transition: `background ${durations.slow}s`,
-            zIndex: 1,
           }}
         />
       </div>
@@ -365,6 +332,91 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 minHeight: 0,
               }}
             >
+              {/* ── News banner ── */}
+              {latestNews && (
+                <motion.button
+                  onClick={() => onNavigate('news')}
+                  style={{
+                    flexShrink: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 20,
+                    background: 'var(--surface)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    borderRadius: 'var(--card-radius)',
+                    padding: 0,
+                    overflow: 'hidden',
+                    WebkitTapHighlightColor: 'transparent',
+                    textAlign: 'left',
+                  }}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ ...spring, delay: 0.1 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  {/* Thumbnail */}
+                  <div
+                    style={{
+                      width: 100,
+                      height: 100,
+                      flexShrink: 0,
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <img
+                      src={latestNews.person?.headshot || latestNews.image}
+                      alt=""
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block',
+                      }}
+                    />
+                  </div>
+                  <div style={{ flex: 1, padding: '16px 0', minWidth: 0 }}>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-ui)',
+                        fontSize: 12,
+                        fontWeight: 600,
+                        color: 'var(--accent, var(--saffron))',
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        marginBottom: 4,
+                      }}
+                    >
+                      {latestNews.tag} · New
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: 20,
+                        fontWeight: 600,
+                        color: 'var(--ink)',
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      {latestNews.headline}
+                    </p>
+                  </div>
+                  <motion.span
+                    style={{
+                      fontFamily: 'var(--font-ui)',
+                      fontSize: 20,
+                      color: 'var(--muted)',
+                      paddingRight: 24,
+                      flexShrink: 0,
+                    }}
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2.5 }}
+                  >
+                    →
+                  </motion.span>
+                </motion.button>
+              )}
+
               <div
                 style={{
                   flex: 1,
@@ -392,7 +444,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                     }}
                     transition={{
                       ...spring,
-                      delay: 0.15 + i * 0.12,
+                      delay: 0.22 + i * 0.12,
                     }}
                     style={{
                       gridColumn:
@@ -429,7 +481,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 }}
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ ...spring, delay: 0.55 }}
+                transition={{ ...spring, delay: 0.65 }}
                 whileTap={{ scale: 0.97 }}
               >
                 <div style={{ textAlign: 'left' }}>

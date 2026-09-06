@@ -11,6 +11,7 @@ import Activities from './views/Activities';
 import Rituals from './views/Rituals';
 import Charities from './views/Charities';
 import About from './views/About';
+import News from './views/News';
 
 function useClock() {
   const [time, setTime] = useState(new Date());
@@ -173,6 +174,19 @@ export default function App() {
             style={{ position: 'absolute', inset: 0 }}
           >
             <About onBack={goHome} />
+          </motion.div>
+        )}
+
+        {view === 'news' && (
+          <motion.div
+            key="news"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
+            transition={{ duration: 0.45, ease: appleEase }}
+            style={{ position: 'absolute', inset: 0 }}
+          >
+            <News onBack={goHome} />
           </motion.div>
         )}
       </AnimatePresence>
