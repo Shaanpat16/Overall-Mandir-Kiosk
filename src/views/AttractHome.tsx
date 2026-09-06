@@ -255,6 +255,59 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 Touch to explore
               </span>
             </motion.div>
+
+            {/* ── News floating pill ── */}
+            {latestNews && (
+              <motion.div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onNavigate('news');
+                }}
+                style={{
+                  position: 'absolute',
+                  bottom: 140,
+                  right: 48,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                  padding: '14px 24px',
+                  borderRadius: 999,
+                  background: 'rgba(255,251,245,0.14)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255,251,245,0.12)',
+                  cursor: 'pointer',
+                  zIndex: 20,
+                }}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: appleEase, delay: 2.4 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {/* Pulsing dot */}
+                <span
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: '50%',
+                    background: '#ef4444',
+                    flexShrink: 0,
+                    animation: 'breathe 2s ease-in-out infinite',
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: 'var(--surface)',
+                    letterSpacing: '0.06em',
+                  }}
+                >
+                  📰 New Story
+                </span>
+              </motion.div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
