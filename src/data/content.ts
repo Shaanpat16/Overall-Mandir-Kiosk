@@ -255,7 +255,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     body: 'The Swaminarayan-Siddhant-Sudha is a \'vad granth\' — a text that explicates and defends the foundational philosophical positions of the Akshar-Purushottam Darshan. Authored by Mahamahopadhyay Bhadreshdas Swami, it identifies the foundational philosophical principles, substantiates them based on readings from sacred texts, and defends its philosophical positions.\n\nPositioned within the Swaminarayan-Siddhant-Sudha is the Swaminarayan Siddhant Karika — 565 Sanskrit verses that summarize the elaborate discussions and the core philosophical teachings of Bhagwan Swaminarayan.\n\nGuruhari Mahant Swami Maharaj has expressed his wish that all able to do so should memorize the 565 karikas. All who memorize all 565 Sanskrit karikas are bestowed the honorary title \'Karika Jayi\'.',
     person: {
       name: 'Parambhai Ganshyam Patel',
-      headshot: '/images/news-param-karika.jpg',
+      headshot: '/images/news-param-headshot.jpg',
       caption: 'Memorized all 565 karikas of the Swaminarayan Siddhant Karika as an 8th grader — earning the title Karika Jayi',
     },
   },

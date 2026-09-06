@@ -97,9 +97,11 @@ export default function News({ onBack }: NewsProps) {
             <div
               style={{
                 width: '100%',
-                height: 480,
                 overflow: 'hidden',
-                background: 'rgba(17,24,39,0.05)',
+                background: '#e8e8ee',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <img
@@ -107,8 +109,6 @@ export default function News({ onBack }: NewsProps) {
                 alt={item.person.name}
                 style={{
                   width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
                   display: 'block',
                 }}
               />
