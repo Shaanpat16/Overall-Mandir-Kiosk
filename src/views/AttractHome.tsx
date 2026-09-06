@@ -228,7 +228,6 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
             <motion.div
               style={{
                 marginTop: 'auto',
-                marginBottom: 260,
                 alignSelf: 'center',
                 padding: '18px 48px',
                 borderRadius: 999,
@@ -256,7 +255,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
               </span>
             </motion.div>
 
-            {/* ── News floating pill ── */}
+            {/* ── News notification pill ── */}
             {latestNews && (
               <motion.div
                 onClick={(e) => {
@@ -264,47 +263,73 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                   onNavigate('news');
                 }}
                 style={{
-                  position: 'absolute',
-                  bottom: 140,
-                  right: 48,
+                  alignSelf: 'center',
+                  marginTop: 20,
+                  marginBottom: 200,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 12,
-                  padding: '14px 24px',
+                  gap: 10,
+                  padding: '12px 22px',
                   borderRadius: 999,
-                  background: 'rgba(255,251,245,0.14)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255,251,245,0.12)',
+                  background: 'rgba(255,251,245,0.10)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,251,245,0.08)',
                   cursor: 'pointer',
-                  zIndex: 20,
                 }}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: appleEase, delay: 2.4 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {/* Pulsing dot */}
-                <span
-                  style={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: '50%',
-                    background: '#ef4444',
-                    flexShrink: 0,
-                    animation: 'breathe 2s ease-in-out infinite',
-                  }}
-                />
+                {/* Bell icon */}
+                <span style={{ position: 'relative', width: 20, height: 20, flexShrink: 0 }}>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="rgba(255,251,245,0.85)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                  </svg>
+                  {/* Red badge with count */}
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: -4,
+                      right: -6,
+                      width: 16,
+                      height: 16,
+                      borderRadius: '50%',
+                      background: '#ef4444',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 10,
+                      fontWeight: 700,
+                      color: '#fff',
+                      fontFamily: 'var(--font-ui)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    1
+                  </span>
+                </span>
                 <span
                   style={{
                     fontFamily: 'var(--font-ui)',
                     fontSize: 14,
-                    fontWeight: 600,
-                    color: 'var(--surface)',
-                    letterSpacing: '0.06em',
+                    fontWeight: 500,
+                    color: 'rgba(255,251,245,0.8)',
+                    letterSpacing: '0.04em',
                   }}
                 >
-                  📰 New Story
+                  New Story
                 </span>
               </motion.div>
             )}
