@@ -227,36 +227,4 @@ export const HOME_TILES = [
   { id: 'charities', label: 'BAPS Charities', image: '/images/event-walkathon.jpg', view: 'charities' as const },
 ] as const;
 
-export type ViewName = 'attract' | 'home' | 'activities' | 'rituals' | 'charities' | 'about' | 'news';
-
-/* ─── News ───────────────────────────────────────────────────── */
-export interface NewsItem {
-  id: string;
-  tag: string;
-  headline: string;
-  date: string;
-  image: string;
-  body: string;
-  /** Optional person spotlight */
-  person?: {
-    name: string;
-    headshot: string;
-    caption: string;
-  };
-}
-
-export const NEWS_ITEMS: NewsItem[] = [
-  {
-    id: 'karika-jayi-param',
-    tag: 'Spotlight',
-    headline: 'Karika Jayi — Parambhai Patel',
-    date: 'September 2026',
-    image: '/images/news-param-karika.jpg',
-    body: 'The Swaminarayan-Siddhant-Sudha is a \'vad granth\' — a text that explicates and defends the foundational philosophical positions of the Akshar-Purushottam Darshan. Authored by Mahamahopadhyay Bhadreshdas Swami, it identifies the foundational philosophical principles, substantiates them based on readings from sacred texts, and defends its philosophical positions.\n\nPositioned within the Swaminarayan-Siddhant-Sudha is the Swaminarayan Siddhant Karika — 565 Sanskrit verses that summarize the elaborate discussions and the core philosophical teachings of Bhagwan Swaminarayan.\n\nGuruhari Mahant Swami Maharaj has expressed his wish that all able to do so should memorize the 565 karikas. All who memorize all 565 Sanskrit karikas are bestowed the honorary title \'Karika Jayi\'.',
-    person: {
-      name: 'Parambhai Ganshyam Patel',
-      headshot: '/images/news-param-headshot.jpg',
-      caption: 'Memorized all 565 karikas of the Swaminarayan Siddhant Karika as an 8th grader — earning the title Karika Jayi',
-    },
-  },
-];
+export type ViewName = 'attract' | 'home' | 'activities' | 'rituals' | 'charities' | 'about';

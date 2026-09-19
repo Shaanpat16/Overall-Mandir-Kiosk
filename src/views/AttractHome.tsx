@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { transitions, durations, appleEase } from '../motion/easing';
-import { HOME_TILES, MANDIR_INFO, TIMINGS, NEWS_ITEMS, type ViewName } from '../data/content';
+import { HOME_TILES, MANDIR_INFO, TIMINGS, type ViewName } from '../data/content';
 import PhotoCard from '../components/PhotoCard';
 
 interface AttractHomeProps {
@@ -22,8 +22,6 @@ const ORBS = [
 const spring = { type: 'spring' as const, stiffness: 200, damping: 22 };
 
 export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHomeProps) {
-  const latestNews = NEWS_ITEMS[0];
-
   return (
     <div className="view-container" style={{ background: 'var(--canvas)' }}>
       {/* ── Full-bleed hero photo ── */}
@@ -236,6 +234,7 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 WebkitBackdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255,251,245,0.1)',
                 animation: 'shimmerGlow 2.4s ease-in-out infinite',
+                marginBottom: 200,
               }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -254,85 +253,6 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 Touch to explore
               </span>
             </motion.div>
-
-            {/* ── News notification pill ── */}
-            {latestNews && (
-              <motion.div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onNavigate('news');
-                }}
-                style={{
-                  alignSelf: 'center',
-                  marginTop: 20,
-                  marginBottom: 200,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 10,
-                  padding: '12px 22px',
-                  borderRadius: 999,
-                  background: 'rgba(255,251,245,0.10)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255,251,245,0.08)',
-                  cursor: 'pointer',
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: appleEase, delay: 2.4 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* Bell icon */}
-                <span style={{ position: 'relative', width: 20, height: 20, flexShrink: 0 }}>
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="rgba(255,251,245,0.85)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                  </svg>
-                  {/* Red badge with count */}
-                  <span
-                    style={{
-                      position: 'absolute',
-                      top: -4,
-                      right: -6,
-                      width: 16,
-                      height: 16,
-                      borderRadius: '50%',
-                      background: '#ef4444',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: 10,
-                      fontWeight: 700,
-                      color: '#fff',
-                      fontFamily: 'var(--font-ui)',
-                      lineHeight: 1,
-                    }}
-                  >
-                    1
-                  </span>
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-ui)',
-                    fontSize: 14,
-                    fontWeight: 500,
-                    color: 'rgba(255,251,245,0.8)',
-                    letterSpacing: '0.04em',
-                  }}
-                >
-                  New Story
-                </span>
-              </motion.div>
-            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -410,91 +330,6 @@ export default function AttractHome({ isAttract, onWake, onNavigate }: AttractHo
                 minHeight: 0,
               }}
             >
-              {/* ── News banner ── */}
-              {latestNews && (
-                <motion.button
-                  onClick={() => onNavigate('news')}
-                  style={{
-                    flexShrink: 0,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 20,
-                    background: 'var(--surface)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    borderRadius: 'var(--card-radius)',
-                    padding: 0,
-                    overflow: 'hidden',
-                    WebkitTapHighlightColor: 'transparent',
-                    textAlign: 'left',
-                  }}
-                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ ...spring, delay: 0.1 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  {/* Thumbnail */}
-                  <div
-                    style={{
-                      width: 100,
-                      height: 100,
-                      flexShrink: 0,
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <img
-                      src={latestNews.person?.headshot || latestNews.image}
-                      alt=""
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: 'block',
-                      }}
-                    />
-                  </div>
-                  <div style={{ flex: 1, padding: '16px 0', minWidth: 0 }}>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-ui)',
-                        fontSize: 12,
-                        fontWeight: 600,
-                        color: 'var(--accent, var(--saffron))',
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        marginBottom: 4,
-                      }}
-                    >
-                      {latestNews.tag} · New
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: 20,
-                        fontWeight: 600,
-                        color: 'var(--ink)',
-                        lineHeight: 1.2,
-                      }}
-                    >
-                      {latestNews.headline}
-                    </p>
-                  </div>
-                  <motion.span
-                    style={{
-                      fontFamily: 'var(--font-ui)',
-                      fontSize: 20,
-                      color: 'var(--muted)',
-                      paddingRight: 24,
-                      flexShrink: 0,
-                    }}
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2.5 }}
-                  >
-                    →
-                  </motion.span>
-                </motion.button>
-              )}
-
               <div
                 style={{
                   flex: 1,
