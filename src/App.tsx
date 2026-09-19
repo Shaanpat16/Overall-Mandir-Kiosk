@@ -11,25 +11,12 @@ import Activities from './views/Activities';
 import Rituals from './views/Rituals';
 import Charities from './views/Charities';
 import About from './views/About';
-
-function useClock() {
-  const [time, setTime] = useState(new Date());
-  useEffect(() => {
-    const id = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(id);
-  }, []);
-  return time;
-}
-
-function isCampusOpen(now: Date): boolean {
-  const h = now.getHours();
-  return h >= 7 && h < 20;
-}
+import { formatKioskTime, isCampusOpen, useLiveClock } from './clock';
 
 export default function App() {
   const [view, setView] = useState<ViewName>('attract');
   const idleRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const clock = useClock();
+  const clock = useLiveClock();
 
   const resetIdle = useCallback(() => {
     if (idleRef.current) clearTimeout(idleRef.current);
@@ -63,8 +50,7 @@ export default function App() {
   const showDock = !isAttract;
   const campusOpen = isCampusOpen(clock);
 
-  const formatTime = (d: Date) =>
-    d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+  const formatTime = (d: Date) => formatKioskTime(d);
 
   return (
     <KioskFrame>
