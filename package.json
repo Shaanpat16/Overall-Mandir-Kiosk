@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "nam": "vite --open /nam.html --port 5177",
     "build": "tsc -b && vite build",
+    "build:nam": "tsc -b && vite build && cp dist/nam.html dist/index.html",
     "start": "node server.js",
     "lint": "oxlint",
     "preview": "vite preview"

@@ -33,7 +33,7 @@ export default function PhotoCard({
       <div className="photo-card__overlay">
         <p className="photo-card__title">{title}</p>
         {subtitle && (
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: 16, color: 'rgba(255,251,245,0.7)', marginTop: 4 }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: 17, color: 'rgba(255,251,245,0.85)', marginTop: 6, textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
             {subtitle}
           </p>
         )}
