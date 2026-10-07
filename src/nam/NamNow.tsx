@@ -1,54 +1,14 @@
-import { useEffect, useMemo, useState, type PointerEvent } from 'react';
+import { useMemo, useState, type PointerEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { appleEase } from '../motion/easing';
 import BackHome from './BackHome';
-import { DAYS, SESSIONS, type NamSession, type TrackId } from './data';
+import { DAYS, type TrackId } from './data';
+import { useLiveClock, nyWall } from '../clock';
+import { liveSession, namDayId } from './liveBoard';
+import { parseClockToMinutes as toMin } from '../clock';
 
 interface Props {
   onBack: () => void;
-}
-
-const DAY_ISO: Record<string, string> = {
-  thu: '2026-10-08',
-  fri: '2026-10-09',
-  sat: '2026-10-10',
-  sun: '2026-10-11',
-};
-
-function parseClock(t: string) {
-  const m = t.match(/(\d+):(\d+)\s*(AM|PM)/i);
-  if (!m) return { h: 0, min: 0 };
-  let h = Number(m[1]);
-  const min = Number(m[2]);
-  const ap = m[3].toUpperCase();
-  if (ap === 'PM' && h !== 12) h += 12;
-  if (ap === 'AM' && h === 12) h = 0;
-  return { h, min };
-}
-
-function at(dayId: string, time: string) {
-  const { h, min } = parseClock(time);
-  const d = new Date(`${DAY_ISO[dayId]}T00:00:00`);
-  d.setHours(h, min, 0, 0);
-  return d;
-}
-
-/** During NAAM use wall clock; otherwise map today's time onto Friday so the board stays alive. */
-function kioskNow(real: Date) {
-  const start = new Date('2026-10-08T00:00:00');
-  const end = new Date('2026-10-12T00:00:00');
-  if (real >= start && real < end) return real;
-  const demo = new Date('2026-10-09T00:00:00');
-  demo.setHours(real.getHours(), real.getMinutes(), real.getSeconds(), 0);
-  return demo;
-}
-
-function laneSessions(lane: Exclude<TrackId, 'all'>) {
-  return SESSIONS.filter((s) => s.track === 'all' || s.track === lane).map((s) => ({
-    ...s,
-    startAt: at(s.dayId, s.start),
-    endAt: at(s.dayId, s.end),
-  }));
 }
 
 function pad(n: number) {
@@ -56,32 +16,24 @@ function pad(n: number) {
 }
 
 export default function NamNow({ onBack }: Props) {
+  const real = useLiveClock();
   const [lane, setLane] = useState<Exclude<TrackId, 'all'>>('bhaio');
-  const [real, setReal] = useState(() => new Date());
   const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
 
-  useEffect(() => {
-    const id = setInterval(() => setReal(new Date()), 1000);
-    return () => clearInterval(id);
-  }, []);
+  const wall = nyWall(real);
+  const dayId = namDayId(real);
+  const day = DAYS.find((d) => d.id === dayId);
+  const { current } = liveSession(real, lane);
 
-  const now = kioskNow(real);
-  const live = real >= new Date('2026-10-08T00:00:00') && real < new Date('2026-10-12T00:00:00');
+  const remain = useMemo(() => {
+    if (!current || !dayId) return 0;
+    const end = toMin(current.end);
+    return Math.max(0, (end - wall.minutes) * 60 - wall.second);
+  }, [current, dayId, wall.minutes, wall.second]);
 
-  const { current, next, remain } = useMemo(() => {
-    const list = laneSessions(lane).sort((a, b) => a.startAt.getTime() - b.startAt.getTime());
-    const current =
-      list.find((s) => now >= s.startAt && now < s.endAt) ?? null;
-    const next = list.find((s) => s.startAt > now) ?? null;
-    const target = current ? current.endAt : next?.startAt;
-    const remain = target ? Math.max(0, target.getTime() - now.getTime()) : 0;
-    return { current, next, remain };
-  }, [lane, now]);
-
-  const mins = Math.floor(remain / 60000);
-  const secs = Math.floor((remain % 60000) / 1000);
+  const mins = Math.floor(remain / 60);
+  const secs = remain % 60;
   const clock = `${pad(mins)}:${pad(secs)}`;
-  const day = DAYS.find((d) => d.id === (current ?? next)?.dayId);
 
   const pulse = (e: PointerEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -92,10 +44,7 @@ export default function NamNow({ onBack }: Props) {
 
   return (
     <div className="view-container" style={{ background: '#0c0d12' }} onPointerDown={pulse}>
-      <div
-        className="content-well"
-        style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
-      >
+      <div className="content-well" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         <BackHome onBack={onBack} color="rgba(255,251,245,0.55)" />
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
           <h1
@@ -108,14 +57,8 @@ export default function NamNow({ onBack }: Props) {
           >
             Be <em style={{ fontStyle: 'italic', fontWeight: 400 }}>here</em>
           </h1>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: 15,
-              color: 'rgba(255,251,245,0.45)',
-            }}
-          >
-            {live ? 'Live' : 'Preview · Friday mapped to now'}
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, color: 'rgba(255,251,245,0.45)' }}>
+            Live · Edison
           </p>
         </div>
 
@@ -191,12 +134,12 @@ export default function NamNow({ onBack }: Props) {
               color: '#fda4af',
             }}
           >
-            {day?.label ?? 'Between days'} · {current ? 'Happening now' : 'Up next'}
+            {day?.label ?? wall.weekday} · {current ? 'Happening now' : 'Today'}
           </p>
 
           <AnimatePresence mode="wait">
             <motion.p
-              key={(current ?? next)?.id ?? 'none'}
+              key={current?.id ?? 'none'}
               initial={{ opacity: 0, y: 30, filter: 'blur(12px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, y: -20, filter: 'blur(8px)' }}
@@ -211,7 +154,7 @@ export default function NamNow({ onBack }: Props) {
                 maxWidth: 860,
               }}
             >
-              {(current ?? next)?.title ?? 'See you at NAAM'}
+              {current?.title ?? (dayId ? 'Between blocks' : 'NAAM is not in session')}
             </motion.p>
           </AnimatePresence>
 
@@ -224,104 +167,41 @@ export default function NamNow({ onBack }: Props) {
               marginTop: 14,
             }}
           >
-            {(current ?? next)?.location ?? 'Edison campus'}
+            {current?.location ?? 'Edison campus'}
           </p>
 
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: 72,
-              fontWeight: 600,
-              fontVariantNumeric: 'tabular-nums',
-              color: '#FFFBF5',
-              letterSpacing: '0.06em',
-              marginTop: 28,
-              lineHeight: 1,
-            }}
-          >
-            {clock}
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: 15,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(255,251,245,0.4)',
-              marginTop: 10,
-            }}
-          >
-            {current ? 'Until this block ends' : 'Until you need to move'}
-          </p>
+          {current && (
+            <>
+              <p
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 72,
+                  fontWeight: 600,
+                  fontVariantNumeric: 'tabular-nums',
+                  color: '#FFFBF5',
+                  letterSpacing: '0.06em',
+                  marginTop: 28,
+                  lineHeight: 1,
+                }}
+              >
+                {clock}
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 15,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,251,245,0.4)',
+                  marginTop: 10,
+                }}
+              >
+                Until this block ends
+              </p>
+            </>
+          )}
         </motion.div>
-
-        <NextStrip current={current} next={next} />
       </div>
-    </div>
-  );
-}
-
-function NextStrip({
-  current,
-  next,
-}: {
-  current: NamSession | null;
-  next: NamSession | null;
-}) {
-  const row = next ?? current;
-  if (!row) return <div style={{ height: 16 }} />;
-  return (
-    <div
-      style={{
-        flexShrink: 0,
-        marginTop: 16,
-        padding: '22px 28px',
-        borderRadius: 28,
-        background: 'rgba(255,251,245,0.06)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: 16,
-      }}
-    >
-      <div>
-        <p
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: 13,
-            fontWeight: 600,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: '#fda4af',
-          }}
-        >
-          {next ? 'Then' : 'This block'}
-        </p>
-        <p
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 26,
-            fontWeight: 600,
-            color: '#FFFBF5',
-            marginTop: 4,
-          }}
-        >
-          {row.title}
-        </p>
-      </div>
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: 16,
-          color: 'rgba(255,251,245,0.55)',
-          textAlign: 'right',
-          flexShrink: 0,
-        }}
-      >
-        {row.start}
-        <br />
-        {row.location}
-      </p>
     </div>
   );
 }

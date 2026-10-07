@@ -50,7 +50,8 @@ export default function NamApp() {
   const wake = useCallback(() => setView('home'), []);
 
   const isAttract = view === 'attract';
-  const showDock = !isAttract;
+  const isCampus = view === 'campus';
+  const showDock = !isAttract && !isCampus;
   const darkChrome = isAttract || view === 'now' || view === 'schedule';
 
   const formatTime = (d: Date) => formatKioskTime(d);
@@ -62,6 +63,7 @@ export default function NamApp() {
         style={{
           color: darkChrome ? 'var(--surface)' : 'var(--ink)',
           transition: 'color 0.5s',
+          display: isCampus ? 'none' : undefined,
         }}
       >
         <span
@@ -104,7 +106,7 @@ export default function NamApp() {
             transition={transitions.slow}
             style={{ position: 'absolute', inset: 0 }}
           >
-            <NamAttract isAttract={isAttract} onWake={wake} onNavigate={navigate} />
+            <NamAttract isAttract={isAttract} onWake={wake} onNavigate={navigate} clock={clock} />
           </motion.div>
         )}
 

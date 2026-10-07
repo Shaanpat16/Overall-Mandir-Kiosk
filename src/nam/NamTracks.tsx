@@ -2,16 +2,20 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { appleEase } from '../motion/easing';
 import BackHome from './BackHome';
-import { DAYS, SESSIONS, TRACKS, type TrackId } from './data';
+import { DAYS, TRACKS, type TrackId } from './data';
+import { useLiveClock } from '../clock';
+import { namDayId, sessionsForDay } from './liveBoard';
 
 interface Props {
   onBack: () => void;
 }
 
 export default function NamTracks({ onBack }: Props) {
+  const clock = useLiveClock();
+  const dayId = namDayId(clock);
   const [active, setActive] = useState<Exclude<TrackId, 'all'>>('bhaio');
   const track = TRACKS.find((t) => t.id === active)!;
-  const sessions = SESSIONS.filter((s) => s.track === active || s.track === 'all');
+  const sessions = dayId ? sessionsForDay(dayId, active) : [];
 
   return (
     <div className="view-container" style={{ background: 'var(--canvas)' }}>
@@ -86,10 +90,15 @@ export default function NamTracks({ onBack }: Props) {
             marginBottom: 16,
           }}
         >
-          {track.label} day flow
+          {track.label} · today
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {sessions.length === 0 && (
+            <p className="text-body" style={{ fontSize: 18, color: 'var(--muted)' }}>
+              Today&apos;s {track.label} blocks appear here during NAAM.
+            </p>
+          )}
           {sessions.map((s) => {
             const day = DAYS.find((d) => d.id === s.dayId);
             return (

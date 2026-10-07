@@ -11,7 +11,6 @@ interface Props {
 
 const TABS = [
   { id: 'need', label: 'Info' },
-  { id: 'menu', label: 'Menu' },
   { id: 'jump', label: 'Maps' },
 ] as const;
 
@@ -22,14 +21,6 @@ const INFO_CARDS = [
     v: 'schedule' as const,
     img: '/images/nam/nc18-k1-welcome.jpg',
     pos: '50% 18%',
-  },
-  {
-    k: 'Menu',
-    d: 'Prasadam, day by day',
-    v: 'info' as const,
-    img: '/images/nam/nc18-k1-interaction.jpg',
-    pos: '50% 35%',
-    tabTo: 'menu' as const,
   },
   {
     k: 'Maps',
@@ -63,11 +54,7 @@ export default function NamInfo({ onBack, onNavigate }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: appleEase }}
         >
-          {tab === 'menu' ? (
-            <>
-              Kitchen <em>menu</em>
-            </>
-          ) : tab === 'jump' ? (
+          {tab === 'jump' ? (
             <>
               Campus <em>maps</em>
             </>
@@ -106,10 +93,7 @@ export default function NamInfo({ onBack, onNavigate }: Props) {
             {INFO_CARDS.map((card) => (
               <motion.button
                 key={card.k}
-                onClick={() => {
-                  if (card.tabTo) setTab(card.tabTo);
-                  else onNavigate(card.v);
-                }}
+                onClick={() => onNavigate(card.v)}
                 whileTap={{ scale: 0.985 }}
                 style={{
                   flex: 1,
@@ -183,7 +167,7 @@ export default function NamInfo({ onBack, onNavigate }: Props) {
           </div>
         )}
 
-        {tab === 'menu' && (
+        {false && (
           <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
             <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
               {MENU_DAYS.map((d) => {

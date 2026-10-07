@@ -2,8 +2,10 @@ import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { appleEase } from '../motion/easing';
 import BackHome from './BackHome';
-import { DAYS, SESSIONS, TRACKS, type NamSession, type TrackId } from './data';
+import { DAYS, TRACKS, type NamSession, type TrackId } from './data';
 import { useAgenda } from './useAgenda';
+import { useLiveClock } from '../clock';
+import { isLive, namDayId, sessionsForDay } from './liveBoard';
 
 interface Props {
   onBack: () => void;
@@ -26,22 +28,19 @@ const DAY_HERO: Record<string, string> = {
 };
 
 export default function NamSchedule({ onBack }: Props) {
-  const [dayId, setDayId] = useState<(typeof DAYS)[number]['id']>('thu');
+  const clock = useLiveClock();
+  const dayId = namDayId(clock);
   const [track, setTrack] = useState<TrackId>('all');
   const [starredOnly, setStarredOnly] = useState(false);
   const [openId, setOpenId] = useState<string | null>(null);
   const agenda = useAgenda();
 
-  const day = DAYS.find((d) => d.id === dayId)!;
+  const day = DAYS.find((d) => d.id === dayId);
 
   const list = useMemo(() => {
-    return SESSIONS.filter((s) => {
-      if (s.dayId !== dayId) return false;
-      if (track !== 'all' && s.track !== 'all' && s.track !== track) return false;
-      if (starredOnly && !agenda.has(s.id)) return false;
-      return true;
-    });
-  }, [dayId, track, starredOnly, agenda.ids, agenda]);
+    if (!dayId) return [];
+    return sessionsForDay(dayId, track).filter((s) => !starredOnly || agenda.has(s.id));
+  }, [dayId, track, starredOnly, agenda]);
 
   const groups = useMemo(() => {
     const rows: NamSession[][] = [];
@@ -72,34 +71,7 @@ export default function NamSchedule({ onBack }: Props) {
           Day <em style={{ fontStyle: 'italic', fontWeight: 400 }}>board</em>
         </motion.h1>
 
-        <div style={{ display: 'flex', gap: 8, marginTop: 20, marginBottom: 16 }}>
-          {DAYS.map((d) => {
-            const on = d.id === dayId;
-            return (
-              <motion.button
-                key={d.id}
-                onClick={() => setDayId(d.id)}
-                whileTap={{ scale: 0.96 }}
-                style={{
-                  flex: 1,
-                  border: 'none',
-                  cursor: 'pointer',
-                  borderRadius: 18,
-                  padding: '16px 6px 18px',
-                  background: on ? '#F7F0E6' : 'rgba(247,240,230,0.08)',
-                  color: on ? '#10151F' : '#F7F0E6',
-                }}
-              >
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: 16, fontWeight: 700 }}>{d.short}</p>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: 13, opacity: 0.7, marginTop: 4 }}>
-                  {d.date.replace('Oct ', '')}
-                </p>
-              </motion.button>
-            );
-          })}
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', margin: '20px 0 16px' }}>
           <p
             style={{
               fontFamily: 'var(--font-display)',
@@ -108,7 +80,7 @@ export default function NamSchedule({ onBack }: Props) {
               color: '#F7F0E6',
             }}
           >
-            {day.label}
+            {day?.label ?? 'Today'}
           </p>
           <p
             style={{
@@ -118,7 +90,7 @@ export default function NamSchedule({ onBack }: Props) {
               color: 'rgba(247,240,230,0.55)',
             }}
           >
-            {DAY_HERO[day.id] ?? day.theme}
+            {day ? (DAY_HERO[day.id] ?? day.theme) : 'Outside NAAM days'}
           </p>
         </div>
 
@@ -134,7 +106,7 @@ export default function NamSchedule({ onBack }: Props) {
           />
         </div>
 
-        {SESSIONS.some((s) => s.dayId === dayId && s.track !== 'all') && (
+        {dayId && sessionsForDay(dayId).some((s) => s.track !== 'all') && (
         <div
           style={{
             display: 'grid',
@@ -158,7 +130,7 @@ export default function NamSchedule({ onBack }: Props) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingBottom: 24 }}>
           {groups.length === 0 && (
             <p style={{ fontFamily: 'var(--font-ui)', fontSize: 18, color: 'rgba(247,240,230,0.55)', padding: '20px 0' }}>
-              Nothing in this filter.
+              {dayId ? 'Nothing in this filter.' : 'The day board opens with NAAM on Thursday, October 8.'}
             </p>
           )}
           {groups.map((group) => (
@@ -168,6 +140,7 @@ export default function NamSchedule({ onBack }: Props) {
               openId={openId}
               setOpenId={setOpenId}
               agenda={agenda}
+              liveId={group.find((s) => isLive(s, clock))?.id ?? null}
             />
           ))}
         </div>
@@ -181,11 +154,13 @@ function BoardRow({
   openId,
   setOpenId,
   agenda,
+  liveId,
 }: {
   group: NamSession[];
   openId: string | null;
   setOpenId: (id: string | null) => void;
   agenda: ReturnType<typeof useAgenda>;
+  liveId: string | null;
 }) {
   const combined = group.length === 1 && group[0].track === 'all';
   const bhaio = group.find((s) => s.track === 'bhaio' || s.track === 'all');
@@ -201,9 +176,9 @@ function BoardRow({
           gap: 8,
         }}
       >
-        {bhaio ? <LaneCard s={bhaio} openId={openId} setOpenId={setOpenId} agenda={agenda} /> : <div />}
+        {bhaio ? <LaneCard s={bhaio} openId={openId} setOpenId={setOpenId} agenda={agenda} live={liveId === bhaio.id} /> : <div />}
         {behno && behno.id !== bhaio?.id ? (
-          <LaneCard s={behno} openId={openId} setOpenId={setOpenId} agenda={agenda} />
+          <LaneCard s={behno} openId={openId} setOpenId={setOpenId} agenda={agenda} live={liveId === behno.id} />
         ) : (
           <div />
         )}
@@ -211,7 +186,7 @@ function BoardRow({
     );
   }
 
-  return <LaneCard s={group[0]} openId={openId} setOpenId={setOpenId} agenda={agenda} wide />;
+  return <LaneCard s={group[0]} openId={openId} setOpenId={setOpenId} agenda={agenda} wide live={liveId === group[0].id} />;
 }
 
 function LaneCard({
@@ -220,12 +195,14 @@ function LaneCard({
   setOpenId,
   agenda,
   wide,
+  live,
 }: {
   s: NamSession;
   openId: string | null;
   setOpenId: (id: string | null) => void;
   agenda: ReturnType<typeof useAgenda>;
   wide?: boolean;
+  live?: boolean;
 }) {
   const open = openId === s.id;
   const starred = agenda.has(s.id);
@@ -235,11 +212,12 @@ function LaneCard({
   return (
     <div
       style={{
-        background: compact ? 'rgba(247,240,230,0.04)' : 'rgba(247,240,230,0.08)',
+        background: live ? 'rgba(155,27,48,0.28)' : compact ? 'rgba(247,240,230,0.04)' : 'rgba(247,240,230,0.08)',
         borderRadius: 20,
         overflow: 'hidden',
         gridColumn: wide ? '1 / -1' : undefined,
-        borderLeft: `4px solid ${kind.color}`,
+        borderLeft: `4px solid ${live ? '#fda4af' : kind.color}`,
+        boxShadow: live ? 'inset 0 0 0 1px rgba(253,164,175,0.45)' : undefined,
       }}
     >
       <div style={{ display: 'flex', gap: 10, padding: compact ? '14px 16px' : '18px 16px 18px 18px' }}>

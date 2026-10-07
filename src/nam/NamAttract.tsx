@@ -2,11 +2,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { transitions, durations, appleEase } from '../motion/easing';
 import { DAYS, HOME_TILES, NAM, type NamView } from './data';
 import PhotoCard from '../components/PhotoCard';
+import { namDayId, attractNotice } from './liveBoard';
 
 interface NamAttractProps {
   isAttract: boolean;
   onWake: () => void;
   onNavigate: (view: NamView) => void;
+  clock: Date;
 }
 
 const HERO_H = 620;
@@ -19,7 +21,10 @@ const ORBS = [
   { size: 180, x: '78%', y: '65%', dur: 16, delay: -4, color: 'rgba(255,200,120,0.05)' },
 ];
 
-export default function NamAttract({ isAttract, onWake, onNavigate }: NamAttractProps) {
+export default function NamAttract({ isAttract, onWake, onNavigate, clock }: NamAttractProps) {
+  const todayId = namDayId(clock);
+  const notice = isAttract ? attractNotice(clock) : null;
+
   return (
     <div className="view-container" style={{ background: 'var(--canvas)' }}>
       <div
@@ -194,8 +199,8 @@ export default function NamAttract({ isAttract, onWake, onNavigate }: NamAttract
                     style={{
                       padding: '14px 16px',
                       borderRadius: 16,
-                      background: 'rgba(255,251,245,0.14)',
-                      border: '1px solid rgba(255,251,245,0.16)',
+                      background: d.id === todayId ? 'rgba(155,27,48,0.55)' : 'rgba(255,251,245,0.14)',
+                      border: d.id === todayId ? '1px solid rgba(253,164,175,0.7)' : '1px solid rgba(255,251,245,0.16)',
                       minWidth: 118,
                     }}
                   >
@@ -226,10 +231,73 @@ export default function NamAttract({ isAttract, onWake, onNavigate }: NamAttract
               </motion.div>
             </div>
 
-            <motion.div
-              style={{
-                marginTop: 'auto',
-                marginBottom: 200,
+              {notice && (
+                <motion.div
+                  initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.55, ease: appleEase, delay: 0.4 }}
+                  style={{
+                    width: '100%',
+                    maxWidth: 860,
+                    marginTop: 40,
+                    textAlign: 'left',
+                    background: 'rgba(17,24,39,0.78)',
+                    border: '1px solid rgba(155,27,48,0.55)',
+                    boxShadow: '0 18px 60px rgba(0,0,0,0.35)',
+                    borderRadius: 28,
+                    padding: '28px 32px',
+                    backdropFilter: 'blur(18px)',
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNavigate('now');
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-ui)',
+                      fontSize: 14,
+                      fontWeight: 700,
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: '#fda4af',
+                    }}
+                  >
+                    {notice.kind === 'now' ? 'Happening now' : `Starting in ${notice.wait} min`}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 36,
+                      fontWeight: 600,
+                      color: 'var(--surface)',
+                      lineHeight: 1.15,
+                      marginTop: 8,
+                    }}
+                  >
+                    {notice.split
+                      ? `${notice.bhaio?.title ?? notice.session.title}`
+                      : notice.session.title}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-ui)',
+                      fontSize: 18,
+                      color: 'rgba(255,251,245,0.78)',
+                      marginTop: 8,
+                    }}
+                  >
+                    {notice.split
+                      ? `Bhaio · ${notice.bhaio?.location}   Behno · ${notice.behno?.location}`
+                      : `${notice.session.start} – ${notice.session.end} · ${notice.session.location}`}
+                  </p>
+                </motion.div>
+              )}
+
+              <motion.div
+                style={{
+                  marginTop: 'auto',
+                  marginBottom: 200,
                 alignSelf: 'center',
                 padding: '20px 52px',
                 borderRadius: 999,
@@ -416,7 +484,7 @@ export default function NamAttract({ isAttract, onWake, onNavigate }: NamAttract
                       title={tile.label}
                       subtitle={
                         tile.id === 'info'
-                          ? 'Schedule · Menu · Maps'
+                          ? 'Schedule · Maps'
                           : tile.id === 'smruti'
                             ? '2000 – 2026'
                             : 'Guru · Shastra · Anubhav'
