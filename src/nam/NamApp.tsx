@@ -11,8 +11,7 @@ import NamTracks from './NamTracks';
 import NamCampus from './NamCampus';
 import NamGuide from './NamGuide';
 import NamInfo from './NamInfo';
-import NamSmruti from './NamSmruti';
-import NamSachu from './NamSachu';
+import NamMenu from './NamMenu';
 import NamNow from './NamNow';
 import { formatKioskTime, useLiveClock } from '../clock';
 
@@ -110,6 +109,19 @@ export default function NamApp() {
           </motion.div>
         )}
 
+        {view === 'menu' && (
+          <motion.div
+            key="nam-menu"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
+            transition={{ duration: 0.45, ease: appleEase }}
+            style={{ position: 'absolute', inset: 0 }}
+          >
+            <NamMenu onBack={goHome} />
+          </motion.div>
+        )}
+
         {view === 'info' && (
           <motion.div
             key="nam-info"
@@ -172,32 +184,6 @@ export default function NamApp() {
             style={{ position: 'absolute', inset: 0 }}
           >
             <NamGuide onBack={() => setView('info')} />
-          </motion.div>
-        )}
-
-        {view === 'smruti' && (
-          <motion.div
-            key="nam-smruti"
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
-            transition={{ duration: 0.45, ease: appleEase }}
-            style={{ position: 'absolute', inset: 0 }}
-          >
-            <NamSmruti onBack={goHome} />
-          </motion.div>
-        )}
-
-        {view === 'sachu' && (
-          <motion.div
-            key="nam-sachu"
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.12, filter: 'blur(6px)' }}
-            transition={{ duration: 0.45, ease: appleEase }}
-            style={{ position: 'absolute', inset: 0 }}
-          >
-            <NamSachu onBack={goHome} />
           </motion.div>
         )}
 

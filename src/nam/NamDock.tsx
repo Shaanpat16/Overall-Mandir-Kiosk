@@ -11,8 +11,7 @@ const ITEMS: { id: NamView; label: string }[] = [
   { id: 'home', label: 'Home' },
   { id: 'now', label: 'Now' },
   { id: 'info', label: 'Info' },
-  { id: 'smruti', label: 'Smruti' },
-  { id: 'sachu', label: 'Sachu' },
+  { id: 'menu', label: 'Menu' },
 ];
 
 export function namDockActive(view: NamView): NamView {

@@ -5,12 +5,11 @@ export type NamView =
   | 'attract'
   | 'home'
   | 'info'
+  | 'menu'
   | 'schedule'
   | 'tracks'
   | 'campus'
   | 'guide'
-  | 'smruti'
-  | 'sachu'
   | 'now';
 
 export const ROOMS = [
@@ -87,18 +86,8 @@ export const ANNOUNCEMENTS = [
   },
 ];
 
-export const MEALS = [
-  { day: 'Wed Oct 7', items: ['Team hangouts dinner: burgers, fries, milkshake'] },
-  { day: 'Thu Oct 8', items: ['Breakfast (arrival)', 'Lunch: cold sandwiches', 'Dinner: pasta 7:15–9:00 PM'] },
-  { day: 'Fri Oct 9', items: ['Breakfast ~8:00 AM', 'Lunch 12:30 PM', 'Snack: mini puff', 'Dinner 7:15 PM'] },
-  { day: 'Sat Oct 10', items: ['Breakfast ~8:00 AM', 'Lunch 12:30 PM', 'Snack: chana chor garam', 'Dinner 7:00 PM'] },
-  { day: 'Sun Oct 11', items: ['Breakfast: bataka pauva / French toast', 'Lunch: veggie wraps to-go'] },
-] as const;
-
 export const HOME_TILES = [
   { id: 'info', label: 'Common Info', image: '/images/nam/nc18-k1-welcome.jpg', view: 'info' as const },
-  { id: 'smruti', label: 'NC Smruti', image: '/images/nam/nc18-bal-01.jpg', view: 'smruti' as const },
-  { id: 'sachu', label: 'Sachu Chhe', image: '/images/nam/nc18-k1-interaction.jpg', view: 'sachu' as const },
 ] as const;
 
 export const AGENDA_KEY = 'naam-2026-agenda';
@@ -111,16 +100,19 @@ export const MENU_DAYS = [
     short: 'Wed',
     label: 'Wednesday',
     date: 'Oct 7',
+    iso: '2026-10-07',
     kicker: 'Team hangouts',
     tote: false,
     meals: [
       {
         slot: 'dinner' as const,
         name: 'Dinner',
-        window: 'Evening',
+        window: '6:00–9:30 PM',
+        start: '6:00 PM',
+        end: '9:30 PM',
         place: 'Hangouts',
-        headline: 'Burgers, fries, milkshake',
-        items: ['Burgers', 'Fries', 'Milkshake'],
+        headline: 'Black bean burgers',
+        items: ['Black bean burgers', 'Fries', 'Secret sauce', 'Jalapeño coins', 'Milkshake'],
       },
     ],
   },
@@ -129,29 +121,46 @@ export const MENU_DAYS = [
     short: 'Thu',
     label: 'Thursday',
     date: 'Oct 8',
+    iso: '2026-10-08',
     kicker: 'Arrival day',
     tote: true,
     meals: [
       {
         slot: 'breakfast' as const,
         name: 'Breakfast',
-        window: 'Arrival',
+        window: '8:00–10:00 AM',
+        start: '8:00 AM',
+        end: '10:00 AM',
         place: 'Dining Hall',
-        headline: 'Fruit, muffins, chai',
-        items: ['Whole apples & bananas', 'Muffins', 'Milk & cereal', 'Indian chai', 'Cold coffee & black hot coffee'],
+        headline: 'Fruit, muffins & cereal',
+        items: ['Whole apples & bananas', 'Muffins', 'Milk & cereal', 'Black hot coffee'],
       },
       {
         slot: 'lunch' as const,
         name: 'Lunch',
-        window: 'Grab-and-go',
+        window: '12:00–2:00 PM',
+        start: '12:00 PM',
+        end: '2:00 PM',
         place: 'Dining Hall',
         headline: 'Cold sandwiches',
-        items: ['Cold sandwiches', 'Potato chips', 'Chocolate chip bars', 'Gatorade & water'],
+        items: ['6" cold sandwiches', 'Deep River jalapeño chips', 'Variety CLIF bars', 'Gatorade', 'Water'],
+      },
+      {
+        slot: 'snack' as const,
+        name: 'Welcome snack',
+        window: '5:00–7:00 PM',
+        start: '5:00 PM',
+        end: '7:00 PM',
+        place: 'Lobby',
+        headline: 'Blueberry lemonade',
+        items: ['Welcome drink · blueberry lemonade', 'Skinny Pop'],
       },
       {
         slot: 'dinner' as const,
         name: 'Dinner',
-        window: '7:15–9:00 PM',
+        window: '7:30–9:00 PM',
+        start: '7:30 PM',
+        end: '9:00 PM',
         place: 'Dining Hall',
         headline: 'Pasta night',
         items: [
@@ -159,7 +168,7 @@ export const MENU_DAYS = [
           'Fresh breadsticks',
           'Salad with dressing',
           'Soda (regular & zero sugar)',
-          'Ice cream with brownies',
+          'Cheesecake cups',
           'Fresh baked cookies (vegan)',
         ],
       },
@@ -170,51 +179,64 @@ export const MENU_DAYS = [
     short: 'Fri',
     label: 'Friday',
     date: 'Oct 9',
+    iso: '2026-10-09',
     kicker: 'Keynotes 1 & 2',
     tote: true,
     meals: [
       {
         slot: 'breakfast' as const,
         name: 'Breakfast',
-        window: 'Stations',
+        window: '7:45–9:00 AM',
+        start: '7:45 AM',
+        end: '9:00 AM',
         place: 'Dining Hall',
         headline: 'Bagels & moong',
         items: [
           'Sliced apples, banana, yogurt parfait',
-          'Bagels, cream cheese, butter, jam, peanut butter, dry nasto',
-          'Moong with dahi',
+          'Bagels with sun-dried tomato, jalapeño & plain cream cheese',
+          'Moong with dahi & Ratlami sev',
           'Milk, Indian chai, black coffee & creamer',
         ],
       },
       {
         slot: 'lunch' as const,
         name: 'Lunch',
-        window: '12:30 PM',
+        window: '12:30–2:00 PM',
+        start: '12:30 PM',
+        end: '2:00 PM',
         place: 'Dining Hall',
         headline: 'Falafel bowls',
-        items: ['Mint lemonade', 'Falafel bowl', 'Baklava', 'Hummus & pita'],
+        items: [
+          'Strawberry mint lemonade',
+          'Falafel bowl · pita, bhajiya, salad, red chutney / tahini',
+          'Baklava, hummus, pita chips',
+        ],
       },
       {
         slot: 'snack' as const,
         name: 'Snack',
-        window: '~4:15 PM',
+        window: '4:30–5:00 PM',
+        start: '4:30 PM',
+        end: '5:00 PM',
         place: 'Campus',
-        headline: 'Mini puff',
-        items: ['Cold coffee, hot coffee, masala chai', 'Mini puff & ketchup'],
+        headline: 'Aloo puff',
+        items: ['Cold coffee, hot coffee, masala chai', 'Aloo puff & ketchup'],
       },
       {
         slot: 'dinner' as const,
         name: 'Dinner',
-        window: '7:15–9:00 PM',
+        window: '7:30–9:00 PM',
+        start: '7:30 PM',
+        end: '9:00 PM',
         place: 'Dining Hall',
         headline: 'Taco night',
         items: [
-          'Piña colada',
+          'Mango nada',
           'Paneer & cauliflower tacos',
           'Poblano enchiladas, Mexican rice',
-          'Salsa, chips & guacamole',
-          'Street corn (masala corn)',
-          'Tiramisu',
+          'Salsa & guacamole with chips',
+          'Elote cups',
+          'Tiramisu cups',
           'Fresh baked cookies (vegan)',
         ],
       },
@@ -225,18 +247,21 @@ export const MENU_DAYS = [
     short: 'Sat',
     label: 'Saturday',
     date: 'Oct 10',
+    iso: '2026-10-10',
     kicker: 'Keynotes 3 & 4',
     tote: true,
     meals: [
       {
         slot: 'breakfast' as const,
         name: 'Breakfast',
-        window: 'Stations',
+        window: '7:45–9:00 AM',
+        start: '7:45 AM',
+        end: '9:00 AM',
         place: 'Dining Hall',
         headline: 'Croissants & tofu scramble',
         items: [
           'Sliced apples, banana, yogurt parfait',
-          'Croissants, butter, jam, dry nasto',
+          'Croissants with butter, jam, Nutella',
           'Scrambled tofu',
           'Milk, Indian chai, black coffee & creamer',
         ],
@@ -244,30 +269,36 @@ export const MENU_DAYS = [
       {
         slot: 'lunch' as const,
         name: 'Lunch',
-        window: '12:30 PM',
+        window: '12:30–2:00 PM',
+        start: '12:30 PM',
+        end: '2:00 PM',
         place: 'Dining Hall',
         headline: 'Indo-Chinese',
-        items: ['Manchow soup', 'Spring rolls', 'Chinese noodles', 'Manchurian & chili paneer'],
+        items: ['Refresher drinks', 'Manchow soup', 'Spring rolls with duck sauce', 'Chinese noodles', 'Manchurian & chili paneer'],
       },
       {
         slot: 'snack' as const,
         name: 'Snack',
-        window: '~4:30 PM',
+        window: '4:30–5:00 PM',
+        start: '4:30 PM',
+        end: '5:00 PM',
         place: 'Campus',
-        headline: 'Chana chor garam',
-        items: ['Cold coffee, hot coffee, masala chai', 'Chana chor garam (tomato, lime, cilantro)'],
+        headline: 'Chana ni daal garam',
+        items: ['Cold coffee, hot coffee, masala chai', 'Chana ni daal garam · tomato, lime, cilantro'],
       },
       {
         slot: 'dinner' as const,
         name: 'Dinner',
-        window: '7:00–9:00 PM',
+        window: '7:30–9:00 PM',
+        start: '7:30 PM',
+        end: '9:00 PM',
         place: 'Dining Hall',
         headline: 'North Indian thali',
         items: [
           'Mango lassi',
           'Paratha, paneer tikka, mushroom masala',
-          'Jeera rice, dal fry, ras malai, roasted papad',
-          'Samosa with green & sweet chutney',
+          'Jeera rice, dal fry, ras malai cups, masala papad',
+          'Amul jalapeño samosa with green & sweet chutney',
           'Punjabi pickle',
           'Gulab jamun cake',
           'Fresh baked cookies (vegan)',
@@ -280,13 +311,16 @@ export const MENU_DAYS = [
     short: 'Sun',
     label: 'Sunday',
     date: 'Oct 11',
+    iso: '2026-10-11',
     kicker: 'Departures',
     tote: false,
     meals: [
       {
         slot: 'breakfast' as const,
         name: 'Breakfast',
-        window: 'Stations',
+        window: '6:45–8:30 AM',
+        start: '6:45 AM',
+        end: '8:30 AM',
         place: 'Dining Hall',
         headline: 'French toast & pauva',
         items: [
@@ -299,10 +333,12 @@ export const MENU_DAYS = [
       {
         slot: 'lunch' as const,
         name: 'Lunch',
-        window: 'To-go',
+        window: '12:30–2:00 PM',
+        start: '12:30 PM',
+        end: '2:00 PM',
         place: 'Departures',
-        headline: 'Veggie wraps',
-        items: ['Cold veggie wraps', 'Potato chips', 'Chocolate chip bars', 'Gatorade & water'],
+        headline: 'Veggie wraps to-go',
+        items: ['Cold veggie wraps', 'Potato chips', 'Chocolate chip bars', 'Gatorade', 'Water'],
       },
     ],
   },
@@ -312,72 +348,6 @@ export const MENU_TOTE = ['Oreos / Chips Ahoy', 'Popcorners', 'Pirate’s Booty'
 
 /** @deprecated use MENU_DAYS — kept so hot-reload never crashes mid-session */
 export const MENU = MENU_DAYS;
-
-export const NC_HISTORY = [
-  {
-    id: 'nc-2000',
-    year: '2000',
-    title: 'National Convention era',
-    place: 'North America',
-    group: 'All ages',
-    theme: 'A new century of satsang',
-    image: '/images/nam/edison-aerial.jpg',
-    blurb:
-      'From the first North American convention in Chicago (1984), NCs became the summer gathering where youth and karyakars met their guru’s wish in one campus. The 2000s locked in the pattern NAM still uses: age-group shibirs, classroom, stage, and seva.',
-    highlight: false,
-  },
-  {
-    id: 'nc-2007',
-    year: '2007',
-    title: 'National Kishore-Kishori Convention',
-    place: 'Jacksonville, FL',
-    group: 'Kishore · Kishori',
-    theme: 'Teen shibir with Pramukh Swami Maharaj',
-    image: '/images/nam/nc18-k1-welcome-08.jpg',
-    blurb:
-      '5–8 July 2007. Teenagers from across USA–Canada gathered in Jacksonville for a four-day Kishore-Kishori convention — classroom, evening sabha, and darshan in the presence of Pramukh Swami Maharaj. One of the defining mid-2000s NCs for this generation of admins.',
-    source: 'BAPS News · Jacksonville 2007',
-    highlight: true,
-  },
-  {
-    id: 'nc-2013',
-    year: '2013',
-    title: 'NAYC — Bal-Balika',
-    place: 'Atlanta, GA',
-    group: 'Bal · Balika (ages 8–13)',
-    theme: 'Ekantik: My Life with Bapa',
-    image: '/images/nam/nc18-bal-01.jpg',
-    blurb:
-      '7–10 July 2013 at BAPS Shri Swaminarayan Mandir, Atlanta. Nearly 3,000 children explored dharma, gnan, vairagya, and bhakti through classroom, stage, and a bond with Pramukh Swami Maharaj. Part of an 11-day campus that hosted over 8,000 youth in three conventions.',
-    source: 'BAPS News · Atlanta Bal-Balika 2013',
-    highlight: true,
-  },
-  {
-    id: 'nc-2018',
-    year: '2018',
-    title: 'NAYC — Kishore-Kishori I',
-    place: 'Atlanta, GA',
-    group: 'Kishore · Kishori (high school)',
-    theme: 'Moksha — ultimate liberation',
-    image: '/images/nam/nc18-k1-welcome.jpg',
-    blurb:
-      '4–7 July 2018. Over 2,800 high-school delegates and 800 volunteers. Theme Moksha, with swamis including Pujya Ishwarcharandas Swami and Pujya Anandswarupdas Swami. Small groups made the teaching practical. Full NAYC18: 1–10 July, 10,000+ youth and volunteers across three conventions.',
-    source: 'BAPS News · Atlanta Kishore-Kishori I 2018',
-    highlight: true,
-  },
-  {
-    id: 'nc-2026',
-    year: '2026',
-    title: 'NAAM — North American Activities Meeting',
-    place: 'Edison, NJ',
-    group: 'Activities karyakars',
-    theme: 'Goshthi, breakouts, combined keynotes',
-    image: '/images/nam/edison-aerial.jpg',
-    blurb:
-      '8–11 October 2026 at BAPS Shri Swaminarayan Mandir, Edison. Official block schedule: arrival Thursday evening, four combined i/eBKY keynotes, bhaio/behno stagger, Sunday Akshardham Robbinsville or airport drop-off.',
-    highlight: true,
-  },
-] as const;
 
 export const SACHU = [
   {
@@ -440,10 +410,10 @@ export const QUIZ = [
   },
   {
     id: 'q5',
-    prompt: '“Sachu chhe” in this kiosk points to how many proofs?',
-    choices: ['One speech', 'Three — guru, shastra, anubhav', 'A quiz score'],
+    prompt: 'Edison mandir stands on which street?',
+    choices: ['Oak Tree Road', 'Woodbridge Avenue', 'Route 1'],
     answer: 1,
-    why: 'Tap Sachu Chhe: living guru, written shastra, changed lives.',
+    why: 'BAPS Shri Swaminarayan Mandir, 2500 Woodbridge Avenue, Edison, NJ.',
   },
   {
     id: 'q6',

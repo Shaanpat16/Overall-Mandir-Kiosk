@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { appleEase } from '../motion/easing';
 import BackHome from './BackHome';
-import { ANNOUNCEMENTS, MEALS, NAM } from './data';
+import { ANNOUNCEMENTS, NAM } from './data';
 
 interface Props {
   onBack: () => void;
@@ -103,41 +103,6 @@ export default function NamGuide({ onBack }: Props) {
               </div>
             );
           })}
-        </div>
-
-        <p
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: 13,
-            fontWeight: 600,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-            marginBottom: 16,
-          }}
-        >
-          Meals
-        </p>
-        <div
-          style={{
-            background: 'var(--surface)',
-            borderRadius: 'var(--card-radius)',
-            padding: 28,
-            marginBottom: 24,
-          }}
-        >
-          {MEALS.map((m, i) => (
-            <div key={m.day} style={{ paddingBottom: i < MEALS.length - 1 ? 18 : 0, marginBottom: i < MEALS.length - 1 ? 18 : 0, borderBottom: i < MEALS.length - 1 ? '1px solid rgba(17,24,39,0.06)' : 'none' }}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 600, color: 'var(--ink)' }}>
-                {m.day}
-              </p>
-              {m.items.map((item) => (
-                <p key={item} style={{ fontFamily: 'var(--font-ui)', fontSize: 16, color: 'var(--muted)', marginTop: 4 }}>
-                  {item}
-                </p>
-              ))}
-            </div>
-          ))}
         </div>
 
         <div

@@ -462,8 +462,8 @@ export default function NamAttract({ isAttract, onWake, onNavigate, clock }: Nam
                 style={{
                   flex: 1,
                   display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gridTemplateRows: '1fr 1fr',
+                  gridTemplateColumns: '1fr',
+                  gridTemplateRows: '1fr',
                   gap: 16,
                   minHeight: 0,
                 }}
@@ -474,21 +474,12 @@ export default function NamAttract({ isAttract, onWake, onNavigate, clock }: Nam
                     initial={{ opacity: 0, y: 40, scale: 0.92 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ ...spring, delay: 0.16 + i * 0.08 }}
-                    style={{
-                      minHeight: 0,
-                      gridColumn: tile.id === 'info' ? '1 / -1' : undefined,
-                    }}
+                    style={{ minHeight: 0 }}
                   >
                     <PhotoCard
                       image={tile.image}
                       title={tile.label}
-                      subtitle={
-                        tile.id === 'info'
-                          ? 'Schedule · Maps'
-                          : tile.id === 'smruti'
-                            ? '2000 – 2026'
-                            : 'Guru · Shastra · Anubhav'
-                      }
+                      subtitle="Schedule · Maps"
                       onClick={() => onNavigate(tile.view)}
                       style={{ width: '100%', height: '100%' }}
                     />

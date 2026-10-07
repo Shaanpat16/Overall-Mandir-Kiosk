@@ -13,4 +13,4 @@ export const transitions = {
   slow: { duration: durations.slow, ease: appleEase },
 } as const;
 
-export const IDLE_TIMEOUT_MS = 45_000;
+export const IDLE_TIMEOUT_MS = 60_000;
