@@ -8,7 +8,6 @@ export function formatKioskTime(d: Date) {
     timeZone: KIOSK_TZ,
     hour: 'numeric',
     minute: '2-digit',
-    second: '2-digit',
     hour12: true,
   });
 }
