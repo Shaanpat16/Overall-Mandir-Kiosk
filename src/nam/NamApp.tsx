@@ -118,7 +118,7 @@ export default function NamApp() {
             transition={{ duration: 0.45, ease: appleEase }}
             style={{ position: 'absolute', inset: 0 }}
           >
-            <NamMenu onBack={goHome} />
+            <NamMenu onBack={goHome} clock={clock} />
           </motion.div>
         )}
 

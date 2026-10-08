@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "nam": "vite --open /nam.html --port 5177",
+    "santo": "vite --open /santo.html --port 5178",
     "build": "tsc -b && vite build && node scripts/maybe-nam-index.mjs",
     "build:nam": "tsc -b && vite build && cp dist/nam.html dist/index.html",
+    "build:santo": "tsc -b && vite build && cp dist/santo.html dist/index.html",
     "start": "node server.js",
     "lint": "oxlint",
     "preview": "vite preview"

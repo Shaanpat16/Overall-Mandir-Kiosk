@@ -12,6 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(root, 'index.html'),
         nam: resolve(root, 'nam.html'),
+        santo: resolve(root, 'santo.html'),
       },
     },
   },
