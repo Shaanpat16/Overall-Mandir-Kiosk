@@ -17,7 +17,7 @@ const TABS = [
 const INFO_CARDS = [
   {
     k: 'Schedule',
-    d: 'Four days · Bhaio / Behno lanes',
+    d: 'Four days · Bhaiyo / Behno lanes',
     v: 'schedule' as const,
     img: '/images/nam/nc18-k1-welcome.jpg',
     pos: '50% 18%',

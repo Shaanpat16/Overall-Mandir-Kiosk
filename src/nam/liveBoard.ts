@@ -35,7 +35,7 @@ export function minutesUntil(s: NamSession, now: Date) {
   return parseClockToMinutes(s.start) - wall.minutes;
 }
 
-export function liveSession(now: Date, lane: Exclude<TrackId, 'all'> = 'bhaio') {
+export function liveSession(now: Date, lane: Exclude<TrackId, 'all'> = 'bhaiyo') {
   const dayId = namDayId(now);
   if (!dayId) return { dayId: null, current: null as NamSession | null, soon: null as NamSession | null };
   const list = sessionsForDay(dayId, lane);
@@ -49,17 +49,17 @@ export function liveSession(now: Date, lane: Exclude<TrackId, 'all'> = 'bhaio') 
 }
 
 export function attractNotice(now: Date) {
-  const bhaio = liveSession(now, 'bhaio');
+  const bhaiyo = liveSession(now, 'bhaiyo');
   const behno = liveSession(now, 'behno');
-  const current = bhaio.current ?? behno.current;
-  const soon = bhaio.soon ?? behno.soon;
+  const current = bhaiyo.current ?? behno.current;
+  const soon = bhaiyo.soon ?? behno.soon;
   if (current) {
     return {
       kind: 'now' as const,
       session: current,
       wait: 0,
-      split: Boolean(bhaio.current && behno.current && bhaio.current.id !== behno.current.id),
-      bhaio: bhaio.current,
+      split: Boolean(bhaiyo.current && behno.current && bhaiyo.current.id !== behno.current.id),
+      bhaiyo: bhaiyo.current,
       behno: behno.current,
     };
   }
@@ -68,8 +68,8 @@ export function attractNotice(now: Date) {
       kind: 'soon' as const,
       session: soon,
       wait: minutesUntil(soon, now) ?? 0,
-      split: Boolean(bhaio.soon && behno.soon && bhaio.soon.id !== behno.soon.id),
-      bhaio: bhaio.soon,
+      split: Boolean(bhaiyo.soon && behno.soon && bhaiyo.soon.id !== behno.soon.id),
+      bhaiyo: bhaiyo.soon,
       behno: behno.soon,
     };
   }

@@ -17,7 +17,7 @@ function pad(n: number) {
 
 export default function NamNow({ onBack }: Props) {
   const real = useLiveClock();
-  const [lane, setLane] = useState<Exclude<TrackId, 'all'>>('bhaio');
+  const [lane, setLane] = useState<Exclude<TrackId, 'all'>>('bhaiyo');
   const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
 
   const wall = nyWall(real);
@@ -63,7 +63,7 @@ export default function NamNow({ onBack }: Props) {
         </div>
 
         <div style={{ display: 'flex', gap: 10, margin: '20px 0 24px' }}>
-          {(['bhaio', 'behno'] as const).map((id) => (
+          {(['bhaiyo', 'behno'] as const).map((id) => (
             <button
               key={id}
               onClick={(e) => {
@@ -83,7 +83,7 @@ export default function NamNow({ onBack }: Props) {
                 color: lane === id ? '#111827' : 'rgba(255,251,245,0.7)',
               }}
             >
-              {id === 'bhaio' ? 'Bhaio' : 'Behno'}
+              {id === 'bhaiyo' ? 'Bhaiyo' : 'Behno'}
             </button>
           ))}
         </div>

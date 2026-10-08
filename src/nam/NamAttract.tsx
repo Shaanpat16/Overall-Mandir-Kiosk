@@ -276,7 +276,7 @@ export default function NamAttract({ isAttract, onWake, onNavigate, clock }: Nam
                     }}
                   >
                     {notice.split
-                      ? `${notice.bhaio?.title ?? notice.session.title}`
+                      ? `${notice.bhaiyo?.title ?? notice.session.title}`
                       : notice.session.title}
                   </p>
                   <p
@@ -288,7 +288,7 @@ export default function NamAttract({ isAttract, onWake, onNavigate, clock }: Nam
                     }}
                   >
                     {notice.split
-                      ? `Bhaio · ${notice.bhaio?.location}   Behno · ${notice.behno?.location}`
+                      ? `Bhaiyo · ${notice.bhaiyo?.location}   Behno · ${notice.behno?.location}`
                       : `${notice.session.start} – ${notice.session.end} · ${notice.session.location}`}
                   </p>
                 </motion.div>
@@ -452,7 +452,7 @@ export default function NamAttract({ isAttract, onWake, onNavigate, clock }: Nam
                       marginTop: 4,
                     }}
                   >
-                    Countdown · Bhaio / Behno · tap for pulse
+                    Countdown · Bhaiyo / Behno · tap for pulse
                   </p>
                 </div>
                 <span style={{ fontFamily: 'var(--font-ui)', fontSize: 22, color: 'var(--surface)' }}>→</span>

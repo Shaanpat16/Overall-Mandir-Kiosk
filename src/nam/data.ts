@@ -420,6 +420,6 @@ export const QUIZ = [
     prompt: 'Friday afternoon, Behno are in…',
     choices: ['Team Breakouts', 'Mahila Program (Main Hall)', 'Regional Review'],
     answer: 1,
-    why: '3:00–4:15 PM Friday: Bhaio stay in team breakouts; Behno go to the Mahila Program.',
+    why: '3:00–4:15 PM Friday: Bhaiyo stay in team breakouts; Behno go to the Mahila Program.',
   },
 ] as const;

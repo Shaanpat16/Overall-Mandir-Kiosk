@@ -122,7 +122,7 @@ export default function NamSchedule({ onBack }: Props) {
             padding: '0 8px',
           }}
         >
-          <span>Bhaio</span>
+          <span>Bhaiyo</span>
           <span style={{ textAlign: 'right' }}>Behno</span>
         </div>
         )}
@@ -163,11 +163,11 @@ function BoardRow({
   liveId: string | null;
 }) {
   const combined = group.length === 1 && group[0].track === 'all';
-  const bhaio = group.find((s) => s.track === 'bhaio' || s.track === 'all');
+  const bhaiyo = group.find((s) => s.track === 'bhaiyo' || s.track === 'all');
   const behno = group.find((s) => s.track === 'behno' || s.track === 'all');
   const split = !combined && group.some((s) => s.track !== 'all');
 
-  if (split && (bhaio || behno)) {
+  if (split && (bhaiyo || behno)) {
     return (
       <div
         style={{
@@ -176,8 +176,8 @@ function BoardRow({
           gap: 8,
         }}
       >
-        {bhaio ? <LaneCard s={bhaio} openId={openId} setOpenId={setOpenId} agenda={agenda} live={liveId === bhaio.id} /> : <div />}
-        {behno && behno.id !== bhaio?.id ? (
+        {bhaiyo ? <LaneCard s={bhaiyo} openId={openId} setOpenId={setOpenId} agenda={agenda} live={liveId === bhaiyo.id} /> : <div />}
+        {behno && behno.id !== bhaiyo?.id ? (
           <LaneCard s={behno} openId={openId} setOpenId={setOpenId} agenda={agenda} live={liveId === behno.id} />
         ) : (
           <div />
@@ -295,7 +295,7 @@ function LaneCard({
             }}
           >
             {s.end} · {s.location}
-            {s.track === 'all' ? ' · Combined' : s.track === 'bhaio' ? ' · Bhaio' : ' · Behno'}
+            {s.track === 'all' ? ' · Combined' : s.track === 'bhaiyo' ? ' · Bhaiyo' : ' · Behno'}
           </p>
         </button>
       </div>

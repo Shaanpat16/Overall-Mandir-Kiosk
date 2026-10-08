@@ -13,7 +13,7 @@ interface Props {
 export default function NamTracks({ onBack }: Props) {
   const clock = useLiveClock();
   const dayId = namDayId(clock);
-  const [active, setActive] = useState<Exclude<TrackId, 'all'>>('bhaio');
+  const [active, setActive] = useState<Exclude<TrackId, 'all'>>('bhaiyo');
   const track = TRACKS.find((t) => t.id === active)!;
   const sessions = dayId ? sessionsForDay(dayId, active) : [];
 
@@ -27,7 +27,7 @@ export default function NamTracks({ onBack }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: appleEase }}
         >
-          Bhaio &amp; <em>Behno</em>
+          Bhaiyo &amp; <em>Behno</em>
         </motion.h1>
         <motion.p className="text-body" style={{ marginTop: 8, marginBottom: 28, fontSize: 20 }}>
           Combined keynotes sit together. Travel, arti halls, and Friday afternoon split.
